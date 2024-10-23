@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"real-time-forum/database"
+	"real-time-forum/backend/database"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 	
