@@ -1,145 +1,234 @@
-//sidebar
-const menuItems = document.querySelectorAll(".menu-item");
-const messagesNotification = document.querySelector("#messages-notifications");
-const messages = document.querySelector(".messages");
-const message = messages.querySelectorAll(".message");
-const messageSearch = document.querySelector("#message-search");
-
-//remove active class from all menu items
-const changeActiveItem = () => {
-    menuItems.forEach((item) => {
-        item.classList.remove("active");
-    });
+// Constants and State
+const SELECTORS = {
+    MENU_ITEMS: '.menu-item',
+    CREATE_POST: 'label[for="create-post"]',
+    FEEDS: '.feeds',
+    CREATE_POST_SECTION: '.create-post',
+    CREATE_POST_FORM: '#create-post-form',
+    MESSAGES: '.messages',
+    MESSAGE_ITEMS: '.messages .message',
+    MIDDLE_SECTION: '.middle'
 };
 
-// Left sidebar menu items handler
-menuItems.forEach((item) => {
-    item.addEventListener("click", () => {
-        changeActiveItem();
-        item.classList.add("active");
+let feedsContent = '';
 
-        if (item.querySelector('h3').textContent === 'Home') {
-            // Restore the feeds content
-            document.querySelector('.middle').innerHTML = feedsContent;
-        }
+// UI Controller
+class UIController {
+    constructor() {
+        this.elements = {
+            menuItems: document.querySelectorAll(SELECTORS.MENU_ITEMS),
+            feedsSection: document.querySelector(SELECTORS.FEEDS),
+            createPostSection: document.querySelector(SELECTORS.CREATE_POST_SECTION),
+            messageItems: document.querySelectorAll(SELECTORS.MESSAGE_ITEMS),
+            middleSection: document.querySelector(SELECTORS.MIDDLE_SECTION)
+        };
+        this.wsManager = new WebSocketManager();
+        this.chatManager = new ChatManager(this.wsManager);
+        this.initializeElements();
+        this.bindEvents();
+        this.storeFeedsContent();
+    }
 
-        if (item.id != "notifications") {
-            document.querySelector(".notifications-popup").style.display = "none";
-        } else {
-            document.querySelector(".notifications-popup").style.display = "block";
-            document.querySelector(
-                "#notifications .notification-count"
-            ).style.display = "none";
-        }
-    });
-});
+    bindEvents() {
+        // Menu items (Home and Create Post)
+        this.elements.menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const menuText = item.querySelector('h3').textContent;
+                
+                // Clear all active states
+                this.clearAllActiveStates();
+                
+                // Set new active state and show content
+                item.classList.add('active');
+                
+                if (menuText === 'Home') {
+                    this.showHome();
+                } else if (menuText === 'Create Post') {
+                    this.showCreatePost();
+                }
+            });
+        });
+    }
 
+    showHome() {
+        this.elements.middleSection.innerHTML = feedsContent;
+        this.elements.createPostSection.classList.add('hidden');
+        this.elements.feedsSection.classList.remove('hidden');
+    }
 
-messagesNotification.addEventListener("click", () => {
-    messages.style.boxShadow = "0 0 1rem var(--color-primary)";
-    messagesNotification.querySelector(".notification-count").style.display =
-        "none";
-    setTimeout(() => {
-        messages.style.boxShadow = "none";
-    }, 2000);
-});
+    showCreatePost() {
+        this.elements.feedsSection.classList.add('hidden');
+        this.elements.createPostSection.classList.remove('hidden');
+        this.elements.middleSection.appendChild(this.elements.createPostSection);
+    }
 
-// Make messages clickable
-const messageItems = document.querySelectorAll('.messages .message');
-messageItems.forEach(messageItem => {
-    messageItem.addEventListener('click', () => {
-        const username = messageItem.querySelector('h5').textContent;
-        const profilePic = messageItem.querySelector('.profile-pic img').src;
-        showChat(username, profilePic);
-                // Set messages menu item as active
-                menuItems.forEach(item => {
-                    if(item.querySelector('h3').textContent === 'Messages') {
-                        changeActiveItem();
-                        item.classList.add('active');
-                    }
-                });
-    });
-});
+    createChatInterface(username, profilePic) {
+        const container = document.createElement('div');
+        container.className = 'chat-container';
 
-// Get all message elements
-const messageElements = document.querySelectorAll('.messages .message');
-
-// Add click handler to each message
-messageElements.forEach(messageItem => {
-    messageItem.style.cursor = 'pointer';
-    messageItem.addEventListener('click', () => {
-        // Get user info from the clicked message
-        const username = messageItem.querySelector('h5').textContent;
-        const profilePic = messageItem.querySelector('.profile-pic img').src;
+        // Create header
+        const header = document.createElement('div');
+        header.className = 'chat-header';
         
-        // Show chat interface
-        showChat(username, profilePic);
+        const profilePicDiv = document.createElement('div');
+        profilePicDiv.className = 'profile-pic';
+        const img = document.createElement('img');
+        img.src = profilePic;
+        img.alt = `${username}'s profile`;
+        profilePicDiv.appendChild(img);
+
+        const userInfo = document.createElement('div');
+        userInfo.className = 'chat-user-info';
+        const nameHeading = document.createElement('h4');
+        nameHeading.textContent = username;
+        const status = document.createElement('p');
+        status.className = 'status';
+        status.textContent = 'online';
+        userInfo.append(nameHeading, status);
+
+        header.append(profilePicDiv, userInfo);
+
+        // Create messages area
+        const messagesArea = document.createElement('div');
+        messagesArea.className = 'chat-messages';
+        messagesArea.id = 'chat-messages';
+
+        // Create input form
+        const form = document.createElement('form');
+        form.className = 'chat-input';
+        form.id = 'message-form';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = 'message-input';
+        input.placeholder = 'Type a message...';
+        input.required = true;
+
+        const button = document.createElement('button');
+        button.type = 'submit';
+        button.className = 'btn btn-primary';
+        button.textContent = 'Send';
+
+        form.append(input, button);
+        form.addEventListener('submit', this.handleMessageSubmit.bind(this));
+
+        // Assemble all parts
+        container.append(header, messagesArea, form);
+        return container;
+    }
+
+    handleMessageSubmit(event) {
+        event.preventDefault();
+        const input = event.target.querySelector('#message-input');
+        const message = input.value.trim();
         
-        // Visual feedback for selected chat
-        messageElements.forEach(item => item.classList.remove('active'));
-        messageItem.classList.add('active');
-    });
-});
+        if (message) {
+            // Send message through WebSocket
+            this.wsManager.sendMessage({
+                type: 'chat_message',
+                content: message,
+                receiverId: this.currentChatUserId
+            });
 
+            // Add message to UI
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message sent';
+            messageDiv.textContent = message;
+            messagesContainer.appendChild(messageDiv);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    }
 
-function showChat(username, profilePic) {
-    // Get the middle section and clear the feeds
-    const middleSection = document.querySelector('.middle');
-    middleSection.innerHTML = `
-        <div class="chat-container">
-            <div class="chat-header">
-                <div class="profile-pic">
-                    <img src="${profilePic}" />
-                </div>
-                <div class="chat-user-info">
-                    <h4>${username}</h4>
-                    <p class="status">online</p>
-                </div>
-            </div>
+    clearAllActiveStates() {
+        // Remove active class from menu items
+        this.elements.menuItems.forEach(item => item.classList.remove('active'));
+        
+        // Remove active class from messages
+        this.elements.messageItems.forEach(msg => msg.classList.remove('active'));
+    }
 
-            <div class="chat-messages" id="chat-messages">
-                <!-- Sample messages -->
-                <div class="message received">
-                    Hey, how are you?
-                </div>
-                <div class="message sent">
-                    I'm good! How about you?
-                </div>
-            </div>
+    showHome() {
+        this.elements.middleSection.innerHTML = feedsContent;
+        this.elements.feedsSection.classList.remove('hidden');
+        this.elements.createPostSection.classList.add('hidden');
+    }
 
-            <div class="chat-input">
-                <form id="message-form">
-                    <input type="text" id="message-input" placeholder="Type a message...">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </form>
-            </div>
-        </div>
-    `;
+    showCreatePost() {
+        this.elements.feedsSection.classList.add('hidden');
+        this.elements.createPostSection.classList.remove('hidden');
+    }
 
-    // Add message form handler
-    document.getElementById('message-form').addEventListener('submit', handleMessageSubmit);
+    storeFeedsContent() {
+        feedsContent = this.elements.middleSection.innerHTML;
+    }
 }
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new UIController();
+});
 
-function handleMessageSubmit(e) {
-    e.preventDefault();
-    const input = document.getElementById('message-input');
-    if (input.value.trim()) {
-        addMessage(input.value, 'sent');
-        input.value = '';
+class WebSocketManager {
+    constructor() {
+        this.socket = new WebSocket('ws://your-server:port');
+        this.messageHandlers = new Map();
+        this.setupSocketListeners();
+    }
+
+    setupSocketListeners() {
+        this.socket.onopen = () => {
+            console.log('WebSocket Connected');
+        };
+
+        this.socket.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            this.handleIncomingMessage(message);
+        };
+    }
+
+    handleIncomingMessage(message) {
+        const handler = this.messageHandlers.get(message.type);
+        if (handler) {
+            handler(message);
+        }
+    }
+
+    sendMessage(messageData) {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify(messageData));
+        }
     }
 }
 
-function addMessage(content, type) {
-    const messagesContainer = document.getElementById('chat-messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${type}`;
-    messageDiv.textContent = content;
-    messagesContainer.appendChild(messageDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
+class ChatManager {
+    constructor(wsManager) {
+        this.wsManager = wsManager;
+        this.activeChats = new Map();
+        this.setupMessageHandlers();
+    }
 
-// Store the original feeds content when page loads
-let feedsContent;
-document.addEventListener('DOMContentLoaded', () => {
-    feedsContent = document.querySelector('.middle').innerHTML;
-});
+    setupMessageHandlers() {
+        this.wsManager.messageHandlers.set('chat_message', (message) => {
+            this.handleIncomingChatMessage(message);
+        });
+    }
+
+    handleIncomingChatMessage(message) {
+        const chatId = `chat_${message.senderId}`;
+        if (this.activeChats.has(chatId)) {
+            const chat = this.activeChats.get(chatId);
+            chat.messages.push({
+                content: message.content,
+                type: 'received',
+                timestamp: new Date()
+            });
+            
+            // Trigger UI update
+            document.dispatchEvent(new CustomEvent('newMessage', {
+                detail: { chatId, message }
+            }));
+        }
+    }
+}

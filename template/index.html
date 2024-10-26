@@ -3,58 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Real Time Forum</title>
     <link rel='stylesheet' type='text/css' media='screen' href='/assets/styles.css'>
-    <script src='/assets/app.js'></script>
 </head>
 <body>
-
-    
-    <!-- Registration form section -->
-<div id="register-section" style="display: none;">
-    <h2>Register</h2>
-    <form action="/register" method="POST">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <div>
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="confirm-password" id="confirm-password" name="confirm-password" required>
-        </div>
-
-        <div>
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-        </div>
-        <div>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-        </div>
-        <div>
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="">Select...</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-        <div>
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-</div>
 
 
      
@@ -84,7 +36,7 @@
     <!-- Home Page section -->
 <main class="main">
     <div class="container" id="home-page">
-        <div class="left">
+        <aside class="left">
             <a class="profile">
                 <div class="profile-pic">
                     <img src="https://res.cloudinary.com/freecodez/image/upload/v1698067298/images/fy8azbqxhgdrbbijhipe.webp" />
@@ -101,28 +53,15 @@
                 </a>
                 <a class="menu-item">
                     <span><i class="uil uil-compass"></i></span>
-                    <h3>Messages</h3>
+                    <h3>Create Post</h3>
                 </a>
 
-                <label class="btn btn-primary" for="create-post">Create Post</label>
             </div>
-        </div>
+        </aside>
 
-        <div class="middle">
-
-            <form class="create-post">
-                <div class="profile-pic">
-                    <img src="https://res.cloudinary.com/freecodez/image/upload/v1698067298/images/fy8azbqxhgdrbbijhipe.webp" alt="" />
-                </div>
-                <input
-              type="text"
-              placeholder="What's on your mind Freecodez?"
-              id="create-post"
-            />
-                <input type="submit" value="Post" class="btn btn-primary" />
-            </form>
-
-            <div class="feeds">
+        <section class="middle">
+            <!--Posts section -->
+            <article class="feeds">
                 <div class="feed">
                     <div class="head"></div>
                     <div class="user">
@@ -436,10 +375,49 @@
                     </div>
                     <div class="comments text-muted">View all 190 comments</div>
                 </div>
-            </div>
-        </div>
+            </article>
 
-        <div class="right">
+                <!--Create post section -->
+            <div class="create-post" style="display: none;">
+                <h2 class="section-title">Create a New Post</h2>
+            <form action="/create_post" method="post" class="create-post-form" id="create-post-form">
+                <div class="form-group">
+                    <label for="post-title">Title:</label>
+                    <input type="text" id="post-title" name="title" minlength="1" maxlength="300" required >
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Content:</label>
+                    <textarea id="post-content" name="content" rows="10" minlength="1" maxlength="2500"  style="white-space: pre-line" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-category">Category:</label>
+                    <div id="post-category" class="checkbox-group">
+                        <input type="checkbox" id="category-sports" name="category" value="Sports">
+                        <label for="category-sports">Sports</label>
+                        <input type="checkbox" id="category-technology" name="category" value="Technology">
+                        <label for="category-technology">Technology</label>
+                        <input type="checkbox" id="category-education" name="category" value="Education">
+                        <label for="category-education">Education</label>
+                        <input type="checkbox" id="category-health" name="category" value="Health">
+                        <label for="category-health">Health</label>
+                        <input type="checkbox" id="category-entertainment" name="category" value="Entertainment">
+                        <label for="category-entertainment">Entertainment</label>
+                        <input type="checkbox" id="category-travel" name="category" value="Travel">
+                        <label for="category-travel">Travel</label>
+                        <input type="checkbox" id="category-finance" name="category" value="Finance">
+                        <label for="category-finance">Finance</label>
+                        <input type="checkbox" id="category-culture" name="category" value="Culture">
+                        <label for="category-culture">Culture</label>
+                    </div>
+                    <div id="error-message" style="color:red; display:none;">Please select at least one category.</div>
+                </div>
+                <button type="submit" class="submit-button">Create Post</button>
+            
+            </form>
+            </div>
+        </section>
+
+        <aside class="right">
             <div class="messages">
                 <div class="heading">
                     <h4>Messages</h4>
@@ -456,12 +434,62 @@
                 <h5>Kareena Joshua</h5>
                 <p class="text-muted">Just woke up bruh..</p>
             </div>
-        </div>
+        </aside>
         <!-- Repeat for other messages -->
             </div>
         </div>
     </div>
 </main>
+    
+    <!-- Registration form section -->
+<div id="register-section" style="display: none;">
+    <h2>Register</h2>
+    <form action="/register" method="POST">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
+        <div>
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="confirm-password" id="confirm-password" name="confirm-password" required>
+        </div>
+
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+
+</main>
+
+<script src='/assets/app.js'></script>
 </body>
 </html>
