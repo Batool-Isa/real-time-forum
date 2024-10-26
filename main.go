@@ -18,6 +18,9 @@ func main() {
 	// Create tables
 	database.CreateTables()
 
+	// Serve static files from the "assets" directory
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
+
 	// Register the IndexHandler function
 	http.HandleFunc("/", handler.IndexHandler)
 
