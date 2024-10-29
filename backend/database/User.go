@@ -20,3 +20,7 @@ func CreateUser(username string, email string, age int, gender string, firstName
 	return nil
 
 }
+
+func RetriveSession(sessionCookie string){
+	
+}

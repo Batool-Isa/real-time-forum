@@ -17,12 +17,13 @@ func main() {
 
 	// Create tables
 	database.CreateTables()
+	go handler.hub.run()// Start the hub in a goroutine
 
 	// Serve static files from the "assets" directory
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
+    http.HandleFunc("/ws", handleWebSocket) // Handle WebSocket connections
 
 	// Register the IndexHandler function
-	http.HandleFunc("/", handler.IndexHandler)
 
 	fmt.Println("Database setup complete")	
 	fmt.Println("Server started at http://localhost:8888/")
