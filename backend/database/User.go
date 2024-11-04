@@ -4,16 +4,16 @@ import (
 	"log"
 )
 
-func CreateUser(username string, email string, age int, gender string, firstName string, lastName string) error{
+func CreateUser(username string, email string, age int, gender string, firstName string, lastName string, pass string) error{
 	//preparer statment to create user 
-	prepStatment , err := db.Prepare("INSERT INTO User(username, email, age, gender, firstName, lastName) VALUES (?,?,?,?,?,?)")
+	prepStatment , err := db.Prepare("INSERT INTO User(username, email, age, gender, firstName, lastName, password) VALUES (?,?,?,?,?,?,?)")
 	if err != nil {
 		log.Fatal(err)
 		return err
 	}
 
 	//excute the statment
-	_, err = prepStatment.Exec(username, email, age, gender, firstName, lastName)
+	_, err = prepStatment.Exec(username, email, age, gender, firstName, lastName, pass)
 	if err != nil{
 		log.Fatal(err)
 	}

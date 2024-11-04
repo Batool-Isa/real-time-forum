@@ -6,6 +6,8 @@ import (
 	"real-time-forum/backend/database"
 	_ "github.com/mattn/go-sqlite3"
 	"real-time-forum/backend/handler"
+	//"real-time-forum/backend/utils"
+
 	"log"
 )
 
@@ -17,12 +19,12 @@ func main() {
 
 	// Create tables
 	database.CreateTables()
-	go handler.hub.run()// Start the hub in a goroutine
+	//go handler.hub.run()// Start the hub in a goroutine
 
 	// Serve static files from the "assets" directory
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
-    http.HandleFunc("/ws", handleWebSocket) // Handle WebSocket connections
-
+    //http.HandleFunc("/ws", handleWebSocket) // Handle WebSocket connections
+	http.HandleFunc("/", handler.IndexHandler)
 	// Register the IndexHandler function
 
 	fmt.Println("Database setup complete")	

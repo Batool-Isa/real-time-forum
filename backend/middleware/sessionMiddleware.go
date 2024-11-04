@@ -2,7 +2,7 @@ package middleware
 
 import(
 	"net/http"
-	"real-time-forum/Session"
+	"real-time-forum/middleWare"
 	"fmt"
 )
 function SessionMiddleware(next http.Handler) http.Handler{
@@ -16,7 +16,7 @@ function SessionMiddleware(next http.Handler) http.Handler{
 			return
 		}
 		//get the session info
-		userSession , err = Session.GetSession()
+		userSession , err = GetSession()
 
 
 		//check if the session is still valid and not expired
