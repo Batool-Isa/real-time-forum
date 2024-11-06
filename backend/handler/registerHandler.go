@@ -10,6 +10,11 @@ import(
 	"real-time-forum/backend/database"
 
 )
+type DataPassed struct {
+	Username string
+	Email    string
+	Errors   map[string]string
+}
 
 
 func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +22,16 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return
 	}
-
+	session := middleware.FromContext(r.Context())
+	if session != nil {
+		utils.ErrorHandler(w, r, http.StatusSeeOther)
+		return
+	}
+	// formData := DataPassed{
+	// 	Username: "",
+	// 	Email:    "",
+	// }
+	
 	// Parse form data
 	err := r.ParseForm()
 	if err != nil {
@@ -63,9 +77,12 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Render login page after successful registration
-	utils.RenderTemplate(w, r, "login.html", nil)
-
+	err1 := CreateUserSession(w, user.Uid)
+	if err1 != nil {
+		utils.ErrorHandler(w, r, http.StatusUnauthorized)
+		return
+	}
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
 // // validateUserInput performs basic validation on required fields

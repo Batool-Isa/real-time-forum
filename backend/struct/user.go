@@ -1,9 +1,10 @@
-package struct
+package structs
 
+import "time"
 
-type uSession struct{
-	session_Id int
-	session string
-	timeStamp time.time
-	userID int
+type Session struct {
+	SessionID int       
+	Session   string
+	Timestamp time.Time 
+	UserID    int
 }

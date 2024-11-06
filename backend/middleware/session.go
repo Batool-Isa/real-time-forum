@@ -1,56 +1,99 @@
-package session 
+package middleware
 
-import(
-	"net/http"
-	"github.com/gorilla/sessions"
+import (
+	"Forum/backend/database"
+	"Forum/backend/structs"
+	"context"
 	"fmt"
+	"net/http"
+	"time"
 )
 
-var (
-	//This key used to encrypt and sign session data
-    key = []byte("12345678912345678912345678912356")
-	 // create cookie with the key provided earlier
-    store = sessions.NewCookieStore(key)
+// sessionContextKey is unexported to prevent collisions
+type sessionContextKey int
+
+const (
+	SessionKey sessionContextKey = iota
 )
 
-//function to create sesssion
-func CreatSession(w http.ResponseWriter, r *http.Request)
-{
-	//create new session
-userSession, err := store.Get(r,"User Session")
-if err != nil {
-	http.Error(w, err.Error(), http.StatusInternalServerError)
-	return
-}
-//set the status of the user session to true
-userSession.Values["authenticated"] = true
+// SessionValidator is a middleware function that validates session expiry
+func SessionValidator(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Retrieve the session cookie
+		sessionCookie, err := r.Cookie("session_Id")
+		if err != nil {
+			// No session cookie, assume session has expired
+			next.ServeHTTP(w, r)
+			fmt.Println("Session validation error: no active session cookie")
+			return
+		}
 
-//save the session to tht cookie
-_, err = sessions.Save(w,r);
-if err != nil{
-	http.Error(w, err.Error(), http.StatusInternalServerError)
-	return
-}
-fmt.Fprintf(w, "Session created and user authenticated")
+		// Retrieve session details from the database
+		session, err := database.FetchSession(sessionCookie.Value)
+		if err != nil {
+			// Handle errors if session is not found or expired
+			next.ServeHTTP(w, r)
+			fmt.Println("Session validation error: unable to fetch session")
+			return
+		}
 
-}
+		// Verify if the session has expired
+		if checkSessionExpiry(session.Session) {
+			next.ServeHTTP(w, r)
+			fmt.Println("Session validation error: session has expired")
+			return
+		}
 
-//function to retive the user session
-func GetSession(w http.ResponseWriter, r *http.Request)
-{
-userSession, err := store.Get(r,"User Session")
-if err != nil {
-	http.Error(w, err.Error(), http.StatusInternalServerError)
-	return
-}
-
-auth, ok := userSession.Values["authenticcated"].(bool)
-if auth && ok {
-	fmt.Fprintf(w,"Welcome")
-} else {
-	fmt.Fprintf(w,"Log in first")
-
+		// Embed session in context
+		ctx := context.WithValue(r.Context(), SessionKey, session)
+		fmt.Println("Session is active and valid")
+		next.ServeHTTP(w, r.WithContext(ctx))
+	})
 }
 
+// checkSessionExpiry verifies if the given session has expired
+func checkSessionExpiry(sessionID string) bool {
+	// Retrieve the session data from the session store
+	session, err := database.FetchSession(sessionID)
+	if err != nil {
+		return true // No session available
+	}
 
+	// Check if the session has expired based on the timestamp
+	return time.Now().After(session.Timestamp)
+}
+
+// GetSessionFromContext extracts the session from the context
+func GetSessionFromContext(ctx context.Context) *structs.Session {
+	val := ctx.Value(SessionKey)
+	if val == nil {
+		return nil
+	}
+	session, ok := val.(structs.Session)
+	if !ok {
+		return nil
+	}
+	return &session
+}
+
+
+// OptionalSessionMiddleware checks for session and adds it to context if available
+func OptionalSessionMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		sessionCookie, err := r.Cookie("session_Id")
+		if err != nil {
+			next.ServeHTTP(w, r) // No session, proceed without it
+			return
+		}
+
+		session, err := database.GetSession(sessionCookie.Value)
+		if err != nil || isSessionExpired(session.Session) {
+			next.ServeHTTP(w, r) // Invalid or expired session, proceed without it
+			return
+		}
+
+		// Store session in context
+		ctx := context.WithValue(r.Context(), SessionKey, session)
+		next.ServeHTTP(w, r.WithContext(ctx))
+	})
 }
