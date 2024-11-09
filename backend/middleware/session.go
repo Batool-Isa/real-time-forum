@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"Forum/backend/database"
-	"Forum/backend/structs"
+	"real-time-forum/backend/database"
+	"real-time-forum/backend/struct"
 	"context"
 	"fmt"
 	"net/http"
@@ -86,8 +86,8 @@ func OptionalSessionMiddleware(next http.Handler) http.Handler {
 			return
 		}
 
-		session, err := database.GetSession(sessionCookie.Value)
-		if err != nil || isSessionExpired(session.Session) {
+		session, err := database.FetchSession(sessionCookie.Value)
+		if err != nil || checkSessionExpiry(session.Session) {
 			next.ServeHTTP(w, r) // Invalid or expired session, proceed without it
 			return
 		}

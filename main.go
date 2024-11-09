@@ -23,9 +23,12 @@ func main() {
 
 	// Serve static files from the "assets" directory
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
-    //http.HandleFunc("/ws", handleWebSocket) // Handle WebSocket connections
-	http.HandleFunc("/", handler.IndexHandler)
-	// Register the IndexHandler function
+    
+
+
+	// Register handlers for the WebSocket and the main page
+	http.HandleFunc("/", handler.IndexHandler)         // Main page handler
+	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
 
 	fmt.Println("Database setup complete")	
 	fmt.Println("Server started at http://localhost:8888/")

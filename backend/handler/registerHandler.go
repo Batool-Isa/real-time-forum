@@ -1,37 +1,35 @@
 package handler
 
-import(
+import (
+	"fmt"
 	"net/http"
 	"strconv"
-	"fmt"
-	"golang.org/x/crypto/bcrypt"
-	//"errors"
-	"real-time-forum/backend/utils"
-	"real-time-forum/backend/database"
 
+	"golang.org/x/crypto/bcrypt"
+	"real-time-forum/backend/database"
+	"real-time-forum/backend/middleware"
 )
+
 type DataPassed struct {
 	Username string
 	Email    string
 	Errors   map[string]string
 }
 
-
 func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return
 	}
-	session := middleware.FromContext(r.Context())
+
+	// Check for existing session
+	session := middleware.GetSessionFromContext(r.Context())
 	if session != nil {
-		utils.ErrorHandler(w, r, http.StatusSeeOther)
+		fmt.Println("ERROR: User is already logged in")
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	// formData := DataPassed{
-	// 	Username: "",
-	// 	Email:    "",
-	// }
-	
+
 	// Parse form data
 	err := r.ParseForm()
 	if err != nil {
@@ -48,42 +46,50 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 	lastName := r.FormValue("lastName")
 	gender := r.FormValue("gender")
 
-
-	//convert age from string to int 
+	// Convert age from string to int
 	age, err := strconv.Atoi(ageStr)
 	if err != nil {
-		fmt.Print("Error converting age to int")
+		http.Error(w, "Error converting age to integer", http.StatusBadRequest)
+		fmt.Println("Error converting age to int:", err)
 		return
 	}
 
-	//encrypt password
-	pass, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	// Encrypt password
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		fmt.Println("error encryptong password")
-		return 
-		//utils.ErrorHandler(w, r, http.StatusInternalServerError)
+		http.Error(w, "Error encrypting password", http.StatusInternalServerError)
+		fmt.Println("Error encrypting password:", err)
+		return
 	}
-
-	// Validate other required fields
-	// if err := validateUserInput(username, email, firstName, lastName); err != nil {
-	// 	http.Error(w, err.Error(), http.StatusBadRequest)
-	// 	return
-	// }
 
 	// Create the user in the database
-	err = database.CreateUser(username, email, age, gender, firstName, lastName, string(pass))
+	err = database.CreateUser(username, email, age, gender, firstName, lastName, string(hashedPassword))
 	if err != nil {
 		http.Error(w, "Error registering user", http.StatusInternalServerError)
+		fmt.Println("Error creating user in database:", err)
 		return
 	}
 
-	err1 := CreateUserSession(w, user.Uid)
-	if err1 != nil {
-		utils.ErrorHandler(w, r, http.StatusUnauthorized)
+	// Retrieve the newly created user to get the user ID
+	user, err := database.RetrieveUser(username)
+	if err != nil {
+		http.Error(w, "Error fetching user data after registration", http.StatusInternalServerError)
+		fmt.Println("Error retrieving user:", err)
 		return
 	}
+
+	// Create a session for the user
+	err = CreateUserSession(w, user.UserID)
+	if err != nil {
+		http.Error(w, "Error creating user session", http.StatusUnauthorized)
+		fmt.Println("Error creating session:", err)
+		return
+	}
+
+	// Redirect to the homepage on successful registration
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
+
 
 // // validateUserInput performs basic validation on required fields
 // func validateUserInput(username, email, firstName, lastName string)  {

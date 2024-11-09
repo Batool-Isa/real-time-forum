@@ -3,7 +3,6 @@ package handler
 import (
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/struct"
-	"real-time-forum/backend/utils"
 	"context"
 	"crypto/rand"
 	"encoding/hex"
@@ -19,11 +18,18 @@ var (
 	activeSessions = make(map[string]bool) // Map to store active session IDs
 	sessionMutex   = &sync.Mutex{}          // Mutex for thread-safe access to session store
 )
+// key type is unexported to prevent collisions
+type key int
+
+const (
+	SessionKey key = iota
+)
+
 
 // CreateUserSession generates a new session for the user
 func CreateUserSession(w http.ResponseWriter, userID int) error {
 	// Check if a valid session already exists for the user
-	existingSession, err := database.FetchSessionByUser(userID)
+	existingSession, err := database.GetSessionByUserID(userID)
 	if err == nil && existingSession.Timestamp.After(time.Now()) {
 		fmt.Println("User already has a valid session")
 		return errors.New("user already has an active session")
@@ -52,8 +58,8 @@ func CreateUserSession(w http.ResponseWriter, userID int) error {
 		// MaxAge: 600000, // Uncomment to set expiration to 10 minutes
 	})
 
-	// Save the session in the database
-	database.SaveSession(sessionID, userID)
+	// Save the session in session table 
+	database.InsertNewSession(sessionID, userID)
 	fmt.Println("Session ID created:", sessionID)
 	return nil
 }
@@ -104,7 +110,6 @@ func SessionHandler(next http.Handler) http.Handler {
 		// Fetch session details from the database
 		session, err := database.FetchSession(sessionCookie.Value)
 		if err != nil {
-			utils.SendError(w, r, http.StatusUnauthorized)
 			fmt.Println("Session error:", err)
 			next.ServeHTTP(w, r)
 			return

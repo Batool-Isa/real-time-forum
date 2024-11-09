@@ -1,26 +1,30 @@
 package database
 
-import (
+import(
+	"database/sql"
+	"real-time-forum/backend/struct"
 	"log"
+	"fmt"
 )
 
-func CreateUser(username string, email string, age int, gender string, firstName string, lastName string, pass string) error{
-	//preparer statment to create user 
-	prepStatment , err := db.Prepare("INSERT INTO User(username, email, age, gender, firstName, lastName, password) VALUES (?,?,?,?,?,?,?)")
+
+func RetrieveUser(username string)(structs.User, error){
+
+	//sql query
+	query := "SELECT user_Id, username, email, age,gender, firstName, lastName WHERE username = ?"
+	row := db.QueryRow(query, username)
+	//declare a session variable
+	var user structs.User
+	err := row.Scan(&user.UserID, &user.Username, &user.Email, &user.Age, &user.Gender, &user.FirstName, &user.LastName)
 	if err != nil {
-		log.Fatal(err)
-		return err
+		if err == sql.ErrNoRows {
+			log.Println("User not found:", err)
+			return structs.User{}, fmt.Errorf("user not found")
+		}
+		log.Println("Error scanning user:", err)
+		return structs.User{}, err
 	}
 
-	//excute the statment
-	_, err = prepStatment.Exec(username, email, age, gender, firstName, lastName, pass)
-	if err != nil{
-		log.Fatal(err)
-	}
-	return nil
+	return user, nil
 
-}
-
-func RetriveSession(sessionCookie string){
-	
 }
