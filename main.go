@@ -29,6 +29,7 @@ func main() {
 	// Register handlers for the WebSocket and the main page
 	http.HandleFunc("/", handler.IndexHandler)         // Main page handler
 	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
+	http.HandleFunc("/register", handler.RegisterUserHandler)
 
 	fmt.Println("Database setup complete")	
 	fmt.Println("Server started at http://localhost:8888/")
