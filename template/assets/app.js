@@ -87,14 +87,14 @@ class UIController {
     // Show registration form
     showRegister() {
         console.log("show registeration form called");
-        this.elements.middleSection.style.display = 'none'; // Hide the main content
-        this.elements.registerSection.style.display = 'block'; // Show the registration form
+        this.elements.middleSection.style.display = 'none'; 
+        this.elements.registerSection.style.display = 'block'; 
     }
 
     // Show the main forum page and hide the registration form
     showForum() {
-        this.elements.middleSection.style.display = 'block'; // Show main content
-        this.elements.registerSection.style.display = 'none'; // Hide registration form
+        this.elements.middleSection.style.display = 'block'; 
+        this.elements.registerSection.style.display = 'none'; 
     }
 
     createChatInterface(username, profilePic) {
