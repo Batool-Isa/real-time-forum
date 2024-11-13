@@ -16,78 +16,78 @@ type DataPassed struct {
 	Errors   map[string]string
 }
 
+// RegisterUserHandler - Register a new user
 func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
+    if r.Method != http.MethodPost {
+        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+        return
+    }
 
-	// Check for existing session
-	session := middleware.GetSessionFromContext(r.Context())
-	if session != nil {
-		fmt.Println("ERROR: User is already logged in")
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
+    // Check for existing session
+    session := middleware.GetSessionFromContext(r.Context())
+    if session != nil {
+        fmt.Println("ERROR: User is already logged in")
+        http.Redirect(w, r, "/", http.StatusSeeOther)
+        return
+    }
 
-	// Parse form data
-	err := r.ParseForm()
-	if err != nil {
-		http.Error(w, "Unable to parse registration form", http.StatusBadRequest)
-		return
-	}
+    // Parse form data
+    err := r.ParseForm()
+    if err != nil {
+        http.Error(w, "Unable to parse registration form", http.StatusBadRequest)
+        return
+    }
 
-	// Retrieve form values
-	username := r.FormValue("username")
-	email := r.FormValue("email")
-	ageStr := r.FormValue("age")
-	password := r.FormValue("pass")
-	firstName := r.FormValue("firstName")
-	lastName := r.FormValue("lastName")
-	gender := r.FormValue("gender")
+    // Retrieve form values
+    username := r.FormValue("username")
+    email := r.FormValue("email")
+    ageStr := r.FormValue("age")
+    password := r.FormValue("password")
+    firstName := r.FormValue("firstName")
+    lastName := r.FormValue("lastName")
+    gender := r.FormValue("gender")
 
-	// Convert age from string to int
-	age, err := strconv.Atoi(ageStr)
-	if err != nil {
-		http.Error(w, "Error converting age to integer", http.StatusBadRequest)
-		fmt.Println("Error converting age to int:", err)
-		return
-	}
+    // Convert age from string to int
+    age, err := strconv.Atoi(ageStr)
+    if err != nil {
+        http.Error(w, "Error converting age to integer", http.StatusBadRequest)
+        return
+    }
+	fmt.Println("password")
+    // Hash the password using bcrypt
+    hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+    if err != nil {
+        http.Error(w, "Error hashing password", http.StatusInternalServerError)
+        fmt.Println("Error hashing password:", err)
+        return
+    }
 
-	// Encrypt password
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	if err != nil {
-		http.Error(w, "Error encrypting password", http.StatusInternalServerError)
-		fmt.Println("Error encrypting password:", err)
-		return
-	}
+    // Create the user in the database with the hashed password
+    err = database.CreateUser(username, email, age, gender, firstName, lastName, string(hashedPassword))
+    if err != nil {
+        http.Error(w, "Error registering user", http.StatusInternalServerError)
+        fmt.Println("Error creating user in database:", err)
+        return
+    }
 
-	// Create the user in the database
-	err = database.CreateUser(username, email, age, gender, firstName, lastName, string(hashedPassword))
-	if err != nil {
-		http.Error(w, "Error registering user", http.StatusInternalServerError)
-		fmt.Println("Error creating user in database:", err)
-		return
-	}
+    // Retrieve the newly created user to get the user ID
+    user, err := database.RetrieveUser(username)
+    if err != nil {
+        http.Error(w, "Error fetching user data after registration", http.StatusInternalServerError)
+        fmt.Println("Error retrieving user:", err)
+        return
+    }
 
-	// Retrieve the newly created user to get the user ID
-	user, err := database.RetrieveUser(username)
-	if err != nil {
-		http.Error(w, "Error fetching user data after registration", http.StatusInternalServerError)
-		fmt.Println("Error retrieving user:", err)
-		return
-	}
+    // Create a session for the user
+    err = CreateUserSession(w, user.UserID)
+    if err != nil {
+        http.Error(w, "Error creating user session", http.StatusUnauthorized)
+        fmt.Println("Error creating session:", err)
+        return
+    }
 
-	// Create a session for the user
-	err = CreateUserSession(w, user.UserID)
-	if err != nil {
-		http.Error(w, "Error creating user session", http.StatusUnauthorized)
-		fmt.Println("Error creating session:", err)
-		return
-	}
-
-	// Redirect to the homepage on successful registration
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+    // Redirect to the homepage on successful registration
+    http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
 

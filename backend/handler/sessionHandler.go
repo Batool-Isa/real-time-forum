@@ -1,8 +1,8 @@
 package handler
 
-import (
+import(
 	"real-time-forum/backend/database"
-	"real-time-forum/backend/struct"
+	//"real-time-forum/backend/struct"
 	"context"
 	"crypto/rand"
 	"encoding/hex"
@@ -141,15 +141,3 @@ func checkSessionExpiration(sessionID string) bool {
 	return time.Now().After(session.Timestamp)
 }
 
-// GetSessionFromContext extracts the session from the request context
-func GetSessionFromContext(ctx context.Context) *structs.Session {
-	val := ctx.Value(SessionKey)
-	if val == nil {
-		return nil
-	}
-	session, ok := val.(structs.Session)
-	if !ok {
-		return nil
-	}
-	return &session
-}

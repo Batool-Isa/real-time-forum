@@ -30,6 +30,8 @@ func main() {
 	http.HandleFunc("/", handler.IndexHandler)         // Main page handler
 	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
 	http.HandleFunc("/register", handler.RegisterUserHandler)
+	http.HandleFunc("/login", handler.LoginHandler)
+
 
 	fmt.Println("Database setup complete")	
 	fmt.Println("Server started at http://localhost:8888/")

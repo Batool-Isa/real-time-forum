@@ -1,6 +1,6 @@
 class UIController {
     constructor() {
-        console.log("UIController initialized"); 
+        console.log("UIController initialized");
         this.elements = {
             menuItems: document.querySelectorAll('.sidebar .menu-item'),
             feedsSection: document.querySelector('.feeds'),
@@ -9,6 +9,8 @@ class UIController {
             middleSection: document.querySelector('.middle'),
             registerSection: document.getElementById('register-section'),
             registerButton: document.querySelector('.register-button'),
+            loginSection: document.getElementById('login-section'),
+            loginButton: document.querySelector('.login-button'),
             backToForumButton: document.querySelector('.back-to-forum-button')
         };
 
@@ -24,11 +26,16 @@ class UIController {
     }
 
     bindNavigationButtons() {
-        
+
         this.elements.registerButton.addEventListener('click', () => {
             console.log("Register button clicked");
             this.showRegister()
-    });
+        });
+
+        this.elements.loginButton.addEventListener('click', () => {
+            console.log("Login button clicked");
+            this.showLogin()
+        });
         this.elements.backToForumButton.addEventListener('click', () => this.showForum());
     }
 
@@ -41,7 +48,7 @@ class UIController {
                 this.elements.menuItems.forEach(mi => mi.classList.remove('active'));
                 item.classList.add('active');
 
-                switch(menuText) {
+                switch (menuText) {
                     case 'Home':
                         this.showFeeds();
                         break;
@@ -87,14 +94,26 @@ class UIController {
     // Show registration form
     showRegister() {
         console.log("show registeration form called");
-        this.elements.middleSection.style.display = 'none'; 
-        this.elements.registerSection.style.display = 'block'; 
+        this.elements.middleSection.style.display = 'none';
+        this.elements.registerSection.style.display = 'block';
+        this.elements.loginSection.style.display = 'none';
+
+    }
+    //function to show login forum
+    showLogin() {
+        console.log("show Login form called");
+        this.elements.middleSection.style.display = 'none';
+        this.elements.registerSection.style.display = 'none';
+        this.elements.loginSection.style.display = 'block';
+
     }
 
     // Show the main forum page and hide the registration form
     showForum() {
-        this.elements.middleSection.style.display = 'block'; 
-        this.elements.registerSection.style.display = 'none'; 
+        this.elements.middleSection.style.display = 'block';
+        this.elements.loginSection.style.display = 'none';
+
+        this.elements.registerSection.style.display = 'none';
     }
 
     createChatInterface(username, profilePic) {

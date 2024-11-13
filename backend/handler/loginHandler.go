@@ -1,55 +1,66 @@
 package handler
 
+import (
+    "fmt"
+    "net/http"
+    "golang.org/x/crypto/bcrypt"
+	"strings"
+    "real-time-forum/backend/database"
+    "real-time-forum/backend/middleware"
+)
 
-// func LoginHandler(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method != http.MethodPost {
-// 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-// 		return
-// 	}
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodPost {
+        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+        return
+    }
 
-// 	// Parse form data
-// 	err := r.ParseForm()
-// 	if err != nil {
-// 		http.Error(w, "Unable to parse login form", http.StatusBadRequest)
-// 		return
-// 	}
+    // Check if the user is already logged in
+    session := middleware.GetSessionFromContext(r.Context())
+    if session != nil {
+        http.Redirect(w, r, "/", http.StatusSeeOther)
+        return
+    }
 
-// 	// Retrieve form values
-// 	username := r.FormValue("username")
-// 	email := r.FormValue("email")
-// 	password := r.FormValue("pass")
- 
+    // Parse form data
+    r.ParseForm()
+    usernameOrEmail := strings.TrimSpace(r.Form.Get("usernameOrEmail"))
+    password := strings.TrimSpace(r.Form.Get("password"))
 
+    // Initialize errors map
+    errors := make(map[string]string)
 
-// 	//convert age from string to int 
-// 	age, err := strconv.Atoi(ageStr)
-// 	if err != nil {
-// 		fmt.Print("Error converting age to int")
-// 		return
-// 	}
+    // Retrieve user from the database
+    user, err := database.RetrieveUser(usernameOrEmail)
+    if err != nil {
+        errors["user"] = "Invalid username/email or password"
+        fmt.Println("Error retrieving user:", err)
+    } else {
+        // Debugging: Print out entered password and stored hash
+        fmt.Println("Entered password:", password)
+        fmt.Println("Stored password hash:", user.Password)
 
-// 	//encrypt password
-// 	pass, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-// 	if err != nil {
-// 		fmt.Println("error encryptong password")
-// 		return 
-// 		//utils.ErrorHandler(w, r, http.StatusInternalServerError)
-// 	}
+        // Compare the entered password with the hashed password
+        err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+        if err != nil {
+            errors["user"] = "Invalid username/email or password"
+            fmt.Println("Password comparison failed:", err)
+        }
+    }
 
-// 	// Validate other required fields
-// 	// if err := validateUserInput(username, email, firstName, lastName); err != nil {
-// 	// 	http.Error(w, err.Error(), http.StatusBadRequest)
-// 	// 	return
-// 	// }
+    // If there are errors, render the login page again with errors
+    if len(errors) > 0 {
+        fmt.Println("Error during login")
+        return
+    }
 
-// 	// Create the user in the database
-// 	err = database.CreateUser(username, email, age, gender, firstName, lastName, string(pass))
-// 	if err != nil {
-// 		http.Error(w, "Error registering user", http.StatusInternalServerError)
-// 		return
-// 	}
+    // Create user session on successful login
+    err1 := CreateUserSession(w, user.UserID)
+    if err1 != nil {
+        fmt.Println("Error creating session:", err1)
+        return
+    }
 
-// 	// Render login page after successful registration
-// 	utils.RenderTemplate(w, r, "login.html", nil)
-
-// }
+    // Redirect to the homepage on successful login
+    http.Redirect(w, r, "/", http.StatusSeeOther)
+}

@@ -14,6 +14,8 @@
         <div>
 
             <button class="register-button">Register</button>
+            <button class="login-button">Login</button>
+
     <button class="back-to-forum-button" style="display: none;">Back to Forum</button>
         </div>
         <div class="search-bar">
@@ -441,6 +443,23 @@
         <button type="submit">Register</button>
     </form>
 </div>
+
+    <!-- Login form section -->
+    <div id="login-section" style="display: none;">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <div>
+                <label for="usernameOrEmail">Username:</label>
+                <input type="text" id="username" name="usernameOrEmail" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
 </main>
 
 <script src='/assets/app.js'></script>

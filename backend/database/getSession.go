@@ -30,7 +30,7 @@ func FetchSession(sessionID string)(structs.Session, error){
 
 func GetSessionByUserID(uID int)(structs.Session, error){
 
-	//sql query
+	//sql query       
 	query := "SELECT session_Id, session, timestamp, user_Id WHERE user_Id = ?"
 	row := db.QueryRow(query, uID)
 	//declare a session variable
