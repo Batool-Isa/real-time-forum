@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 	"log"
-	_ "github.com/mattn/go-sqlite3"
 )
 
 var db *sql.DB
@@ -49,7 +48,9 @@ func CreateTables() {
 		post_Id INTEGER PRIMARY KEY AUTOINCREMENT,
 		post_content VARCHAR NOT NULL,
 		likesNum VARCHAR DEFAULT 0,
-		dislikesNum VARCHAR DEFAULT 0
+		dislikesNum VARCHAR DEFAULT 0,
+		user_id INTEGER,
+		FOREIGN KEY (user_id) REFERENCES Users(id)
 	);`
 
 	postCategoryTable := `

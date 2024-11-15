@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error {{.DataPassed.StatusCode}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+        .error-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90%;
+            width: 400px;
+        }
+        .opps {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #6923D0;
+            padding: 1rem;
+        }
+        .error-code {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #6923D0;
+        }
+        .error-description {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        a {
+            font-size: 24px; 
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px; 
+            border: 2px solid #D1B3FF;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            color: #6923D0;
+        }
+        a:hover {
+            background-color: #D1B3FF;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .opps {
+                font-size: 5rem;
+            }
+            .error-code {
+                font-size: 3rem;
+            }
+            .error-description {
+                font-size: 1.25rem;
+            }
+            a {
+                font-size: 20px;
+                padding: 12px 24px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="opps">Oops!</div>
+        <div class="error-code">Error {{.DataPassed.StatusCode}}</div>
+        <div class="error-description">{{.DataPassed.Description}}</div>
+        <a href="/">Home</a>
+    </div>
+</body>
+</html>

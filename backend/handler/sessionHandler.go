@@ -2,7 +2,7 @@ package handler
 
 import (
 	"real-time-forum/backend/database"
-	"real-time-forum/backend/struct"
+	"real-time-forum/backend/structs"
 	"context"
 	"crypto/rand"
 	"encoding/hex"
@@ -11,12 +11,15 @@ import (
 	"net/http"
 	"sync"
 	"time"
+	"database/sql"
+	"log"
 )
 
 // Global session store and synchronization mechanism
 var (
 	activeSessions = make(map[string]bool) // Map to store active session IDs
-	sessionMutex   = &sync.Mutex{}          // Mutex for thread-safe access to session store
+	sessionMutex   = &sync.Mutex{} 
+	db *sql.DB         // Mutex for thread-safe access to session store
 )
 // key type is unexported to prevent collisions
 type key int
@@ -152,4 +155,32 @@ func GetSessionFromContext(ctx context.Context) *structs.Session {
 		return nil
 	}
 	return &session
+}
+
+func GetLoggedUser(r *http.Request) (int, error) {
+	sessionCookie, err := r.Cookie("session_id")
+	if err != nil {
+		fmt.Println("No active session cookie")
+		return 0, err
+	}
+
+	// Fetch the session using GetSession function
+	session, err := database.FetchSession(sessionCookie.Value)
+	if err != nil {
+		// Handle errors (e.g., session expired or not found)
+		fmt.Println("Session error:", err)
+		return 0, err
+	}
+
+	return session.UserID, nil
+}
+
+func GetSession(sessionID string) (structs.Session, error) {
+	var session structs.Session
+	err := db.QueryRow("SELECT session_id, session, user_id, timestamp FROM sessions WHERE session = ? ", sessionID).Scan(&session.SessionID, &session.Session, &session.UserID, &session.Timestamp)
+	if err != nil {
+		log.Println(err)
+		return structs.Session{}, err
+	}
+	return session, nil
 }

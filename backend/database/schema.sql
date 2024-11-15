@@ -1,0 +1,2 @@
+ALTER TABLE Post
+ADD post_heading TEXT NOT NULL;

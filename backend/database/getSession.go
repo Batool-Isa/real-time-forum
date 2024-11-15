@@ -2,7 +2,7 @@ package database
 
 import(
 	"database/sql"
-	"real-time-forum/backend/struct"
+	"real-time-forum/backend/structs"
 	"log"
 	"fmt"
 )

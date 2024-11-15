@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"real-time-forum/backend/database"
-	"real-time-forum/backend/struct"
+	"real-time-forum/backend/structs"
 	"context"
 	"fmt"
 	"net/http"

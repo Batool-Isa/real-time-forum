@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>Login</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <img src="assets/img/perfil.jpg" alt="" class="header__img" id="profile-pic" style="display: none;">
+            <a href="/" class="header__logo">Forum</a>
+            <div class="header__toggle">
+                <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                <a href="/" class="nav__link nav__logo">
+                    <i class='bx bx-chat nav__icon'></i>
+                    <span class="nav__logo-name">Forum</span>
+                </a>
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <a href="/" class="nav__link">
+                            <i class='bx bx-home nav__icon'></i>
+                            <span class="nav__name">Home</span>
+                        </a>
+                        {{if .DataPassed}}
+                        <a href="/create_post" class="nav__link">
+                            <i class='bx bx-edit nav__icon'></i>
+                            <span class="nav__name">Create Post</span>
+                        </a>
+                     
+                        <a href="/logout" class="nav__link">
+                            <i class='bx bx-log-out nav__icon'></i>
+                            <span class="nav__name">Log Out</span>
+                        </a>
+                    {{else}}
+                        <a href="/login" class="nav__link active">
+                            <i class='bx bx-log-in nav__icon'></i>
+                            <span class="nav__name">Sign In</span>
+                        </a>
+                    {{end}}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section class="auth-section">
+            <h2 class="section-title" id="form-title">Login</h2>
+            <form id="auth-form" action="/login" method="post" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" {{if .DataPassed}} value="{{.DataPassed.Username}}" {{end}} required>
+                    {{ if .Errors.username }}
+                    <p class="error-message"><i class='bx bx-error-circle'></i>{{ .Errors.username }}</p>
+                    {{ end }}
+                </div>
+                <div class="form-group" id="password-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    {{ if .Errors.password }}
+                    <p class="error-message"><i class='bx bx-error-circle'></i>{{ .Errors.password }}</p>
+                    {{ end }}
+                </div>
+                {{ if .Errors.confPassword }}
+                <p class="error-message"><i class='bx bx-error-circle'></i>{{ .Errors.confPassword }}</p>
+                {{ end }}
+                {{ if .Errors.user }}
+                <p class="error-message"><i class='bx bx-error-circle'></i>{{ .Errors.user }}</p>
+                {{ end }}
+                {{ if .Errors.email }}
+                <p class="error-message"><i class='bx bx-error-circle'></i>{{ .Errors.email }}</p>
+                {{ end }}
+                <button type="submit" class="submit-button" id="submit-button">Login</button>
+            </form>
+            <p class="toggle-link">Don't have an account? <a href="#" id="toggle-auth">Sign Up</a></p>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+
+    <footer class="footer">
+        <p class="footer-text">All rights reserved &copy; 2024 Reboot</p>
+    </footer>
+    
+  
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        window.onload = function() {
+            if (window.location.pathname.includes('register')) {
+                const toggleAuthLink = document.getElementById('toggle-auth');
+                const clickEvent = new Event('click');
+                toggleAuthLink.dispatchEvent(clickEvent);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const formTitle = document.getElementById('form-title');
+            const authForm = document.getElementById('auth-form');
+            const toggleAuthLink = document.getElementById('toggle-auth');
+            const passwordGroup = document.getElementById('password-group');
+            const submitButton = document.getElementById('submit-button');
+
+            toggleAuthLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (formTitle.textContent === 'Login') {
+                    formTitle.textContent = 'Sign Up';
+                    authForm.action = '/register';
+                    toggleAuthLink.textContent = 'Login';
+                    toggleAuthLink.previousSibling.textContent = 'Already have an account? ';
+                    submitButton.textContent = 'Register';
+                    
+                    // Add email field for registration
+                    const emailGroup = document.createElement('div');
+                    emailGroup.classList.add('form-group');
+                    emailGroup.id = 'email-group';
+                    emailGroup.innerHTML = `
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email"  required>
+                    `;
+                    authForm.insertBefore(emailGroup, passwordGroup);
+
+                    // Add confirm password field for registration
+                    const confirmPasswordGroup = document.createElement('div');
+                    confirmPasswordGroup.classList.add('form-group');
+                    confirmPasswordGroup.id = 'confirm-password-group';
+                    confirmPasswordGroup.innerHTML = `
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    `;
+                    authForm.insertBefore(confirmPasswordGroup, passwordGroup.nextSibling);
+                } else {
+                    formTitle.textContent = 'Login';
+                    authForm.action = '/login';
+                    toggleAuthLink.textContent = 'Sign Up';
+                    toggleAuthLink.previousSibling.textContent = 'Don\'t have an account? ';
+                    submitButton.textContent = 'Login';
+                    
+                    // Remove email and confirm password fields for login
+                    document.getElementById('email-group').remove();
+                    document.getElementById('confirm-password-group').remove();
+                }
+            });
+            authForm.addEventListener('submit', (e) => {
+                const usernameInput = document.getElementById('username');
+                usernameInput.value = usernameInput.value.trim();
+            });
+        });
+      
+        
+    </script>
+</body>
+</html>

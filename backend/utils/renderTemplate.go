@@ -12,12 +12,11 @@ type Data struct {
 }
 
 // Function to render HTML files
-// Function to render HTML files
 func RenderTemplate(w http.ResponseWriter, r *http.Request, templName string, data interface{}, errors ...map[string]string) error {
     temp, err := template.ParseFiles("template/" + templName)
     if err != nil {
         log.Println("Error parsing template:", err)
-        http.Error(w, "Unable to render template", http.StatusInternalServerError)
+      //  http.Error(w, "Unable to render template", http.StatusInternalServerError)
         return err
     }
 
@@ -36,7 +35,7 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, templName string, da
     err = temp.Execute(w, templataData)
     if err != nil {
         log.Println("Error executing template:", err)
-        http.Error(w, "Error Executing Template", http.StatusInternalServerError)
+        //http.Error(w, "Error Executing Template", http.StatusInternalServerError)
         return err
     }
 
