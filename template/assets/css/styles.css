@@ -895,3 +895,252 @@ textarea:focus {
   opacity: 0; /* Make it invisible */
   pointer-events: none; /* Make it unclickable */
 }
+
+/* Chat Container Styles */
+.chat-container {
+  display: flex;
+  height: calc(100vh - var(--header-height) - 4rem);
+  margin: -1rem;
+  background: var(--container-color);
+  border-radius: .5rem;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.chat-users {
+  width: 280px;
+  background: var(--first-color-light);
+  padding: 1rem;
+  border-right: 1px solid var(--text-color-light);
+}
+
+.chat-users h3 {
+  color: var(--title-color);
+  margin-bottom: 1rem;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-size: 1.1rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.user-username {
+  font-size: 0.8rem;
+  color: var(--text-color-light);
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: .75rem;
+  border-radius: .25rem;
+  cursor: pointer;
+  transition: background-color .3s;
+  background: var(--container-color);
+}
+
+.user-item:hover {
+  background: var(--first-color-lighter);
+  color: var(--container-color);
+}
+
+.user-item.selected {
+  background-color: var(--first-color-lighter);
+  color: var(--container-color);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: .75rem;
+  object-fit: cover;
+}
+
+.user-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.user-status.online {
+  background: #22c55e;
+}
+
+.chat-messages {
+  font-size: 0.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--text-color-light);
+  font-size: 1.2rem;
+  font-weight: var(--font-medium);
+  background-color: var(--first-color-light);
+}
+
+.messages-container {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.message {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  max-width: 80%;
+  border-radius: 1rem;
+}
+
+.message.received {
+  background-color: var(--container-color);
+  border-bottom-left-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.message.sent {
+  background-color: var(--first-color);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.message-content {
+  font-size: 1.05rem;
+}
+
+.message-time {
+  font-size: var(--smaller-font-size);
+  margin-top: .25rem;
+  opacity: .8;
+}
+
+.message-input {
+  padding: 1rem;
+  display: flex;
+  gap: .5rem;
+  border-top: 1px solid var(--text-color-light);
+  background: var(--container-color);
+}
+
+.message-input textarea {
+  flex: 1;
+  padding: .75rem;
+  border: 1px solid var(--text-color-light);
+  border-radius: 1.5rem;
+  resize: none;
+  height: 45px;
+  font-size: 1rem;
+  font-family: var(--body-font);
+  transition: border-color 0.3s ease;
+}
+
+.message-input textarea:focus {
+  border-color: var(--first-color);
+  outline: none;
+}
+
+
+.send-message {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--first-color);
+  color: var(--container-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.send-message:hover {
+  background: var(--first-color-lighter);
+  transform: scale(1.1);
+}
+
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.message-sender {
+  font-weight: var(--font-medium);
+}
+
+.chat-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--text-color-light);
+}
+
+.new-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--first-color);
+  color: var(--container-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.new-chat-btn:hover {
+  background: var(--first-color-lighter);
+  transform: translateY(-2px);
+}
+
+.user-select-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.user-select-modal.active {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: none;
+}
+
+.modal-overlay.active {
+  display: block;
+}

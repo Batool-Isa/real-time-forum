@@ -40,22 +40,24 @@
                 <i class="bx bx-home nav__icon"></i>
                 <span class="nav__name">Home</span>
               </a>
-              {{if .DataPassed.Session}}
               <a class="nav__link">
                 <i class="bx bx-edit nav__icon"></i>
                 <span class="nav__name">Create Post</span>
+              </a>
+
+              <a class="nav__link" id="chat-link">
+                <i class="bx bx-message-square-dots nav__icon"></i>
+                <span class="nav__name">Chat</span>
               </a>
 
               <a class="nav__link" id="logout-link">
                 <i class="bx bx-log-out nav__icon"></i>
                 <span class="nav__name">Log Out</span>
               </a>
-              {{else}}
               <a class="nav__link" id="logout-link">
                 <i class="bx bx-log-in nav__icon"></i>
                 <span class="nav__name">Sign In</span>
               </a>
-              {{end}}
             </div>
           </div>
         </div>
@@ -366,3 +368,32 @@
     </script>
   </body>
 </html>
+  <div class="chat-container" style="display: none;">
+    <div class="chat-users">
+        <div class="chat-users-header">
+            <h3>Chats</h3>
+            <button class="new-chat-btn">
+                <i class="bx bx-message-square-add"></i>
+                New Chat
+            </button>
+        </div>
+        <div class="users-list">
+            <!-- Users will be populated dynamically -->
+        </div>
+    </div>
+    
+    <div class="chat-messages">
+        <div class="chat-header">
+            <span class="current-chat-user">Select a user to start chatting</span>
+        </div>
+        <div class="messages-container">
+            <!-- Messages will be populated dynamically -->
+        </div>
+        <div class="message-input">
+            <textarea placeholder="Type a message..." id="message-text"></textarea>
+            <button class="send-message">
+                <i class="bx bx-send"></i>
+            </button>
+        </div>
+    </div>
+  </div>

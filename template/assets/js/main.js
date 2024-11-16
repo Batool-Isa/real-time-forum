@@ -89,3 +89,267 @@ infoSpan.textContent = `Page ${page} of ${totalPages}`;
 
 // // Initial page load
 // updatePostsPerPage();
+
+// Chat UI Toggle
+document.getElementById('chat-link').addEventListener('click', () => {
+    const chatContainer = document.querySelector('.chat-container');
+    const mainContent = document.querySelector('main');
+    
+    if (chatContainer.style.display === 'none') {
+        chatContainer.style.display = 'flex';
+        mainContent.style.display = 'none';
+    } else {
+        chatContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    }
+});
+
+
+document.querySelectorAll('.user-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // Remove selected class from all users
+        document.querySelectorAll('.user-item').forEach(user => {
+            user.classList.remove('selected');
+        });
+        // Add selected class to clicked user
+        item.classList.add('selected');
+    });
+});
+  class ChatUI {
+      constructor() {
+          this.chatContainer = document.querySelector('.chat-container');
+          this.usersList = document.querySelector('.users-list');
+          this.messagesContainer = document.querySelector('.messages-container');
+          this.currentChatHeader = document.querySelector('.current-chat-user');
+          this.messageInput = document.getElementById('message-text');
+          this.sendButton = document.querySelector('.send-message');
+        
+          this.activeChats = new Map();
+          this.currentRecipient = null;
+          this.users = [];
+
+          this.loadAvailableUsers();
+          this.initializeNewChatButton();
+      }
+
+      loadAvailableUsers() {
+          fetch('/api/users')
+              .then(response => response.json())
+              .then(users => {
+                  this.users = users;
+                  this.usersList.innerHTML = '';
+                  users.forEach(user => {
+                      this.displayUser(user);
+                  });
+              });
+      }
+
+      // Add event listeners for message sending
+      initializeNewChatButton() {
+          const newChatBtn = document.querySelector('.new-chat-btn');
+          if (newChatBtn) {
+              newChatBtn.addEventListener('click', () => this.showUserSelectModal());
+          }
+
+          if (this.sendButton) {
+              this.sendButton.addEventListener('click', () => {
+                  const content = this.messageInput.value.trim();
+                  if (content && this.currentRecipient) {
+                      this.sendMessage(content);
+                  }
+              });
+          }
+
+          if (this.messageInput) {
+              this.messageInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      this.sendButton.click();
+                  }
+              });
+          }
+      }
+
+      showUserSelectModal() {
+          const modal = document.createElement('div');
+          modal.className = 'user-select-modal';
+          modal.innerHTML = `
+              <h3>Select User</h3>
+              <div class="user-select-list">
+                  ${this.createUserSelectList()}
+              </div>
+          `;
+
+          const overlay = document.createElement('div');
+          overlay.className = 'modal-overlay';
+      
+          document.body.appendChild(overlay);
+          document.body.appendChild(modal);
+      
+          // Add click handlers to the user items in modal
+          modal.querySelectorAll('.user-item').forEach(item => {
+              item.addEventListener('click', () => {
+                  const userId = item.dataset.userid;
+                  const user = this.users.find(u => u.UserID === parseInt(userId));
+                  if (user) {
+                      this.startChat(user);
+                      modal.remove();
+                      overlay.remove();
+                  }
+              });
+          });
+      
+          modal.classList.add('active');
+          overlay.classList.add('active');
+      
+          overlay.addEventListener('click', () => {
+              modal.remove();
+              overlay.remove();
+          });
+      }
+
+      createUserSelectList() {
+          return this.users.map(user => `
+              <div class="user-item" data-userid="${user.UserID}">
+                  <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                  <div class="user-info">
+                      <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                      <span class="user-username">@${user.Username}</span>
+                  </div>
+              </div>
+          `).join('');
+      }
+
+      displayUser(user) {
+          const userElement = document.createElement('div');
+          userElement.className = 'user-item';
+          userElement.dataset.userid = user.UserID;
+          userElement.innerHTML = `
+              <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+              <div class="user-info">
+                  <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                  <span class="user-username">@${user.Username}</span>
+              </div>
+              <span class="user-status online"></span>
+          `;
+      
+          userElement.addEventListener('click', () => this.startChat(user));
+          this.usersList.appendChild(userElement);
+      }
+      startChat(user) {
+        this.currentRecipient = user;
+        const currentChatHeader = document.querySelector('.current-chat-user');
+        if (currentChatHeader) {
+            currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+        }
+        
+        const userItems = document.querySelectorAll('.user-item');
+        userItems.forEach(item => item.classList.remove('selected'));
+        
+        const selectedUser = document.querySelector(`.user-item[data-userid="${user.UserID}"]`);
+        if (selectedUser) {
+            selectedUser.classList.add('selected');
+        }
+    }
+
+      displayChatHistory(username) {
+          this.messagesContainer.innerHTML = '';
+          const messages = this.activeChats.get(username) || [];
+          messages.forEach(msg => this.displayMessage(msg));
+      }
+
+      displayMessage(message) {
+          const messageElement = document.createElement('div');
+          messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
+          messageElement.innerHTML = `
+              <div class="message-header">
+                  <span class="message-sender">${message.senderName}</span>
+                  <span class="message-time">${this.formatTime(message.timestamp)}</span>
+              </div>
+              <span class="message-content">${message.content}</span>
+          `;
+      
+          this.messagesContainer.appendChild(messageElement);
+          this.scrollToBottom();
+      }
+
+      scrollToBottom() {
+          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+      }
+
+      formatTime(timestamp) {
+          return new Date(timestamp).toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit' 
+          });
+      }
+  }
+  class ChatManager {
+      constructor() {
+          this.ws = new WebSocket('ws://localhost:8080/ws');
+          this.chatUI = new ChatUI();
+        
+          this.ws.onmessage = (event) => {
+              const message = JSON.parse(event.data);
+              this.chatUI.displayMessage({
+                  content: message.content,
+                  timestamp: message.timestamp,
+                  senderName: message.senderName,
+                  sent: false
+              });
+          };
+
+          // Send message handler
+          document.querySelector('.send-message').addEventListener('click', () => {
+              const content = document.getElementById('message-text').value.trim();
+              if (content && this.chatUI.currentRecipient) {
+                  const message = {
+                      content: content,
+                      receiverId: this.chatUI.currentRecipient.id,
+                      timestamp: new Date().toISOString()
+                  };
+              
+                  this.ws.send(JSON.stringify(message));
+                  this.chatUI.displayMessage({
+                      content: content,
+                      timestamp: message.timestamp,
+                      senderName: 'You',
+                      sent: true
+                  });
+              
+                  document.getElementById('message-text').value = '';
+              }
+          });
+      }
+  }
+
+  // Initialize chat when DOM loads
+  document.addEventListener('DOMContentLoaded', () => {
+      const chatManager = new ChatManager();
+  });
+
+  // Helper functions
+  function getCurrentSelectedUser() {
+      const selectedUser = document.querySelector('.user-item.selected');
+      return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
+  }
+
+  function formatTime(timestamp) {
+      return new Date(timestamp).toLocaleTimeString([], { 
+          hour: '2-digit', 
+          minute: '2-digit' 
+      });
+  }
+
+  // Add Enter key event listener for the message input
+  document.getElementById('message-text').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          document.querySelector('.send-message').click();
+      }
+  });
+
+  // Initialize chat when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const chatManager = new ChatManager();
+});

@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
-	_ "github.com/mattn/go-sqlite3"
 	"real-time-forum/backend/handler"
 	"real-time-forum/backend/middleware"
+
+	_ "github.com/mattn/go-sqlite3"
 
 	"log"
 )
@@ -23,11 +24,9 @@ func main() {
 
 	// Serve static files from the "assets" directory
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
-    
-
 
 	// Register handlers for the WebSocket and the main page
-	http.HandleFunc("/", handler.IndexHandler)         // Main page handler
+	http.HandleFunc("/", handler.IndexHandler)       // Main page handler
 	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
 	http.HandleFunc("/register", handler.RegisterUserHandler)
 	// http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
@@ -40,13 +39,14 @@ func main() {
 	http.Handle("/add_comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
 	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
 	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
+	http.HandleFunc("/api/users", handler.GetUsersHandler)
 
-	fmt.Println("Database setup complete")	
-	fmt.Println("Server started at http://localhost:8888/")
+	fmt.Println("Database setup complete")
+	fmt.Println("Server started at http://localhost:8080/")
 
 	// Start the server
-	err = http.ListenAndServe(":8888", nil)
+	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
-		log.Fatal("Error starting server on port 8888:", err)
+		log.Fatal("Error starting server on port 8080:", err)
 	}
 }
