@@ -1,17 +1,23 @@
 class WebSocketManager {
     constructor() {
-        this.socket = new WebSocket('ws://localhost:8888/ws');
-        this.messageHandlers = new Map();
-        this.setupSocketListeners();
+        this.url = 'ws://localhost:8888/ws';
+        this.initializeSocket();
     }
 
-    setupSocketListeners() {
+    initializeSocket() {
+        this.socket = new WebSocket(this.url);
+
         this.socket.onopen = () => {
             console.log('WebSocket Connected');
         };
 
         this.socket.onerror = (error) => {
-            console.log('WebSocket Error:', error);
+            console.error('WebSocket Error:', error);
+        };
+
+        this.socket.onclose = (event) => {
+            console.warn('WebSocket Disconnected:', event.reason);
+            setTimeout(() => this.initializeSocket(), 3000); // Reconnect after 3 seconds
         };
 
         this.socket.onmessage = (event) => {
@@ -31,7 +37,7 @@ class WebSocketManager {
     handleIncomingMessage(message) {
         console.log("Received message:", message);
 
-        // Display the message in chat UI (update as needed)
+        // Display the message in chat UI
         const chatMessages = document.getElementById('chat-messages');
         if (chatMessages) {
             const messageElement = document.createElement('p');
@@ -41,7 +47,6 @@ class WebSocketManager {
     }
 }
 
-// Initialize WebSocketManager globally
 document.addEventListener('DOMContentLoaded', () => {
     window.webSocketManager = new WebSocketManager();
 });

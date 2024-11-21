@@ -52,9 +52,9 @@ class UIController {
                     case 'Home':
                         this.showFeeds();
                         break;
-                    case 'Create Post':
-                        this.showCreatePost();
-                        break;
+                    // case 'Create Post':
+                    //     this.showCreatePost();
+                    //     break;
                 }
             });
         });
@@ -70,18 +70,32 @@ class UIController {
         });
     }
 
+    // showFeeds() {
+    //   // this.elements.middleSection.innerHTML = this.feedsContent;
+    //     // this.elements.feedsSection.style.display = 'block';
+    //     // this.elements.createPostSection.style.display = 'none';
+    //    this.elements.middleSection.appendChild(this.elements.createPostSection);  
+    //    this.elements.createPostSection.style.display = 'block'; // Ensure create-post is visible
+    //     this.elements.feedsSection.style.display = 'block'; 
+       
+    // }
     showFeeds() {
-        this.elements.middleSection.innerHTML = this.feedsContent;
-        this.elements.feedsSection.style.display = 'block';
-        this.elements.createPostSection.style.display = 'none';
+        this.elements.createPostSection.style.display = 'block'; // Show the Create Post section
+        this.elements.feedsSection.style.display = 'block'; // Show the Feeds section
     }
+    
+    hideCreatePost() {
+        this.elements.createPostSection.style.display = 'none'; // Hide the Create Post section
+    }
+    
 
-    showCreatePost() {
-        this.elements.middleSection.innerHTML = '';
-        this.elements.feedsSection.style.display = 'none';
-        this.elements.createPostSection.style.display = 'block';
-        this.elements.middleSection.appendChild(this.elements.createPostSection);
-    }
+    // showCreatePost() {
+    //     // this.elements.middleSection.innerHTML = '';
+    //     // this.elements.feedsSection.style.display = 'none';
+    //     // this.elements.createPostSection.style.display = 'block';
+    //     // this.elements.middleSection.appendChild(this.elements.createPostSection);
+    //     this.elements.createPostSection.scrollIntoView({ behavior: 'smooth' });
+    // }
 
     showChat(username, profilePic) {
         const chatInterface = this.createChatInterface(username, profilePic);

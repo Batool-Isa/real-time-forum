@@ -58,8 +58,47 @@
             </div>
         </aside>
         <section class="middle">
-            <!--Posts section -->
+            <!-- Create post section -->
+            <div class="create-post">
+                <h2 class="section-title">Create a New Post</h2>
+                <form action="/create-post" method="post" class="create-post-form" id="create-post-form">
+                    <div class="form-group">
+                        <label for="post-title">Title:</label>
+                        <input type="text" id="post-title" name="title" minlength="1" maxlength="300" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-content">Content:</label>
+                        <textarea id="post-content" name="content" rows="10" minlength="1" maxlength="2500" style="white-space: pre-line" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-category">Category:</label>
+                        <div id="post-category" class="checkbox-group">
+                            <input type="checkbox" id="category-sports" name="category" value="Sports">
+                            <label for="category-sports">Sports</label>
+                            <input type="checkbox" id="category-technology" name="category" value="Technology">
+                            <label for="category-technology">Technology</label>
+                            <input type="checkbox" id="category-education" name="category" value="Education">
+                            <label for="category-education">Education</label>
+                            <input type="checkbox" id="category-health" name="category" value="Health">
+                            <label for="category-health">Health</label>
+                            <input type="checkbox" id="category-entertainment" name="category" value="Entertainment">
+                            <label for="category-entertainment">Entertainment</label>
+                            <input type="checkbox" id="category-travel" name="category" value="Travel">
+                            <label for="category-travel">Travel</label>
+                            <input type="checkbox" id="category-finance" name="category" value="Finance">
+                            <label for="category-finance">Finance</label>
+                            <input type="checkbox" id="category-culture" name="category" value="Culture">
+                            <label for="category-culture">Culture</label>
+                        </div>
+                        <div id="error-message" style="color:red; display:none;">Please select at least one category.</div>
+                    </div>
+                    <button type="submit" class="submit-button">Create Post</button>
+                </form>
+            </div>
+        
+            <!-- Feeds section -->
             <article class="feeds">
+                <!-- Example Feed -->
                 <div class="feed">
                     <div class="head"></div>
                     <div class="user">
@@ -341,45 +380,8 @@
                     <div class="comments text-muted">View all 190 comments</div>
                 </div>
             </article>
-                <!--Create post section -->
-            <div class="create-post" style="display: none;">
-                <h2 class="section-title">Create a New Post</h2>
-            <form action="/create_post" method="post" class="create-post-form" id="create-post-form">
-                <div class="form-group">
-                    <label for="post-title">Title:</label>
-                    <input type="text" id="post-title" name="title" minlength="1" maxlength="300" required >
-                </div>
-                <div class="form-group">
-                    <label for="post-content">Content:</label>
-                    <textarea id="post-content" name="content" rows="10" minlength="1" maxlength="2500"  style="white-space: pre-line" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post-category">Category:</label>
-                    <div id="post-category" class="checkbox-group">
-                        <input type="checkbox" id="category-sports" name="category" value="Sports">
-                        <label for="category-sports">Sports</label>
-                        <input type="checkbox" id="category-technology" name="category" value="Technology">
-                        <label for="category-technology">Technology</label>
-                        <input type="checkbox" id="category-education" name="category" value="Education">
-                        <label for="category-education">Education</label>
-                        <input type="checkbox" id="category-health" name="category" value="Health">
-                        <label for="category-health">Health</label>
-                        <input type="checkbox" id="category-entertainment" name="category" value="Entertainment">
-                        <label for="category-entertainment">Entertainment</label>
-                        <input type="checkbox" id="category-travel" name="category" value="Travel">
-                        <label for="category-travel">Travel</label>
-                        <input type="checkbox" id="category-finance" name="category" value="Finance">
-                        <label for="category-finance">Finance</label>
-                        <input type="checkbox" id="category-culture" name="category" value="Culture">
-                        <label for="category-culture">Culture</label>
-                    </div>
-                    <div id="error-message" style="color:red; display:none;">Please select at least one category.</div>
-                </div>
-                <button type="submit" class="submit-button">Create Post</button>
-            
-            </form>
-            </div>
         </section>
+        
         <aside class="right">
             <div class="messages">
                 <div class="heading">

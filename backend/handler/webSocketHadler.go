@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"fmt"
+	//"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -11,35 +11,43 @@ import (
 
 // WebSocket upgrader with custom configuration
 var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool { return true }, // Allow all origins
+	CheckOrigin: func(r *http.Request) bool { 
+		 return true }, // Allow all origins
 }
 
 // WebSocketHandler handles WebSocket connections
 func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
-	// Upgrade initial HTTP request to a WebSocket connection
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println("WebSocket upgrade error:", err)
-		return
-	}
-	defer conn.Close()
+    conn, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Println("WebSocket upgrade error:", err)
+        return
+    }
+    defer conn.Close()
 
-	// Send and receive messages with the client
-	for {
-		// Read message from WebSocket
-		messageType, message, err := conn.ReadMessage()
-		if err != nil {
-			log.Println("WebSocket read error:", err)
-			break
-		}
-		fmt.Printf("Received message: %s\n", message)
+    // Start a ping loop to keep the connection alive
+    go func() {
+        ticker := time.NewTicker(30 * time.Second)
+        defer ticker.Stop()
+        for {
+            <-ticker.C
+            if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+                log.Println("WebSocket ping error:", err)
+                return
+            }
+        }
+    }()
 
-		// Example response: send the current time
-		response := fmt.Sprintf("Server time: %s", time.Now().Format(time.RFC3339))
-		err = conn.WriteMessage(messageType, []byte(response))
-		if err != nil {
-			log.Println("WebSocket write error:", err)
-			break
-		}
-	}
+    for {
+        messageType, message, err := conn.ReadMessage()
+        if err != nil {
+            log.Println("WebSocket read error:", err)
+            break
+        }
+        log.Printf("Received: %s", message)
+        if err := conn.WriteMessage(messageType, message); err != nil {
+            log.Println("WebSocket write error:", err)
+            break
+        }
+    }
 }
+
