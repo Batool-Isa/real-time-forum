@@ -46,7 +46,7 @@ func GetLikedPost(userID int) ([]structs.Post, error) {
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostHeading, &post.Postdescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err

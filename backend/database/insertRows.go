@@ -42,7 +42,7 @@ func InsertNewSession(session string, userID int) error {
 	return nil
 }
 func InsertPost(user_Id int, post_data string, categoryName []string) error {
-	postErr := utils.ValidatePost( post_data, categoryName)
+	postErr := utils.ValidatePost(post_data, categoryName)
 	if postErr != nil {
 		return postErr
 	}

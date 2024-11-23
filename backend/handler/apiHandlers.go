@@ -16,7 +16,6 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
 
     var postData struct {
         UserID      int      `json:"user_id"`
-        PostHeading string   `json:"post_heading"`
         PostData    string   `json:"post_data"`
         Categories  []string `json:"categories"`
     }

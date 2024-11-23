@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/handler"
 	"real-time-forum/backend/middleware"
@@ -14,13 +15,19 @@ import (
 )
 
 func main() {
+	file, fileErr := os.OpenFile("LogFile.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if fileErr != nil {
+		log.Fatal(fileErr)
+	}
+	log.SetOutput(file)
+	
 	err := database.CreateDB("real-forum.db")
 	if err != nil {
 		log.Fatalf("Error creating or connecting to database: %v", err)
 	}
 
 	database.CreateTables()
-
+	database.AddDummyData()
 	// Single handler for all routes
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasPrefix(r.URL.Path, "/api/") {
@@ -54,6 +61,7 @@ func main() {
 	//login end point
 	http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
 	http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
+	http.Handle("/create", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
 
 	// WebSocket endpoint
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {

@@ -69,7 +69,7 @@ func generateSessionID() (string, error) {
 // RetrieveLoggedUser retrieves the user ID of the logged-in user based on the session cookie
 func RetrieveLoggedUser(r *http.Request) (int, error) {
 	// Retrieve session cookie from the request
-	sessionCookie, err := r.Cookie("session_id")
+	sessionCookie, err := r.Cookie("session_Id")
 	if err != nil {
 		fmt.Println("No active session cookie found")
 		return 0, err
@@ -86,7 +86,7 @@ func RetrieveLoggedUser(r *http.Request) (int, error) {
 func SessionHandler(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Retrieve the session cookie
-		sessionCookie, err := r.Cookie("session_id")
+		sessionCookie, err := r.Cookie("session_Id")
 		if err != nil {
 			fmt.Println("No active session cookie")
 			next.ServeHTTP(w, r)

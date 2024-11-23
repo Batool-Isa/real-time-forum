@@ -1,0 +1,12 @@
+2024/11/24 01:33:11 Error parsing template: open template/create_post.html: no such file or directory
+2024/11/24 01:33:15 Error parsing template: open template/create_post.html: no such file or directory
+2024/11/24 01:33:16 Error parsing template: open template/create_post.html: no such file or directory
+2024/11/24 01:36:51 NOT NULL constraint failed: Post.post_heading
+2024/11/24 01:46:03 NOT NULL constraint failed: Post.post_heading
+2024/11/24 01:46:58 NOT NULL constraint failed: Post.post_heading
+2024/11/24 01:50:49 NOT NULL constraint failed: Post.post_heading
+2024/11/24 01:55:06 sql: no rows in result set
+2024/11/24 01:55:39 sql: no rows in result set
+2024/11/24 01:55:40 User successfully inserted with username: bisa
+2024/11/24 01:55:40 sql: no rows in result set
+2024/11/24 01:55:51 sql: no rows in result set
