@@ -40,6 +40,8 @@ func main() {
 	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
 	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
 	http.HandleFunc("/api/users", handler.GetUsersHandler)
+	http.Handle("/api/chat/history", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
+
 
 	fmt.Println("Database setup complete")
 	fmt.Println("Server started at http://localhost:8080/")

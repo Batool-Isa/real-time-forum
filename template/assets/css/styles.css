@@ -997,12 +997,13 @@ textarea:focus {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .25rem; 
+  background: var(--body-color);
 }
 
 .message {
-  padding: 0.75rem;
-  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem; 
+  margin: 0.25rem 0; 
   max-width: 80%;
   border-radius: 1rem;
 }
@@ -1021,7 +1022,7 @@ textarea:focus {
 }
 
 .message-content {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
 .message-time {
@@ -1043,9 +1044,10 @@ textarea:focus {
   padding: .75rem;
   border: 1px solid var(--text-color-light);
   border-radius: 1.5rem;
-  resize: none;
-  height: 45px;
-  font-size: 1rem;
+  resize: vertical; 
+  min-height: 45px;
+  max-height: 25vh; 
+  font-size: 0.95rem;
   font-family: var(--body-font);
   transition: border-color 0.3s ease;
 }

@@ -1,12 +1,16 @@
 package structs
 
-import "time"
+import (
+	"time"
+    "github.com/gorilla/websocket"
+)
 
 type Session struct {
 	SessionID int
 	Session   string
 	Timestamp time.Time
 	UserID    int
+	UserName  string
 }
 
 type User struct {
@@ -45,4 +49,19 @@ type Comment struct {
 type Category struct {
 	ID       int
 	Category string
+}
+
+type Message struct {
+	MessageID  int       `json:"messageId"`
+	Content    string    `json:"content"`
+	CreatedAt  time.Time `json:"createdAt"`
+	SenderID   int       `json:"senderId"`
+	ReceiverID int       `json:"receiverId"`
+}
+
+
+type Client struct {
+    Conn     *websocket.Conn
+    UserID   int
+    Username string
 }

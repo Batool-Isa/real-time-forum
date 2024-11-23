@@ -117,6 +117,8 @@ document.querySelectorAll('.user-item').forEach(item => {
 });
   class ChatUI {
       constructor() {
+        this.ws = new WebSocket('ws://localhost:8080/ws');
+        this.setupWebSocket();
           this.chatContainer = document.querySelector('.chat-container');
           this.usersList = document.querySelector('.users-list');
           this.messagesContainer = document.querySelector('.messages-container');
@@ -131,6 +133,19 @@ document.querySelectorAll('.user-item').forEach(item => {
           this.loadAvailableUsers();
           this.initializeNewChatButton();
       }
+
+      setupWebSocket() {
+        this.ws.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            this.displayMessage({
+                content: message.content,
+                timestamp: message.timestamp,
+                senderName: message.senderName,
+                sent: false
+            });
+            this.scrollToBottom();
+        };
+    }
 
       loadAvailableUsers() {
           fetch('/api/users')
@@ -242,7 +257,21 @@ document.querySelectorAll('.user-item').forEach(item => {
         if (currentChatHeader) {
             currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         }
-        
+        // Load chat history
+        fetch(`/api/chat/history/${user.UserID}`)
+            .then(response => response.json())
+            .then(messages => {
+                this.messagesContainer.innerHTML = '';
+                messages.forEach(msg => {
+                    this.displayMessage({
+                        content: msg.content,
+                        timestamp: msg.timestamp,
+                        senderName: msg.senderId === user.UserID ? user.Username : 'You',
+                        sent: msg.senderId !== user.UserID
+                    });
+                });
+                this.scrollToBottom();
+            });
         const userItems = document.querySelectorAll('.user-item');
         userItems.forEach(item => item.classList.remove('selected'));
         
@@ -251,6 +280,7 @@ document.querySelectorAll('.user-item').forEach(item => {
             selectedUser.classList.add('selected');
         }
     }
+
 
       displayChatHistory(username) {
           this.messagesContainer.innerHTML = '';
@@ -276,6 +306,28 @@ document.querySelectorAll('.user-item').forEach(item => {
       scrollToBottom() {
           this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
       }
+      sendMessage() {
+        const content = this.messageInput.value.trim();
+        if (content && this.currentRecipient) {
+            const message = {
+                content: content,
+                receiverId: this.currentRecipient.UserID,
+                senderId: 1, //parseInt(currentUserID), // Get this from session
+                timestamp: new Date().toISOString()
+            };
+            
+            this.ws.send(JSON.stringify(message));
+            this.displayMessage({
+                content: content,
+                timestamp: message.timestamp,
+                senderName: 'You',
+                sent: true
+            });
+            
+            this.messageInput.value = '';
+            this.scrollToBottom();
+        }
+    }
 
       formatTime(timestamp) {
           return new Date(timestamp).toLocaleTimeString([], { 
@@ -301,6 +353,7 @@ document.querySelectorAll('.user-item').forEach(item => {
 
           // Send message handler
           document.querySelector('.send-message').addEventListener('click', () => {
+            chatUI.sendMessage();
               const content = document.getElementById('message-text').value.trim();
               if (content && this.chatUI.currentRecipient) {
                   const message = {
@@ -349,7 +402,9 @@ document.querySelectorAll('.user-item').forEach(item => {
       }
   });
 
-  // Initialize chat when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const chatManager = new ChatManager();
+document.getElementById('message-text').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        chatUI.sendMessage();
+    }
 });

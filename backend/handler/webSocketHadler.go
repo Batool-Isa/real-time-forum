@@ -1,45 +1,78 @@
 package handler
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"net/http"
-	"time"
+	"real-time-forum/backend/database"
+	"real-time-forum/backend/middleware"
+	"real-time-forum/backend/structs"
 
 	"github.com/gorilla/websocket"
 )
 
-// WebSocket upgrader with custom configuration
 var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool { return true }, // Allow all origins
+    CheckOrigin: func(r *http.Request) bool { return true },
 }
 
-// WebSocketHandler handles WebSocket connections
+var clients = make(map[*structs.Client]bool)
+
 func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
-	// Upgrade initial HTTP request to a WebSocket connection
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println("WebSocket upgrade error:", err)
-		return
-	}
-	defer conn.Close()
+    conn, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Println("WebSocket upgrade error:", err)
+        return
+    }
 
-	// Send and receive messages with the client
-	for {
-		// Read message from WebSocket
-		messageType, message, err := conn.ReadMessage()
-		if err != nil {
-			log.Println("WebSocket read error:", err)
-			break
-		}
-		fmt.Printf("Received message: %s\n", message)
+    session := middleware.GetSessionFromContext(r.Context())
+    if session == nil {
+        conn.Close()
+        return
+    }
 
-		// Example response: send the current time
-		response := fmt.Sprintf("Server time: %s", time.Now().Format(time.RFC3339))
-		err = conn.WriteMessage(messageType, []byte(response))
-		if err != nil {
-			log.Println("WebSocket write error:", err)
-			break
-		}
-	}
+    client := &structs.Client{
+        Conn:     conn,
+        UserID:   session.UserID,
+        Username: session.UserName,
+    }
+    
+    clients[client] = true
+
+    // Start handling messages in a goroutine
+    go handleMessages(client)
+}
+func handleMessages(client *structs.Client) {
+	log.Printf("Client connected ...........")
+    defer func() {
+        client.Conn.Close()
+        delete(clients, client)
+    }()
+
+    for {
+        messageType, p, err := client.Conn.ReadMessage()
+        if err != nil {
+            log.Printf("Error reading message: %v", err)
+            break
+        }
+
+        var msg structs.Message
+        if err := json.Unmarshal(p, &msg); err != nil {
+            log.Printf("Error unmarshaling message: %v", err)
+            continue
+        }
+
+        // Save to database
+        err = database.SaveMessage(msg.Content, client.UserID, msg.ReceiverID)
+        if err != nil {
+            log.Printf("Message saved successfully")
+        }
+
+        // Forward message to recipient
+        for c := range clients {
+            if c.UserID == msg.ReceiverID {
+                c.Conn.WriteMessage(messageType, p)
+                break
+            }
+        }
+    }
 }

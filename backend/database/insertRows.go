@@ -349,3 +349,21 @@ func AddDummyData() {
 	InsertCategories("Culture")
 
 }
+
+func SaveMessage(content string, senderID, receiverID int) error {
+    query := `INSERT INTO Message (content, sender_Id, receiver_Id) VALUES (?, ?, ?)`
+    stmt, err := db.Prepare(query)
+    if err != nil {
+        log.Printf("Error preparing save message statement: %v", err)
+        return err
+    }
+    defer stmt.Close()
+
+    _, err = stmt.Exec(content, senderID, receiverID)
+    if err != nil {
+        log.Printf("Error executing save message: %v", err)
+        return err
+    }
+
+    return nil
+}
