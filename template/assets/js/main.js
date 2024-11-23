@@ -135,6 +135,8 @@ document.querySelectorAll('.user-item').forEach(item => {
       }
 
       setupWebSocket() {
+        // Add session token to WebSocket URL
+        this.ws = new WebSocket('ws://localhost:8080/ws');
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             this.displayMessage({
@@ -312,18 +314,19 @@ document.querySelectorAll('.user-item').forEach(item => {
             const message = {
                 content: content,
                 receiverId: this.currentRecipient.UserID,
-                senderId: 1, //parseInt(currentUserID), // Get this from session
+                senderId: 1,//this.currentUserID, // Make sure this is set when user logs in
                 timestamp: new Date().toISOString()
             };
             
             this.ws.send(JSON.stringify(message));
+            
+            // Display sent message immediately
             this.displayMessage({
                 content: content,
                 timestamp: message.timestamp,
                 senderName: 'You',
                 sent: true
             });
-            
             this.messageInput.value = '';
             this.scrollToBottom();
         }
@@ -351,30 +354,12 @@ document.querySelectorAll('.user-item').forEach(item => {
               });
           };
 
-          // Send message handler
+          // Update the event listener to use this.chatUI
           document.querySelector('.send-message').addEventListener('click', () => {
-            chatUI.sendMessage();
-              const content = document.getElementById('message-text').value.trim();
-              if (content && this.chatUI.currentRecipient) {
-                  const message = {
-                      content: content,
-                      receiverId: this.chatUI.currentRecipient.id,
-                      timestamp: new Date().toISOString()
-                  };
-              
-                  this.ws.send(JSON.stringify(message));
-                  this.chatUI.displayMessage({
-                      content: content,
-                      timestamp: message.timestamp,
-                      senderName: 'You',
-                      sent: true
-                  });
-              
-                  document.getElementById('message-text').value = '';
-              }
+              this.chatUI.sendMessage();
           });
       }
-  }
+  }  
 
   // Initialize chat when DOM loads
   document.addEventListener('DOMContentLoaded', () => {
@@ -387,24 +372,11 @@ document.querySelectorAll('.user-item').forEach(item => {
       return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
   }
 
-  function formatTime(timestamp) {
-      return new Date(timestamp).toLocaleTimeString([], { 
-          hour: '2-digit', 
-          minute: '2-digit' 
-      });
-  }
-
-  // Add Enter key event listener for the message input
   document.getElementById('message-text').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          document.querySelector('.send-message').click();
-      }
-  });
-
-document.getElementById('message-text').addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        chatUI.sendMessage();
+        const chatManager = new ChatManager();
+        chatManager.chatUI.sendMessage();
     }
 });
+

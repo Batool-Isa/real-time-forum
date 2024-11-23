@@ -9,29 +9,34 @@ import (
 )
 
 func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
-	// Get current user from session
+	parts := strings.Split(r.URL.Path, "/")
+	if len(parts) < 4 {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode([]structs.Message{})
+		return
+	}
+	
+	otherUserID, err := strconv.Atoi(parts[len(parts)-1])
+	if err != nil {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode([]structs.Message{})
+		return
+	}
+
 	currentUser := middleware.GetSessionFromContext(r.Context())
 	if currentUser == nil {
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode([]structs.Message{})
 		return
 	}
 
-	// Get other user ID from query parameter
-	otherUserID := r.URL.Query().Get("userId")
-	otherID, err := strconv.Atoi(otherUserID)
+	messages, err := database.GetChatHistory(currentUser.UserID, otherUserID)
 	if err != nil {
-		http.Error(w, "Invalid user ID", http.StatusBadRequest)
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode([]structs.Message{})
 		return
 	}
 
-	// Fetch chat history from database
-	messages, err := database.GetChatHistory(currentUser.UserID, otherID)
-	if err != nil {
-		http.Error(w, "Failed to fetch chat history", http.StatusInternalServerError)
-		return
-	}
-
-	// Send response
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(messages)
 }

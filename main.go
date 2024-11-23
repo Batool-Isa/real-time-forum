@@ -27,7 +27,8 @@ func main() {
 
 	// Register handlers for the WebSocket and the main page
 	http.HandleFunc("/", handler.IndexHandler)       // Main page handler
-	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
+    // WebSocket handler with session validation
+    http.Handle("/ws", middleware.SessionValidator(http.HandlerFunc(handler.WebSocketHandler)))
 	http.HandleFunc("/register", handler.RegisterUserHandler)
 	// http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
 	// http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
@@ -40,7 +41,7 @@ func main() {
 	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
 	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
 	http.HandleFunc("/api/users", handler.GetUsersHandler)
-	http.Handle("/api/chat/history", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
+	http.Handle("/api/chat/history/", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
 
 
 	fmt.Println("Database setup complete")
