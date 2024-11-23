@@ -36,7 +36,9 @@ const router = {
         },
         '/chat': () => {
             hideAllSections();
-            document.querySelector('.chat-container').style.display = 'flex';
+            const chatContainer = document.querySelector('.chat-container');
+            chatContainer.style.display = 'flex';
+            initializeNewChatButton();
         },
         '/logout': () => {
             fetch('/logout', {
@@ -64,6 +66,85 @@ function hideAllSections() {
     document.querySelector('.home').style.display = 'none';
     document.querySelector('.create-post').style.display = 'none';
     document.querySelector('.chat-container').style.display = 'none';
+}
+
+function initializeNewChatButton() {
+    const newChatBtn = document.querySelector('.new-chat-btn');
+    if (newChatBtn) {
+        newChatBtn.addEventListener('click', () => this.showUserSelectModal());
+    }
+    if (this.sendButton) {
+        this.sendButton.addEventListener('click', () => {
+            const content = this.messageInput.value.trim();
+            if (content && this.currentRecipient) {
+                this.sendMessage(content);
+            }
+        });
+    }
+    if (this.messageInput) {
+        this.messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendButton.click();
+            }
+        });
+    }
+}
+
+
+function showUserSelectModal() {
+    fetch('/api/users')
+        .then(response => response.json())
+        .then(users => {
+            const modal = createModal(users);
+            document.body.appendChild(modal.overlay);
+            document.body.appendChild(modal.modal);
+        });
+}
+
+function createModal(users) {
+    const modal = document.createElement('div');
+    modal.className = 'user-select-modal active';
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay active';
+    
+    modal.innerHTML = `
+        <h3>Select User</h3>
+        <div class="user-select-list">
+            ${users.map(user => `
+                <div class="user-item" data-userid="${user.UserID}">
+                    <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                        <span class="user-username">@${user.Username}</span>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    modal.querySelectorAll('.user-item').forEach(item => {
+        item.onclick = () => {
+            const userId = item.dataset.userid;
+            startChat(users.find(u => u.UserID === parseInt(userId)));
+            modal.remove();
+            overlay.remove();
+        };
+    });
+
+    overlay.onclick = () => {
+        modal.remove();
+        overlay.remove();
+    };
+
+    return { modal, overlay };
+}
+
+function startChat(user) {
+    const messageInput = document.querySelector('.message-input');
+    messageInput.style.display = 'flex';
+    document.querySelector('.current-chat-user').textContent = `Chat with ${user.FirstName} ${user.LastName}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -167,86 +248,153 @@ document.querySelectorAll('.user-item').forEach(item => {
         item.classList.add('selected');
     });
 });
-
-class ChatUI {
-    constructor() {
-        this.ws = new WebSocket('ws://localhost:8080/ws');
-        this.setupWebSocket();
-        this.chatContainer = document.querySelector('.chat-container');
-        this.usersList = document.querySelector('.users-list');
-        this.messagesContainer = document.querySelector('.messages-container');
-        this.currentChatHeader = document.querySelector('.current-chat-user');
-        this.messageInput = document.getElementById('message-text');
-        this.sendButton = document.querySelector('.send-message');
+  class ChatUI {
+      constructor() {
+          this.ws = new WebSocket('ws://localhost:8080/ws');
+          this.setupWebSocket();
+          this.chatContainer = document.querySelector('.chat-container');
+          this.usersList = document.querySelector('.users-list');
+          this.messagesContainer = document.querySelector('.messages-container');
+          this.currentChatHeader = document.querySelector('.current-chat-user');
+          this.messageInput = document.getElementById('message-text');
+          this.sendButton = document.querySelector('.send-message');
         
-        this.activeChats = new Map();
-        this.currentRecipient = null;
-        this.users = [];
+          this.activeChats = new Map();
+          this.currentRecipient = null;
+          this.users = [];
 
-        this.loadAvailableUsers();
-        this.initializeNewChatButton();
-    }
+          // Direct function binding for event listeners
+          this.sendButton.onclick = () => this.sendMessage();
+          this.messageInput.onkeypress = (e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  this.sendMessage();
+              }
+          };
 
-    setupWebSocket() {
-        this.ws.onmessage = this.handleMessage.bind(this);
-    }
+          this.loadAvailableUsers();
+          this.initializeNewChatButton();
+      }
 
-    bindEvents() {
-        document.querySelector('.new-chat-btn').addEventListener('click', () => {
-            this.showUserSelectModal();
-        });
-    }
+      setupWebSocket() {
+          this.ws.onmessage = (event) => {
+              const message = JSON.parse(event.data);
+              this.displayMessage({
+                  content: message.content,
+                  senderName: message.senderName,
+                  timestamp: message.timestamp,
+                  sent: false
+              });
+              this.scrollToBottom();
+          };
+      }
 
-    showUserSelectModal() {
-        fetch('/api/users')
-            .then(response => response.json())
-            .then(users => {
-                const modal = document.createElement('div');
-                modal.className = 'user-select-modal active';
-                modal.innerHTML = `
-                    <h3>Select User</h3>
-                    <div class="user-select-list">
-                        ${users.map(user => `
-                            <div class="user-item" data-userid="${user.UserID}">
-                                <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                                <div class="user-info">
-                                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                                    <span class="user-username">@${user.Username}</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
+      sendMessage() {
+          const content = this.messageInput.value.trim();
+          if (content && this.currentRecipient) {
+              const message = {
+                  content: content,
+                  receiverId: this.currentRecipient.UserID,
+                  timestamp: new Date().toISOString()
+              };
+            
+              // Send via WebSocket
+              this.ws.send(JSON.stringify(message));
+            
+              // Display sent message immediately
+              this.displayMessage({
+                  content: content,
+                  timestamp: message.timestamp,
+                  senderName: 'You',
+                  sent: true
+              });
+            
+              // Clear input
+              this.messageInput.value = '';
+              this.scrollToBottom();
+          }
+      }
+      
+      startChat(user) {
+          this.currentRecipient = user;
+          this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+          document.querySelector('.message-input').style.display = 'flex';
 
-                const overlay = document.createElement('div');
-                overlay.className = 'modal-overlay active';
+          
+          // Add user to left list if not already present
+          this.addUserToList(user);
+          
+          // Load chat history
+          fetch(`/api/chat/history/${user.UserID}`)
+              .then(response => response.json())
+              .then(messages => {
+                  this.messagesContainer.innerHTML = '';
 
-                document.body.appendChild(overlay);
-                document.body.appendChild(modal);
 
-                modal.querySelectorAll('.user-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const userId = item.dataset.userid;
-                        this.startChat(users.find(u => u.UserID === parseInt(userId)));
-                        modal.remove();
-                        overlay.remove();
-                    });
-                });
 
-                overlay.addEventListener('click', () => {
-                    modal.remove();
-                    overlay.remove();
-                });
-            });
-    }
 
-    startChat(user) {
-        document.querySelector('.message-input').style.display = 'flex';
-        document.querySelector('.current-chat-user').textContent = `Chat with ${user.FirstName} ${user.LastName}`;
-        // Add user to chat list and load chat history
-    }
-}
-    class ChatManager {
+
+
+
+
+                  messages.forEach(msg => this.displayMessage(msg));
+                  this.scrollToBottom();
+              });
+      }
+
+      addUserToList(user) {
+          // Check if user already exists in list
+          if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
+              const userElement = document.createElement('div');
+              userElement.className = 'user-item';
+              userElement.dataset.userid = user.UserID;
+              userElement.innerHTML = `
+                  <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                  <div class="user-info">
+                      <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                      <span class="user-username">@${user.Username}</span>
+                  </div>
+              `;
+              userElement.addEventListener('click', () => this.startChat(user));
+              this.usersList.appendChild(userElement);
+          }
+      }
+
+      displayMessage(message) {
+          const messageElement = document.createElement('div');
+          messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
+          messageElement.innerHTML = `
+              <div class="message-header">
+                  <span class="message-sender">${message.senderName}</span>
+                  <span class="message-time">${this.formatTime(message.timestamp)}</span>
+              </div>
+              <span class="message-content">${message.content}</span>
+          `;
+          this.messagesContainer.appendChild(messageElement);
+      }
+
+      scrollToBottom() {
+          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+      }
+
+      formatTime(timestamp) {
+          return new Date(timestamp).toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit' 
+          });
+      }
+  }
+
+  // Initialize chat when chat route is activated
+  router.routes['/chat'] = () => {
+      hideAllSections();
+      document.querySelector('.chat-container').style.display = 'flex';
+      if (!window.chatManager) {
+          window.chatManager = new ChatUI();
+      }
+  };
+  
+class ChatManager {
       constructor() {
           this.ws = new WebSocket('ws://localhost:8080/ws');
           this.chatUI = new ChatUI();
