@@ -290,6 +290,7 @@ document.querySelectorAll('.user-item').forEach(item => {
       }
 
       sendMessage() {
+        console.log("Sending message:", this.messageInput.value);
           const content = this.messageInput.value.trim();
           if (content && this.currentRecipient) {
               const message = {
