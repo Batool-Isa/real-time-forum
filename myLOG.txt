@@ -65,3 +65,4 @@
 2024/11/23 10:55:59 WebSocket ping error: websocket: close sent
 2024/11/23 11:24:59 WebSocket read error: websocket: close 1001 (going away)
 2024/11/23 11:25:24 WebSocket ping error: websocket: close sent
+2024/11/23 11:28:30 WebSocket read error: websocket: close 1001 (going away)

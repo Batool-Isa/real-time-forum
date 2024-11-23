@@ -107,11 +107,11 @@ func InsertComment(comment string, user_id int, postId int) error {
 }
 
 func InsertPostCategories(post_id int, category_id int) error {
-	postCatErr := utils.ValidateInput(map[string]string{"post_id": string(post_id), "category_id": string(category_id)})
+	postCatErr := utils.ValidateInput(map[string]string{"post_Id": string(post_id), "category_Id": string(category_id)})
 	if postCatErr != nil {
 		return postCatErr
 	}
-	stmt, err := db.Prepare("INSERT INTO post_categories(post_id, category_id) values (?, ?)")
+	stmt, err := db.Prepare("INSERT INTO Post_Category(post_Id, category_Id) values (?, ?)")
 	if err != nil {
 		return err
 	}
