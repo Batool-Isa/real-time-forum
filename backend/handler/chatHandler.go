@@ -5,7 +5,9 @@ import (
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
+	"real-time-forum/backend/structs"
 	"strconv"
+	"strings"
 )
 
 func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {

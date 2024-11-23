@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
@@ -10,6 +11,12 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	http.SetCookie(w, &http.Cookie{
+		Name:   "session_id",
+		Value:  "1212121212",
+		Path:   "/",
+		MaxAge: 600000, // Set the expiration time to 600 seconds (10 minute)
+	})
 	var categoryMap = categoriesMap()
 
 	if r.URL.Path != "/" {
@@ -97,4 +104,34 @@ func categoriesMap() map[string]int {
 		categoryMap[cat.Category] = cat.ID
 	}
 	return categoryMap
+}
+
+// New SPAHandler
+func SPAHandler(w http.ResponseWriter, r *http.Request) {
+    // Serve index.html for all routes
+    http.ServeFile(w, r, "template/index.html")
+}
+
+// New GetPostsHandler
+func GetPostsHandler(w http.ResponseWriter, r *http.Request) {
+    posts, err := database.GetAllPosts()
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(posts)
+}
+
+// New GetCategoriesHandler
+func GetCategoriesHandler(w http.ResponseWriter, r *http.Request) {
+    categories, err := database.GetCategories()
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(categories)
 }

@@ -35,32 +35,25 @@
             <span class="nav__logo-name">Real Time Forum</span>
           </a>
           <div class="nav__list">
-            <div class="nav__items">
-              <a class="nav__link active">
-                <i class="bx bx-home nav__icon"></i>
-                <span class="nav__name">Home</span>
+          <div class="nav__items">
+              <a href="#" class="nav__link active" data-path="/">
+                  <i class="bx bx-home nav__icon"></i>
+                  <span class="nav__name">Home</span>
               </a>
-              <a class="nav__link">
-                <i class="bx bx-edit nav__icon"></i>
-                <span class="nav__name">Create Post</span>
+              <a href="#" class="nav__link" data-path="/create">
+                  <i class="bx bx-edit nav__icon"></i>
+                  <span class="nav__name">Create Post</span>
               </a>
-
-              <a class="nav__link" id="chat-link">
-                <i class="bx bx-message-square-dots nav__icon"></i>
-                <span class="nav__name">Chat</span>
+              <a href="#" class="nav__link" data-path="/chat">
+                  <i class="bx bx-message-square-dots nav__icon"></i>
+                  <span class="nav__name">Chat</span>
               </a>
-
-              <a class="nav__link" id="logout-link">
-                <i class="bx bx-log-out nav__icon"></i>
-                <span class="nav__name">Log Out</span>
+              <a href="#" class="nav__link" data-path="/logout">
+                  <i class="bx bx-log-out nav__icon"></i>
+                  <span class="nav__name">Log Out</span>
               </a>
-              <a class="nav__link" id="logout-link">
-                <i class="bx bx-log-in nav__icon"></i>
-                <span class="nav__name">Sign In</span>
-              </a>
-            </div>
-          </div>
-        </div>
+          </div>        </div>
+      </div>
       </nav>
     </div>
     <main>
@@ -367,8 +360,7 @@
       });
     </script>
   </body>
-</html>
-  <div class="chat-container" style="display: none;">
+<div class="chat-container" style="display: none;">
     <div class="chat-users">
         <div class="chat-users-header">
             <h3>Chats</h3>
@@ -389,11 +381,32 @@
         <div class="messages-container">
             <!-- Messages will be populated dynamically -->
         </div>
-        <div class="message-input">
+        <div class="message-input" style="display: none;">
             <textarea placeholder="Type a message..." id="message-text"></textarea>
             <button class="send-message">
                 <i class="bx bx-send"></i>
             </button>
         </div>
     </div>
-  </div>
+</div>
+
+</html>
+<!-- Login/Register Section -->
+<section class="auth-section" style="display: none;">
+    <h2 class="section-title" id="form-title">Login</h2>
+    <!-- Copy content from login.html form here -->
+</section>
+
+<!-- Error Section -->
+<section class="error-section" style="display: none;">
+    <div class="error-container">
+        <div class="opps">Oops!</div>
+        <div class="error-code"></div>
+        <div class="error-description"></div>
+    </div>
+</section>
+
+<!-- Comment Section -->
+<section class="post-details" style="display: none;">
+    <!-- Copy content from comment.html here -->
+</section>

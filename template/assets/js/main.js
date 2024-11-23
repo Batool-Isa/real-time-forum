@@ -1,4 +1,87 @@
-/*==================== SHOW NAVBAR ====================*/
+// Add this to your existing main.js
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            link.classList.add('active');
+            
+            // Get the path and handle navigation
+            const path = link.getAttribute('data-path');
+            router.navigate(path);
+        });
+    });
+});
+
+const router = {
+    init() {
+        this.handleRoute();
+        window.addEventListener('popstate', () => this.handleRoute());
+    },
+
+    routes: {
+        '/': () => {
+            hideAllSections();
+            document.querySelector('.home').style.display = 'block';
+        },
+        '/create': () => {
+            hideAllSections();
+            document.querySelector('.create-post').style.display = 'block';
+        },
+        '/chat': () => {
+            hideAllSections();
+            document.querySelector('.chat-container').style.display = 'flex';
+        },
+        '/logout': () => {
+            fetch('/logout', {
+                method: 'POST',
+                credentials: 'include'
+            }).then(() => {
+                window.location.href = '/';
+            });
+        }
+    },
+
+    navigate(path) {
+        history.pushState(null, '', path);
+        this.handleRoute();
+    },
+
+    handleRoute() {
+        const path = window.location.pathname;
+        const handler = this.routes[path] || this.routes['/'];
+        handler();
+    }
+};
+
+function hideAllSections() {
+    document.querySelector('.home').style.display = 'none';
+    document.querySelector('.create-post').style.display = 'none';
+    document.querySelector('.chat-container').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    router.init();
+
+    document.querySelectorAll('.nav__link[data-path]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const path = link.getAttribute('data-path');
+            
+            // Update active state
+            document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            router.navigate(path);
+        });
+    });
+});/*==================== SHOW NAVBAR ====================*/
 const showMenu = (headerToggle, navbarId) =>{
   const toggleBtn = document.getElementById(headerToggle),
   nav = document.getElementById(navbarId)
@@ -39,18 +122,6 @@ const prevButton = document.querySelector('.pagination__prev');
 const nextButton = document.querySelector('.pagination__next');
 const infoSpan = document.querySelector('.pagination__info');
 
-// // Get all posts
-// const posts = Array.from(postsContainer.querySelectorAll('.post-link'));
-
-// function updatePostsPerPage() {
-//   const totalPosts = posts.length;
-
-//   // Set postsPerPage based on the number of total posts
-//   postsPerPage = (totalPosts < 20) ? minPostsPerPage : defaultPostsPerPage;
-
-//   showPage(currentPage);
-// }
-
 function showPage(page) {
 const totalPages = Math.ceil(posts.length / postsPerPage);
 
@@ -70,25 +141,6 @@ prevButton.disabled = (page === 1);
 nextButton.disabled = (page === totalPages);
 infoSpan.textContent = `Page ${page} of ${totalPages}`;
 }
-
-// Event listeners for pagination buttons
-// prevButton.addEventListener('click', () => {
-//   if (currentPage > 1) {
-//     currentPage--;
-//     showPage(currentPage);
-//   }
-// });
-
-// nextButton.addEventListener('click', () => {
-//   const totalPages = Math.ceil(posts.length / postsPerPage);
-//   if (currentPage < totalPages) {
-//     currentPage++;
-//     showPage(currentPage);
-//   }
-// });
-
-// // Initial page load
-// updatePostsPerPage();
 
 // Chat UI Toggle
 document.getElementById('chat-link').addEventListener('click', () => {
@@ -115,231 +167,86 @@ document.querySelectorAll('.user-item').forEach(item => {
         item.classList.add('selected');
     });
 });
-  class ChatUI {
-      constructor() {
+
+class ChatUI {
+    constructor() {
         this.ws = new WebSocket('ws://localhost:8080/ws');
         this.setupWebSocket();
-          this.chatContainer = document.querySelector('.chat-container');
-          this.usersList = document.querySelector('.users-list');
-          this.messagesContainer = document.querySelector('.messages-container');
-          this.currentChatHeader = document.querySelector('.current-chat-user');
-          this.messageInput = document.getElementById('message-text');
-          this.sendButton = document.querySelector('.send-message');
+        this.chatContainer = document.querySelector('.chat-container');
+        this.usersList = document.querySelector('.users-list');
+        this.messagesContainer = document.querySelector('.messages-container');
+        this.currentChatHeader = document.querySelector('.current-chat-user');
+        this.messageInput = document.getElementById('message-text');
+        this.sendButton = document.querySelector('.send-message');
         
-          this.activeChats = new Map();
-          this.currentRecipient = null;
-          this.users = [];
+        this.activeChats = new Map();
+        this.currentRecipient = null;
+        this.users = [];
 
-          this.loadAvailableUsers();
-          this.initializeNewChatButton();
-      }
-
-      setupWebSocket() {
-        // Add session token to WebSocket URL
-        this.ws = new WebSocket('ws://localhost:8080/ws');
-        this.ws.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            this.displayMessage({
-                content: message.content,
-                timestamp: message.timestamp,
-                senderName: message.senderName,
-                sent: false
-            });
-            this.scrollToBottom();
-        };
+        this.loadAvailableUsers();
+        this.initializeNewChatButton();
     }
 
-      loadAvailableUsers() {
-          fetch('/api/users')
-              .then(response => response.json())
-              .then(users => {
-                  this.users = users;
-                  this.usersList.innerHTML = '';
-                  users.forEach(user => {
-                      this.displayUser(user);
-                  });
-              });
-      }
+    setupWebSocket() {
+        this.ws.onmessage = this.handleMessage.bind(this);
+    }
 
-      // Add event listeners for message sending
-      initializeNewChatButton() {
-          const newChatBtn = document.querySelector('.new-chat-btn');
-          if (newChatBtn) {
-              newChatBtn.addEventListener('click', () => this.showUserSelectModal());
-          }
+    bindEvents() {
+        document.querySelector('.new-chat-btn').addEventListener('click', () => {
+            this.showUserSelectModal();
+        });
+    }
 
-          if (this.sendButton) {
-              this.sendButton.addEventListener('click', () => {
-                  const content = this.messageInput.value.trim();
-                  if (content && this.currentRecipient) {
-                      this.sendMessage(content);
-                  }
-              });
-          }
-
-          if (this.messageInput) {
-              this.messageInput.addEventListener('keypress', (e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      this.sendButton.click();
-                  }
-              });
-          }
-      }
-
-      showUserSelectModal() {
-          const modal = document.createElement('div');
-          modal.className = 'user-select-modal';
-          modal.innerHTML = `
-              <h3>Select User</h3>
-              <div class="user-select-list">
-                  ${this.createUserSelectList()}
-              </div>
-          `;
-
-          const overlay = document.createElement('div');
-          overlay.className = 'modal-overlay';
-      
-          document.body.appendChild(overlay);
-          document.body.appendChild(modal);
-      
-          // Add click handlers to the user items in modal
-          modal.querySelectorAll('.user-item').forEach(item => {
-              item.addEventListener('click', () => {
-                  const userId = item.dataset.userid;
-                  const user = this.users.find(u => u.UserID === parseInt(userId));
-                  if (user) {
-                      this.startChat(user);
-                      modal.remove();
-                      overlay.remove();
-                  }
-              });
-          });
-      
-          modal.classList.add('active');
-          overlay.classList.add('active');
-      
-          overlay.addEventListener('click', () => {
-              modal.remove();
-              overlay.remove();
-          });
-      }
-
-      createUserSelectList() {
-          return this.users.map(user => `
-              <div class="user-item" data-userid="${user.UserID}">
-                  <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                  <div class="user-info">
-                      <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                      <span class="user-username">@${user.Username}</span>
-                  </div>
-              </div>
-          `).join('');
-      }
-
-      displayUser(user) {
-          const userElement = document.createElement('div');
-          userElement.className = 'user-item';
-          userElement.dataset.userid = user.UserID;
-          userElement.innerHTML = `
-              <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-              <div class="user-info">
-                  <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                  <span class="user-username">@${user.Username}</span>
-              </div>
-              <span class="user-status online"></span>
-          `;
-      
-          userElement.addEventListener('click', () => this.startChat(user));
-          this.usersList.appendChild(userElement);
-      }
-      startChat(user) {
-        this.currentRecipient = user;
-        const currentChatHeader = document.querySelector('.current-chat-user');
-        if (currentChatHeader) {
-            currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
-        }
-        // Load chat history
-        fetch(`/api/chat/history/${user.UserID}`)
+    showUserSelectModal() {
+        fetch('/api/users')
             .then(response => response.json())
-            .then(messages => {
-                this.messagesContainer.innerHTML = '';
-                messages.forEach(msg => {
-                    this.displayMessage({
-                        content: msg.content,
-                        timestamp: msg.timestamp,
-                        senderName: msg.senderId === user.UserID ? user.Username : 'You',
-                        sent: msg.senderId !== user.UserID
+            .then(users => {
+                const modal = document.createElement('div');
+                modal.className = 'user-select-modal active';
+                modal.innerHTML = `
+                    <h3>Select User</h3>
+                    <div class="user-select-list">
+                        ${users.map(user => `
+                            <div class="user-item" data-userid="${user.UserID}">
+                                <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                                <div class="user-info">
+                                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                                    <span class="user-username">@${user.Username}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                const overlay = document.createElement('div');
+                overlay.className = 'modal-overlay active';
+
+                document.body.appendChild(overlay);
+                document.body.appendChild(modal);
+
+                modal.querySelectorAll('.user-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const userId = item.dataset.userid;
+                        this.startChat(users.find(u => u.UserID === parseInt(userId)));
+                        modal.remove();
+                        overlay.remove();
                     });
                 });
-                this.scrollToBottom();
+
+                overlay.addEventListener('click', () => {
+                    modal.remove();
+                    overlay.remove();
+                });
             });
-        const userItems = document.querySelectorAll('.user-item');
-        userItems.forEach(item => item.classList.remove('selected'));
-        
-        const selectedUser = document.querySelector(`.user-item[data-userid="${user.UserID}"]`);
-        if (selectedUser) {
-            selectedUser.classList.add('selected');
-        }
     }
 
-
-      displayChatHistory(username) {
-          this.messagesContainer.innerHTML = '';
-          const messages = this.activeChats.get(username) || [];
-          messages.forEach(msg => this.displayMessage(msg));
-      }
-
-      displayMessage(message) {
-          const messageElement = document.createElement('div');
-          messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
-          messageElement.innerHTML = `
-              <div class="message-header">
-                  <span class="message-sender">${message.senderName}</span>
-                  <span class="message-time">${this.formatTime(message.timestamp)}</span>
-              </div>
-              <span class="message-content">${message.content}</span>
-          `;
-      
-          this.messagesContainer.appendChild(messageElement);
-          this.scrollToBottom();
-      }
-
-      scrollToBottom() {
-          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      }
-      sendMessage() {
-        const content = this.messageInput.value.trim();
-        if (content && this.currentRecipient) {
-            const message = {
-                content: content,
-                receiverId: this.currentRecipient.UserID,
-                senderId: 1,//this.currentUserID, // Make sure this is set when user logs in
-                timestamp: new Date().toISOString()
-            };
-            
-            this.ws.send(JSON.stringify(message));
-            
-            // Display sent message immediately
-            this.displayMessage({
-                content: content,
-                timestamp: message.timestamp,
-                senderName: 'You',
-                sent: true
-            });
-            this.messageInput.value = '';
-            this.scrollToBottom();
-        }
+    startChat(user) {
+        document.querySelector('.message-input').style.display = 'flex';
+        document.querySelector('.current-chat-user').textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+        // Add user to chat list and load chat history
     }
-
-      formatTime(timestamp) {
-          return new Date(timestamp).toLocaleTimeString([], { 
-              hour: '2-digit', 
-              minute: '2-digit' 
-          });
-      }
-  }
-  class ChatManager {
+}
+    class ChatManager {
       constructor() {
           this.ws = new WebSocket('ws://localhost:8080/ws');
           this.chatUI = new ChatUI();
@@ -363,6 +270,17 @@ document.querySelectorAll('.user-item').forEach(item => {
 
   // Initialize chat when DOM loads
   document.addEventListener('DOMContentLoaded', () => {
+      router.init();
+
+      // Navigation links
+      document.querySelectorAll('.nav__link').forEach(link => {
+          link.addEventListener('click', (e) => {
+              e.preventDefault();
+              const path = link.getAttribute('data-path');
+              router.navigate(path);
+          });
+      });
+
       const chatManager = new ChatManager();
   });
 
@@ -379,4 +297,3 @@ document.querySelectorAll('.user-item').forEach(item => {
         chatManager.chatUI.sendMessage();
     }
 });
-

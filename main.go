@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/handler"
 	"real-time-forum/backend/middleware"
+	"strings"
 
 	_ "github.com/mattn/go-sqlite3"
 
@@ -18,38 +18,45 @@ func main() {
 		log.Fatalf("Error creating or connecting to database: %v", err)
 	}
 
-	// Create tables
 	database.CreateTables()
-	//go handler.hub.run()// Start the hub in a goroutine
 
-	// Serve static files from the "assets" directory
+	// Single handler for all routes
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasPrefix(r.URL.Path, "/api/") {
+			// Handle API routes
+			switch r.URL.Path {
+			case "/api/posts":
+				handler.GetPostsHandler(w, r)
+			case "/api/categories":
+				handler.GetCategoriesHandler(w, r)
+			case "/api/posts/create":
+				middleware.SessionValidator(http.HandlerFunc(handler.CreatePostHandler)).ServeHTTP(w, r)
+			case "/api/posts/like":
+				middleware.SessionValidator(http.HandlerFunc(handler.LikePost)).ServeHTTP(w, r)
+			case "/api/posts/dislike":
+				middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)).ServeHTTP(w, r)
+			case "/api/comments":
+				middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)).ServeHTTP(w, r)
+			case "/api/users":
+				handler.GetUsersHandler(w, r)
+			case "/api/chat/history/":
+				handler.ChatHistoryHandler(w, r)
+			default:
+				http.NotFound(w, r)
+			}
+			return
+		}
+		// Serve index.html for all non-API routes
+		http.ServeFile(w, r, "template/index.html")
+	})
+
+	// WebSocket endpoint
+	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+		handler.WebSocketHandler(w, r)
+	})
+
+	// Static files
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
 
-	// Register handlers for the WebSocket and the main page
-	http.HandleFunc("/", handler.IndexHandler)       // Main page handler
-    // WebSocket handler with session validation
-    http.Handle("/ws", middleware.SessionValidator(http.HandlerFunc(handler.WebSocketHandler)))
-	http.HandleFunc("/register", handler.RegisterUserHandler)
-	// http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
-	// http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
-	http.Handle("/create_post", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
-	http.Handle("/like", middleware.SessionValidator(http.HandlerFunc(handler.LikePost)))
-	http.Handle("/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)))
-	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
-	http.Handle("/post", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.PostHandler)))
-	http.Handle("/add_comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
-	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
-	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
-	http.HandleFunc("/api/users", handler.GetUsersHandler)
-	http.Handle("/api/chat/history/", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
-
-
-	fmt.Println("Database setup complete")
-	fmt.Println("Server started at http://localhost:8080/")
-
-	// Start the server
-	err = http.ListenAndServe(":8080", nil)
-	if err != nil {
-		log.Fatal("Error starting server on port 8080:", err)
-	}
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }

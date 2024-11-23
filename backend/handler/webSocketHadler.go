@@ -41,7 +41,8 @@ func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
     
     clients[client] = true
     go handleMessages(client)
-}func handleMessages(client *structs.Client) {
+}
+func handleMessages(client *structs.Client) {
     log.Printf("Client connected: UserID=%d, Username=%s", client.UserID, client.Username)
     defer func() {
         client.Conn.Close()

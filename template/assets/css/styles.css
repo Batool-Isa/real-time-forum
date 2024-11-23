@@ -1146,3 +1146,7 @@ textarea:focus {
 .modal-overlay.active {
   display: block;
 }
+.user-select-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
