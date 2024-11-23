@@ -30,6 +30,7 @@ func SessionValidator(next http.Handler) http.Handler {
 
 		// Retrieve session details from the database
 		session, err := database.FetchSession(sessionCookie.Value)
+		fmt.Println("DEBUG: Session embedded in context:", session)
 		if err != nil {
 			// Handle errors if session is not found or expired
 			next.ServeHTTP(w, r)
@@ -63,18 +64,28 @@ func checkSessionExpiry(sessionID string) bool {
 	return time.Now().After(session.Timestamp)
 }
 
-// GetSessionFromContext extracts the session from the context
+// GetSessionFromContext retrieves the session information from the context.
 func GetSessionFromContext(ctx context.Context) *structs.Session {
+	fmt.Println("DEBUG: Attempting to retrieve session from context")
+
+	// Retrieve the value associated with the SessionKey
 	val := ctx.Value(SessionKey)
 	if val == nil {
+		fmt.Println("DEBUG: No session found in context (value is nil)")
 		return nil
 	}
+
+	// Type assertion to ensure the value is of type structs.Session
 	session, ok := val.(structs.Session)
 	if !ok {
+		fmt.Println("ERROR: Value in context is not of type structs.Session")
 		return nil
 	}
+
+	fmt.Println("DEBUG: Session successfully retrieved from context:", session)
 	return &session
 }
+
 
 
 // OptionalSessionMiddleware checks for session and adds it to context if available
@@ -91,9 +102,11 @@ func OptionalSessionMiddleware(next http.Handler) http.Handler {
 			next.ServeHTTP(w, r) // Invalid or expired session, proceed without it
 			return
 		}
+		fmt.Println("DEBUG: Session stored in context:", session)
 
 		// Store session in context
 		ctx := context.WithValue(r.Context(), SessionKey, session)
+		fmt.Println("DEBUG: Session embedded in context:", session)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }

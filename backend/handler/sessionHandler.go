@@ -52,9 +52,10 @@ func CreateUserSession(w http.ResponseWriter, userID int) error {
 
 	// Send the session ID to the client as a cookie
 	http.SetCookie(w, &http.Cookie{
-		Name:  "session_id",
+		Name:  "session_Id",
 		Value: sessionID,
 		Path:  "/",
+		HttpOnly: true,
 		// MaxAge: 600000, // Uncomment to set expiration to 10 minutes
 	})
 

@@ -1,32 +1,67 @@
-2024/11/21 14:38:34 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:38:40 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:39:00 WebSocket ping error: websocket: close sent
-2024/11/21 14:39:04 WebSocket ping error: websocket: close sent
-2024/11/21 14:40:11 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:40:40 WebSocket ping error: websocket: close sent
-2024/11/21 14:42:05 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:42:06 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:42:06 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:43:04 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:43:47 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:43:55 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:43:55 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:43:56 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:44:25 WebSocket ping error: websocket: close sent
-2024/11/21 14:44:25 WebSocket ping error: websocket: close sent
-2024/11/21 14:44:25 WebSocket ping error: websocket: close sent
-2024/11/21 14:44:38 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:44:44 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:44:56 WebSocket ping error: websocket: close sent
-2024/11/21 14:45:07 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:45:08 WebSocket ping error: websocket: close sent
-2024/11/21 14:45:14 WebSocket ping error: websocket: close sent
-2024/11/21 14:45:31 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:45:37 WebSocket ping error: websocket: close sent
-2024/11/21 14:45:39 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:46:01 WebSocket ping error: websocket: close sent
-2024/11/21 14:53:01 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:53:23 WebSocket ping error: websocket: close sent
-2024/11/21 14:54:11 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:54:13 WebSocket read error: websocket: close 1001 (going away)
-2024/11/21 14:54:13 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 21:33:36 WebSocket ping error: websocket: close sent
+2024/11/22 21:49:53 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 21:50:07 WebSocket ping error: websocket: close sent
+2024/11/22 22:33:03 near "user_Id": syntax error
+2024/11/22 22:33:29 User successfully inserted with username: bisa127
+2024/11/22 22:33:29 Error scanning session: no such column: session_Id
+2024/11/22 22:33:29 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 22:33:36 WebSocket ping error: websocket: close sent
+2024/11/22 22:33:48 Error scanning session: no such column: session_Id
+2024/11/22 22:33:49 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 22:33:56 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 22:33:59 WebSocket ping error: websocket: close sent
+2024/11/22 22:34:19 WebSocket ping error: websocket: close sent
+2024/11/22 22:36:09 User successfully inserted with username: bisa127
+2024/11/22 22:36:09 Error scanning session: no such column: session_Id
+2024/11/22 22:36:09 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 22:36:15 WebSocket read error: websocket: close 1001 (going away)
+2024/11/22 22:36:27 WebSocket ping error: websocket: close sent
+2024/11/22 22:36:39 WebSocket ping error: websocket: close sent
+2024/11/22 22:42:13 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/22 22:42:38 WebSocket ping error: write tcp [::1]:8888->[::1]:47518: use of closed network connection
+2024/11/23 09:00:39 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 10:22:45 WebSocket ping error: write tcp [::1]:8888->[::1]:47648: use of closed network connection
+2024/11/23 10:23:54 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:24:18 WebSocket ping error: websocket: close sent
+2024/11/23 10:28:36 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:29:01 WebSocket ping error: websocket: close sent
+2024/11/23 10:30:02 Error scanning session: no such column: session_Id
+2024/11/23 10:30:02 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:30:07 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:31:43 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:32:08 WebSocket ping error: websocket: close sent
+2024/11/23 10:33:01 Error scanning session: no such column: session_Id
+2024/11/23 10:33:01 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:33:05 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:33:27 WebSocket ping error: websocket: close sent
+2024/11/23 10:33:32 WebSocket ping error: websocket: close sent
+2024/11/23 10:35:45 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:35:46 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:35:57 WebSocket ping error: websocket: close sent
+2024/11/23 10:36:05 WebSocket ping error: websocket: close sent
+                                                            session_Id
+2024/11/23 10:36:39 Error scanning session: no such column: session_Id
+2024/11/23 10:36:39 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:36:48 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:37:03 WebSocket ping error: websocket: close sent
+2024/11/23 10:37:09 WebSocket ping error: websocket: close sent
+2024/11/23 10:40:54 Error scanning session: no such column: session_Id
+2024/11/23 10:40:54 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:40:58 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:41:21 WebSocket ping error: websocket: close sent
+2024/11/23 10:41:24 WebSocket ping error: websocket: close sent
+2024/11/23 10:46:06 Error scanning session: no such column: session_Id
+2024/11/23 10:46:06 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:46:10 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:46:32 WebSocket ping error: websocket: close sent
+2024/11/23 10:46:37 WebSocket ping error: websocket: close sent
+2024/11/23 10:48:06 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:48:09 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:48:32 WebSocket ping error: websocket: close sent
+2024/11/23 10:48:36 WebSocket ping error: websocket: close sent
+2024/11/23 10:55:29 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:55:33 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 10:55:56 WebSocket ping error: websocket: close sent
+2024/11/23 10:55:59 WebSocket ping error: websocket: close sent
+2024/11/23 11:24:59 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 11:25:24 WebSocket ping error: websocket: close sent

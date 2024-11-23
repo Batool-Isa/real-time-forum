@@ -50,19 +50,19 @@ func InsertNewSession(session string, userID int) error {
 }
 
 
-func InsertPost(user_id int, post_heading string, post_data string, categoryName []string) error {
-	postErr := utils.ValidatePost(post_heading, post_data, categoryName)
+func InsertPost(user_Id int, post_data string, categoryName []string) error {
+	postErr := utils.ValidatePost( post_data, categoryName)
 	if postErr != nil {
 		return postErr
 	}
-	stmt, err := db.Prepare("INSERT INTO posts(user_id, post_heading, post_data) VALUES (?, ?, ?)")
+	stmt, err := db.Prepare("INSERT INTO Post(user_Id, post_content) VALUES (?, ?)")
 	if err != nil {
 		log.Println(err)
 		return err
 	}
 	defer stmt.Close()
 
-	res, err := stmt.Exec(user_id, post_heading, post_data)
+	res, err := stmt.Exec(user_Id, post_data)
 	if err != nil {
 		log.Println(err)
 		return err
@@ -77,7 +77,7 @@ func InsertPost(user_id int, post_heading string, post_data string, categoryName
 	for _, categoryName := range categoryName {
 
 		var categoryID int
-		err := db.QueryRow("SELECT category_id FROM categories WHERE category_name = ?", categoryName).Scan(&categoryID)
+		err := db.QueryRow("SELECT category_Id FROM Category WHERE category_name = ?", categoryName).Scan(&categoryID)
 		if err != nil {
 			log.Println(err)
 			return err
@@ -314,6 +314,41 @@ func CheckCategoryTable() error {
 	}
 	return nil
 }
+
+func InsertCategories(category_name string) error {
+	categoryArray, err := GetCategories()
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	catErr := utils.ValidateCategory(category_name, categoryArray)
+	if catErr != nil {
+		return catErr
+	}
+	stmt, err := db.Prepare("INSERT INTO Category(category_name) values(?)")
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	_, err = stmt.Exec(category_name)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	return nil
+}
 func AddDummyData() {
 
+	// InsertUser(db, "zhashim", "12345678", "zahra@gmail.com")
+	// InsertUser(db, "zee", "12345678", "z@gmail.com")
+	// InsertUser(db, "zozo", "12345678", "zozo@gmail.com")
+
+	InsertCategories("Sports")
+	InsertCategories("Technology")
+	InsertCategories("Education")
+	InsertCategories("Health")
+	InsertCategories("Entertainment")
+	InsertCategories("Travel")
+	InsertCategories("Finance")
+	InsertCategories("Culture")
 }

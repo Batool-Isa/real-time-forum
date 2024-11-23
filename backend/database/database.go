@@ -49,7 +49,9 @@ func CreateTables() {
 		post_Id INTEGER PRIMARY KEY AUTOINCREMENT,
 		post_content VARCHAR NOT NULL,
 		likesNum VARCHAR DEFAULT 0,
-		dislikesNum VARCHAR DEFAULT 0
+		dislikesNum VARCHAR DEFAULT 0,
+		user_Id INTEGER,
+		FOREIGN KEY (user_Id) REFERENCES User(user_Id)
 	);`
 
 	postCategoryTable := `

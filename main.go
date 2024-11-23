@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
+	"real-time-forum/backend/middleware"
 	_ "github.com/mattn/go-sqlite3"
 	"real-time-forum/backend/handler"
 	//"real-time-forum/backend/utils"
@@ -25,6 +26,7 @@ func main() {
 
 	// Create tables
 	database.CreateTables()
+	database.AddDummyData()
 	//go handler.hub.run()// Start the hub in a goroutine
 
 	// Serve static files from the "assets" directory
@@ -33,12 +35,24 @@ func main() {
 
 
 	// Register handlers for the WebSocket and the main page
-	http.HandleFunc("/", handler.IndexHandler)         // Main page handler
-	http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
-	http.HandleFunc("/register", handler.RegisterUserHandler)
-	http.HandleFunc("/login", handler.LoginHandler)
-	http.HandleFunc("/create-post", handler.createHandler)
+	// http.HandleFunc("/", handler.IndexHandler)         // Main page handler
+	// http.HandleFunc("/ws", handler.WebSocketHandler) // WebSocket handler
+	// http.HandleFunc("/register", handler.RegisterUserHandler)
+	// http.HandleFunc("/login", handler.LoginHandler)
+	// http.HandleFunc("/create-post", handler.CreateHandler)
 
+	http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.IndexHandler)))
+	http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
+	http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
+	http.Handle("/create-post", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
+	http.Handle("/like", middleware.SessionValidator(http.HandlerFunc(handler.LikePost)))
+	http.Handle("/ws", middleware.SessionValidator(http.HandlerFunc(handler.WebSocketHandler)))
+	http.Handle("/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)))
+	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
+	//http.Handle("/post", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.PostHandler)))
+	http.Handle("/add_comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
+	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
+	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
 
 	fmt.Println("Database setup complete")	
 	fmt.Println("Server started at http://localhost:8888/")

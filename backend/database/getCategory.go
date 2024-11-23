@@ -8,7 +8,7 @@ import (
 )
 
 func GetCategories() ([]structs.Category, error) {
-	query := `SELECT category_name FROM categories;`
+	query := `SELECT category_name FROM Category;`
 	rows, err := db.Query(query)
 	if err != nil {
 		return nil, err

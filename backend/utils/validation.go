@@ -39,10 +39,8 @@ func ValidateCategory(category string, categories []structs.Category) error {
 }
 
 // ValidatePost checks if the post is in the correct format
-func ValidatePost(title, content string, category []string) error {
-	if strings.TrimSpace(title) == "" {
-		return errors.New("title cannot be empty or whitespace")
-	}
+func ValidatePost( content string, category []string) error {
+
 	if strings.TrimSpace(content) == "" {
 		return errors.New("content cannot be empty or whitespace")
 	}
