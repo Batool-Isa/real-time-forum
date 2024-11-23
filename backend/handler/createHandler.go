@@ -22,11 +22,10 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	if r.Method == "POST" {
 		r.ParseForm()
-		title := r.Form.Get("title")
 		content := r.Form.Get("content")
 		category := r.Form["category"]
 
-		uid, err := GetLoggedUser(r)
+		uid, err := RetrieveLoggedUser(r)
 		if err != nil {
 			utils.ErrorHandler(w, r, http.StatusInternalServerError)
 			//http.Error(w, "Unable to retrieve user ID", http.StatusInternalServerError)
@@ -34,7 +33,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		Inserterr := database.InsertPost(uid, title, content, category)
+		Inserterr := database.InsertPost(uid, content, category)
 		if Inserterr != nil {
 			utils.ErrorHandler(w, r, http.StatusBadRequest)
 		}

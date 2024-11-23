@@ -1,21 +1,20 @@
 package database
 
-import(
+import (
 	"database/sql"
-	"real-time-forum/backend/structs"
-	"log"
 	"fmt"
+	"log"
+	"real-time-forum/backend/structs"
 )
 
-
+// function to get user info from database using his email or username
 func RetrieveUser(username string)(structs.User, error){
-
-	query := "SELECT user_Id, username, email, age, gender, firstName, lastName FROM User WHERE username = ?"
-    row := db.QueryRow(query, username)
-
+    //sql query
+	query := "SELECT user_Id, username, email, age, gender, firstName, lastName, password FROM User WHERE username = ? OR email = ?"
+    row := db.QueryRow(query, username, username)
     // Declare a user variable
     var user structs.User
-    err := row.Scan(&user.UserID, &user.Username, &user.Email, &user.Age, &user.Gender, &user.FirstName, &user.LastName)
+    err := row.Scan(&user.UserID, &user.Username, &user.Email, &user.Age, &user.Gender, &user.FirstName, &user.LastName, &user.Password)
     if err != nil {
         if err == sql.ErrNoRows {
             log.Println("User not found:", err)
@@ -24,7 +23,6 @@ func RetrieveUser(username string)(structs.User, error){
         log.Println("Error scanning user:", err)
         return structs.User{}, err
     }
-
     return user, nil
 
 }

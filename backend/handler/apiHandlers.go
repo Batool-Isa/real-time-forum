@@ -26,7 +26,7 @@ func CreatePostHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    err := database.InsertPost(postData.UserID, postData.PostHeading, postData.PostData, postData.Categories)
+    err := database.InsertPost(postData.UserID, postData.PostData, postData.Categories)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return

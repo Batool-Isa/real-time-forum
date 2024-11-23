@@ -47,6 +47,14 @@ const router = {
             }).then(() => {
                 window.location.href = '/';
             });
+        }, 
+        '/login': () => {// Added By BAtool
+            hideAllSections();
+            document.querySelector('.login-section').style.display = 'block';
+        }, 
+        '/register': () => {// Added By BAtool
+            hideAllSections();
+            document.querySelector('.register-section').style.display = 'block';
         }
     },
 
@@ -66,6 +74,10 @@ function hideAllSections() {
     document.querySelector('.home').style.display = 'none';
     document.querySelector('.create-post').style.display = 'none';
     document.querySelector('.chat-container').style.display = 'none';
+    document.querySelector('.login-section').style.display = 'none';// added by batool
+    document.querySelector('.register-section').style.display = 'none';// added by batool
+
+
 }
 
 function initializeNewChatButton() {

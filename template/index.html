@@ -48,6 +48,14 @@
                   <i class="bx bx-message-square-dots nav__icon"></i>
                   <span class="nav__name">Chat</span>
               </a>
+              <a href="#" class="nav__link" data-path="/login">
+                <i class="bx bx-message-square-dots nav__icon"></i>
+                <span class="nav__name">Login</span>
+            </a>
+            <a href="#" class="nav__link" data-path="/register">
+              <i class="bx bx-message-square-dots nav__icon"></i>
+              <span class="nav__name">Register</span>
+          </a>
               <a href="#" class="nav__link" data-path="/logout">
                   <i class="bx bx-log-out nav__icon"></i>
                   <span class="nav__name">Log Out</span>
@@ -390,13 +398,145 @@
     </div>
 </div>
 
-</html>
+
 <!-- Login/Register Section -->
-<section class="auth-section" style="display: none;">
-    <h2 class="section-title" id="form-title">Login</h2>
-    <!-- Copy content from login.html form here -->
+<section class="login-section">
+  <h2 class="section-title" id="form-title">Login</h2>
+  <form id="auth-form" class="auth-form" method="POST">
+    <div>
+        <label for="usernameOrEmail">Username or Email:</label>
+        <input type="text" id="usernameOrEmail" name="usernameOrEmail" required>
+        <p class="error-message" id="error-usernameOrEmail" style="display: none;"></p>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <p class="error-message" id="error-password" style="display: none;"></p>
+    </div>
+    <p class="error-message" id="error-user" style="display: none;"></p>
+    <button type="submit" class="submit-button" id="submit-button">Login</button>
+</form>
+
+  <p class="toggle-link">Don't have an account? <a href="#" id="toggle-auth">Sign Up</a></p>
 </section>
 
+
+<!--Register Sestion-->
+<section class="register-section">
+  <h2 class="section-title">Register</h2>
+  <form id="register-form" class="auth-form">
+      <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+          <p class="error-message" id="error-username" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <p class="error-message" id="error-email" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
+          <p class="error-message" id="error-firstName" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required>
+          <p class="error-message" id="error-lastName" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="age">Age:</label>
+          <input type="text" id="age" name="age" required>
+          <p class="error-message" id="error-age" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <p class="error-message" id="error-password" style="display: none;"></p>
+      </div>
+      <div>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
+          <p class="error-message" id="error-confirmPassword" style="display: none;"></p>
+      </div>
+      <button type="submit" class="submit-button">Register</button>
+  </form>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('register-form');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            // Clear previous error messages
+            clearErrorMessages('register');
+
+            const formData = new FormData(registerForm);
+            const data = new URLSearchParams();
+            formData.forEach((value, key) => {
+                data.append(key, value);
+            });
+
+            // Custom validation for confirmPassword
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            if (password !== confirmPassword) {
+                showErrorMessages({ confirmPassword: "Passwords do not match" }, 'register');
+                return;
+            }
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data.toString(),
+                });
+
+                if (!response.ok) {
+                    const result = await response.json();
+                    console.log('Response errors:', result.errors); // Debugging
+                    if (result.errors) {
+                        showErrorMessages(result.errors, 'register');
+                    }
+                } else {
+                    const result = await response.json();
+                    alert(result.message); // Show success message
+                    window.location.href = '/'; // Redirect to homepage
+                }
+            } catch (error) {
+                console.error('Error during registration:', error);
+            }
+        });
+    }
+
+    function clearErrorMessages(context) {
+        document.querySelectorAll(`#${context}-form .error-message`).forEach((element) => {
+            element.style.display = 'none';
+            element.textContent = '';
+        });
+    }
+
+    function showErrorMessages(errors, context) {
+        console.log('Errors received:', errors); // Debugging
+        for (const [field, message] of Object.entries(errors)) {
+            const errorElement = document.querySelector(`#${context}-form #error-${field}`);
+            console.log('Error Element:', errorElement); // Debugging
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+    }
+});
+
+
+</script>
 <!-- Error Section -->
 <section class="error-section" style="display: none;">
     <div class="error-container">
@@ -410,3 +550,4 @@
 <section class="post-details" style="display: none;">
     <!-- Copy content from comment.html here -->
 </section>
+</html>

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/handler"
@@ -50,6 +51,10 @@ func main() {
 		http.ServeFile(w, r, "template/index.html")
 	})
 
+	//login end point
+	http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
+	http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
+
 	// WebSocket endpoint
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		handler.WebSocketHandler(w, r)
@@ -57,6 +62,7 @@ func main() {
 
 	// Static files
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
-
+	
+	fmt.Println("Server started at http://localhost:8080/")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

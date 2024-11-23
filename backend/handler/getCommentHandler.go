@@ -36,7 +36,7 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
 		postID := r.FormValue("post_id")
 		commentText := r.FormValue("comment")
 
-		uid, err := GetLoggedUser(r)
+		uid, err := RetrieveLoggedUser(r)
 		if err != nil {
 			utils.ErrorHandler(w, r, http.StatusInternalServerError)
 			return

@@ -44,7 +44,7 @@ func DislikeComment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	uid, err := GetLoggedUser(r)
+	uid, err := RetrieveLoggedUser(r)
 	if err != nil {
 		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 
