@@ -38,7 +38,7 @@ func GetPostCreated(userId string) ([]structs.Post, error) {
 		var categoryName string
 
 		// Scan NULL-able fields
-		err := rows.Scan(&post.PostID, &post.PostHeading, &post.Postdescription, &userID, &dislike, &like, &categoryName)
+		err := rows.Scan(&post.PostID, &post.PostDescription, &userID, &dislike, &like, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err

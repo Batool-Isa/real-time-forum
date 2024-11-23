@@ -66,3 +66,39 @@
 2024/11/23 11:24:59 WebSocket read error: websocket: close 1001 (going away)
 2024/11/23 11:25:24 WebSocket ping error: websocket: close sent
 2024/11/23 11:28:30 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 12:01:38 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/23 12:01:38 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:16)
+2024/11/23 12:01:38 WebSocket read error: websocket: close 1001 (going away)
+2024/11/23 12:02:05 WebSocket ping error: websocket: close sent
+2024/11/23 12:04:51 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/23 12:04:51 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:16)
+2024/11/23 12:06:20 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/23 12:06:20 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:16)
+2024/11/23 12:06:22 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/23 12:06:22 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:16)
+2024/11/23 12:06:22 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/23 12:06:22 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:16)
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 12:23:03 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52330: use of closed network connection
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52314: use of closed network connection
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52296: use of closed network connection
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52300: use of closed network connection
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52312: use of closed network connection
+2024/11/23 15:25:01 WebSocket ping error: write tcp [::1]:8888->[::1]:52282: use of closed network connection
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:05:57 WebSocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2024/11/23 22:42:30 WebSocket ping error: write tcp [::1]:8888->[::1]:40020: use of closed network connection
+2024/11/23 22:42:30 WebSocket ping error: write tcp [::1]:8888->[::1]:40030: use of closed network connection
+2024/11/23 22:42:30 WebSocket ping error: write tcp [::1]:8888->[::1]:40034: use of closed network connection
+2024/11/23 22:42:30 WebSocket ping error: write tcp [::1]:8888->[::1]:40042: use of closed network connection
+2024/11/23 22:42:30 WebSocket ping error: write tcp [::1]:8888->[::1]:40044: use of closed network connection
+2024/11/23 22:42:31 WebSocket ping error: write tcp [::1]:8888->[::1]:40046: use of closed network connection

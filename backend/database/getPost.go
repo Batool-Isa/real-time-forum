@@ -9,29 +9,29 @@ import (
 
 // var db *sql.DB
 
+
 func GetAllPosts() ([]structs.Post, error) {
 	query := `
 	SELECT 
-    posts.post_id, 
-    posts.user_id, 
-    posts.dislike, 
-    posts.like, 
-    posts.post_heading, 
-    posts.post_data, 
-    users.username, 
-    COALESCE(GROUP_CONCAT(categories.category_name), ', ', '') AS category_name	
+    Post.post_Id, 
+	 Post.post_content, 
+    posts.user_Id,
+	  Post.likeNum, 
+    Post.dislikeNum,  
+    User.username, 
+    COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
 FROM 
-    posts
+    Post
 INNER JOIN 
-    users ON posts.user_id = users.uid
+    User ON Post.user_Id = User.user_Id
 LEFT JOIN 
-    post_categories ON posts.post_id = post_categories.post_id
+    Post_Category ON Post.post_Id = Post_Category.post_Id
 LEFT JOIN 
-    categories ON post_categories.category_id = categories.category_id
+    Category ON Post_Category.category_Id = Category.category_Id
 GROUP BY 
-    posts.post_id
+    Post.post_Id
 ORDER BY
-	posts.post_id DESC;`
+	Post.post_Id DESC;`
 
 	rows, err := db.Query(query)
 	if err != nil {
@@ -44,7 +44,7 @@ ORDER BY
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostHeading, &post.Postdescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
@@ -69,32 +69,31 @@ ORDER BY
 func GetPostById(id int) (structs.Post, error) {
 	query := `
 	SELECT 
-    posts.post_id, 
-    posts.user_id, 
-    posts.dislike, 
-    posts.like, 
-    posts.post_heading, 
-    posts.post_data, 
-    users.username, 
-    COALESCE(GROUP_CONCAT(categories.category_name), ', ', '') AS category_name	
+  Post.post_Id, 
+	 Post.post_content, 
+    posts.user_Id,
+	  Post.likeNum, 
+    Post.dislikeNum,  
+    User.username, 
+    COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
 FROM 
-    posts
+    Post
 INNER JOIN 
-    users ON posts.user_id = users.uid
+    User ON Post.user_Id = User.user_Id
 LEFT JOIN 
-    post_categories ON posts.post_id = post_categories.post_id
+    Post_Category ON posts.post_Id = Post_Category.post_Id
 LEFT JOIN 
-    categories ON post_categories.category_id = categories.category_id
+    Category ON Post_Category.category_Id = Category.category_Id
 WHERE
-    posts.post_id = ?
+    Post.post_Id = ?
 GROUP BY 
-    posts.post_id;`
+    Post.post_Id;`
 
 	row := db.QueryRow(query, id)
 
 	var post structs.Post
 	var categoryName string
-	err := row.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostHeading, &post.Postdescription, &post.Username, &categoryName)
+	err := row.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
 	if err != nil {
 		log.Println(err)
 		if err == sql.ErrNoRows {
@@ -110,7 +109,6 @@ GROUP BY
 	}
 	return post, nil
 }
-
 
 
 func GetPostByUserID(userID int) ([]structs.Post, error) {
@@ -150,7 +148,7 @@ func GetPostByUserID(userID int) ([]structs.Post, error) {
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostHeading, &post.Postdescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
@@ -207,7 +205,7 @@ func GetPostsByCategory(categoryID int) ([]structs.Post, error) {
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostHeading, &post.Postdescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err

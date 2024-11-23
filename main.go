@@ -49,7 +49,7 @@ func main() {
 	http.Handle("/ws", middleware.SessionValidator(http.HandlerFunc(handler.WebSocketHandler)))
 	http.Handle("/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)))
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
-	//http.Handle("/post", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.PostHandler)))
+	http.Handle("/posts", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.GetPostsHandler)))
 	http.Handle("/add_comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
 	http.Handle("/like_comment", middleware.SessionValidator(http.HandlerFunc(handler.LikeComment)))
 	http.Handle("/dislike_comment", middleware.SessionValidator(http.HandlerFunc(handler.DislikeComment)))
