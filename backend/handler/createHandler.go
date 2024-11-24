@@ -11,65 +11,58 @@ import (
 
 // CreateHandler handles creating a post in a single-page application (SPA).
 func CreateHandler(w http.ResponseWriter, r *http.Request) {
-	// Retrieve session from context
 	session := middleware.GetSessionFromContext(r.Context())
 	if session == nil {
-		// User is not authenticated
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}
 
-	// Handle POST request for creating a new post
 	if r.Method == http.MethodPost {
-		// Parse form data
 		err := r.ParseForm()
 		if err != nil {
-			// Log and respond with a JSON error
 			fmt.Println("ERROR: Failed to parse form", err)
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusBadRequest)
-			json.NewEncoder(w).Encode(map[string]string{"error": "Invalid form data"})
+			http.Error(w, "Invalid form data", http.StatusBadRequest)
 			return
 		}
 
-		// Retrieve form data
+		// Debugging raw form data
+		fmt.Println("DEBUG: Raw Form Data:", r.Form)
+
 		content := r.Form.Get("content")
 		categories := r.Form["category"]
 
-		// Debugging form data
+		// Debug parsed values
 		fmt.Println("DEBUG: Content:", content)
 		fmt.Println("DEBUG: Categories:", categories)
 
-		// Retrieve the logged-in user ID
+		if content == "" || len(categories) == 0 {
+			fmt.Println("ERROR: Content or categories missing")
+			http.Error(w, "Content or categories cannot be empty", http.StatusBadRequest)
+			return
+		}
+
 		uid, err := RetrieveLoggedUser(r)
 		if err != nil {
 			fmt.Println("ERROR: Unable to retrieve logged-in user", err)
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusInternalServerError)
-			json.NewEncoder(w).Encode(map[string]string{"error": "Failed to retrieve user ID"})
+			http.Error(w, "Failed to retrieve user ID", http.StatusInternalServerError)
 			return
 		}
 
-		// Insert post into the database
-		Inserterr := database.InsertPost(uid, content, categories)
-		if Inserterr != nil {
-			fmt.Println("ERROR: Failed to insert post", Inserterr)
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusInternalServerError)
-			json.NewEncoder(w).Encode(map[string]string{"error": "Failed to create post"})
+		err = database.InsertPost(uid, content, categories)
+		if err != nil {
+			fmt.Println("ERROR: Failed to insert post", err)
+			http.Error(w, "Failed to create post", http.StatusInternalServerError)
 			return
 		}
 
-		// Respond with a success message
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(map[string]string{"message": "Post created successfully"})
 		return
 	}
 
-	// Method not allowed
-	fmt.Println("ERROR: Method not allowed")
 	http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 }
+
 
 
 // func PostHandler(w http.ResponseWriter, r *http.Request) {

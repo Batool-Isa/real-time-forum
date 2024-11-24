@@ -1,10 +1,12 @@
 package database
+
 import (
 	//"fmt"
+	"fmt"
 	"log"
 	//"net/http"
-	"time"
 	"real-time-forum/backend/utils"
+	"time"
 	//"golang.org/x/crypto/bcrypt"
 )
 func CreateUser(username string, email string, age int, gender string, firstName string, lastName string, pass string) error {
@@ -42,37 +44,51 @@ func InsertNewSession(session string, userID int) error {
 	return nil
 }
 func InsertPost(user_Id int, post_data string, categoryName []string) error {
+	fmt.Println("DEBUG: Validating post content and categories")
 	postErr := utils.ValidatePost(post_data, categoryName)
 	if postErr != nil {
 		return postErr
 	}
+
+	fmt.Println("DEBUG: Preparing to insert post into database")
 	stmt, err := db.Prepare("INSERT INTO Post(user_Id, post_content) VALUES (?, ?)")
 	if err != nil {
-		log.Println(err)
+		fmt.Println("ERROR: Preparing statement failed", err)
 		return err
 	}
 	defer stmt.Close()
+
 	res, err := stmt.Exec(user_Id, post_data)
 	if err != nil {
-		log.Println(err)
+		fmt.Println("ERROR: Executing statement failed", err)
 		return err
 	}
+
 	postID, err := res.LastInsertId()
 	if err != nil {
-		log.Println(err)
+		fmt.Println("ERROR: Retrieving last insert ID failed", err)
 		return err
 	}
-	for _, categoryName := range categoryName {
+
+	fmt.Println("DEBUG: Post inserted successfully, ID:", postID)
+	for _, category := range categoryName {
+		fmt.Println("DEBUG: Processing category:", category)
 		var categoryID int
-		err := db.QueryRow("SELECT category_Id FROM Category WHERE category_name = ?", categoryName).Scan(&categoryID)
+		err := db.QueryRow("SELECT category_Id FROM Category WHERE category_name = ?", category).Scan(&categoryID)
 		if err != nil {
-			log.Println(err)
+			fmt.Println("ERROR: Retrieving category ID failed", err)
 			return err
 		}
-		InsertPostCategories(int(postID), categoryID)
+
+		err = InsertPostCategories(int(postID), categoryID)
+		if err != nil {
+			fmt.Println("ERROR: Inserting post-category mapping failed", err)
+			return err
+		}
 	}
 	return nil
 }
+
 func InsertComment(comment string, user_id int, postId int) error {
 	CommentErr := utils.ValidateInput(map[string]string{"comment": comment})
 	if CommentErr != nil {
@@ -90,22 +106,26 @@ func InsertComment(comment string, user_id int, postId int) error {
 	}
 	return nil
 }
+
 func InsertPostCategories(post_id int, category_id int) error {
-	postCatErr := utils.ValidateInput(map[string]string{"post_Id": string(post_id), "category_Id": string(category_id)})
-	if postCatErr != nil {
-		return postCatErr
-	}
+	fmt.Println("DEBUG: Inserting post-category mapping")
 	stmt, err := db.Prepare("INSERT INTO Post_Category(post_Id, category_Id) values (?, ?)")
 	if err != nil {
+		fmt.Println("ERROR: Preparing post-category statement failed", err)
 		return err
 	}
+	defer stmt.Close()
+
 	_, err = stmt.Exec(post_id, category_id)
 	if err != nil {
-		log.Println(err)
+		fmt.Println("ERROR: Executing post-category insert failed", err)
 		return err
 	}
+	fmt.Println("DEBUG: Post-category mapping inserted successfully")
 	return nil
 }
+
+
 func InsertLikes(post_id int, user_id int) error {
 	likeserr := utils.ValidateInput(map[string]string{"post_id": string(post_id), "user_id": string(user_id)})
 	if likeserr != nil {
