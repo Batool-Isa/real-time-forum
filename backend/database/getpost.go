@@ -1,19 +1,21 @@
 package database
+
 import (
-	"real-time-forum/backend/structs"
 	"database/sql"
 	"log"
+	"real-time-forum/backend/structs"
 	"strings"
 )
+
 // var db *sql.DB
 func GetAllPosts() ([]structs.Post, error) {
 	query := `
 	SELECT 
     Post.post_Id, 
 	 Post.post_content, 
-    posts.user_Id,
-	  Post.likeNum, 
-    Post.dislikeNum,  
+Post.user_Id,
+	  Post.likesNum, 
+    Post.dislikesNum,  
     User.username, 
     COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
 FROM 
@@ -38,7 +40,7 @@ ORDER BY
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID,&post.PostDescription, &post.UserID, &post.Like, &post.Dislike,  &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
@@ -61,9 +63,9 @@ func GetPostById(id int) (structs.Post, error) {
 	SELECT 
   Post.post_Id, 
 	 Post.post_content, 
-    posts.user_Id,
-	  Post.likeNum, 
-    Post.dislikeNum,  
+    Post.user_Id,
+	  Post.likesNum, 
+    Post.dislikesNum,  
     User.username, 
     COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
 FROM 
@@ -100,11 +102,11 @@ GROUP BY
 func GetPostByUserID(userID int) ([]structs.Post, error) {
 	query := `SELECT 
 	Post.post_Id, 
-	   Post.post_content, 
-	  posts.user_Id,
-		Post.likeNum, 
-	  Post.dislikeNum,  
-	  User.username, 
+	Post.post_content, 
+    Post.user_Id,
+	Post.likesNum, 
+	Post.dislikesNum,  
+	User.username, 
 	  COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
 	FROM
 		Post p
@@ -131,7 +133,7 @@ func GetPostByUserID(userID int) ([]structs.Post, error) {
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.PostDescription, &post.UserID, &post.Like, &post.Dislike, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
@@ -146,16 +148,15 @@ func GetPostByUserID(userID int) ([]structs.Post, error) {
 	return posts, nil
 }
 func GetPostsByCategory(categoryID int) ([]structs.Post, error) {
-	
-	query := `
-		SELECT 
-			SELECT 
+
+	query := ` 
+	SELECT 
 	Post.post_Id, 
-	   Post.post_content, 
-	  posts.user_Id,
-		Post.likeNum, 
-	  Post.dislikeNum,  
-	  User.username, 
+	Post.post_content, 
+	Post.user_Id,
+	Post.likesNum, 
+	Post.dislikesNum,  
+	User.username, 
 			COALESCE(GROUP_CONCAT(c.category_name), ', ', '') AS category_name
 		FROM 
 			Post p
@@ -197,3 +198,59 @@ func GetPostsByCategory(categoryID int) ([]structs.Post, error) {
 	return posts, nil
 }
 
+// GetAllPostsWithPagination fetches all posts with limit and offset
+func GetAllPostsWithPagination(limit, offset int) ([]structs.Post, error) {
+	rows, err := db.Query("SELECT * FROM Post ORDER BY created_at DESC LIMIT ? OFFSET ?", limit, offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var posts []structs.Post
+	for rows.Next() {
+		var post structs.Post
+		if err := rows.Scan(&post.PostID, &post.PostDescription, &post.Username); err != nil {
+			return nil, err
+		}
+		posts = append(posts, post)
+	}
+	return posts, nil
+}
+
+// GetTotalPostCount fetches the total number of posts
+func GetTotalPostCount() (int, error) {
+	var count int
+	err := db.QueryRow("SELECT COUNT(*) FROM Post").Scan(&count)
+	return count, err
+}
+
+func GetPostsByCategoryWithPagination(categoryID, limit, offset int) ([]structs.Post, error) {
+	// Prepare the query to fetch posts by category with pagination
+	query := `
+		SELECT p.id, p.post_content, p.created_at, p.user_id, u.username
+		FROM Post p
+		INNER JOIN Post_Category pc ON p.id = pc.post_id
+		INNER JOIN User u ON p.user_id = u.id
+		WHERE pc.category_id = ?
+		ORDER BY p.created_at DESC
+		LIMIT ? OFFSET ?
+	`
+
+	rows, err := db.Query(query, categoryID, limit, offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var posts []structs.Post
+	for rows.Next() {
+		var post structs.Post
+		err := rows.Scan(&post.PostID, &post.PostDescription, &post.UserID, &post.Username)
+		if err != nil {
+			return nil, err
+		}
+		posts = append(posts, post)
+	}
+
+	return posts, nil
+}

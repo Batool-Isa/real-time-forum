@@ -100,74 +100,52 @@
             </button>
             {{end}}
           </section>
-
           <section class="posts" id="posts-container">
-            {{range .DataPassed.Posts}}
-            <!-- <a href="http://localhost:3090/post?id={{.PostID}}" class="post-link"> -->
-            <a href="/post?id={{.PostID}}" class="post-link">
-              <article
-                class="post"
-                data-category="sports"
-                data-author="JohnDoe"
-                data-liked="false"
-              >
-                <pre><p class="post-description">{{.Postdescription}}</p></pre>
-                {{range .CategoryName}}
-                <div class="post-category">
-                  <span class="category">{{.}}</span>
-                </div>
-                {{end}}
-                <div class="post-info">
-                  <form method="post" action="/like">
-                    <input type="hidden" name="action" value="like" />
-                    <input type="hidden" name="post_id" value="{{.PostID}}" />
-                    <!-- <button type="submit" class="post-button"> -->
-                    <i class="bx bx-like"></i> <span>{{.Like}}</span>
-                    <!-- </button> -->
-                  </form>
+         
+        </section>
+        
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const postContainer = document.querySelector('.post-details');
 
-                  <form method="post" action="/dislike">
-                    <input type="hidden" name="action" value="dislike" />
-                    <input type="hidden" name="post_id" value="{{.PostID}}" />
-                    <!-- <button type="submit" class="post-button"> -->
-                    <i class="bx bx-dislike"></i> <span>{{.Dislike}} </span>
-                    <!-- </button> -->
-                  </form>
+    async function fetchPost(postId) {
+        try {
+            const response = await fetch(`/post?id=${postId}`);
+            if (!response.ok) {
+                console.error('Failed to fetch post:', response.statusText);
+                return;
+            }
+            const post = await response.json();
+            displayPost(post);
+        } catch (error) {
+            console.error('Error fetching post:', error);
+        }
+    }
 
-                  <i class="bx bx-comment"></i> <span class="comment-count"> </span>
+    function displayPost(post) {
+        // Populate the post details section with data
+        postContainer.innerHTML = `
+            <h2>${post.PostHeading}</h2>
+            <p>${post.PostContent}</p>
+            <div class="post-meta">
+                <span>Author: ${post.Author}</span>
+                <span>Posted on: ${new Date(post.CreatedAt).toLocaleDateString()}</span>
+            </div>
+            <div class="post-categories">
+                ${post.Categories.map(category => `<span>${category}</span>`).join(', ')}
+            </div>
+        `;
+        postContainer.style.display = 'block'; // Show the post details section
+    }
 
-                  <span class="post-author">by {{.Username}}</span>
-                </div>
-                <!-- Comments Section -->
-                <div class="post-comments" style="display: none">
-                  <div class="comments-list">
-                    <!-- Example of a comment to check the styling -->
-                    <div class="comment">
-                      <span class="comment-author">{{.Username}}</span>
-                      <span class="comment-text">bhljbl</span>
-                    </div>
-                    <div class="comment">
-                      <span class="comment-author">Batool45:</span>
-                      <span class="comment-text">TEST FRONT END</span>
-                    </div>
-                  </div>
-                  <form method="post" action="/add_comment">
-                    <input type="hidden" name="post_id" value="{{.PostID}}" />
-                    <textarea
-                      name="comment"
-                      placeholder="Add a comment..."
-                      required
-                    ></textarea>
-                    <button type="submit" class="submit-comment-button">
-                      Comment
-                    </button>
-                  </form>
-                </div>
-              </article>
-            </a>
-            {{end}}
-          </section>
-    
+    // Example usage (replace '1' with the actual post ID to fetch)
+    const postId = new URLSearchParams(window.location.search).get('id');
+    if (postId) {
+        fetchPost(postId);
+    }
+});
+
+    </script>
         <!--pagination Section-->
         <div class="pagination">
           <button class="pagination__prev" disabled>Previous</button>
@@ -240,6 +218,8 @@
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/additional.js"></script>
+
     <script>
       // const isLoggedIn = false; // Change this to true if user is logged in
 
@@ -407,9 +387,10 @@
         </div>
         <div class="message-input" style="display: none;">
             <textarea placeholder="Type a message..." id="message-text"></textarea>
-            <button class="send-message">
-                <i class="bx bx-send"></i>
-            </button>
+            <button class="send-message" id="send-button">
+              <i class="bx bx-send"></i> Send
+          </button>
+          
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@ import (
 )
 
 func Logout(w http.ResponseWriter, r *http.Request) {
-	sessionCookie, err := r.Cookie("session_id")
+	sessionCookie, err := r.Cookie("session_Id")
 	if err != nil {
 		log.Println(err)
 	}
@@ -16,7 +16,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 	}
 	http.SetCookie(w, &http.Cookie{
-		Name:   "session_id",
+		Name:   "session_Id",
 		Value:  "",
 		Path:   "/",
 		MaxAge: -1,

@@ -5,102 +5,85 @@ import (
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
+	"real-time-forum/backend/middleware"
 	"real-time-forum/backend/structs"
 	"real-time-forum/backend/utils"
-	"real-time-forum/backend/middleware"
 )
-
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	http.SetCookie(w, &http.Cookie{
-		Name:   "session_id",
-		Value:  "1212121212",
-		Path:   "/",
-		MaxAge: 600000, // Set the expiration time to 600 seconds (10 minute)
-	})
-	var categoryMap = categoriesMap()
-
-	if r.URL.Path != "/" {
-		utils.ErrorHandler(w, r, http.StatusNotFound)
+	session := middleware.GetSessionFromContext(r.Context())
+	if session == nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}
 
-	posts, err := database.GetAllPosts()
-	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusInternalServerError)
-		return
-	}
+	// Check the `Accept` header to determine if the client expects JSON or HTML
+	acceptHeader := r.Header.Get("Accept")
 
-	categorySelection := r.URL.Query().Get("filter-category")
-	if categorySelection != "" && categorySelection != "all" {
-		categoryID, ok := categoryMap[categorySelection]
+	// Fetch the category filter from the query parameters
+	category := r.URL.Query().Get("filter-category")
+	var posts []structs.Post
+	var err error
 
+	// Fetch posts based on the category filter
+	if category != "" && category != "all" {
+		categoryID, ok := categoriesMap1()[category]
 		if !ok {
-			// Handle invalid category selection
-			utils.ErrorHandler(w, r, http.StatusBadRequest)
+			http.Error(w, "Invalid category selection", http.StatusBadRequest)
 			return
 		}
 		posts, err = database.GetPostsByCategory(categoryID)
-		if err != nil {
-			utils.ErrorHandler(w, r, http.StatusInternalServerError)
-
-			return
-		}
+	} else {
+		posts, err = database.GetAllPosts()
 	}
 
-	session := middleware.GetSessionFromContext(r.Context())
-
-	myPosts := r.URL.Query().Get("filter-mypost")
-	likedepost := r.URL.Query().Get("filter-likedpost")
-
-	if session != nil {
-		userId := session.UserID
-		if myPosts == "true" {
-			posts, err = database.GetPostByUserID(userId)
-			if err != nil {
-				utils.ErrorHandler(w, r, http.StatusInternalServerError)
-				return
-			}
-		} else if likedepost == "true" {
-			posts, err = database.GetLikedPost(userId)
-			if err != nil {
-				utils.ErrorHandler(w, r, http.StatusInternalServerError)
-				return
-			}
-
-		}
-	}
-
-	//  posts = database.GetPostByUserID(userId)
-	category, err := database.GetCategories()
 	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
+		http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+		return
 	}
 
-	data := struct {
-		Posts    []structs.Post
-		Session  *structs.Session
-		Category []structs.Category
-	}{
-		Posts:    posts,
-		Session:  session,
-		Category: category,
+	// Serve JSON for API requests
+	if acceptHeader == "application/json" {
+		response := struct {
+			Posts []structs.Post `json:"posts"`
+		}{
+			Posts: posts,
+		}
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+		}
+		return
 	}
 
-	utils.RenderTemplate(w, r, "index.html", data)
-
+	// Serve the HTML template for browser requests
+	utils.RenderTemplate(w, r, "index.html", nil)
 }
+
+
+// Map of category names to their IDs
+func categoriesMap1() map[string]int {
+	return map[string]int{
+		"Sports":       1,
+		"Technology":   2,
+		"Education":    3,
+		"Health":       4,
+		"Entertainment": 5,
+		"Travel":       6,
+		"Finance":      7,
+		"Culture":      8,
+	}
+}
+
 
 func categoriesMap() map[string]int {
 	categoryMap := make(map[string]int)
 	category, err := database.GetCategories()
 	if err != nil {
-		fmt.Println("Error getting categories")
-		utils.ErrorHandler(nil, nil, http.StatusBadRequest)
+		fmt.Println("Error getting categories:", err)
 		return nil
 	}
 	for i, cat := range category {
 		cat.ID = i + 1
-		
 		categoryMap[cat.Category] = cat.ID
 	}
 	return categoryMap
@@ -108,30 +91,30 @@ func categoriesMap() map[string]int {
 
 // New SPAHandler
 func SPAHandler(w http.ResponseWriter, r *http.Request) {
-    // Serve index.html for all routes
-    http.ServeFile(w, r, "template/index.html")
+	// Serve index.html for all routes
+	http.ServeFile(w, r, "template/index.html")
 }
 
 // New GetPostsHandler
 func GetPostsHandler(w http.ResponseWriter, r *http.Request) {
-    posts, err := database.GetAllPosts()
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
+	posts, err := database.GetAllPosts()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(posts)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(posts)
 }
 
 // New GetCategoriesHandler
 func GetCategoriesHandler(w http.ResponseWriter, r *http.Request) {
-    categories, err := database.GetCategories()
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
+	categories, err := database.GetCategories()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(categories)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(categories)
 }

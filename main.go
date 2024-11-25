@@ -27,7 +27,7 @@ func main() {
 	}
 
 	database.CreateTables()
-	database.AddDummyData()
+	//database.AddDummyData()
 	// Single handler for all routes
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasPrefix(r.URL.Path, "/api/") {
@@ -62,7 +62,12 @@ func main() {
 	http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
 	http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
 	http.Handle("/create", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
+	http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.IndexHandler)))
+	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
 
+	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
+
+	
 	// WebSocket endpoint
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		handler.WebSocketHandler(w, r)
