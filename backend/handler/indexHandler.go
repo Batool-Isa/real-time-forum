@@ -10,53 +10,50 @@ import (
 	"real-time-forum/backend/utils"
 )
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	session := middleware.GetSessionFromContext(r.Context())
-	if session == nil {
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return
-	}
+    session := middleware.GetSessionFromContext(r.Context())
+    if session == nil {
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
 
-	// Check the `Accept` header to determine if the client expects JSON or HTML
-	acceptHeader := r.Header.Get("Accept")
+    // Fetch category filter from query parameters
+    category := r.URL.Query().Get("filter-category")
+    var posts []structs.Post
+    var err error
 
-	// Fetch the category filter from the query parameters
-	category := r.URL.Query().Get("filter-category")
-	var posts []structs.Post
-	var err error
+    // Handle API-specific requests with JSON response
+    if r.URL.Path == "/api/posts" {
+        if category != "" && category != "all" {
+            categoryID, ok := categoriesMap1()[category]
+            if !ok {
+                http.Error(w, "Invalid category selection", http.StatusBadRequest)
+                return
+            }
+            posts, err = database.GetPostsByCategory(categoryID)
+        } else {
+            posts, err = database.GetAllPosts()
+        }
 
-	// Fetch posts based on the category filter
-	if category != "" && category != "all" {
-		categoryID, ok := categoriesMap1()[category]
-		if !ok {
-			http.Error(w, "Invalid category selection", http.StatusBadRequest)
-			return
-		}
-		posts, err = database.GetPostsByCategory(categoryID)
-	} else {
-		posts, err = database.GetAllPosts()
-	}
+        if err != nil {
+            http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+            return
+        }
 
-	if err != nil {
-		http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
-		return
-	}
+        // Serve JSON response for API
+        response := struct {
+            Posts []structs.Post `json:"posts"`
+        }{
+            Posts: posts,
+        }
+        w.Header().Set("Content-Type", "application/json")
+        if err := json.NewEncoder(w).Encode(response); err != nil {
+            http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+        }
+        return
+    }
 
-	// Serve JSON for API requests
-	if acceptHeader == "application/json" {
-		response := struct {
-			Posts []structs.Post `json:"posts"`
-		}{
-			Posts: posts,
-		}
-		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			http.Error(w, "Failed to encode response", http.StatusInternalServerError)
-		}
-		return
-	}
-
-	// Serve the HTML template for browser requests
-	utils.RenderTemplate(w, r, "index.html", nil)
+    // Serve the HTML template for all other requests
+    utils.RenderTemplate(w, r, "index.html", nil)
 }
 
 

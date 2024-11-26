@@ -75,6 +75,15 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
         })
         return
     }
+    if len(errors) > 0 {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusBadRequest)
+    json.NewEncoder(w).Encode(map[string]interface{}{
+        "errors": errors,
+    })
+    return
+}
+
 
     // Create user session on successful login
     err = CreateUserSession(w, user.UserID)
@@ -84,10 +93,12 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(map[string]interface{}{
-        "message": "Login successful",
-    })
+    // w.Header().Set("Content-Type", "application/json")
+    // json.NewEncoder(w).Encode(map[string]interface{}{
+    //     "message": "Login successful",
+    // })
+    http.Redirect(w, r, "/api/posts", http.StatusSeeOther)
+
 }
 
 

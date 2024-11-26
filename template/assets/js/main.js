@@ -18,67 +18,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
 const router = {
     init() {
         this.handleRoute();
-        window.addEventListener('popstate', () => this.handleRoute());
+        window.addEventListener("popstate", () => this.handleRoute());
     },
 
     routes: {
-        '/': () => {
-            hideAllSections();
-            document.querySelector('.home').style.display = 'block';
+        "/": () => {
+            const isLoggedIn = document.body.dataset.isLoggedIn === "true";
+            if (isLoggedIn) {
+                hideAllSections();
+                document.querySelector(".home").style.display = "block"; // Show home section
+                fetchPosts(); // Fetch and render posts dynamically
+            } else {
+                hideAllSections();
+                document.querySelector(".login-section").style.display = "block";
+            }
         },
-        '/create': () => {
+        "/create": () => {
             hideAllSections();
-            document.querySelector('.create-post').style.display = 'block';
+            document.querySelector(".create-post").style.display = "block";
         },
-        '/chat': () => {
+        "/chat": () => {
             hideAllSections();
-            const chatContainer = document.querySelector('.chat-container');
-            chatContainer.style.display = 'flex';
-            initializeNewChatButton();
+            document.querySelector(".chat-container").style.display = "flex";
         },
-        '/logout': () => {
-            fetch('/logout', {
-                method: 'POST',
-                credentials: 'include'
+        "/login": () => {
+            hideAllSections();
+            document.querySelector(".login-section").style.display = "block";
+        },
+        "/register": () => {
+            hideAllSections();
+            document.querySelector(".register-section").style.display = "block";
+        },
+        "/logout": () => {
+            fetch("/logout", {
+                method: "POST",
+                credentials: "include",
             }).then(() => {
-                window.location.href = '/';
+                window.location.href = "/";
             });
-        }, 
-        '/login': () => {// Added By BAtool
-            hideAllSections();
-            document.querySelector('.login-section').style.display = 'block';
-        }, 
-        '/register': () => {// Added By BAtool
-            hideAllSections();
-            document.querySelector('.register-section').style.display = 'block';
-        }
+        },
     },
 
     navigate(path) {
-        history.pushState(null, '', path);
+        history.pushState(null, "", path);
         this.handleRoute();
     },
 
     handleRoute() {
         const path = window.location.pathname;
-        const handler = this.routes[path] || this.routes['/'];
+        const handler = this.routes[path] || this.routes["/"];
         handler();
-    }
+    },
 };
 
+
+
 function hideAllSections() {
-    document.querySelector('.home').style.display = 'none';
-    document.querySelector('.create-post').style.display = 'none';
-    document.querySelector('.chat-container').style.display = 'none';
-    document.querySelector('.login-section').style.display = 'none';// added by batool
-    document.querySelector('.register-section').style.display = 'none';// added by batool
-
-
+    document.querySelector(".home").style.display = "none";
+    document.querySelector(".create-post").style.display = "none";
+    document.querySelector(".chat-container").style.display = "none";
+    document.querySelector(".login-section").style.display = "none";
+    document.querySelector(".register-section").style.display = "none";
 }
+
+
 
 function initializeNewChatButton() {
     const newChatBtn = document.querySelector('.new-chat-btn');
