@@ -3,12 +3,15 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
+
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
 	"real-time-forum/backend/structs"
 	"real-time-forum/backend/utils"
 )
+
+
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
     session := middleware.GetSessionFromContext(r.Context())
     if session == nil {
@@ -16,44 +19,45 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    // Fetch category filter from query parameters
+    fmt.Println("Handler called") // Debug log
     category := r.URL.Query().Get("filter-category")
     var posts []structs.Post
     var err error
 
-    // Handle API-specific requests with JSON response
-    if r.URL.Path == "/api/posts" {
-        if category != "" && category != "all" {
-            categoryID, ok := categoriesMap1()[category]
-            if !ok {
-                http.Error(w, "Invalid category selection", http.StatusBadRequest)
-                return
-            }
-            posts, err = database.GetPostsByCategory(categoryID)
-        } else {
-            posts, err = database.GetAllPosts()
-        }
-
-        if err != nil {
-            http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+    if category != "" && category != "all" {
+        fmt.Println("Fetching posts for category:", category) // Debug log
+        categoryID, ok := categoriesMap1()[category]
+        if !ok {
+            http.Error(w, "Invalid category selection", http.StatusBadRequest)
             return
         }
+        posts, err = database.GetPostsByCategory(categoryID)
+    } else {
+        fmt.Println("Fetching all posts") // Debug log
+        posts, err = database.GetAllPosts()
+    }
 
-        // Serve JSON response for API
-        response := struct {
-            Posts []structs.Post `json:"posts"`
-        }{
-            Posts: posts,
-        }
-        w.Header().Set("Content-Type", "application/json")
-        if err := json.NewEncoder(w).Encode(response); err != nil {
-            http.Error(w, "Failed to encode response", http.StatusInternalServerError)
-        }
+    if err != nil {
+        http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
         return
     }
 
-    // Serve the HTML template for all other requests
-    utils.RenderTemplate(w, r, "index.html", nil)
+    // Render the template with posts
+    tmplData := struct {
+        Session bool
+        Posts   []structs.Post
+    }{
+        Session: session != nil,
+        Posts:   posts,
+    }
+
+    err = utils.RenderTemplate(w, r, "index.html", tmplData)
+    if err != nil {
+        http.Error(w, "Failed to render template", http.StatusInternalServerError)
+        return
+    }
+
+    fmt.Println("Response sent") // Debug log
 }
 
 

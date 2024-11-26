@@ -1,58 +1,71 @@
-// Add this to your existing main.js
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav__link');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Get the path and handle navigation
-            const path = link.getAttribute('data-path');
-            router.navigate(path);
-        });
-    });
-});
+// ==================== ROUTER SETUP ====================
+// Router for handling client-side navigation
 const router = {
     init() {
+        console.log("Router initialized"); // Debug log
         this.handleRoute();
+        // Handle browser navigation (back/forward buttons)
         window.addEventListener("popstate", () => this.handleRoute());
     },
 
     routes: {
+        // Root route: Show login or redirect to posts if logged in
         "/": () => {
             const isLoggedIn = document.body.dataset.isLoggedIn === "true";
+            console.log("User logged in:", isLoggedIn); // Debug log
             if (isLoggedIn) {
-                hideAllSections();
-                document.querySelector(".home").style.display = "block"; // Show home section
-                fetchPosts(); // Fetch and render posts dynamically
+                router.navigate("/api/posts");
             } else {
                 hideAllSections();
                 document.querySelector(".login-section").style.display = "block";
+                console.log("Displaying login section"); // Debug log
             }
         },
+
+        // Posts route: Fetch and render posts
+        "/api/posts": () => {
+            console.log("Route '/api/posts' matched"); // Debug log
+            hideAllSections();
+            const homeSection = document.querySelector(".home");
+            if (!homeSection) {
+                console.error("Home section not found in DOM");
+                return;
+            }
+            homeSection.style.display = "block";
+            console.log("Home section displayed:", homeSection.style.display); // Debug log
+            //fetchPosts(); // Fetch and render posts dynamically
+        },
+        // Route to create a post
         "/create": () => {
             hideAllSections();
             document.querySelector(".create-post").style.display = "block";
+            console.log("Create post section displayed"); // Debug log
         },
+
+        // Chat route
         "/chat": () => {
             hideAllSections();
             document.querySelector(".chat-container").style.display = "flex";
+            console.log("Chat section displayed"); // Debug log
         },
+
+        // Login route
         "/login": () => {
             hideAllSections();
             document.querySelector(".login-section").style.display = "block";
+            console.log("Login section displayed"); // Debug log
         },
+
+        // Register route
         "/register": () => {
             hideAllSections();
             document.querySelector(".register-section").style.display = "block";
+            console.log("Register section displayed"); // Debug log
         },
+
+        // Logout route
         "/logout": () => {
+            console.log("Logging out...");
             fetch("/logout", {
                 method: "POST",
                 credentials: "include",
@@ -62,21 +75,30 @@ const router = {
         },
     },
 
+    // Navigate to a specific path and handle the route
     navigate(path) {
+        console.log("Navigating to:", path); // Debug log
         history.pushState(null, "", path);
         this.handleRoute();
     },
 
+    // Handle the current route
     handleRoute() {
         const path = window.location.pathname;
+        console.log("Handling route for:", path); // Debug log
         const handler = this.routes[path] || this.routes["/"];
-        handler();
+        if (handler) {
+            handler();
+        } else {
+            console.error("No handler found for route:", path); // Debug log
+        }
     },
 };
 
-
-
+// ==================== HIDE SECTIONS ====================
+// Function to hide all sections before rendering the desired one
 function hideAllSections() {
+    console.log("Hiding all sections"); // Debug log
     document.querySelector(".home").style.display = "none";
     document.querySelector(".create-post").style.display = "none";
     document.querySelector(".chat-container").style.display = "none";
@@ -84,383 +106,126 @@ function hideAllSections() {
     document.querySelector(".register-section").style.display = "none";
 }
 
-
-
-function initializeNewChatButton() {
-    const newChatBtn = document.querySelector('.new-chat-btn');
-    if (newChatBtn) {
-        newChatBtn.addEventListener('click', () => this.showUserSelectModal());
-    }
-    if (this.sendButton) {
-        this.sendButton.addEventListener('click', () => {
-            const content = this.messageInput.value.trim();
-            if (content && this.currentRecipient) {
-                this.sendMessage(content);
-            }
+// ==================== FETCH AND RENDER POSTS ====================
+// Fetch posts from the backend and render them dynamically
+async function fetchPosts(category = "all") {
+    console.log("fetchPosts called with category:", category); // Debug log
+    try {
+        const response = await fetch(`${category}`, {
+            headers: { Accept: "application/json" },
         });
-    }
-    if (this.messageInput) {
-        this.messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                this.sendButton.click();
-            }
-        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+
+        const { posts } = await response.json();
+        console.log("Posts fetched successfully:", posts); // Debug log
+        renderPosts(posts); // Render the fetched posts
+    } catch (error) {
+        console.error("Error fetching posts:", error); // Debug log
+        const postsContainer = document.getElementById("posts-container");
+        postsContainer.innerHTML = "<p>Failed to load posts. Please try again later.</p>";
     }
 }
 
+// Render posts dynamically into the container
+function renderPosts(posts) {
+    console.log("Rendering posts..."); // Debug log
+    const postsContainer = document.getElementById("posts-container");
+    postsContainer.innerHTML = ""; // Clear existing posts
 
-function showUserSelectModal() {
-    fetch('/api/users')
-        .then(response => response.json())
-        .then(users => {
-            const modal = createModal(users);
-            document.body.appendChild(modal.overlay);
-            document.body.appendChild(modal.modal);
-        });
-}
+    if (posts.length === 0) {
+        postsContainer.innerHTML = "<p>No posts available.</p>";
+        console.log("No posts available to render"); // Debug log
+        return;
+    }
 
-function createModal(users) {
-    const modal = document.createElement('div');
-    modal.className = 'user-select-modal active';
-    
-    const overlay = document.createElement('div');
-    overlay.className = 'modal-overlay active';
-    
-    modal.innerHTML = `
-        <h3>Select User</h3>
-        <div class="user-select-list">
-            ${users.map(user => `
-                <div class="user-item" data-userid="${user.UserID}">
-                    <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                    <div class="user-info">
-                        <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                        <span class="user-username">@${user.Username}</span>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    `;
-
-    modal.querySelectorAll('.user-item').forEach(item => {
-        item.onclick = () => {
-            const userId = item.dataset.userid;
-            startChat(users.find(u => u.UserID === parseInt(userId)));
-            modal.remove();
-            overlay.remove();
-        };
+    posts.forEach((post) => {
+        const postElement = document.createElement("article");
+        postElement.className = "post";
+        postElement.innerHTML = `
+            <p>${post.postDescription || "No description available."}</p>
+            <div class="post-meta">
+                <span>By: ${post.username}</span>
+                <span>Likes: ${post.like} | Dislikes: ${post.dislike}</span>
+                <span>Categories: ${post.categoryName.join(", ")}</span>
+            </div>
+        `;
+        postsContainer.appendChild(postElement);
+        console.log("Post rendered:", post); // Debug log
     });
-
-    overlay.onclick = () => {
-        modal.remove();
-        overlay.remove();
-    };
-
-    return { modal, overlay };
 }
 
-function startChat(user) {
-    const messageInput = document.querySelector('.message-input');
-    messageInput.style.display = 'flex';
-    document.querySelector('.current-chat-user').textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+// ==================== PAGINATION ====================
+// Default pagination variables
+const postsPerPage = 10;
+let currentPage = 1;
+
+// Update pagination controls based on total posts
+function updatePaginationControls(allPosts) {
+    console.log("Updating pagination controls..."); // Debug log
+    const totalPages = Math.ceil(allPosts.length / postsPerPage);
+    document.querySelector(".pagination__info").textContent = `Page ${currentPage} of ${totalPages}`;
+    document.querySelector(".pagination__prev").disabled = currentPage === 1;
+    document.querySelector(".pagination__next").disabled = currentPage === totalPages;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    router.init();
+// Display posts for the current page
+function showPage(allPosts) {
+    const start = (currentPage - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    renderPosts(allPosts.slice(start, end));
+}
 
-    document.querySelectorAll('.nav__link[data-path]').forEach(link => {
-        link.addEventListener('click', (e) => {
+// Pagination controls for previous and next buttons
+document.querySelector(".pagination__prev").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        showPage();
+        updatePaginationControls();
+    }
+});
+
+document.querySelector(".pagination__next").addEventListener("click", () => {
+    if (currentPage < Math.ceil(allPosts.length / postsPerPage)) {
+        currentPage++;
+        showPage();
+        updatePaginationControls();
+    }
+});
+
+// ==================== NAVIGATION ====================
+// Initialize navigation links and add event listeners
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded event triggered"); // Debug log
+        const homeSection = document.querySelector(".home");
+        const postsContainer = document.getElementById("posts-container");
+    
+        if (!homeSection) console.error(".home element not found");
+        else console.log(".home element exists:", homeSection);
+    
+        if (!postsContainer) console.error("#posts-container not found");
+        else console.log("#posts-container exists:", postsContainer);
+    
+    
+        router.init(); // Initialize the router
+
+    const navLinks = document.querySelectorAll(".nav__link");
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
             e.preventDefault();
-            const path = link.getAttribute('data-path');
-            
-            // Update active state
-            document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            
+
+            // Remove active class from all links
+            navLinks.forEach((l) => l.classList.remove("active"));
+
+            // Add active class to the clicked link
+            link.classList.add("active");
+
+            // Navigate to the clicked path
+            const path = link.getAttribute("data-path");
+            console.log("Navigating to path from nav link:", path); // Debug log
             router.navigate(path);
         });
     });
-});/*==================== SHOW NAVBAR ====================*/
-const showMenu = (headerToggle, navbarId) =>{
-  const toggleBtn = document.getElementById(headerToggle),
-  nav = document.getElementById(navbarId)
-  
-  // Validate that variables exist
-  if(headerToggle && navbarId){
-      toggleBtn.addEventListener('click', ()=>{
-          // We add the show-menu class to the div tag with the nav__menu class
-          nav.classList.toggle('show-menu')
-          // change icon
-          toggleBtn.classList.toggle('bx-x')
-      })
-  }
-}
-showMenu('header-toggle','navbar')
-
-/*==================== LINK ACTIVE ====================*/
-const linkColor = document.querySelectorAll('.nav__link')
-
-function colorLink(){
-  linkColor.forEach(l => l.classList.remove('active'))
-  this.classList.add('active')
-}
-
-linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-
-/*==================== Pagination ====================*/
-
-const minPostsPerPage = 6; // Number of posts per page when there are fewer than 20 posts
-const defaultPostsPerPage = 10; // Default posts per page if there are 20 or more posts
-let postsPerPage = defaultPostsPerPage; // Default to 10 posts per page
-let currentPage = 1;
-
-// Get elements
-const postsContainer = document.querySelector('.posts');
-const prevButton = document.querySelector('.pagination__prev');
-const nextButton = document.querySelector('.pagination__next');
-const infoSpan = document.querySelector('.pagination__info');
-
-function showPage(page) {
-const totalPages = Math.ceil(posts.length / postsPerPage);
-
-// Validate page number
-if (page < 1 || page > totalPages) return;
-
-// Hide all posts
-posts.forEach((post, index) => {
-  post.style.display = 'none';
-  if (index >= (page - 1) * postsPerPage && index < page * postsPerPage) {
-    post.style.display = 'block';
-  }
-});
-
-// Update pagination controls
-prevButton.disabled = (page === 1);
-nextButton.disabled = (page === totalPages);
-infoSpan.textContent = `Page ${page} of ${totalPages}`;
-}
-
-// Chat UI Toggle
-document.getElementById('chat-link').addEventListener('click', () => {
-    const chatContainer = document.querySelector('.chat-container');
-    const mainContent = document.querySelector('main');
-    
-    if (chatContainer.style.display === 'none') {
-        chatContainer.style.display = 'flex';
-        mainContent.style.display = 'none';
-    } else {
-        chatContainer.style.display = 'none';
-        mainContent.style.display = 'block';
-    }
-});
-
-
-document.querySelectorAll('.user-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // Remove selected class from all users
-        document.querySelectorAll('.user-item').forEach(user => {
-            user.classList.remove('selected');
-        });
-        // Add selected class to clicked user
-        item.classList.add('selected');
-    });
-});
-  class ChatUI {
-      constructor() {
-          this.ws = new WebSocket('ws://localhost:8080/ws');
-          this.setupWebSocket();
-          this.chatContainer = document.querySelector('.chat-container');
-          this.usersList = document.querySelector('.users-list');
-          this.messagesContainer = document.querySelector('.messages-container');
-          this.currentChatHeader = document.querySelector('.current-chat-user');
-          this.messageInput = document.getElementById('message-text');
-          this.sendButton = document.querySelector('.send-message');
-        
-          this.activeChats = new Map();
-          this.currentRecipient = null;
-          this.users = [];
-
-          // Direct function binding for event listeners
-          this.sendButton.onclick = () => this.sendMessage();
-          this.messageInput.onkeypress = (e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  this.sendMessage();
-              }
-          };
-
-          this.loadAvailableUsers();
-          this.initializeNewChatButton();
-      }
-
-      setupWebSocket() {
-          this.ws.onmessage = (event) => {
-              const message = JSON.parse(event.data);
-              this.displayMessage({
-                  content: message.content,
-                  senderName: message.senderName,
-                  timestamp: message.timestamp,
-                  sent: false
-              });
-              this.scrollToBottom();
-          };
-      }
-
-      sendMessage() {
-        console.log("Sending message:", this.messageInput.value);
-          const content = this.messageInput.value.trim();
-          if (content && this.currentRecipient) {
-              const message = {
-                  content: content,
-                  receiverId: this.currentRecipient.UserID,
-                  timestamp: new Date().toISOString()
-              };
-            
-              // Send via WebSocket
-              this.ws.send(JSON.stringify(message));
-            
-              // Display sent message immediately
-              this.displayMessage({
-                  content: content,
-                  timestamp: message.timestamp,
-                  senderName: 'You',
-                  sent: true
-              });
-            
-              // Clear input
-              this.messageInput.value = '';
-              this.scrollToBottom();
-          }
-      }
-      
-      startChat(user) {
-          this.currentRecipient = user;
-          this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
-          document.querySelector('.message-input').style.display = 'flex';
-
-          
-          // Add user to left list if not already present
-          this.addUserToList(user);
-          
-          // Load chat history
-          fetch(`/api/chat/history/${user.UserID}`)
-              .then(response => response.json())
-              .then(messages => {
-                  this.messagesContainer.innerHTML = '';
-
-
-
-
-
-
-
-
-                  messages.forEach(msg => this.displayMessage(msg));
-                  this.scrollToBottom();
-              });
-      }
-
-      addUserToList(user) {
-          // Check if user already exists in list
-          if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
-              const userElement = document.createElement('div');
-              userElement.className = 'user-item';
-              userElement.dataset.userid = user.UserID;
-              userElement.innerHTML = `
-                  <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                  <div class="user-info">
-                      <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                      <span class="user-username">@${user.Username}</span>
-                  </div>
-              `;
-              userElement.addEventListener('click', () => this.startChat(user));
-              this.usersList.appendChild(userElement);
-          }
-      }
-
-      displayMessage(message) {
-          const messageElement = document.createElement('div');
-          messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
-          messageElement.innerHTML = `
-              <div class="message-header">
-                  <span class="message-sender">${message.senderName}</span>
-                  <span class="message-time">${this.formatTime(message.timestamp)}</span>
-              </div>
-              <span class="message-content">${message.content}</span>
-          `;
-          this.messagesContainer.appendChild(messageElement);
-      }
-
-      scrollToBottom() {
-          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      }
-
-      formatTime(timestamp) {
-          return new Date(timestamp).toLocaleTimeString([], { 
-              hour: '2-digit', 
-              minute: '2-digit' 
-          });
-      }
-  }
-
-  // Initialize chat when chat route is activated
-  router.routes['/chat'] = () => {
-      hideAllSections();
-      document.querySelector('.chat-container').style.display = 'flex';
-      if (!window.chatManager) {
-          window.chatManager = new ChatUI();
-      }
-  };
-  
-class ChatManager {
-      constructor() {
-          this.ws = new WebSocket('ws://localhost:8080/ws');
-          this.chatUI = new ChatUI();
-        
-          this.ws.onmessage = (event) => {
-              const message = JSON.parse(event.data);
-              this.chatUI.displayMessage({
-                  content: message.content,
-                  timestamp: message.timestamp,
-                  senderName: message.senderName,
-                  sent: false
-              });
-          };
-
-          // Update the event listener to use this.chatUI
-          document.querySelector('.send-message').addEventListener('click', () => {
-              this.chatUI.sendMessage();
-          });
-      }
-  }  
-
-  // Initialize chat when DOM loads
-  document.addEventListener('DOMContentLoaded', () => {
-      router.init();
-
-      // Navigation links
-      document.querySelectorAll('.nav__link').forEach(link => {
-          link.addEventListener('click', (e) => {
-              e.preventDefault();
-              const path = link.getAttribute('data-path');
-              router.navigate(path);
-          });
-      });
-
-      const chatManager = new ChatManager();
-  });
-
-  // Helper functions
-  function getCurrentSelectedUser() {
-      const selectedUser = document.querySelector('.user-item.selected');
-      return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
-  }
-
-  document.getElementById('message-text').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        const chatManager = new ChatManager();
-        chatManager.chatUI.sendMessage();
-    }
 });

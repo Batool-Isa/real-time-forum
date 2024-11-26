@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
   <title>Forum</title>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/additional.js"></script>
+
 </head>
 
 <body data-is-logged-in="{{if .Session}}true{{else}}false{{end}}">
@@ -81,10 +85,25 @@
         </button>
         {{end}}
       </section>
-      <section class="posts" id="posts-container">
-
-      </section>
-
+     
+      <div id="posts-container">
+        {{if .Posts}}
+            {{range .Posts}}
+                <article class="post">
+                    <p>{{.PostDescription}}</p>
+                    <div class="post-meta">
+                        <span>By: {{.Username}}</span>
+                        <span>Likes: {{.Like}} | Dislikes: {{.Dislike}}</span>
+                        <span>Categories: {{join .CategoryName ", "}}</span>
+                    </div>
+                </article>
+            {{end}}
+        {{else}}
+            <p>No posts available.</p>
+        {{end}}
+    </div>
+    
+    
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const postContainer = document.querySelector('.post-details');
@@ -198,9 +217,6 @@
   <footer class="footer">
     <p class="footer-text">All rights reserved &copy; 2024 Reboot</p>
   </footer>
-
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/additional.js"></script>
 
   <script>
 

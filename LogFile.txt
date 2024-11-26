@@ -25,3 +25,7 @@
 2024/11/25 21:59:21 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
 2024/11/25 21:59:32 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
 2024/11/25 21:59:32 Error executing template: html/template:index.html: ends in a non-text context: {stateJSBqStr delimNone urlPartNone jsCtxRegexp attrNone elementScript <nil>}
+2024/11/26 16:59:31 Error parsing template: template: index.html:92: function "toJson" not defined
+2024/11/26 17:00:36 Error executing template: template: index.html:16:30: executing "index.html" at <.Session>: can't evaluate field Session in type utils.Data
+2024/11/26 17:00:36 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.IndexHandler (indexHandler.go:52)
+2024/11/26 17:04:30 Error parsing template: template: index.html:97: function "join" not defined
