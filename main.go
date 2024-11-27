@@ -62,7 +62,7 @@ func main() {
 	http.Handle("/login", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.LoginHandler)))
 	http.Handle("/register", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.RegisterUserHandler)))
 	http.Handle("/create", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
-	http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.IndexHandler)))
+	//http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.GetPostsHandler)))
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
 
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))

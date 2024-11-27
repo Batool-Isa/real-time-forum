@@ -98,13 +98,14 @@ func SPAHandler(w http.ResponseWriter, r *http.Request) {
 // New GetPostsHandler
 func GetPostsHandler(w http.ResponseWriter, r *http.Request) {
 	posts, err := database.GetAllPosts()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(posts)
+    if err != nil {
+        http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+        return
+    }
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(map[string]interface{}{
+        "posts": posts,
+    })
 }
 
 // New GetCategoriesHandler

@@ -1,460 +1,189 @@
-// Add this to your existing main.js
+// ==================== DOM Content Loaded ====================
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav__link');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Get the path and handle navigation
-            const path = link.getAttribute('data-path');
-            router.navigate(path);
-        });
-    });
-});
-
-const router = {
-    init() {
-        this.handleRoute();
-        window.addEventListener('popstate', () => this.handleRoute());
-    },
-
-    routes: {
-        '/': () => {
-            hideAllSections();
-            document.querySelector('.home').style.display = 'block';
-        },
-        '/create': () => {
-            hideAllSections();
-            document.querySelector('.create-post').style.display = 'block';
-        },
-        '/chat': () => {
-            hideAllSections();
-            const chatContainer = document.querySelector('.chat-container');
-            chatContainer.style.display = 'flex';
-            initializeNewChatButton();
-        },
-        '/logout': () => {
-            fetch('/logout', {
-                method: 'POST',
-                credentials: 'include'
-            }).then(() => {
-                window.location.href = '/';
-            });
-        }, 
-        '/login': () => {// Added By BAtool
-            hideAllSections();
-            document.querySelector('.login-section').style.display = 'block';
-        }, 
-        '/register': () => {// Added By BAtool
-            hideAllSections();
-            document.querySelector('.register-section').style.display = 'block';
-        }
-    },
-
-    navigate(path) {
-        history.pushState(null, '', path);
-        this.handleRoute();
-    },
-
-    handleRoute() {
-        const path = window.location.pathname;
-        const handler = this.routes[path] || this.routes['/'];
-        handler();
-    }
-};
-
-function hideAllSections() {
-    document.querySelector('.home').style.display = 'none';
-    document.querySelector('.create-post').style.display = 'none';
-    document.querySelector('.chat-container').style.display = 'none';
-    document.querySelector('.login-section').style.display = 'none';// added by batool
-    document.querySelector('.register-section').style.display = 'none';// added by batool
-
-
-}
-
-function initializeNewChatButton() {
-    const newChatBtn = document.querySelector('.new-chat-btn');
-    if (newChatBtn) {
-        newChatBtn.addEventListener('click', () => this.showUserSelectModal());
-    }
-    if (this.sendButton) {
-        this.sendButton.addEventListener('click', () => {
-            const content = this.messageInput.value.trim();
-            if (content && this.currentRecipient) {
-                this.sendMessage(content);
-            }
-        });
-    }
-    if (this.messageInput) {
-        this.messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                this.sendButton.click();
-            }
-        });
-    }
-}
-
-
-function showUserSelectModal() {
-    fetch('/api/users')
-        .then(response => response.json())
-        .then(users => {
-            const modal = createModal(users);
-            document.body.appendChild(modal.overlay);
-            document.body.appendChild(modal.modal);
-        });
-}
-
-function createModal(users) {
-    const modal = document.createElement('div');
-    modal.className = 'user-select-modal active';
-    
-    const overlay = document.createElement('div');
-    overlay.className = 'modal-overlay active';
-    
-    modal.innerHTML = `
-        <h3>Select User</h3>
-        <div class="user-select-list">
-            ${users.map(user => `
-                <div class="user-item" data-userid="${user.UserID}">
-                    <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                    <div class="user-info">
-                        <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                        <span class="user-username">@${user.Username}</span>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    `;
-
-    modal.querySelectorAll('.user-item').forEach(item => {
-        item.onclick = () => {
-            const userId = item.dataset.userid;
-            startChat(users.find(u => u.UserID === parseInt(userId)));
-            modal.remove();
-            overlay.remove();
-        };
-    });
-
-    overlay.onclick = () => {
-        modal.remove();
-        overlay.remove();
-    };
-
-    return { modal, overlay };
-}
-
-function startChat(user) {
-    const messageInput = document.querySelector('.message-input');
-    messageInput.style.display = 'flex';
-    document.querySelector('.current-chat-user').textContent = `Chat with ${user.FirstName} ${user.LastName}`;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the router to handle the current route
     router.init();
+    fetchPosts();
 
+    // Initialize navigation links for SPA navigation
     document.querySelectorAll('.nav__link[data-path]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const path = link.getAttribute('data-path');
             
-            // Update active state
+            // Update active state for navigation links
             document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            
+
+            // Navigate to the selected route
             router.navigate(path);
         });
     });
-});/*==================== SHOW NAVBAR ====================*/
-const showMenu = (headerToggle, navbarId) =>{
-  const toggleBtn = document.getElementById(headerToggle),
-  nav = document.getElementById(navbarId)
-  
-  // Validate that variables exist
-  if(headerToggle && navbarId){
-      toggleBtn.addEventListener('click', ()=>{
-          // We add the show-menu class to the div tag with the nav__menu class
-          nav.classList.toggle('show-menu')
-          // change icon
-          toggleBtn.classList.toggle('bx-x')
-      })
-  }
+
+    // Initialize chat manager for WebSocket functionality
+    const chatManager = new ChatManager();
+});
+
+// ==================== Router ====================
+const router = {
+    init() {
+        this.handleRoute(); // Handle the current route on page load
+        window.addEventListener('popstate', () => this.handleRoute()); // Listen for back/forward navigation
+    },
+
+    routes: {
+        '/': () => {
+            hideAllSections();
+            document.querySelector('.home').style.display = 'block'; // Display home section
+        },
+        '/create': () => {
+            hideAllSections();
+            document.querySelector('.create-post').style.display = 'block'; // Display create post section
+        },
+        '/chat': () => {
+            hideAllSections();
+            document.querySelector('.chat-container').style.display = 'flex'; // Show chat container
+            initializeNewChatButton();
+        },
+        '/logout': () => {
+            fetch('/logout', { method: 'POST', credentials: 'include' })
+                .then(() => { window.location.href = '/'; });
+        },
+        '/login': () => {
+            hideAllSections();
+            document.querySelector('.login-section').style.display = 'block'; // Display login section
+        },
+        '/register': () => {
+            hideAllSections();
+            document.querySelector('.register-section').style.display = 'block'; // Display register section
+        }
+    },
+
+    navigate(path) {
+        history.pushState(null, '', path); // Update the browser's URL without reloading the page
+        this.handleRoute(); // Handle the new route
+    },
+
+    handleRoute() {
+        const path = window.location.pathname; // Get the current path
+        const handler = this.routes[path] || this.routes['/']; // Default to the home route if path not found
+        handler();
+    }
+};
+
+// ==================== Section Management ====================
+function hideAllSections() {
+    document.querySelector('.home').style.display = 'none';
+    document.querySelector('.create-post').style.display = 'none';
+    document.querySelector('.chat-container').style.display = 'none';
+    document.querySelector('.login-section').style.display = 'none';
+    document.querySelector('.register-section').style.display = 'none';
 }
-showMenu('header-toggle','navbar')
 
-/*==================== LINK ACTIVE ====================*/
-const linkColor = document.querySelectorAll('.nav__link')
-
-function colorLink(){
-  linkColor.forEach(l => l.classList.remove('active'))
-  this.classList.add('active')
-}
-
-linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-
-/*==================== Pagination ====================*/
-
-const minPostsPerPage = 6; // Number of posts per page when there are fewer than 20 posts
-const defaultPostsPerPage = 10; // Default posts per page if there are 20 or more posts
-let postsPerPage = defaultPostsPerPage; // Default to 10 posts per page
+// ==================== Posts Management ====================
+const postsContainer = document.getElementById('posts-container');
+let allPosts = [];
 let currentPage = 1;
+const postsPerPage = 10;
 
-// Get elements
-const postsContainer = document.querySelector('.posts');
-const prevButton = document.querySelector('.pagination__prev');
-const nextButton = document.querySelector('.pagination__next');
-const infoSpan = document.querySelector('.pagination__info');
+async function fetchPosts(category = 'all') {
+    let apiUrl = '/api/posts';
+    if (category !== 'all') apiUrl += `?filter-category=${category}`;
 
-function showPage(page) {
-const totalPages = Math.ceil(posts.length / postsPerPage);
-
-// Validate page number
-if (page < 1 || page > totalPages) return;
-
-// Hide all posts
-posts.forEach((post, index) => {
-  post.style.display = 'none';
-  if (index >= (page - 1) * postsPerPage && index < page * postsPerPage) {
-    post.style.display = 'block';
-  }
-});
-
-// Update pagination controls
-prevButton.disabled = (page === 1);
-nextButton.disabled = (page === totalPages);
-infoSpan.textContent = `Page ${page} of ${totalPages}`;
+    try {
+        const response = await fetch(apiUrl, { headers: { Accept: 'application/json' } });
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        const { posts } = await response.json();
+        allPosts = posts;
+        renderPosts(); // Render posts for the current page
+        updatePaginationControls(); // Update pagination controls
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        postsContainer.innerHTML = '<p>Failed to load posts. Please try again.</p>';
+    }
 }
 
-// Chat UI Toggle
-document.getElementById('chat-link').addEventListener('click', () => {
-    const chatContainer = document.querySelector('.chat-container');
-    const mainContent = document.querySelector('main');
-    
-    if (chatContainer.style.display === 'none') {
-        chatContainer.style.display = 'flex';
-        mainContent.style.display = 'none';
-    } else {
-        chatContainer.style.display = 'none';
-        mainContent.style.display = 'block';
-    }
-});
+function renderPosts() {
+    postsContainer.innerHTML = ''; // Clear existing posts
+    const start = (currentPage - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const postsToShow = allPosts.slice(start, end);
 
-
-document.querySelectorAll('.user-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // Remove selected class from all users
-        document.querySelectorAll('.user-item').forEach(user => {
-            user.classList.remove('selected');
-        });
-        // Add selected class to clicked user
-        item.classList.add('selected');
+    postsToShow.forEach((post) => {
+        const postElement = document.createElement('article');
+        postElement.classList.add('post');
+        postElement.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.postDescription}</p>
+            <div class="post-meta">
+                <span>By: ${post.username}</span>
+                <span>Likes: ${post.like} | Dislikes: ${post.dislike}</span>
+                <span>Categories: ${post.categoryName.join(', ')}</span>
+            </div>
+        `;
+        postsContainer.appendChild(postElement);
     });
-});
-  class ChatUI {
-      constructor() {
-          this.ws = new WebSocket('ws://localhost:8080/ws');
-          this.setupWebSocket();
-          this.chatContainer = document.querySelector('.chat-container');
-          this.usersList = document.querySelector('.users-list');
-          this.messagesContainer = document.querySelector('.messages-container');
-          this.currentChatHeader = document.querySelector('.current-chat-user');
-          this.messageInput = document.getElementById('message-text');
-          this.sendButton = document.querySelector('.send-message');
-        
-          this.activeChats = new Map();
-          this.currentRecipient = null;
-          this.users = [];
+}
 
-          // Direct function binding for event listeners
-          this.sendButton.onclick = () => this.sendMessage();
-          this.messageInput.onkeypress = (e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  this.sendMessage();
-              }
-          };
+function updatePaginationControls() {
+    const totalPages = Math.ceil(allPosts.length / postsPerPage);
+    document.querySelector('.pagination__info').textContent = `Page ${currentPage} of ${totalPages}`;
+    document.querySelector('.pagination__prev').disabled = currentPage === 1;
+    document.querySelector('.pagination__next').disabled = currentPage === totalPages;
+}
 
-          this.loadAvailableUsers();
-          this.initializeNewChatButton();
-      }
-
-      setupWebSocket() {
-          this.ws.onmessage = (event) => {
-              const message = JSON.parse(event.data);
-              this.displayMessage({
-                  content: message.content,
-                  senderName: message.senderName,
-                  timestamp: message.timestamp,
-                  sent: false
-              });
-              this.scrollToBottom();
-          };
-      }
-
-      sendMessage() {
-        console.log("Sending message:", this.messageInput.value);
-          const content = this.messageInput.value.trim();
-          if (content && this.currentRecipient) {
-              const message = {
-                  content: content,
-                  receiverId: this.currentRecipient.UserID,
-                  timestamp: new Date().toISOString()
-              };
-            
-              // Send via WebSocket
-              this.ws.send(JSON.stringify(message));
-            
-              // Display sent message immediately
-              this.displayMessage({
-                  content: content,
-                  timestamp: message.timestamp,
-                  senderName: 'You',
-                  sent: true
-              });
-            
-              // Clear input
-              this.messageInput.value = '';
-              this.scrollToBottom();
-          }
-      }
-      
-      startChat(user) {
-          this.currentRecipient = user;
-          this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
-          document.querySelector('.message-input').style.display = 'flex';
-
-          
-          // Add user to left list if not already present
-          this.addUserToList(user);
-          
-          // Load chat history
-          fetch(`/api/chat/history/${user.UserID}`)
-              .then(response => response.json())
-              .then(messages => {
-                  this.messagesContainer.innerHTML = '';
-
-
-
-
-
-
-
-
-                  messages.forEach(msg => this.displayMessage(msg));
-                  this.scrollToBottom();
-              });
-      }
-
-      addUserToList(user) {
-          // Check if user already exists in list
-          if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
-              const userElement = document.createElement('div');
-              userElement.className = 'user-item';
-              userElement.dataset.userid = user.UserID;
-              userElement.innerHTML = `
-                  <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
-                  <div class="user-info">
-                      <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                      <span class="user-username">@${user.Username}</span>
-                  </div>
-              `;
-              userElement.addEventListener('click', () => this.startChat(user));
-              this.usersList.appendChild(userElement);
-          }
-      }
-
-      displayMessage(message) {
-          const messageElement = document.createElement('div');
-          messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
-          messageElement.innerHTML = `
-              <div class="message-header">
-                  <span class="message-sender">${message.senderName}</span>
-                  <span class="message-time">${this.formatTime(message.timestamp)}</span>
-              </div>
-              <span class="message-content">${message.content}</span>
-          `;
-          this.messagesContainer.appendChild(messageElement);
-      }
-
-      scrollToBottom() {
-          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      }
-
-      formatTime(timestamp) {
-          return new Date(timestamp).toLocaleTimeString([], { 
-              hour: '2-digit', 
-              minute: '2-digit' 
-          });
-      }
-  }
-
-  // Initialize chat when chat route is activated
-  router.routes['/chat'] = () => {
-      hideAllSections();
-      document.querySelector('.chat-container').style.display = 'flex';
-      if (!window.chatManager) {
-          window.chatManager = new ChatUI();
-      }
-  };
-  
-class ChatManager {
-      constructor() {
-          this.ws = new WebSocket('ws://localhost:8080/ws');
-          this.chatUI = new ChatUI();
-        
-          this.ws.onmessage = (event) => {
-              const message = JSON.parse(event.data);
-              this.chatUI.displayMessage({
-                  content: message.content,
-                  timestamp: message.timestamp,
-                  senderName: message.senderName,
-                  sent: false
-              });
-          };
-
-          // Update the event listener to use this.chatUI
-          document.querySelector('.send-message').addEventListener('click', () => {
-              this.chatUI.sendMessage();
-          });
-      }
-  }  
-
-  // Initialize chat when DOM loads
-  document.addEventListener('DOMContentLoaded', () => {
-      router.init();
-
-      // Navigation links
-      document.querySelectorAll('.nav__link').forEach(link => {
-          link.addEventListener('click', (e) => {
-              e.preventDefault();
-              const path = link.getAttribute('data-path');
-              router.navigate(path);
-          });
-      });
-
-      const chatManager = new ChatManager();
-  });
-
-  // Helper functions
-  function getCurrentSelectedUser() {
-      const selectedUser = document.querySelector('.user-item.selected');
-      return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
-  }
-
-  document.getElementById('message-text').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        const chatManager = new ChatManager();
-        chatManager.chatUI.sendMessage();
+// Pagination controls
+document.querySelector('.pagination__prev').addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        renderPosts();
+        updatePaginationControls();
     }
 });
+
+document.querySelector('.pagination__next').addEventListener('click', () => {
+    if (currentPage < Math.ceil(allPosts.length / postsPerPage)) {
+        currentPage++;
+        renderPosts();
+        updatePaginationControls();
+    }
+});
+
+// ==================== Chat Management ====================
+function initializeNewChatButton() {
+    const newChatBtn = document.querySelector('.new-chat-btn');
+    if (newChatBtn) {
+        newChatBtn.addEventListener('click', () => this.showUserSelectModal());
+    }
+}
+
+// Placeholder for chat-related functions (showUserSelectModal, ChatUI, ChatManager)
+// Add chat functions here if needed
+
+// ==================== Navigation Bar Management ====================
+const showMenu = (headerToggle, navbarId) => {
+    const toggleBtn = document.getElementById(headerToggle);
+    const nav = document.getElementById(navbarId);
+
+    if (headerToggle && navbarId) {
+        toggleBtn.addEventListener('click', () => {
+            nav.classList.toggle('show-menu');
+            toggleBtn.classList.toggle('bx-x');
+        });
+    }
+};
+showMenu('header-toggle', 'navbar');
+
+const linkColor = document.querySelectorAll('.nav__link');
+
+function colorLink() {
+    linkColor.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+}
+
+linkColor.forEach(l => l.addEventListener('click', colorLink));
+
+// ==================== Helper Functions ====================
+function getCurrentSelectedUser() {
+    const selectedUser = document.querySelector('.user-item.selected');
+    return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
+}
