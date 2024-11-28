@@ -127,56 +127,58 @@ func InsertPostCategories(post_id int, category_id int) error {
 
 
 func InsertLikes(post_id int, user_id int) error {
-	likeserr := utils.ValidateInput(map[string]string{"post_id": string(post_id), "user_id": string(user_id)})
-	if likeserr != nil {
-		return likeserr
-	}
-	var count int
-	err := db.QueryRow("SELECT COUNT(*) FROM likes WHERE post_id = ? AND user_id = ?", post_id, user_id).Scan(&count)
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	if count == 1 {
-		// If the like exists, delete it (unlike)
-		stmt, err := db.Prepare("DELETE FROM likes WHERE post_id = ? AND user_id = ?")
-		if err != nil {
-			log.Println(err)
-			return err
-		}
-		_, err = stmt.Exec(post_id, user_id)
-		if err != nil {
-			return err
-		}
-	} else {
-		// If the like does not exist, insert it (like)
-		stmt, err := db.Prepare("INSERT INTO likes(post_id, user_id) values (?, ?)")
-		if err != nil {
-			log.Println(err)
-			return err
-		}
-		_, err = stmt.Exec(post_id, user_id)
-		if err != nil {
-			log.Println(err)
-			return err
-		}
-	}
-	return nil
+    log.Printf("Inserting like for PostID: %d, UserID: %d", post_id, user_id)
+
+    var count int
+    err := db.QueryRow("SELECT COUNT(*) FROM Post_Like WHERE post_Id = ? AND user_Id = ?", post_id, user_id).Scan(&count)
+    if err != nil {
+        log.Println("Error querying Post_Like:", err)
+        return err
+    }
+
+    if count == 1 {
+        log.Println("Like already exists, removing it")
+        stmt, err := db.Prepare("DELETE FROM Post_Like WHERE post_Id = ? AND user_Id = ?")
+        if err != nil {
+            log.Println("Error preparing DELETE statement:", err)
+            return err
+        }
+        _, err = stmt.Exec(post_id, user_id)
+        if err != nil {
+            log.Println("Error executing DELETE statement:", err)
+            return err
+        }
+    } else {
+        log.Println("Like does not exist, adding it")
+        stmt, err := db.Prepare("INSERT INTO Post_Like(post_Id, user_Id) VALUES (?, ?)")
+        if err != nil {
+            log.Println("Error preparing INSERT statement:", err)
+            return err
+        }
+        _, err = stmt.Exec(post_id, user_id)
+        if err != nil {
+            log.Println("Error executing INSERT statement:", err)
+            return err
+        }
+    }
+
+    return nil
 }
+
 func InsertDislikes(post_id int, user_id int) error {
-	dislikeserr := utils.ValidateInput(map[string]string{"post_id": string(post_id), "user_id": string(user_id)})
+	dislikeserr := utils.ValidateInput(map[string]string{"post_Id": string(post_id), "user_Id": string(user_id)})
 	if dislikeserr != nil {
 		return dislikeserr
 	}
 	var count int
-	err := db.QueryRow("SELECT COUNT(*) FROM dislikes WHERE post_id = ? AND user_id = ?", post_id, user_id).Scan(&count)
+	err := db.QueryRow("SELECT COUNT(*) FROM Post_Dislike WHERE post_Id = ? AND user_Id = ?", post_id, user_id).Scan(&count)
 	if err != nil {
 		log.Println(err)
 		return err
 	}
 	if count == 1 {
 		// If the like exists, delete it (unlike)
-		stmt, err := db.Prepare("DELETE FROM dislikes WHERE post_id = ? AND user_id = ?")
+		stmt, err := db.Prepare("DELETE FROM Post_Dislike WHERE post_Id = ? AND user_Id = ?")
 		if err != nil {
 			log.Println(err)
 			return err
@@ -188,7 +190,7 @@ func InsertDislikes(post_id int, user_id int) error {
 		}
 	} else {
 		// If the like does not exist, insert it (like)
-		stmt, err := db.Prepare("INSERT INTO dislikes(post_id, user_id) values (?, ?)")
+		stmt, err := db.Prepare("INSERT INTO Post_Dislike(post_Id, user_Id) values (?, ?)")
 		if err != nil {
 			log.Println(err)
 			return err

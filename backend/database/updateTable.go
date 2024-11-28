@@ -4,33 +4,41 @@ import (
 	// "database/sql"
 
 	"log"
+	"real-time-forum/backend/structs"
 	"time"
-
 )
 
-func UpdatePost(postId int) error {
-	stmt1, err := db.Prepare("UPDATE Post SET 'like'= (SELECT count(*) FROM Post_Like where post_id=?) where post_id=?;")
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	_, err = stmt1.Exec(postId, postId)
-	if err != nil {
-		log.Println(err)
-		return err
-	}
 
-	stmt2, err := db.Prepare("UPDATE Post SET dislike=(SELECT count(*) FROM Post_Dislike where post_id=?) where post_id=?;")
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	_, err = stmt2.Exec(postId, postId)
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	return nil
+func UpdatePost(postId int) (structs.Post, error) {
+    // Update likes and dislikes as before
+    query := `
+        UPDATE Post
+        SET 
+            likesNum = (SELECT COUNT(*) FROM Post_Like WHERE post_Id = ?),
+            dislikesNum = (SELECT COUNT(*) FROM Post_Dislike WHERE post_Id = ?)
+        WHERE post_Id = ?;
+    `
+    stmt, err := db.Prepare(query)
+    if err != nil {
+        log.Printf("Error preparing update statement: %v", err)
+        return structs.Post{}, err
+    }
+    defer stmt.Close()
+
+    _, err = stmt.Exec(postId, postId, postId)
+    if err != nil {
+        log.Printf("Error executing update statement: %v", err)
+        return structs.Post{}, err
+    }
+
+    // Fetch the updated post details
+    post, err := GetPostById(postId)
+    if err != nil {
+        log.Printf("Error fetching updated post: %v", err)
+        return structs.Post{}, err
+    }
+
+    return post, nil
 }
 
 func UpdateSession() error {

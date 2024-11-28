@@ -21,7 +21,7 @@ func DeleteLike(postId int, userId int) error {
 }
 
 func DeleteDislike(postId int, userId int) error {
-	stmt1, err := db.Prepare("DELETE FROM Post_Dislike WHERE post_id = ? AND user_id= ?")
+	stmt1, err := db.Prepare("DELETE FROM Post_Dislike WHERE post_Id = ? AND user_Id= ?")
 	if err != nil {
 		log.Println(err)
 		return err

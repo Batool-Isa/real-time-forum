@@ -39,9 +39,9 @@ func main() {
 				handler.GetCategoriesHandler(w, r)
 			case "/api/posts/create":
 				middleware.SessionValidator(http.HandlerFunc(handler.CreatePostHandler)).ServeHTTP(w, r)
-			case "/api/posts/like":
-				middleware.SessionValidator(http.HandlerFunc(handler.LikePost)).ServeHTTP(w, r)
-			case "/api/posts/dislike":
+			case "/api/like":
+				middleware.SessionValidator(http.HandlerFunc(handler.LikePost))
+			case "/api/dislike":
 				middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)).ServeHTTP(w, r)
 			case "/api/comment":
 				middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)).ServeHTTP(w, r)

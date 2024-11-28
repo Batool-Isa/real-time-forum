@@ -1,66 +1,77 @@
 package handler
 
 import (
-	"fmt"
+	"encoding/json"
+	"io"
+	"log"
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
 	"real-time-forum/backend/structs"
-	"real-time-forum/backend/utils"
-	"strconv"
-	// "structs"
 )
 
 func DislikePost(w http.ResponseWriter, r *http.Request) {
-	_, ok := r.Context().Value(middleware.SessionKey).(structs.Session)
-	if !ok {
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
-		w.WriteHeader(http.StatusForbidden)
-		return
-		// utils.ErrorHandler(w, r, http.StatusForbidden)
+    session, ok := r.Context().Value(middleware.SessionKey).(structs.Session)
+    if !ok {
+        w.WriteHeader(http.StatusUnauthorized)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Unauthorized"})
+        return
+    }
 
-		//http.Error(w, "Unable to retrieve session", http.StatusInternalServerError)
-		return
+    if r.Method != http.MethodPost {
+        w.WriteHeader(http.StatusMethodNotAllowed)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Method not allowed"})
+        return
+    }
+
+    var requestData struct {
+		PostID int `json:"post_id"`
 	}
-	if r.Method != http.MethodPost {
-		utils.ErrorHandler(w, r, http.StatusMethodNotAllowed)
-
-		//http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
-
-	postID := r.FormValue("post_id")
-	if postID == "" {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-
-		//http.Error(w, "Missing post_id", http.StatusBadRequest)
-		return
-	}
-
-	pid, err := strconv.Atoi(postID)
+	
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-		//http.Error(w, "Invalid post_id", http.StatusBadRequest)
+		log.Println("Error reading body:", err)
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
-
-	uid, err := RetrieveLoggedUser(r)
+	
+	log.Println("Raw request body:", string(body))
+	
+	err = json.Unmarshal(body, &requestData)
 	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusInternalServerError)
-
-		//utils.ErrorHandler(w,r,http.StatusInternalServerError)
-		//http.Error(w, "Unable to retrieve user ID", http.StatusInternalServerError)
-
+		log.Println("Error decoding JSON:", err)
+		http.Error(w, "Invalid JSON format", http.StatusBadRequest)
 		return
 	}
+	
+	log.Println("Parsed PostID:", requestData.PostID)
+	
+    err = json.NewDecoder(r.Body).Decode(&requestData)
+    if err != nil || requestData.PostID == 0 {
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Invalid request body"})
+        return
+    }
 
-	// Insert into Post_Dislike table
-	inserterr := database.InsertDislikes(pid, uid)
-	if inserterr != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-	}
-	database.DeleteLike(pid, uid)
-	database.UpdatePost(pid)
+	
+    uid := session.UserID
 
-	http.Redirect(w, r, fmt.Sprintf("/post?id=%d", pid), http.StatusSeeOther)
+    err = database.InsertDislikes(requestData.PostID, uid)
+    if err != nil {
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to dislike post"})
+        return
+    }
+
+    _ = database.DeleteDislike(requestData.PostID, uid)
+    post, err := database.UpdatePost(requestData.PostID)
+    if err != nil {
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to update post counts"})
+        return
+    }
+
+    w.WriteHeader(http.StatusOK)
+    json.NewEncoder(w).Encode(post)
 }
+

@@ -113,31 +113,33 @@ async function fetchPosts(category = 'all') {
     }
 }
 
+
+
 function renderPosts() {
     postsContainer.innerHTML = ''; // Clear existing posts
     const start = (currentPage - 1) * postsPerPage;
     const end = start + postsPerPage;
     const postsToShow = allPosts.slice(start, end);
-
     postsToShow.forEach((post) => {
         const postElement = document.createElement('article');
         postElement.classList.add('post');
-        console.log('Render posts updated');
+        postElement.setAttribute('data-id', post.postId); // Add a unique identifier
         postElement.innerHTML = `
             <a href="#" class="post-link" data-id="${post.postId}">
                 <p>${post.postDescription}</p>
             </a>
             <div class="post-meta">
-                <span>By: ${post.postId}</span>
-
                 <span>By: ${post.username}</span>
-                <span>Likes: ${post.like} | Dislikes: ${post.dislike}</span>
+                <span>👍 <span class="like-count">${post.like}</span> | 👎 <span class="dislike-count">${post.dislike}</span></span>
                 <span>Categories: ${post.categoryName.join(', ')}</span>
+            </div>
+            <div class="post-actions">
+                <button class="like-btn" data-id="${post.postId}">👍 Like</button>
+                <button class="dislike-btn" data-id="${post.postId}">👎 Dislike</button>
             </div>
         `;
         postsContainer.appendChild(postElement);
     });
-
     // Add event listeners for post links
     document.querySelectorAll('.post-link').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -146,8 +148,21 @@ function renderPosts() {
             router.navigate(`/post?id=${postId}`);
         });
     });
+      // Add event listeners for like and dislike buttons
+      document.querySelectorAll('.like-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(`Like clicked for post ID: ${button.dataset.id}`);
+            handleLike(button.dataset.id);
+        });
+    });
+    document.querySelectorAll('.dislike-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(`Dislike clicked for post ID: ${button.dataset.id}`);
+            handleLikeDislike(button.dataset.id, 'dislike');
+        });
+    });
+    
 }
-
 
 function updatePaginationControls() {
     const totalPages = Math.ceil(allPosts.length / postsPerPage);
@@ -174,15 +189,219 @@ document.querySelector('.pagination__next').addEventListener('click', () => {
 });
 
 // ==================== Chat Management ====================
-function initializeNewChatButton() {
-    const newChatBtn = document.querySelector('.new-chat-btn');
-    if (newChatBtn) {
-        newChatBtn.addEventListener('click', () => this.showUserSelectModal());
+
+/*==================== CHAT FUNCTIONALITY ====================*/
+
+// Chat UI Class
+class ChatUI {
+    constructor() {
+        this.ws = new WebSocket('ws://localhost:8080/ws'); // WebSocket setup
+        this.setupWebSocket();
+        this.chatContainer = document.querySelector('.chat-container');
+        this.usersList = document.querySelector('.users-list');
+        this.messagesContainer = document.querySelector('.messages-container');
+        this.currentChatHeader = document.querySelector('.current-chat-user');
+        this.messageInput = document.getElementById('message-text');
+        this.sendButton = document.querySelector('.send-message');
+      
+        this.activeChats = new Map();
+        this.currentRecipient = null;
+        this.users = [];
+
+        // Event listeners
+        this.sendButton.onclick = () => this.sendMessage();
+        this.messageInput.onkeypress = (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendMessage();
+            }
+        };
+
+        // Load available users and initialize chat features
+        this.loadAvailableUsers();
+        this.initializeNewChatButton();
+    }
+
+    setupWebSocket() {
+        this.ws.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            this.displayMessage({
+                content: message.content,
+                senderName: message.senderName,
+                timestamp: message.timestamp,
+                sent: false
+            });
+            this.scrollToBottom();
+        };
+    }
+
+    sendMessage() {
+        const content = this.messageInput.value.trim();
+        if (content && this.currentRecipient) {
+            const message = {
+                content: content,
+                receiverId: this.currentRecipient.UserID,
+                timestamp: new Date().toISOString()
+            };
+
+            // Send via WebSocket
+            this.ws.send(JSON.stringify(message));
+
+            // Display sent message immediately
+            this.displayMessage({
+                content: content,
+                timestamp: message.timestamp,
+                senderName: 'You',
+                sent: true
+            });
+
+            // Clear input
+            this.messageInput.value = '';
+            this.scrollToBottom();
+        }
+    }
+
+    startChat(user) {
+        this.currentRecipient = user;
+        this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+        document.querySelector('.message-input').style.display = 'flex';
+
+        // Add user to chat list
+        this.addUserToList(user);
+
+        // Load chat history
+        fetch(`/api/chat/history/${user.UserID}`)
+            .then(response => response.json())
+            .then(messages => {
+                this.messagesContainer.innerHTML = '';
+                messages.forEach(msg => this.displayMessage(msg));
+                this.scrollToBottom();
+            });
+    }
+
+    addUserToList(user) {
+        if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
+            const userElement = document.createElement('div');
+            userElement.className = 'user-item';
+            userElement.dataset.userid = user.UserID;
+            userElement.innerHTML = `
+                <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                <div class="user-info">
+                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                    <span class="user-username">@${user.Username}</span>
+                </div>
+            `;
+            userElement.addEventListener('click', () => this.startChat(user));
+            this.usersList.appendChild(userElement);
+        }
+    }
+
+    loadAvailableUsers() {
+        fetch('/api/users')
+            .then(response => response.json())
+            .then(users => {
+                this.users = users;
+                users.forEach(user => this.addUserToList(user));
+            });
+    }
+
+    displayMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
+        messageElement.innerHTML = `
+            <div class="message-header">
+                <span class="message-sender">${message.senderName}</span>
+                <span class="message-time">${this.formatTime(message.timestamp)}</span>
+            </div>
+            <span class="message-content">${message.content}</span>
+        `;
+        this.messagesContainer.appendChild(messageElement);
+    }
+
+    scrollToBottom() {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    }
+
+    formatTime(timestamp) {
+        return new Date(timestamp).toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
+    }
+
+    initializeNewChatButton() {
+        const newChatBtn = document.querySelector('.new-chat-btn');
+        if (newChatBtn) {
+            newChatBtn.addEventListener('click', () => this.showUserSelectModal());
+        }
+    }
+
+    showUserSelectModal() {
+        fetch('/api/users')
+            .then(response => response.json())
+            .then(users => {
+                const modal = this.createModal(users);
+                document.body.appendChild(modal.overlay);
+                document.body.appendChild(modal.modal);
+            });
+    }
+
+    createModal(users) {
+        const modal = document.createElement('div');
+        modal.className = 'user-select-modal active';
+
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay active';
+
+        modal.innerHTML = `
+            <h3>Select User</h3>
+            <div class="user-select-list">
+                ${users.map(user => `
+                    <div class="user-item" data-userid="${user.UserID}">
+                        <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                            <span class="user-username">@${user.Username}</span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        modal.querySelectorAll('.user-item').forEach(item => {
+            item.onclick = () => {
+                const userId = item.dataset.userid;
+                this.startChat(this.users.find(u => u.UserID === parseInt(userId)));
+                modal.remove();
+                overlay.remove();
+            };
+        });
+        overlay.onclick = () => {
+            modal.remove();
+            overlay.remove();
+        };
+        return { modal, overlay };
     }
 }
 
-// Placeholder for chat-related functions (showUserSelectModal, ChatUI, ChatManager)
-// Add chat functions here if needed
+// Chat Manager Class
+class ChatManager {
+    constructor() {
+        this.ws = new WebSocket('ws://localhost:8080/ws');
+        this.chatUI = new ChatUI();
+
+        this.ws.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            this.chatUI.displayMessage({
+                content: message.content,
+                timestamp: message.timestamp,
+                senderName: message.senderName,
+                sent: false
+            });
+        };
+    }
+}
+
+
 
 // ==================== Navigation Bar Management ====================
 const showMenu = (headerToggle, navbarId) => {
@@ -236,39 +455,40 @@ async function fetchPostDetails(postId) {
 
         // Set the innerHTML for the post details, including the comments section
         postContainer.innerHTML = `
-            <article class="post">
-                <pre><p class="post-description">${post.postDescription}</p></pre>
-                <div class="post-category">
-                    <span>Categories: ${post.categoryName.join(', ')}</span>
-                </div>
-                <div class="post-info">
-                    <form method="post" action="/like">
-                        <input type="hidden" name="action" value="like" />
-                        <input type="hidden" name="post_id" value="${post.postId}" />
-                        <button type="submit" class="post-button">
-                            <i class="bx bx-like"></i> <span>${post.like}</span>
-                        </button>
-                    </form>
-
-                    <form method="post" action="/dislike">
-                        <input type="hidden" name="action" value="dislike" />
-                        <input type="hidden" name="post_id" value="${post.postId}" />
-                        <button type="submit" class="post-button">
-                            <i class="bx bx-dislike"></i> <span>${post.dislike}</span>
-                        </button>
-                    </form>
-                    <span class="post-author">by ${post.username}</span>
-                </div>
-                <div class="post-comments">
-                    <h3>Comments</h3>
-                    <ul>${commentsHTML}</ul>
-                    <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
-                        <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </article>
-        `;
+        <article class="post">
+            <pre><p class="post-description">${post.postDescription}</p></pre>
+            <div class="post-category">
+                <span>Categories: ${post.categoryName.join(', ')}</span>
+            </div>
+            <div class="post-info">
+                <form method="post" action="/like">
+                    <input type="hidden" name="action" value="like" />
+                    <input type="hidden" name="post_id" value="${post.postId}" />
+                    <button type="submit" class="post-button">
+                        👍 <span>${post.like}</span>
+                    </button>
+                </form>
+    
+                <form method="post" action="/dislike">
+                    <input type="hidden" name="action" value="dislike" />
+                    <input type="hidden" name="post_id" value="${post.postId}" />
+                    <button type="submit" class="post-button">
+                        👎 <span>${post.dislike}</span>
+                    </button>
+                </form>
+                <span class="post-author">by ${post.username}</span>
+            </div>
+            <div class="post-comments">
+                <h3>Comments</h3>
+                <ul>${commentsHTML}</ul>
+                <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
+                    <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </article>
+    `;
+    
     } catch (error) {
         // Log the error and display a fallback error message
         console.error('Error fetching post details:', error);
@@ -320,3 +540,77 @@ async function submitComment(postId) {
         alert('An error occurred while submitting your comment.');
     }
 }
+
+async function handleLike(postId) {
+    console.log(`Sending like request for post ID: ${postId}`);
+    try {
+        const response = await fetch(`/api/like`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ post_id: parseInt(postId) }),
+            credentials: 'include',
+        });
+
+        console.log('Raw response for like:', response);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response for like:', errorText);
+            alert(`Error: ${errorText}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Updated post after like:', data);
+
+        // Update the UI with the new like count
+        updatePostUI(data);
+    } catch (error) {
+        console.error('Error handling like:', error);
+        alert('An error occurred while liking the post.');
+    }
+}
+
+function updatePostUI(postData) {
+    const postElement = document.querySelector(`.post[data-id="${postData.postId}"]`);
+    if (postElement) {
+        postElement.querySelector('.like-count').textContent = postData.like;
+        postElement.querySelector('.dislike-count').textContent = postData.dislike;
+    }
+}
+
+
+async function handleLikeDislike(postId, action) {
+    console.log("Sending request for:", action, "with post ID:", postId); // Debug log
+    try {
+        const response = await fetch(`/api/${action}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ post_d: parseInt(postId) }),
+            credentials: 'include',
+        });
+
+        console.log('Raw response:', response);
+
+        if (!response.ok) {
+            const errorText = await response.text(); // Read text response in case of errors
+            console.error('Error response:', errorText);
+            alert(`Error: ${errorText}`);
+            return;
+        }
+
+        // Handle empty or non-JSON responses
+        const contentType = response.headers.get('Content-Type');
+        if (contentType && contentType.includes('application/json')) {
+            const data = await response.json();
+            console.log('Updated post:', data);
+            updatePostUI(data); // Update the UI with the new post data
+        } else {
+            console.log('No JSON response body');
+        }
+    } catch (error) {
+        console.error('Error handling like/dislike:', error);
+        alert('An error occurred while updating the post.');
+    }
+}
+

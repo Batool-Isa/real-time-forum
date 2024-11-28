@@ -1,77 +1,127 @@
 package handler
 
 import (
-	"fmt"
+	"encoding/json"
+	"io"
+	"log"
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
 	"real-time-forum/backend/structs"
-	"real-time-forum/backend/utils"
-	"strconv"
-	// "structs"
 )
 
-// func GetUserIDFromCookie(r *http.Request) (int, error) {
-// 	cookie, err := r.Cookie("user_id")
-// 	if err != nil {
-// 		return 0, err
-// 	}
-
-// 	userID, err := strconv.Atoi(cookie.Value)
-// 	if err != nil {
-// 		return 0, err
-// 	}
-
-// 	return userID, nil
-// }
 
 func LikePost(w http.ResponseWriter, r *http.Request) {
-	_, ok := r.Context().Value(middleware.SessionKey).(structs.Session)
-	if !ok {
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
-		w.WriteHeader(http.StatusForbidden)
-		return
-		// utils.ErrorHandler(w, r, http.StatusForbidden)
+    session, ok := r.Context().Value(middleware.SessionKey).(structs.Session)
+    if !ok {
+        w.WriteHeader(http.StatusUnauthorized)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Unauthorized"})
+        return
+    }
 
-		//http.Error(w, "Unable to retrieve session", http.StatusInternalServerError)
-	}
-	if r.Method != http.MethodPost {
-		utils.ErrorHandler(w, r, http.StatusMethodNotAllowed)
+    if r.Method != http.MethodPost {
+        w.WriteHeader(http.StatusMethodNotAllowed)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Method not allowed"})
+        return
+    }
 
-		//http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
+    var requestData struct {
+        PostID int `json:"post_id"`
+    }
 
-	postID := r.FormValue("post_id")
-	if postID == "" {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-		//http.Error(w, "Missing post_id", http.StatusBadRequest)
-		return
-	}
+    // Read and log the request body
+    body, err := io.ReadAll(r.Body)
+    if err != nil {
+        log.Println("Error reading body:", err)
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Invalid request body"})
+        return
+    }
 
-	pid, err := strconv.Atoi(postID)
-	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-		//http.Error(w, "Invalid post_id", http.StatusBadRequest)
-		return
-	}
+    log.Println("Raw request body:", string(body))
 
-	uid, err := RetrieveLoggedUser(r)
-	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusForbidden)
-		//utils.ErrorHandler(w,r,http.StatusInternalServerError)
-		//http.Error(w, "Unable to retrieve user ID", http.StatusInternalServerError)
+    // Unmarshal the JSON data into requestData
+    err = json.Unmarshal(body, &requestData)
+    if err != nil {
+        log.Println("Error decoding JSON:", err)
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Invalid JSON format"})
+        return
+    }
 
-		return
-	}
+    log.Println("Parsed PostID:", requestData.PostID)
 
-	// Insert into Post_Like table
-	inserterr := database.InsertLikes(pid, uid)
-	if inserterr != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-	}
-	database.DeleteDislike(pid, uid)
-	database.UpdatePost(pid)
+    // Check if PostID is valid
+    if requestData.PostID == 0 {
+        log.Println("PostID is missing or invalid")
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Missing or invalid post_id"})
+        return
+    }
 
-	http.Redirect(w, r, fmt.Sprintf("/post?id=%d", pid), http.StatusSeeOther)
+    uid := session.UserID
+    log.Printf("UserID: %d is liking PostID: %d", uid, requestData.PostID)
+
+    // Perform the like operation
+    err = database.InsertLikes(requestData.PostID, uid)
+    if err != nil {
+        log.Println("Error inserting like:", err)
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to like post"})
+        return
+    }
+
+    // Update the post counts
+    post, err := database.UpdatePost(requestData.PostID)
+    if err != nil {
+        log.Println("Error updating post:", err)
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to update post counts"})
+        return
+    }
+
+    // Send the updated post data as JSON response
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    json.NewEncoder(w).Encode(post)
+}
+
+
+func LikePostTest(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodPost {
+        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+        return
+    }
+
+    var requestData struct {
+        PostID int `json:"post_id"`
+    }
+
+    body, err := io.ReadAll(r.Body)
+    if err != nil {
+        log.Println("Error reading body:", err)
+        http.Error(w, "Invalid request body", http.StatusBadRequest)
+        return
+    }
+
+    log.Println("Raw request body:", string(body))
+
+    err = json.Unmarshal(body, &requestData)
+    if err != nil {
+        log.Println("Error decoding JSON:", err)
+        http.Error(w, "Invalid JSON format", http.StatusBadRequest)
+        return
+    }
+
+    log.Printf("Parsed PostID: %d", requestData.PostID)
+
+    // Return a static response for testing
+    response := map[string]interface{}{
+        "status":  "success",
+        "post_Id": requestData.PostID,
+        "likes":   10, // Mocked data
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(response)
 }
