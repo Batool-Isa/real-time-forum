@@ -243,10 +243,19 @@ class ChatUI {
                 receiverId: this.currentRecipient.UserID,
                 timestamp: new Date().toISOString()
             };
-
+    
             // Send via WebSocket
             this.ws.send(JSON.stringify(message));
-
+    
+            // Send to backend for database storage
+            fetch('/api/saveMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            });
+    
             // Display sent message immediately
             this.displayMessage({
                 content: content,
@@ -254,13 +263,13 @@ class ChatUI {
                 senderName: 'You',
                 sent: true
             });
-
+    
             // Clear input
             this.messageInput.value = '';
             this.scrollToBottom();
         }
     }
-
+    
     startChat(user) {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
@@ -268,15 +277,14 @@ class ChatUI {
 
         // Add user to chat list
         this.addUserToList(user);
-
-        // Load chat history
         fetch(`/api/chat/history/${user.UserID}`)
-            .then(response => response.json())
-            .then(messages => {
-                this.messagesContainer.innerHTML = '';
-                messages.forEach(msg => this.displayMessage(msg));
-                this.scrollToBottom();
-            });
+        .then(response => response.json())
+        .then(messages => {
+            this.messagesContainer.innerHTML = '';
+            messages.forEach(msg => this.displayMessage(msg));
+            this.scrollToBottom();
+        });
+    
     }
 
     addUserToList(user) {

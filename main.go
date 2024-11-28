@@ -47,8 +47,8 @@ func main() {
 				middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)).ServeHTTP(w, r)
 			case "/api/users":
 				handler.GetUsersHandler(w, r)
-			case "/api/chat/history/":
-				handler.ChatHistoryHandler(w, r)
+			// case "/api/chat/history/":
+			// 	handler.ChatHistoryHandler(w, r)
 			default:
 				http.NotFound(w, r)
 			}
@@ -65,7 +65,8 @@ func main() {
 	//http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.GetPostsHandler)))
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
 	http.Handle("/post", middleware.SessionValidator(http.HandlerFunc(handler.PostHandler)))
-
+	http.Handle("/api/saveMessage",  middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
+    http.Handle("/api/chat/history",  middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
 
 	
