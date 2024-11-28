@@ -43,7 +43,7 @@ func main() {
 				middleware.SessionValidator(http.HandlerFunc(handler.LikePost)).ServeHTTP(w, r)
 			case "/api/posts/dislike":
 				middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)).ServeHTTP(w, r)
-			case "/api/comments":
+			case "/api/comment":
 				middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)).ServeHTTP(w, r)
 			case "/api/users":
 				handler.GetUsersHandler(w, r)

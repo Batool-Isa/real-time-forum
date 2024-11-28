@@ -26,6 +26,24 @@ func RetrieveUser(username string)(structs.User, error){
     return user, nil
 
 }
+func GetUsername(uid int) (string, error) {
+    // SQL query to get the username based on the user ID
+    query := "SELECT username FROM User WHERE user_Id = ?"
+    row := db.QueryRow(query, uid)
+
+    // Declare a variable to store the username
+    var username string
+    err := row.Scan(&username)
+    if err != nil {
+        if err == sql.ErrNoRows {
+            log.Println("No user found with the given ID:", uid)
+            return "", err
+        }
+        log.Println("Error scanning username:", err)
+        return "", err
+    }
+    return username, nil
+}
 
 func FetchAllUsers() ([]structs.User, error) {
     query := "SELECT user_Id, username, email, age, gender, firstName, lastName FROM User"

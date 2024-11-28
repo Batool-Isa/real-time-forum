@@ -94,7 +94,7 @@ func InsertComment(comment string, user_id int, postId int) error {
 	if CommentErr != nil {
 		return CommentErr
 	}
-	stmt, err := db.Prepare("INSERT INTO comments(comment, user_id, post_id) values (?, ?, ?)")
+	stmt, err := db.Prepare("INSERT INTO Comment(comment_content, user_Id, post_Id) values (?, ?, ?)")
 	if err != nil {
 		log.Println(err)
 		return err

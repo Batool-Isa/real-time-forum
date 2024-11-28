@@ -131,7 +131,7 @@ function renderPosts() {
                 <span>By: ${post.postId}</span>
 
                 <span>By: ${post.username}</span>
-                <span>Likeshbjb: ${post.like} | Dislikes: ${post.dislike}</span>
+                <span>Likes: ${post.like} | Dislikes: ${post.dislike}</span>
                 <span>Categories: ${post.categoryName.join(', ')}</span>
             </div>
         `;
@@ -212,7 +212,6 @@ function getCurrentSelectedUser() {
     const selectedUser = document.querySelector('.user-item.selected');
     return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
 }
-
 async function fetchPostDetails(postId) {
     try {
         // Fetch the post details from the server
@@ -225,7 +224,17 @@ async function fetchPostDetails(postId) {
         // Get the container for post details
         const postContainer = document.querySelector('.post-details');
 
-        // Set the innerHTML directly
+        // Check if there are comments, and generate the comments section accordingly
+        const commentsHTML = post.comments && post.comments.length > 0
+            ? post.comments.map(comment => `
+                <li>
+                    <p>${comment.commentText}</p>
+                    <span>By: ${comment.username}</span>
+                </li>
+            `).join('')
+            : '<p>No comments yet. Be the first to comment!</p>';
+
+        // Set the innerHTML for the post details, including the comments section
         postContainer.innerHTML = `
             <article class="post">
                 <pre><p class="post-description">${post.postDescription}</p></pre>
@@ -252,11 +261,14 @@ async function fetchPostDetails(postId) {
                 </div>
                 <div class="post-comments">
                     <h3>Comments</h3>
-                    
+                    <ul>${commentsHTML}</ul>
+                    <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
+                        <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </article>
         `;
-
     } catch (error) {
         // Log the error and display a fallback error message
         console.error('Error fetching post details:', error);
@@ -264,4 +276,47 @@ async function fetchPostDetails(postId) {
         postContainer.innerHTML = '<p>Failed to load post details.</p>';
     }
 }
- 
+
+
+async function submitComment(postId) {
+    const commentInput = document.querySelector('#comment-input');
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert('Comment cannot be empty.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/comment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ post_id: postId, comment: commentText }),
+            credentials: 'include', // Include cookies for session handling
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            alert(`Error: ${error.error}`);
+            return;
+        }
+
+        const result = await response.json();
+        alert(result.message);
+
+        // Dynamically add the comment to the comment section
+        const commentsContainer = document.querySelector('.post-comments ul');
+        const newComment = document.createElement('li');
+        newComment.innerHTML = `
+            <p>${commentText}</p>
+            <span>By: ${result.username}</span>
+        `;
+        commentsContainer.appendChild(newComment);
+
+        // Clear the input field
+        commentInput.value = '';
+    } catch (error) {
+        console.error('Error submitting comment:', error);
+        alert('An error occurred while submitting your comment.');
+    }
+}

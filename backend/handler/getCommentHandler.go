@@ -1,57 +1,68 @@
 package handler
 
 import (
-	"real-time-forum/backend/database"
-	"real-time-forum/backend/middleware"
-	"real-time-forum/backend/utils"
-	"real-time-forum/backend/structs"
-	"fmt"
+	"encoding/json"
+	
 	"net/http"
-	"strconv"
+	"real-time-forum/backend/database"
 )
 
+
 func CommentHandler(w http.ResponseWriter, r *http.Request) {
-	_, ok := r.Context().Value(middleware.SessionKey).(structs.Session)
-	if !ok {
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
-		w.WriteHeader(http.StatusForbidden)
-		return
-		// utils.ErrorHandler(w, r, http.StatusForbidden)
+    if r.Method != http.MethodPost {
+        w.WriteHeader(http.StatusMethodNotAllowed)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Method not allowed"})
+        return
+    }
 
-		//http.Error(w, "Unable to retrieve session", http.StatusInternalServerError)
-	}
-	if r.Method != http.MethodPost {
-		utils.ErrorHandler(w, r, http.StatusMethodNotAllowed)
+    // Retrieve the logged-in user's ID
+    uid, err := RetrieveLoggedUser(r)
+    if err != nil {
+        w.WriteHeader(http.StatusUnauthorized)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Unauthorized"})
+        return
+    }
 
-		//http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
+    // Retrieve the username for the logged-in user
+    username, err := database.GetUsername(uid)
+    if err != nil {
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to retrieve username"})
+        return
+    }
 
-	if r.Method == "POST" {
-		err := r.ParseForm()
-		if err != nil {
-			utils.ErrorHandler(w, r, http.StatusBadRequest)
-			return
-		}
-		postID := r.FormValue("post_id")
-		commentText := r.FormValue("comment")
+    // Parse the JSON body
+    var reqData struct {
+        PostID      int    `json:"post_id"`
+        CommentText string `json:"comment"`
+    }
 
-		uid, err := RetrieveLoggedUser(r)
-		if err != nil {
-			utils.ErrorHandler(w, r, http.StatusInternalServerError)
-			return
-		}
-		postIDInt, err := strconv.Atoi(postID)
-		if err != nil {
-			utils.ErrorHandler(w, r, http.StatusBadRequest)
-			return
-		}
-		inserterr := database.InsertComment(commentText, uid, postIDInt)
-		if inserterr != nil {
-			utils.ErrorHandler(w, r, http.StatusBadRequest)
-		}
-		http.Redirect(w, r, fmt.Sprintf("/post?id=%d", postIDInt), http.StatusSeeOther)
-		return
-	}
-	utils.ErrorHandler(w, r, http.StatusMethodNotAllowed)
+    err = json.NewDecoder(r.Body).Decode(&reqData)
+    if err != nil {
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Invalid request body"})
+        return
+    }
+
+    // Validate input
+    if reqData.PostID == 0 || reqData.CommentText == "" {
+        w.WriteHeader(http.StatusBadRequest)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Missing post ID or comment text"})
+        return
+    }
+
+    // Insert the comment into the database
+    err = database.InsertComment(reqData.CommentText, uid, reqData.PostID)
+    if err != nil {
+        w.WriteHeader(http.StatusInternalServerError)
+        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to add comment"})
+        return
+    }
+
+    // Respond with success and include the username
+    w.WriteHeader(http.StatusCreated)
+    json.NewEncoder(w).Encode(map[string]string{
+        "message":  "Comment added successfully",
+        "username": username,
+    })
 }
