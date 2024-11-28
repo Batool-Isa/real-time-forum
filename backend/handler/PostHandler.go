@@ -1,46 +1,39 @@
 package handler
 
 import (
+	//"database/sql"
+	"encoding/json"
+	"fmt"
+	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
-	"real-time-forum/backend/structs"
-	"real-time-forum/backend/utils"
-	"database/sql"
-	"net/http"
+	//"real-time-forum/backend/structs"
+	//"real-time-forum/backend/utils"
 	"strconv"
 )
 
+
 func PostHandler(w http.ResponseWriter, r *http.Request) {
 	session := middleware.GetSessionFromContext(r.Context())
-	postId := r.URL.Query().Get("id")
-
-	if postId == "" {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-		return
+	if session != nil {
+		fmt.Println(("Session not found"))
 	}
-
-	post_id, err := strconv.Atoi(postId)
+    postIdStr := r.URL.Query().Get("id")
+    if postIdStr == "" {
+        http.Error(w, "Post ID is required", http.StatusBadRequest)
+        return
+    }
+	postId , err := strconv.Atoi(postIdStr)
 	if err != nil {
-		utils.ErrorHandler(w, r, http.StatusBadRequest)
-		return
+		http.Error(w, "Post ID can't convert from string to int", http.StatusNotFound)
+        return
 	}
+    post, err := database.GetPostById(postId)
+    if err != nil {
+        http.Error(w, "Post not found", http.StatusNotFound)
+        return
+    }
 
-	post, err := database.GetPostById(post_id)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			utils.ErrorHandler(w, r, http.StatusNotFound)
-			return
-		}
-		utils.ErrorHandler(w, r, http.StatusInternalServerError)
-		return
-	}
-
-	data := struct {
-		Post    structs.Post
-		Session *structs.Session
-	}{
-		Post:    post,
-		Session: session,
-	}
-	utils.RenderTemplate(w, r, "comment.html", data)
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(post)
 }

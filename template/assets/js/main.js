@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const path = link.getAttribute('data-path');
-            
+
             // Update active state for navigation links
             document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
@@ -44,6 +44,16 @@ const router = {
             document.querySelector('.chat-container').style.display = 'flex'; // Show chat container
             initializeNewChatButton();
         },
+        '/post': () => {
+            hideAllSections();
+            document.querySelector('.post-details').style.display = 'block'; // Show post details section
+            const postId = new URLSearchParams(window.location.search).get('id');
+            if (postId) {
+                fetchPostDetails(postId); // Fetch the details of the specific post
+            } else {
+                document.querySelector('.post-details').innerHTML = '<p>Invalid post ID.</p>';
+            }
+        },
         '/logout': () => {
             fetch('/logout', { method: 'POST', credentials: 'include' })
                 .then(() => { window.location.href = '/'; });
@@ -72,6 +82,7 @@ const router = {
 
 // ==================== Section Management ====================
 function hideAllSections() {
+    document.querySelector('.post-details').style.display = 'none';
     document.querySelector('.home').style.display = 'none';
     document.querySelector('.create-post').style.display = 'none';
     document.querySelector('.chat-container').style.display = 'none';
@@ -111,18 +122,32 @@ function renderPosts() {
     postsToShow.forEach((post) => {
         const postElement = document.createElement('article');
         postElement.classList.add('post');
+        console.log('Render posts updated');
         postElement.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.postDescription}</p>
+            <a href="#" class="post-link" data-id="${post.postId}">
+                <p>${post.postDescription}</p>
+            </a>
             <div class="post-meta">
+                <span>By: ${post.postId}</span>
+
                 <span>By: ${post.username}</span>
-                <span>Likes: ${post.like} | Dislikes: ${post.dislike}</span>
+                <span>Likeshbjb: ${post.like} | Dislikes: ${post.dislike}</span>
                 <span>Categories: ${post.categoryName.join(', ')}</span>
             </div>
         `;
         postsContainer.appendChild(postElement);
     });
+
+    // Add event listeners for post links
+    document.querySelectorAll('.post-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const postId = link.getAttribute('data-id');
+            router.navigate(`/post?id=${postId}`);
+        });
+    });
 }
+
 
 function updatePaginationControls() {
     const totalPages = Math.ceil(allPosts.length / postsPerPage);
@@ -187,3 +212,56 @@ function getCurrentSelectedUser() {
     const selectedUser = document.querySelector('.user-item.selected');
     return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
 }
+
+async function fetchPostDetails(postId) {
+    try {
+        // Fetch the post details from the server
+        const response = await fetch(`/post?id=${postId}`);
+        if (!response.ok) throw new Error('Failed to fetch post details');
+
+        // Parse the response JSON
+        const post = await response.json();
+
+        // Get the container for post details
+        const postContainer = document.querySelector('.post-details');
+
+        // Set the innerHTML directly
+        postContainer.innerHTML = `
+            <article class="post">
+                <pre><p class="post-description">${post.postDescription}</p></pre>
+                <div class="post-category">
+                    <span>Categories: ${post.categoryName.join(', ')}</span>
+                </div>
+                <div class="post-info">
+                    <form method="post" action="/like">
+                        <input type="hidden" name="action" value="like" />
+                        <input type="hidden" name="post_id" value="${post.postId}" />
+                        <button type="submit" class="post-button">
+                            <i class="bx bx-like"></i> <span>${post.like}</span>
+                        </button>
+                    </form>
+
+                    <form method="post" action="/dislike">
+                        <input type="hidden" name="action" value="dislike" />
+                        <input type="hidden" name="post_id" value="${post.postId}" />
+                        <button type="submit" class="post-button">
+                            <i class="bx bx-dislike"></i> <span>${post.dislike}</span>
+                        </button>
+                    </form>
+                    <span class="post-author">by ${post.username}</span>
+                </div>
+                <div class="post-comments">
+                    <h3>Comments</h3>
+                    
+                </div>
+            </article>
+        `;
+
+    } catch (error) {
+        // Log the error and display a fallback error message
+        console.error('Error fetching post details:', error);
+        const postContainer = document.querySelector('.post-details');
+        postContainer.innerHTML = '<p>Failed to load post details.</p>';
+    }
+}
+ 

@@ -36,17 +36,17 @@ type Post struct {
 	Comments        []Comment  `json:"comments"`        // List of comments on the post
 }
 type Comment struct {
-	CommentID int
-	UserID    int
-	PostID    int
-	Text      string
-	UserName  string
-	CommentLike int
-	CommentDislike int
+	CommentID int			 `json:"commentId"` 
+	UserID    int			 `json:"userId"` 
+	PostID    int			 `json:"postId"` 
+	Text      string		 `json:"commentText"` 
+	UserName  string		 `json:"username"` 
+	CommentLike int			 `json:"commentLike"` 
+	CommentDislike int		 `json:"commentDislike"` 
 }
 type Category struct {
-	ID       int
-	Category string
+	ID       int		`json:"categoryId"` 
+	Category string			`json:"catName"` 
 }
 
 

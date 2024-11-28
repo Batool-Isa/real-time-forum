@@ -27,7 +27,7 @@ func main() {
 	}
 
 	database.CreateTables()
-	//database.AddDummyData()
+	database.AddDummyData()
 	// Single handler for all routes
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasPrefix(r.URL.Path, "/api/") {
@@ -64,6 +64,7 @@ func main() {
 	http.Handle("/create", middleware.SessionValidator(http.HandlerFunc(handler.CreateHandler)))
 	//http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.GetPostsHandler)))
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
+	http.Handle("/post", middleware.SessionValidator(http.HandlerFunc(handler.PostHandler)))
 
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
 

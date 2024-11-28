@@ -9,18 +9,18 @@ func GetAllComments(postID int) ([]structs.Comment, error) {
 	query := `
     SELECT
         Comment.comment_Id,
-        // Comment.user_id,
-        // Comment.post_id,
+        Comment.user_Id,
+        Comment.post_Id,
         Comment.comment_content,
-        // User.username,
+        User.username,
         (SELECT COUNT(*) FROM Comment_Like WHERE Comment_Like.comment_Id = Comment.comment_Id) AS like_count,
         (SELECT COUNT(*) FROM Comment_Dislike WHERE Comment_Dislike.comment_Id = Comment.comment_Id) AS dislike_count
     FROM
-        Comment
+		Comment
     INNER JOIN
         User ON Comment.user_Id = User.user_Id
-    // WHERE
-    //     Comment.post_id = ?`
+    WHERE
+         Comment.post_Id = ?`
 
 	rows, err := db.Query(query, postID)
 	if err != nil {

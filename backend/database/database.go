@@ -40,7 +40,11 @@ func CreateTables() {
 	commentTable := `
 	CREATE TABLE IF NOT EXISTS Comment (
 		comment_Id INTEGER PRIMARY KEY AUTOINCREMENT,
-		comment_content VARCHAR NOT NULL
+		comment_content VARCHAR NOT NULL,
+		user_Id INTEGER,
+		post_Id INTEGER,
+		FOREIGN KEY (user_Id) REFERENCES User(user_Id),
+		FOREIGN KEY (post_Id) REFERENCES Post(post_Id)
 	);`
 
 	postTable := `
@@ -132,15 +136,15 @@ func CreateTables() {
 
 	// Execute the table creation queries
 	ExecuteSQLQuery(db, userTable)
-	ExecuteSQLQuery(db, categoryTable)
 	ExecuteSQLQuery(db, postTable)
+	ExecuteSQLQuery(db, categoryTable)
+	ExecuteSQLQuery(db, postCategoryTable)
 	ExecuteSQLQuery(db, commentTable)
+	ExecuteSQLQuery(db, messageTable)
 	ExecuteSQLQuery(db, commentLikesTable)
 	ExecuteSQLQuery(db, commentDislikesTable)
 	ExecuteSQLQuery(db, postLikeTable)
 	ExecuteSQLQuery(db, postDislikeTable)
 	ExecuteSQLQuery(db, sessionTable)
-	ExecuteSQLQuery(db, postCategoryTable)
-	ExecuteSQLQuery(db, messageTable)
 }
 

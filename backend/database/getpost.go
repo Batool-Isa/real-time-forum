@@ -12,9 +12,9 @@ func GetAllPosts() ([]structs.Post, error) {
 	query := `
 	SELECT 
     Post.post_Id, 
-	 Post.post_content, 
-Post.user_Id,
-	  Post.likesNum, 
+	Post.post_content, 
+	Post.user_Id,
+     Post.likesNum, 
     Post.dislikesNum,  
     User.username, 
     COALESCE(GROUP_CONCAT(Category.category_name), ', ', '') AS category_name	
@@ -40,7 +40,7 @@ ORDER BY
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID,&post.PostDescription, &post.UserID, &post.Like, &post.Dislike,  &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.PostDescription, &post.UserID, &post.Like, &post.Dislike, &post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
@@ -73,7 +73,7 @@ FROM
 INNER JOIN 
     User ON Post.user_Id = User.user_Id
 LEFT JOIN 
-    Post_Category ON posts.post_Id = Post_Category.post_Id
+    Post_Category ON Post.post_Id = Post_Category.post_Id
 LEFT JOIN 
     Category ON Post_Category.category_Id = Category.category_Id
 WHERE
@@ -83,7 +83,7 @@ GROUP BY
 	row := db.QueryRow(query, id)
 	var post structs.Post
 	var categoryName string
-	err := row.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
+	err := row.Scan(&post.PostID, &post.PostDescription, &post.UserID,&post.Like, &post.Dislike, &post.Username, &categoryName)
 	if err != nil {
 		log.Println(err)
 		if err == sql.ErrNoRows {
@@ -183,7 +183,7 @@ func GetPostsByCategory(categoryID int) ([]structs.Post, error) {
 	for rows.Next() {
 		var post structs.Post
 		var categoryName string
-		err := rows.Scan(&post.PostID, &post.UserID, &post.Dislike, &post.Like, &post.PostDescription, &post.Username, &categoryName)
+		err := rows.Scan(&post.PostID, &post.PostDescription,&post.UserID,&post.Like, &post.Dislike,&post.Username, &categoryName)
 		if err != nil {
 			log.Println(err)
 			return nil, err
