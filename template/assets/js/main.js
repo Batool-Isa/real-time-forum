@@ -42,7 +42,7 @@ const router = {
         '/chat': () => {
             hideAllSections();
             document.querySelector('.chat-container').style.display = 'flex'; // Show chat container
-            initializeNewChatButton();
+            //initializeNewChatButton();
         },
         '/post': () => {
             hideAllSections();
@@ -196,7 +196,14 @@ document.querySelector('.pagination__next').addEventListener('click', () => {
 class ChatUI {
     constructor() {
         this.ws = new WebSocket('ws://localhost:8080/ws'); // WebSocket setup
+       // this.setupWebSocket();
+       if (!this.ws || this.ws.readyState === WebSocket.CLOSED) {
+        
         this.setupWebSocket();
+    } else {
+        console.warn('WebSocket is already open or connecting. Skipping setup.');
+    }
+    
         this.chatContainer = document.querySelector('.chat-container');
         this.usersList = document.querySelector('.users-list');
         this.messagesContainer = document.querySelector('.messages-container');
@@ -223,8 +230,15 @@ class ChatUI {
     }
 
     setupWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8080/ws');
+    
+        this.ws.onopen = () => {
+            console.log('WebSocket connection established');
+        };
+    
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
+            console.log('Received message via WebSocket:', message);
             this.displayMessage({
                 content: message.content,
                 senderName: message.senderName,
@@ -233,7 +247,17 @@ class ChatUI {
             });
             this.scrollToBottom();
         };
+    
+        this.ws.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+    
+        this.ws.onclose = () => {
+            console.warn('WebSocket connection closed. Attempting to reconnect...');
+            setTimeout(() => this.setupWebSocket(), 3000); // Retry connection after 3 seconds
+        };
     }
+    
 
     sendMessage() {
         const content = this.messageInput.value.trim();
@@ -245,7 +269,14 @@ class ChatUI {
             };
     
             // Send via WebSocket
-            this.ws.send(JSON.stringify(message));
+           // this.ws.send(JSON.stringify(message));
+            if (this.ws.readyState === WebSocket.OPEN) {
+                this.ws.send(JSON.stringify(message));
+            } else {
+                console.error('WebSocket is not open. Current state:', this.ws.readyState);
+                alert('WebSocket connection is not open. Please refresh the page.');
+            }
+            
     
             // Send to backend for database storage
             fetch('/api/saveMessage', {
@@ -293,7 +324,7 @@ class ChatUI {
             userElement.className = 'user-item';
             userElement.dataset.userid = user.UserID;
             userElement.innerHTML = `
-                <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                <img src="#" alt="${user.Username}" class="user-avatar">
                 <div class="user-info">
                     <span class="user-name">${user.FirstName} ${user.LastName}</span>
                     <span class="user-username">@${user.Username}</span>
@@ -366,7 +397,7 @@ class ChatUI {
             <div class="user-select-list">
                 ${users.map(user => `
                     <div class="user-item" data-userid="${user.UserID}">
-                        <img src="assets/img/perfil.jpg" alt="${user.Username}" class="user-avatar">
+                        <img src="#" alt="${user.Username}" class="user-avatar">
                         <div class="user-info">
                             <span class="user-name">${user.FirstName} ${user.LastName}</span>
                             <span class="user-username">@${user.Username}</span>
