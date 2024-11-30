@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
+    chatManager.chatUI.loadAllChats();
+
 });
 
 // ==================== Router ====================
@@ -334,14 +336,12 @@ class ChatUI {
             .catch(error => console.error('Error loading chat history:', error));
     }
     
-
     addUserToList(user) {
-        if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
+        if (!document.querySelector(`.user-item[data-userid="${user.ID}"]`)) {
             const userElement = document.createElement('div');
             userElement.className = 'user-item';
-            userElement.dataset.userid = user.UserID;
+            userElement.dataset.userid = user.ID;
             userElement.innerHTML = `
-                <img src="#" alt="${user.Username}" class="user-avatar">
                 <div class="user-info">
                     <span class="user-name">${user.FirstName} ${user.LastName}</span>
                     <span class="user-username">@${user.Username}</span>
@@ -351,6 +351,7 @@ class ChatUI {
             this.usersList.appendChild(userElement);
         }
     }
+    
 
     loadAvailableUsers() {
         fetch('/api/users')
