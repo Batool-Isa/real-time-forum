@@ -394,7 +394,7 @@ class ChatUI {
     }
 
     loadAllChats() {
-        fetch('/api/chats', { credentials: 'include' })
+        fetch('/api/user-chat', { credentials: 'include' })
             .then(response => response.json())
             .then(chats => {
                 chats.forEach(chat => this.addUserToList(chat)); // Add each user to the chat list
@@ -425,7 +425,6 @@ class ChatUI {
             <div class="user-select-list">
                 ${users.map(user => `
                     <div class="user-item" data-userid="${user.UserID}">
-                        <img src="#" alt="${user.Username}" class="user-avatar">
                         <div class="user-info">
                             <span class="user-name">${user.FirstName} ${user.LastName}</span>
                             <span class="user-username">@${user.Username}</span>

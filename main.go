@@ -20,7 +20,7 @@ func main() {
 		log.Fatal(fileErr)
 	}
 	log.SetOutput(file)
-	
+
 	err := database.CreateDB("real-forum.db")
 	if err != nil {
 		log.Fatalf("Error creating or connecting to database: %v", err)
@@ -65,8 +65,9 @@ func main() {
 	//http.Handle("/posts", middleware.SessionValidator(http.HandlerFunc(handler.GetPostsHandler)))
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
 	http.Handle("/post", middleware.SessionValidator(http.HandlerFunc(handler.PostHandler)))
-	http.Handle("/api/saveMessage",  middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
-    http.Handle("/api/chat/history",  middleware.SessionValidator(http.HandlerFunc(handler.GetAllChatsHandler)))
+	http.Handle("/api/saveMessage", middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
+	http.Handle("/api/chat/history", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
+	http.Handle("/api/user-chat", middleware.SessionValidator(http.HandlerFunc(handler.GetUserChat)))
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
 	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
 		_, err := handler.RetrieveLoggedUser(r)
@@ -76,8 +77,7 @@ func main() {
 		}
 		w.WriteHeader(http.StatusOK)
 	})
-	
-	
+
 	// WebSocket endpoint
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		handler.WebSocketHandler(w, r)
@@ -85,7 +85,7 @@ func main() {
 
 	// Static files
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
-	
+
 	fmt.Println("Server started at http://localhost:8000/")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
