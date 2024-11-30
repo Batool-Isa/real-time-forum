@@ -317,17 +317,13 @@ class ChatUI {
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
     
-        // Add user to chat list if not already present
-        this.addUserToList(user);
-    
-        // Fetch chat history between the current user and the selected user
-        fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
+        fetch(`/api/chat/history?receiverId=${user.ID}`, { credentials: 'include' })
             .then(response => response.json())
             .then(messages => {
-                this.messagesContainer.innerHTML = ''; // Clear current messages
+                this.messagesContainer.innerHTML = ''; // Clear existing messages
                 messages.forEach(msg => this.displayMessage({
                     content: msg.Content,
-                    senderName: msg.SenderID === this.currentUserId ? 'You' : `User ${msg.SenderID}`,
+                    senderName: msg.SenderID === this.currentUserId ? 'You' : user.FirstName,
                     timestamp: msg.CreatedAt,
                     sent: msg.SenderID === this.currentUserId,
                 }));
@@ -337,7 +333,10 @@ class ChatUI {
     }
     
     addUserToList(user) {
-        if (!document.querySelector(`.user-item[data-userid="${user.ID}"]`)) {
+        console.log("Calling add to list")
+        if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
+            console.log('${user.ID}')
+
             const userElement = document.createElement('div');
             userElement.className = 'user-item';
             userElement.dataset.userid = user.ID;
@@ -351,6 +350,7 @@ class ChatUI {
             this.usersList.appendChild(userElement);
         }
     }
+    
     
 
     loadAvailableUsers() {
@@ -392,16 +392,17 @@ class ChatUI {
             newChatBtn.addEventListener('click', () => this.showUserSelectModal());
         }
     }
-
     loadAllChats() {
         fetch('/api/user-chat', { credentials: 'include' })
             .then(response => response.json())
-            .then(chats => {
-                chats.forEach(chat => this.addUserToList(chat)); // Add each user to the chat list
+            .then(users => {
+                console.log(users)
+                this.usersList.innerHTML = ''; // Clear the existing user list
+                users.forEach(user => this.addUserToList(user));
             })
             .catch(error => console.error('Error loading chats:', error));
     }
-
+    
     
     showUserSelectModal() {
         fetch('/api/users')

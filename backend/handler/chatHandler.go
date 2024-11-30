@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
+
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
@@ -13,30 +14,28 @@ import (
 )
 
 func GetUserChat(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
+    if r.Method != http.MethodGet {
+        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+        return
+    }
 
-	// Get session from context
-	session := middleware.GetSessionFromContext(r.Context())
-	if session == nil {
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return
-	}
+    session := middleware.GetSessionFromContext(r.Context())
+    if session == nil {
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
 
-	userID := session.UserID // Get current user's ID from session
-
-	// Fetch all chats for the user
-	chats, err := database.GetAllChats(userID) // Implement this function in your database package
-	if err != nil {
-		http.Error(w, "Failed to fetch chats", http.StatusInternalServerError)
-		return
-	}
-	fmt.Println("DEBUG: Fetched User:", chats)
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(chats)
+    userID := session.UserID
+    users, err := database.GetAllChats(userID)
+    if err != nil {
+        http.Error(w, "Failed to fetch chats", http.StatusInternalServerError)
+        return
+    }
+fmt.Println("Debug", users)
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(users)
 }
+
 
 func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
