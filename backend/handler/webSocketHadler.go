@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 	"real-time-forum/backend/database"
-	"real-time-forum/backend/middleware"
 	"real-time-forum/backend/structs"
-
+    "fmt"
+    "time"
 	"github.com/gorilla/websocket"
 )
 
@@ -18,70 +18,30 @@ var upgrader = websocket.Upgrader{
 var clients = make(map[*structs.Client]bool)
 
 func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
-    log.Println("WebSocket connection attempt...")
-    conn, err := upgrader.Upgrade(w, r, nil)
-    if err != nil {
-        log.Println("WebSocket upgrade error:", err)
-        return
-    }
+	// Upgrade initial HTTP request to a WebSocket connection
+	conn, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Println("WebSocket upgrade error:", err)
+		return
+	}
+	defer conn.Close()
 
-    session := middleware.GetSessionFromContext(r.Context())
-    if session == nil {
-        log.Println("No session found")
-        conn.Close()
-        return
-    }
+	// Send and receive messages with the client
+	for {
+		// Read message from WebSocket
+		messageType, message, err := conn.ReadMessage()
+		if err != nil {
+			log.Println("WebSocket read error:", err)
+			break
+		}
+		fmt.Printf("Received message: %s\n", message)
 
-    log.Printf("WebSocket connected for user: %d", session.UserID)
-    client := &structs.Client{
-        Conn:     conn,
-        UserID:   session.UserID,
-        Username: session.UserName,
-    }
-    
-    clients[client] = true
-    go handleMessages(client)
-}
-func handleMessages(client *structs.Client) {
-    log.Printf("Client connected: UserID=%d, Username=%s", client.UserID, client.Username)
-    defer func() {
-        client.Conn.Close()
-        delete(clients, client)
-    }()
-
-    for {
-        _, p, err := client.Conn.ReadMessage()
-        if err != nil {
-            log.Printf("Error reading message: %v", err)
-            break
-        }
-
-        var msg structs.Message
-        if err := json.Unmarshal(p, &msg); err != nil {
-            log.Printf("Error unmarshaling message: %v", err)
-            continue
-        }
-
-        // Set sender ID from the authenticated client
-        msg.SenderID = client.UserID
-
-        // Add debug logging
-        log.Printf("Saving message: Content=%s, SenderID=%d, ReceiverID=%d", 
-            msg.Content, msg.SenderID, msg.ReceiverID)
-
-        // Save to database with explicit error handling
-        if err := database.SaveMessage(msg.Content, msg.SenderID, msg.ReceiverID); err != nil {
-            log.Printf("Failed to save message: %v", err)
-        } else {
-            log.Printf("Message saved successfully")
-        }
-
-        // Forward message to recipient
-        for c := range clients {
-            if c.UserID == msg.ReceiverID {
-                c.Conn.WriteMessage(websocket.TextMessage, p)
-                break
-            }
-        }
-    }
+		// Example response: send the current time
+		response := fmt.Sprintf("Server time: %s", time.Now().Format(time.RFC3339))
+		err = conn.WriteMessage(messageType, []byte(response))
+		if err != nil {
+			log.Println("WebSocket write error:", err)
+			break
+		}
+	}
 }

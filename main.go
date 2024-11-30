@@ -86,6 +86,6 @@ func main() {
 	// Static files
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("template/assets"))))
 	
-	fmt.Println("Server started at http://localhost:8080/")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	fmt.Println("Server started at http://localhost:8000/")
+	log.Fatal(http.ListenAndServe(":8000", nil))
 }

@@ -1570,3 +1570,24 @@
 2024/11/30 08:15:02 No session found
 2024/11/30 08:15:02 WebSocket connection attempt...
 2024/11/30 08:15:02 No session found
+2024/11/30 11:25:25 listen tcp :8000: bind: address already in use
+2024/11/30 11:33:13 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:33:13 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:33:34 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:33:34 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:10 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:10 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:10 sql: no rows in result set
+2024/11/30 11:35:10 sql: no rows in result set
+2024/11/30 11:35:20 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:20 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:20 sql: no rows in result set
+2024/11/30 11:35:20 User not found: sql: no rows in result set
+2024/11/30 11:35:34 sql: no rows in result set
+2024/11/30 11:35:34 User not found: sql: no rows in result set
+2024/11/30 11:35:38 sql: no rows in result set
+2024/11/30 11:35:38 sql: no rows in result set
+2024/11/30 11:35:44 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:44 WebSocket read error: websocket: close 1001 (going away)
+2024/11/30 11:35:44 sql: no rows in result set
+2024/11/30 11:35:44 sql: no rows in result set

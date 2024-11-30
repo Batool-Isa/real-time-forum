@@ -204,7 +204,7 @@ document.querySelector('.pagination__next').addEventListener('click', () => {
 // Chat UI Class
 class ChatUI {
     constructor() {
-        this.ws = new WebSocket('ws://localhost:8080/ws'); // WebSocket setup
+        this.ws = new WebSocket('ws://localhost:8000/ws'); // WebSocket setup
        // this.setupWebSocket();
        if (!this.ws || this.ws.readyState === WebSocket.CLOSED) {
         
@@ -239,7 +239,7 @@ class ChatUI {
     }
 
     setupWebSocket() {
-        this.ws = new WebSocket('ws://localhost:8080/ws');
+        this.ws = new WebSocket('ws://localhost:8000/ws');
     
         this.ws.onopen = () => {
             console.log('WebSocket connection established');
@@ -434,7 +434,7 @@ class ChatUI {
 // Chat Manager Class
 class ChatManager {
     constructor() {
-        this.ws = new WebSocket('ws://localhost:8080/ws');
+        this.ws = new WebSocket('ws://localhost:8000/ws');
         this.chatUI = new ChatUI();
 
         this.ws.onmessage = (event) => {
