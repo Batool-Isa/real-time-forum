@@ -607,6 +607,26 @@ header {
   }
 }
 
+.register-section {
+  background-color: var(--container-color);
+  padding: 2rem;
+  border-radius: .5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.no-session .nav {
+    display: none;
+}
+
+.no-session .register-section {
+    margin: 0 auto;
+    max-width: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
 /*========== AUTH ==========*/
 .auth-section {

@@ -48,14 +48,14 @@
                   <i class="bx bx-message-square-dots nav__icon"></i>
                   <span class="nav__name">Chat</span>
               </a>
-              <a href="#" class="nav__link" data-path="/login">
+             <!-- <a href="#" class="nav__link" data-path="/login">
                 <i class="bx bx-message-square-dots nav__icon"></i>
                 <span class="nav__name">Login</span>
             </a>
             <a href="#" class="nav__link" data-path="/register">
               <i class="bx bx-message-square-dots nav__icon"></i>
               <span class="nav__name">Register</span>
-          </a>
+          </a> -->
               <a href="#" class="nav__link" data-path="/logout">
                   <i class="bx bx-log-out nav__icon"></i>
                   <span class="nav__name">Log Out</span>
@@ -67,7 +67,7 @@
     <main>
     <!-- Home Page Content-->
       <div class="home">
-          <section class="filters">
+         <!-- <section class="filters">
             <label for="filter-category">Choose a Category:</label>
             <select
               id="filter-category"
@@ -99,7 +99,7 @@
               Liked Posts
             </button>
             {{end}}
-          </section>
+          </section>-->
           <section class="posts" id="posts-container">
          
         </section>
@@ -371,7 +371,7 @@
     <button type="submit" class="submit-button" id="submit-button">Login</button>
 </form>
 
-  <p class="toggle-link">Don't have an account? <a href="#" id="toggle-auth">Sign Up</a></p>
+  <p class="toggle-link">Don't have an account? <a href="" id="toggle-auth" class="toggle-auth" data-target="register">Sign Up</a></p>
 </section>
 
 
@@ -416,6 +416,7 @@
       </div>
       <button type="submit" class="submit-button">Register</button>
   </form>
+  <p class="toggle-link">Already have an account? <a href="" id="toggle-auth" class="toggle-auth" data-target="login">Sign In</a></p>
 </section>
 
 <script>

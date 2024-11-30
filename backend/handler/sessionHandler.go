@@ -89,7 +89,8 @@ func SessionHandler(next http.Handler) http.Handler {
 		sessionCookie, err := r.Cookie("session_Id")
 		if err != nil {
 			fmt.Println("No active session cookie")
-			next.ServeHTTP(w, r)
+			//next.ServeHTTP(w, r)
+			http.Redirect(w, r, "/register", http.StatusSeeOther)
 			return
 		}
 		// Fetch session details from the database
@@ -110,8 +111,8 @@ func SessionHandler(next http.Handler) http.Handler {
 		fmt.Println("Session is valid and active")
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
-}
-// checkSessionExpiration verifies if the session has expired based on its timestamp
+
+}// checkSessionExpiration verifies if the session has expired based on its timestamp
 func checkSessionExpiration(sessionID string) bool {
 	// Retrieve session data
 	session, err := database.FetchSession(sessionID)

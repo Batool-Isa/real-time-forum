@@ -68,7 +68,15 @@ func main() {
 	http.Handle("/api/saveMessage",  middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
     http.Handle("/api/chat/history",  middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
-
+	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
+		_, err := handler.RetrieveLoggedUser(r)
+		if err != nil {
+			http.Error(w, "No active session", http.StatusUnauthorized)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+	})
+	
 	
 	// WebSocket endpoint
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {

@@ -26,8 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== Router ====================
 const router = {
     init() {
-        this.handleRoute(); // Handle the current route on page load
-        window.addEventListener('popstate', () => this.handleRoute()); // Listen for back/forward navigation
+        // this.handleRoute(); // Handle the current route on page load
+        // window.addEventListener('popstate', () => this.handleRoute()); // Listen for back/forward navigation
+         // Check session status first
+         fetch('/api/session-status')
+         .then(response => {
+             if (!response.ok) {
+                 document.body.classList.add('no-session');
+                 this.navigate('/login');
+             }
+         });
+     this.handleRoute();
     },
 
     routes: {
@@ -653,3 +662,14 @@ async function handleLikeDislike(postId, action) {
     }
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Add this to your existing DOMContentLoaded listener
+    document.querySelectorAll('.toggle-auth').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetPath = `/${e.target.dataset.target}`;
+            router.navigate(targetPath);
+        });
+    });
+});
