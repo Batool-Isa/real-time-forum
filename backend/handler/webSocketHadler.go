@@ -1,10 +1,8 @@
 package handler
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
-	"real-time-forum/backend/database"
 	"real-time-forum/backend/structs"
     "fmt"
     "time"
