@@ -33,3 +33,30 @@ func GetChatHistory(senderID, receiverID int) ([]structs.Message, error) {
 
     return messages, nil
 }
+
+func GetAllChats(userID int) ([]structs.User, error) {
+    query := `
+        SELECT DISTINCT u.user_Id, u.firstName, u.lastName, u.username 
+        FROM User u
+        INNER JOIN Message m 
+        ON (u.user_Id = m.sender_Id OR u.user_Id = m.receiver_Id)
+        WHERE u.user_Id != ? AND (m.sender_Id = ? OR m.receiver_Id = ?)
+    `
+
+    rows, err := db.Query(query, userID, userID, userID) // Replace `db` with your database connection
+    if err != nil {
+        return nil, err
+    }
+    defer rows.Close()
+
+    var users []structs.User
+    for rows.Next() {
+        var user structs.User
+        if err := rows.Scan(&user.UserID, &user.FirstName, &user.LastName, &user.Username); err != nil {
+            return nil, err
+        }
+        users = append(users, user)
+    }
+
+    return users, nil
+}

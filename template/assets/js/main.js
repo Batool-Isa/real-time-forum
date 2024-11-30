@@ -314,18 +314,26 @@ class ChatUI {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
-
-        // Add user to chat list
-        this.addUserToList(user);
-        fetch(`/api/chat/history/${user.UserID}`)
-        .then(response => response.json())
-        .then(messages => {
-            this.messagesContainer.innerHTML = '';
-            messages.forEach(msg => this.displayMessage(msg));
-            this.scrollToBottom();
-        });
     
+        // Add user to chat list if not already present
+        this.addUserToList(user);
+    
+        // Fetch chat history between the current user and the selected user
+        fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
+            .then(response => response.json())
+            .then(messages => {
+                this.messagesContainer.innerHTML = ''; // Clear current messages
+                messages.forEach(msg => this.displayMessage({
+                    content: msg.Content,
+                    senderName: msg.SenderID === this.currentUserId ? 'You' : `User ${msg.SenderID}`,
+                    timestamp: msg.CreatedAt,
+                    sent: msg.SenderID === this.currentUserId,
+                }));
+                this.scrollToBottom();
+            })
+            .catch(error => console.error('Error loading chat history:', error));
     }
+    
 
     addUserToList(user) {
         if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
@@ -352,19 +360,19 @@ class ChatUI {
                 users.forEach(user => this.addUserToList(user));
             });
     }
-
     displayMessage(message) {
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
         messageElement.innerHTML = `
             <div class="message-header">
                 <span class="message-sender">${message.senderName}</span>
-                <span class="message-time">${this.formatTime(message.timestamp)}</span>
+                <span class="message-time">${new Date(message.timestamp).toLocaleTimeString()}</span>
             </div>
-            <span class="message-content">${message.content}</span>
+            <div class="message-content">${message.content}</div>
         `;
         this.messagesContainer.appendChild(messageElement);
     }
+    
 
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
@@ -384,6 +392,16 @@ class ChatUI {
         }
     }
 
+    loadAllChats() {
+        fetch('/api/chats', { credentials: 'include' })
+            .then(response => response.json())
+            .then(chats => {
+                chats.forEach(chat => this.addUserToList(chat)); // Add each user to the chat list
+            })
+            .catch(error => console.error('Error loading chats:', error));
+    }
+
+    
     showUserSelectModal() {
         fetch('/api/users')
             .then(response => response.json())

@@ -66,7 +66,7 @@ func main() {
 	http.Handle("/logout", middleware.SessionValidator(http.HandlerFunc(handler.Logout)))
 	http.Handle("/post", middleware.SessionValidator(http.HandlerFunc(handler.PostHandler)))
 	http.Handle("/api/saveMessage",  middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
-    http.Handle("/api/chat/history",  middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
+    http.Handle("/api/chat/history",  middleware.SessionValidator(http.HandlerFunc(handler.GetAllChatsHandler)))
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
 	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
 		_, err := handler.RetrieveLoggedUser(r)

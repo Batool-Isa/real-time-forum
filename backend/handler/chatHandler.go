@@ -11,6 +11,32 @@ import (
 	"strconv"
 )
 
+func GetAllChatsHandler(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodGet {
+        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+        return
+    }
+
+    // Get session from context
+    session := middleware.GetSessionFromContext(r.Context())
+    if session == nil {
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
+
+    userID := session.UserID // Get current user's ID from session
+
+    // Fetch all chats for the user
+    chats, err := database.GetAllChats(userID) // Implement this function in your database package
+    if err != nil {
+        http.Error(w, "Failed to fetch chats", http.StatusInternalServerError)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(chats)
+}
+
 func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
     if r.Method != http.MethodGet {
         http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
@@ -43,7 +69,8 @@ func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(messages)
-} 
+}
+
 func SaveMessageHandler(w http.ResponseWriter, r *http.Request) {
     if r.Method != http.MethodPost {
         http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
