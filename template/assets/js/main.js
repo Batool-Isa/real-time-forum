@@ -249,10 +249,11 @@ class ChatUI {
     
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
+            console.log("sdgds"+event.data);
+
             console.log('Received message via WebSocket:', message);
             this.displayMessage({
                 content: message.content,
-                senderName: message.senderName,
                 timestamp: message.timestamp,
                 sent: false
             });
@@ -278,34 +279,21 @@ class ChatUI {
                 receiverId: this.currentRecipient.UserID,
                 timestamp: new Date().toISOString()
             };
-    
-            // Send via WebSocket
-           // this.ws.send(JSON.stringify(message));
+
+            // Only send via WebSocket
             if (this.ws.readyState === WebSocket.OPEN) {
                 this.ws.send(JSON.stringify(message));
             } else {
                 console.error('WebSocket is not open. Current state:', this.ws.readyState);
                 alert('WebSocket connection is not open. Please refresh the page.');
             }
-            
-    
-            // Send to backend for database storage
-            fetch('/api/saveMessage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(message)
-            });
-    
+
             // Display sent message immediately
             this.displayMessage({
                 content: content,
                 timestamp: message.timestamp,
-                senderName: 'You',
                 sent: true
             });
-    
             // Clear input
             this.messageInput.value = '';
             this.scrollToBottom();
@@ -322,7 +310,6 @@ class ChatUI {
                 this.messagesContainer.innerHTML = ''; // Clear existing messages
                 messages.forEach(msg => this.displayMessage({
                     content: msg.content,
-                    senderName: msg.senderId === this.currentUserId ? 'You' : user.FirstName,
                     timestamp: msg.createdAt,
                     sent: msg.senderId === this.currentUserId,
                 }));
@@ -365,11 +352,10 @@ class ChatUI {
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
         console.log(message.sent);
         messageElement.innerHTML = `
+            <div class="message-content">${message.content}</div>
             <div class="message-header">
-                <span class="message-sender">${message.senderName}</span>
                 <span class="message-time">${new Date(message.timestamp).toLocaleTimeString()}</span>
             </div>
-            <div class="message-content">${message.content}</div>
         `;
         this.messagesContainer.appendChild(messageElement);
     }
@@ -468,10 +454,11 @@ class ChatManager {
 
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
+            console.log("sdgds11111111111"+event.data);
+
             this.chatUI.displayMessage({
                 content: message.content,
-                timestamp: message.timestamp,
-                senderName: message.senderName,
+                timestamp: message.createdAt,
                 sent: false
             });
         };

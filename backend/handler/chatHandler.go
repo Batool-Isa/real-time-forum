@@ -77,7 +77,6 @@ func SaveMessageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Get session from context
 	session := middleware.GetSessionFromContext(r.Context())
 	if session == nil {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
@@ -91,15 +90,17 @@ func SaveMessageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Set SenderID from session
 	msg.SenderID = session.UserID
 
-	// Save the message
+	// Save to database
 	err = database.SaveMessage(msg.Content, msg.SenderID, msg.ReceiverID)
 	if err != nil {
 		http.Error(w, "Failed to save message", http.StatusInternalServerError)
 		return
 	}
+
+	// Broadcast message through WebSocket
+	broadcast <- msg
 
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Message saved successfully"})

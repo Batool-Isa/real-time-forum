@@ -2607,3 +2607,358 @@ created by net/http.(*Server).Serve in goroutine 1
 2024/11/30 14:00:40 WebSocket read error: websocket: close 1001 (going away)
 2024/11/30 14:00:40 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
 2024/11/30 14:00:40 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:07:18 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:07:18 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:07:39 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:07:39 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:16 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:16 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:16 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:16 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:25 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:25 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:25 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:25 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:37 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:37 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:09:37 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:09:37 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:33 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:33 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:33 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:33 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:34 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:34 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:34 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:34 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:36 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:36 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:19:36 Error getting user ID: http: named cookie not present
+2024/11/30 14:19:36 Error getting user ID: http: named cookie not present
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59724: runtime error: invalid memory address or nil pointer dereference
+goroutine 65 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e0380}, 0xc0001c5b80)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b9bb0?, {0x90a8d8?, 0xc0001e0380?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e0380}, 0xc0001c5b80)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e0380?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e0380}, 0xc0001c5b80)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000281860?}, {0x90a8d8?, 0xc0001e0380?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000286b40, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59716: runtime error: invalid memory address or nil pointer dereference
+goroutine 80 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e0460}, 0xc0001c5cc0)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b9c70?, {0x90a8d8?, 0xc0001e0460?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e0460}, 0xc0001c5cc0)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e0460?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e0460}, 0xc0001c5cc0)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000404420?}, {0x90a8d8?, 0xc0001e0460?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000211320, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59790: runtime error: invalid memory address or nil pointer dereference
+goroutine 89 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc00011b420}, 0xc0003c2000)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003b8600?, {0x90a8d8?, 0xc00011b420?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc00011b420}, 0xc0003c2000)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc00011b420?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc00011b420}, 0xc0003c2000)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0003a1260?}, {0x90a8d8?, 0xc00011b420?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000118f30, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59804: runtime error: invalid memory address or nil pointer dereference
+goroutine 91 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc00011b500}, 0xc0003c2140)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003b86e0?, {0x90a8d8?, 0xc00011b500?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc00011b500}, 0xc0003c2140)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc00011b500?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc00011b500}, 0xc0003c2140)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0003a13b0?}, {0x90a8d8?, 0xc00011b500?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001190e0, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59812: runtime error: invalid memory address or nil pointer dereference
+goroutine 93 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc00011b5e0}, 0xc0003c2280)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003b87c0?, {0x90a8d8?, 0xc00011b5e0?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc00011b5e0}, 0xc0003c2280)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc00011b5e0?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc00011b5e0}, 0xc0003c2280)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0003a1500?}, {0x90a8d8?, 0xc00011b5e0?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000119290, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59818: runtime error: invalid memory address or nil pointer dereference
+goroutine 95 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e0540}, 0xc0003c23c0)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b9d30?, {0x90a8d8?, 0xc0001e0540?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e0540}, 0xc0003c23c0)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e0540?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e0540}, 0xc0003c23c0)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0003a1650?}, {0x90a8d8?, 0xc0001e0540?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000119440, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59822: runtime error: invalid memory address or nil pointer dereference
+goroutine 165 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e0620}, 0xc0001c5e00)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b9e10?, {0x90a8d8?, 0xc0001e0620?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e0620}, 0xc0001c5e00)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e0620?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e0620}, 0xc0001c5e00)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001d0e40?}, {0x90a8d8?, 0xc0001e0620?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001ea360, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59836: runtime error: invalid memory address or nil pointer dereference
+goroutine 96 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e0000}, 0xc0001c4000)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b8000?, {0x90a8d8?, 0xc0001e0000?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e0000}, 0xc0001c4000)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e0000?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e0000}, 0xc0001c4000)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001d0000?}, {0x90a8d8?, 0xc0001e0000?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001194d0, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59838: runtime error: invalid memory address or nil pointer dereference
+goroutine 127 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e00e0}, 0xc0001c4140)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b80e0?, {0x90a8d8?, 0xc0001e00e0?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e00e0}, 0xc0001c4140)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e00e0?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e00e0}, 0xc0001c4140)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001d0180?}, {0x90a8d8?, 0xc0001e00e0?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001ea120, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:39 http: named cookie not present
+2024/11/30 14:19:39 http: panic serving 127.0.0.1:59848: runtime error: invalid memory address or nil pointer dereference
+goroutine 129 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10743/src/net/http/server.go:1947 +0xbe
+panic({0x81d080?, 0xb11a20?})
+	/snap/go/10743/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90a8d8, 0xc0001e01c0}, 0xc0001c4280)
+	/home/aramadha/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001b8280?, {0x90a8d8?, 0xc0001e01c0?}, 0x7?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func7({0x90a8d8, 0xc0001e01c0}, 0xc0001c4280)
+	/home/aramadha/real-time-forum/backend/middleware/session.go:26 +0x303
+net/http.HandlerFunc.ServeHTTP(0xb59218?, {0x90a8d8?, 0xc0001e01c0?}, 0x6845f6?)
+	/snap/go/10743/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x469179?, {0x90a8d8, 0xc0001e01c0}, 0xc0001c4280)
+	/snap/go/10743/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001d0390?}, {0x90a8d8?, 0xc0001e01c0?}, 0x6?)
+	/snap/go/10743/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001ea2d0, {0x90af28, 0xc00009b8f0})
+	/snap/go/10743/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10743/src/net/http/server.go:3360 +0x485
+2024/11/30 14:19:42 Error getting user ID: http: named cookie not present
+2024/11/30 14:19:42 Error getting user ID: http: named cookie not present
+2024/11/30 14:19:55 sql: no rows in result set
+2024/11/30 14:19:59 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:19:59 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:20:10 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:20:10 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:20:10 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:20:10 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:22:37 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:22:37 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:22:37 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:22:37 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:22:58 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:22:58 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:22:58 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:22:59 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:23:00 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:23:00 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:23:00 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:23:00 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:11 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:11 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:25:28 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:06 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:06 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:22 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:30:22 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:30:22 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:30:22 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:05 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:05 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:05 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:05 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:40 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:40 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:40 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:40 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:58 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:58 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:33:58 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:33:58 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:34:53 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:34:53 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:34:53 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:34:53 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:34:56 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:34:56 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:34:56 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:34:56 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:00 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:00 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:00 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:00 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:06 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:06 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:07 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:07 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:38 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:38 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:38 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:38 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:42 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:42 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:36:42 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:36:42 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:39:29 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:39:29 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:39:29 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:39:29 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:40:06 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:40:06 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:40:06 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:40:06 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:41:07 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:41:07 Error reading message: websocket: close 1001 (going away)
+2024/11/30 14:41:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
+2024/11/30 14:41:11 http: superfluous response.WriteHeader call from main.main.func2 (main.go:83)
