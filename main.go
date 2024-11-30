@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -70,11 +71,15 @@ func main() {
 	http.Handle("/api/user-chat", middleware.SessionValidator(http.HandlerFunc(handler.GetUserChat)))
 	//http.Handle("/", middleware.OptionalSessionMiddleware(http.HandlerFunc(handler.SPAHandler)))
 	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
-		_, err := handler.RetrieveLoggedUser(r)
+		userID, err := handler.RetrieveLoggedUser(r)
 		if err != nil {
 			http.Error(w, "No active session", http.StatusUnauthorized)
 			return
 		}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"userId": userID,
+		})
 		w.WriteHeader(http.StatusOK)
 	})
 

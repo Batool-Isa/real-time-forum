@@ -214,7 +214,7 @@ class ChatUI {
     } else {
         console.warn('WebSocket is already open or connecting. Skipping setup.');
     }
-    
+    this.getCurrentUser();
         this.chatContainer = document.querySelector('.chat-container');
         this.usersList = document.querySelector('.users-list');
         this.messagesContainer = document.querySelector('.messages-container');
@@ -316,16 +316,15 @@ class ChatUI {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
-    
-        fetch(`/api/chat/history?receiverId=${user.ID}`, { credentials: 'include' })
+        fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
             .then(response => response.json())
             .then(messages => {
                 this.messagesContainer.innerHTML = ''; // Clear existing messages
                 messages.forEach(msg => this.displayMessage({
-                    content: msg.Content,
-                    senderName: msg.SenderID === this.currentUserId ? 'You' : user.FirstName,
-                    timestamp: msg.CreatedAt,
-                    sent: msg.SenderID === this.currentUserId,
+                    content: msg.content,
+                    senderName: msg.senderId === this.currentUserId ? 'You' : user.FirstName,
+                    timestamp: msg.createdAt,
+                    sent: msg.senderId === this.currentUserId,
                 }));
                 this.scrollToBottom();
             })
@@ -364,6 +363,7 @@ class ChatUI {
     displayMessage(message) {
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
+        console.log(message.sent);
         messageElement.innerHTML = `
             <div class="message-header">
                 <span class="message-sender">${message.senderName}</span>
@@ -375,6 +375,16 @@ class ChatUI {
     }
     
 
+    getCurrentUser() {
+        fetch('/api/session-status', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.currentUserId = data.userId;
+        })
+        .catch(error => console.error('Error getting current user:', error));
+    }
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
