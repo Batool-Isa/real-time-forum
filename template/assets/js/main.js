@@ -411,6 +411,14 @@ class ChatUI {
     }
 
     createModal(users) {
+        
+    // Sort users alphabetically by their first and last name
+    users.sort((a, b) => {
+        const fullNameA = `${a.FirstName} ${a.LastName}`.toLowerCase();
+        const fullNameB = `${b.FirstName} ${b.LastName}`.toLowerCase();
+        return fullNameA.localeCompare(fullNameB);
+    });
+
         const modal = document.createElement('div');
         modal.className = 'user-select-modal active';
 
