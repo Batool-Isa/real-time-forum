@@ -136,14 +136,30 @@ func handleMessages() {
 }
 
 func GetOnlineUsers(w http.ResponseWriter, r *http.Request) {
+    currentUserID, err := RetrieveLoggedUser(r)
+    if err != nil {
+        log.Printf("Error retrieving current user: %v", err)
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
+
     mutex.Lock()
     defer mutex.Unlock()
 
-    var onlineUsers []int
+    var onlineUsers []structs.User
     for userID := range activeUsers {
-        onlineUsers = append(onlineUsers, userID)
+        if userID == currentUserID {
+            continue // Skip the current user
+        }
+        user, err := database.GetUserByID(userID)
+        if err != nil {
+            log.Printf("Error fetching user details for userID %d: %v", userID, err)
+            continue
+        }
+        onlineUsers = append(onlineUsers, user)
     }
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(onlineUsers)
 }
+

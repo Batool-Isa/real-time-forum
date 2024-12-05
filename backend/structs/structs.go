@@ -15,14 +15,14 @@ type Session struct {
 
 
 type User struct {
-	UserID int
-	Username  string
-	Email     string
-	Age       string
-	FirstName string
-	LastName  string
-	Gender    string
-	Password  string
+	UserID int		`json:"userId"` 
+	Username  string	`json:"username"` 
+	Email     string	`json:"email"` 
+	Age       string	`json:"age"` 
+	FirstName string	`json:"firstName"` 
+	LastName  string	`json:"lastName"` 
+	Gender    string	`json:"gender"` 
+	Password  string	`json:"pass"` 
 }
 type Post struct {
 	PostID          int        `json:"postId"`           // Unique identifier for the post

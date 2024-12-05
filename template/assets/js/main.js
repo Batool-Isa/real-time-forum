@@ -3,7 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the router to handle the current route
     router.init();
     fetchPosts();
+ // Fetch the online users list
+ fetchOnlineUsersList();
 
+ // Repeat fetching every 5 seconds
+ setInterval(fetchOnlineUsersList, 5000);
+ c
     // Initialize navigation links for SPA navigation
     document.querySelectorAll('.nav__link[data-path]').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -324,9 +329,9 @@ class ChatUI {
         userElement.dataset.userid = user.UserID;
         userElement.innerHTML = `
             <div class="user-info">
-                <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                <span class="user-username">@${user.Username}</span>
-                <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: gray; display: inline-block; margin-left: 10px;"></span>
+                <span class="user-name">${user.firstName} ${user.lastName}</span>
+                <span class="user-username">@${user.username}</span>
+                <span class="user-status" style="background-color: gray;"></span>
             </div>
         `;
         userElement.addEventListener('click', () => this.startChat(user));
@@ -392,7 +397,7 @@ class ChatUI {
                 users.forEach(user => this.addUserToList(user));
     
                 // Initial fetch of online statuses
-                fetchOnlineUsers();
+                //fetchOnlineUsers();
             })
             .catch(error => console.error('Error loading chats:', error));
     }
@@ -452,26 +457,66 @@ class ChatUI {
         return { modal, overlay };
     }
 }
-function fetchOnlineUsers() {
-    fetch('/api/online-users') // Backend endpoint that returns a list of online user IDs
-        .then(response => response.json())
-        .then(onlineUsers => {
-            document.querySelectorAll('.user-item').forEach(userElement => {
-                const userId = parseInt(userElement.dataset.userid);
-                const statusDot = userElement.querySelector('.user-status');
 
-                if (onlineUsers.includes(userId)) {
-                    statusDot.style.backgroundColor = 'green'; // Online
-                } else {
-                    statusDot.style.backgroundColor = 'gray'; // Offline
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching online users:', error));
+async function fetchOnlineUsersList() {
+    try {
+        // Get the current user ID
+        const currentUserId = await getCurrentUserId();
+
+        if (!currentUserId) {
+            console.warn('Unable to fetch the current user ID.');
+            return;
+        }
+
+        // Fetch the online users list from the server
+        const response = await fetch('/api/online-users');
+        if (!response.ok) {
+            throw new Error('Failed to fetch online users');
+        }
+
+        const onlineUsers = await response.json();
+
+        // Filter out the current user from the list of online users
+        const filteredUsers = onlineUsers.filter(user => user.userId !== currentUserId);
+
+        // Get the container for online users and clear it
+        const onlineUsersList = document.querySelector('.online-users-list');
+        onlineUsersList.innerHTML = ''; // Clear the list
+
+        // Populate the online users list
+        filteredUsers.forEach(user => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <div class="user-avatar"></div>
+                <div class="user-info">
+                    <span class="user-name">${user.firstName} ${user.lastName}</span>
+                    <span class="user-username">@${user.username}</span>
+                </div>
+            `;
+            onlineUsersList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching online users:', error);
+    }
 }
 
-// Fetch online users every 5 seconds
-setInterval(fetchOnlineUsers, 5000);
+
+
+
+async function getCurrentUserId() {
+    try {
+        const response = await fetch('/api/session-status', { credentials: 'include' });
+        if (!response.ok) {
+            throw new Error('Failed to fetch current user session');
+        }
+        const data = await response.json();
+        return data.userId; // Return the current user ID
+    } catch (error) {
+        console.error('Error fetching current user ID:', error);
+        return null; // Return null if there's an error
+    }
+}
+
 
 // Chat Manager Class
 class ChatManager {
