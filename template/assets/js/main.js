@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  // Repeat fetching every 5 seconds
  setInterval(fetchOnlineUsersList, 5000);
- c
+ 
     // Initialize navigation links for SPA navigation
     document.querySelectorAll('.nav__link[data-path]').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -433,10 +433,10 @@ class ChatUI {
             <h3>Select User</h3>
             <div class="user-select-list">
                 ${users.map(user => `
-                    <div class="user-item" data-userid="${user.UserID}">
+                    <div class="user-item" data-userid="${user.userId}">
                         <div class="user-info">
-                            <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                            <span class="user-username">@${user.Username}</span>
+                            <span class="user-name">${user.firstName} ${user.lastName}</span>
+                            <span class="user-username">@${user.username}</span>
                         </div>
                     </div>
                 `).join('')}
