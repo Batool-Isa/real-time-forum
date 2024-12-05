@@ -957,7 +957,7 @@ textarea:focus {
   color: var(--text-color-light);
 }
 
-.user-item {
+/* .user-item {
   display: flex;
   align-items: center;
   padding: .75rem;
@@ -970,7 +970,7 @@ textarea:focus {
 .user-item:hover {
   background: var(--first-color-lighter);
   color: var(--container-color);
-}
+} */
 
 .user-item.selected {
   background-color: var(--first-color-lighter);
@@ -985,7 +985,7 @@ textarea:focus {
   object-fit: cover;
 }
 
-.user-status {
+/* .user-status {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -994,6 +994,19 @@ textarea:focus {
 
 .user-status.online {
   background: #22c55e;
+} */
+
+.user-item .user-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray; /* Offline */
+    margin-left: 8px;
+}
+
+.user-item.online .user-status {
+    background-color: green; /* Online */
 }
 
 .chat-messages {

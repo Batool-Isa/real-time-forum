@@ -319,22 +319,18 @@ class ChatUI {
     }
     
     addUserToList(user) {
-        console.log("Calling add to list")
-        if (!document.querySelector(`.user-item[data-userid="${user.UserID}"]`)) {
-            console.log('${user.ID}')
-
-            const userElement = document.createElement('div');
-            userElement.className = 'user-item';
-            userElement.dataset.userid = user.ID;
-            userElement.innerHTML = `
-                <div class="user-info">
-                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                    <span class="user-username">@${user.Username}</span>
-                </div>
-            `;
-            userElement.addEventListener('click', () => this.startChat(user));
-            this.usersList.appendChild(userElement);
-        }
+        const userElement = document.createElement('div');
+        userElement.className = 'user-item';
+        userElement.dataset.userid = user.UserID;
+        userElement.innerHTML = `
+            <div class="user-info">
+                <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                <span class="user-username">@${user.Username}</span>
+                <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: gray; display: inline-block; margin-left: 10px;"></span>
+            </div>
+        `;
+        userElement.addEventListener('click', () => this.startChat(user));
+        this.usersList.appendChild(userElement);
     }
     
     
@@ -392,12 +388,15 @@ class ChatUI {
         fetch('/api/user-chat', { credentials: 'include' })
             .then(response => response.json())
             .then(users => {
-                console.log(users)
                 this.usersList.innerHTML = ''; // Clear the existing user list
                 users.forEach(user => this.addUserToList(user));
+    
+                // Initial fetch of online statuses
+                fetchOnlineUsers();
             })
             .catch(error => console.error('Error loading chats:', error));
     }
+    
     
     
     showUserSelectModal() {
@@ -453,6 +452,26 @@ class ChatUI {
         return { modal, overlay };
     }
 }
+function fetchOnlineUsers() {
+    fetch('/api/online-users') // Backend endpoint that returns a list of online user IDs
+        .then(response => response.json())
+        .then(onlineUsers => {
+            document.querySelectorAll('.user-item').forEach(userElement => {
+                const userId = parseInt(userElement.dataset.userid);
+                const statusDot = userElement.querySelector('.user-status');
+
+                if (onlineUsers.includes(userId)) {
+                    statusDot.style.backgroundColor = 'green'; // Online
+                } else {
+                    statusDot.style.backgroundColor = 'gray'; // Offline
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching online users:', error));
+}
+
+// Fetch online users every 5 seconds
+setInterval(fetchOnlineUsers, 5000);
 
 // Chat Manager Class
 class ChatManager {

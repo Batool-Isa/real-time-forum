@@ -6,7 +6,9 @@ import (
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/structs"
 	"sync"
-
+	"fmt"
+	"encoding/json"
+	"time"
 	"github.com/gorilla/websocket"
 )
 
@@ -18,6 +20,7 @@ var (
 	clients   = make(map[*structs.Client]bool)
 	broadcast = make(chan structs.Message)
 	mutex     = &sync.Mutex{}
+	activeUsers = make(map[int]*structs.Client)
 )
 
 func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
@@ -37,16 +40,28 @@ func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
 	client := &structs.Client{
 		Conn:   conn,
 		UserID: userID,
+		LastActivity: time.Now(),
 	}
 
 	mutex.Lock()
 	clients[client] = true
+	activeUsers[userID] = client
+	fmt.Println(activeUsers[userID])
 	mutex.Unlock()
+	// for userID, _ := range activeUsers {
+	// 	// Notify others that this user is online
+	// 	notifyPresenceChange(userID, true) 
+	// }
+	
 
 	defer func() {
 		mutex.Lock()
 		delete(clients, client)
+		//remove user froma ctive users map
+		delete(activeUsers, client.UserID)
 		mutex.Unlock()
+		//Notify the users that this user is offline
+		// notifyPresenceChange(client.UserID, false)
 		conn.Close()
 	}()
 
@@ -65,6 +80,35 @@ func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
 		broadcast <- msg
 	}
 }
+
+// func notifyPresenceChange(userID int, online bool) {
+//     presence := structs.Message{
+//         MessageID:  0,
+//         Content:    fmt.Sprintf("User %d is now %s", userID, onlineStatus(online)),
+//         SenderID:   userID,
+//         ReceiverID: 0, // Broadcast to all users
+//     }
+
+//     mutex.Lock()
+//     for _, client := range activeUsers {
+//         err := client.Conn.WriteJSON(presence)
+//         if err != nil {
+//             log.Printf("Error sending presence update: %v", err)
+//             client.Conn.Close()
+//             delete(activeUsers, client.UserID) // Remove disconnected client
+//         }
+//     }
+//     mutex.Unlock()
+// }
+
+
+func onlineStatus(online bool) string {
+    if online {
+        return "online"
+    }
+    return "offline"
+}
+
 
 func handleMessages() {
 	for msg := range broadcast {
@@ -89,4 +133,17 @@ func handleMessages() {
 		}
 		mutex.Unlock()
 	}
+}
+
+func GetOnlineUsers(w http.ResponseWriter, r *http.Request) {
+    mutex.Lock()
+    defer mutex.Unlock()
+
+    var onlineUsers []int
+    for userID := range activeUsers {
+        onlineUsers = append(onlineUsers, userID)
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(onlineUsers)
 }

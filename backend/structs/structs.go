@@ -63,4 +63,5 @@ type Client struct {
     Conn     *websocket.Conn
     UserID   int
     Username string
+	LastActivity time.Time
 }
