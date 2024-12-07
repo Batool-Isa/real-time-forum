@@ -15,7 +15,8 @@ import (
 
 func PostHandler(w http.ResponseWriter, r *http.Request) {
 	session := middleware.GetSessionFromContext(r.Context())
-	if session != nil {
+	if session == nil {
+		fmt.Println(session)
 		fmt.Println(("Session not found"))
 	}
     postIdStr := r.URL.Query().Get("id")
