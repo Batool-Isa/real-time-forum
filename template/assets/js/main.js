@@ -278,7 +278,7 @@ class ChatUI {
     } else {
         console.warn('WebSocket is already open or connecting. Skipping setup.');
     }
-    this.getCurrentUser();
+          this.currentUserId= this.getCurrentUser();
         this.chatContainer = document.querySelector('.chat-container');
         this.usersList = document.querySelector('.users-list');
         this.messagesContainer = document.querySelector('.messages-container');
@@ -303,11 +303,11 @@ class ChatUI {
         this.loadAllUsers();
         this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
-        this.loadOnlineUsers(); // Load online users on initialization
+        //this.loadOnlineUsers(); // Load online users on initialization
 
         // Refresh online users every 5 seconds
-        setInterval(() => this.loadOnlineUsers(), 5000);
-        setInterval(() => this.loadAllChats(), 5000);
+        // setInterval(() => this.loadOnlineUsers(), 5000);
+        // setInterval(() => this.loadAllChats(), 5000);
 
         this.messageOffset = 0;
         this.isLoading = false;
@@ -391,18 +391,47 @@ class ChatUI {
             console.log('WebSocket connection established');
         };
     
-        this.ws.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            console.log("sdgds"+event.data);
 
-            console.log('Received message via WebSocket:', message);
-            this.displayMessage({
-                content: message.content,
-                timestamp: message.timestamp,
-                sent: false
-            });
-            this.scrollToBottom();
-        };
+        // this.ws.onmessage = (event) => {
+        //     try {
+        //         const data = JSON.parse(event.data);
+        
+        //         // // Check the type of message received
+        //         // switch (data.type) {
+        //         //     case 'chat': // For chat messages
+        //         //     const message = data.payload;
+        //         //     console.log('Received message via WebSocket:', message);
+        //         //     this.displayMessage({
+        //         //         content: message.content,
+        //         //         timestamp: message.timestamp,
+        //         //         sent: message.senderId === this.currentUserId,
+        //         //     });
+        //         //     this.scrollToBottom();
+        //         //         break;
+        
+        //         //     // case 'presence': // For user online/offline status
+        //         //     // console.log('Received presence info via WebSocket:', data.payload);
+        //         //     // const presenceInfo = data.payload;
+        //         //     // this.updatePresence(presenceInfo.userId, presenceInfo.online);
+        //         //     // break;
+        
+        
+        //         //     // case 'online_users': // For the list of all online users
+        //         //     //     console.log('Online users list received:', data.users);
+        //         //     //     this.renderOnlineUsers(data.payload.users);
+        //         //     //    // this.renderOnlineUsers(data.users); // Update the UI for online users
+        //         //     //     break;
+        
+        //         //     default:
+        //         //         console.warn('Unknown WebSocket message type:', data.type);
+        //         }
+        //     } catch (error) {
+        //         console.error('Error handling WebSocket message:', error);
+        //     }
+        // };
+
+        
+  
     
         this.ws.onerror = (error) => {
             console.error('WebSocket error:', error);
@@ -413,8 +442,48 @@ class ChatUI {
             setTimeout(() => this.setupWebSocket(), 3000); // Retry connection after 3 seconds
         };
     }
-    
 
+
+    updatePresence(userId, online) {
+        const userElement = this.onlineUsersList.querySelector(`.user-item[data-userid="${userId}"]`);
+    
+        if (online) {
+            // If user is online and not already in the list, add them
+            if (!userElement) {
+                fetch(`/api/online-users`, { credentials: 'include' })
+                    .then(response => response.json())
+                    .then(user => {
+                        if (user) {
+                            const newUserElement = document.createElement('div');
+                            newUserElement.className = 'user-item';
+                            newUserElement.dataset.userid = user.UserID;
+                            newUserElement.innerHTML = `
+                                <div class="user-info">
+                                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                                    <span class="user-username">@${user.Username}</span>
+                                    <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: green; display: inline-block; margin-left: 10px;"></span>
+                                </div>
+                            `;
+                            this.onlineUsersList.appendChild(newUserElement);
+                        }
+                    })
+                    .catch(error => console.error('Error fetching user details:', error));
+            } else {
+                // Update status if user is already in the list
+                const statusDot = userElement.querySelector('.user-status');
+                if (statusDot) {
+                    statusDot.style.backgroundColor = 'green';
+                }
+            }
+        } else {
+            // If user goes offline, remove them from the list
+            if (userElement) {
+                this.onlineUsersList.removeChild(userElement);
+            }
+        }
+    }
+    
+    
     sendMessage() {
         const content = this.messageInput.value.trim();
         if (content && this.currentRecipient) {
@@ -438,18 +507,19 @@ class ChatUI {
                 alert('WebSocket connection is not open. Please refresh the page.');
             }
 
+            console.log('Sending message:', message);
+
             // Display sent message immediately
-            this.displayMessage({
-                content: content,
-                timestamp: message.timestamp,
-                sent: true
-            });
-            // Clear input
+            // this.displayMessage({
+            //     content: content,
+            //     timestamp: message.timestamp,
+            //     sent: true
+            // });
+            //Clear input
             this.messageInput.value = '';
             this.scrollToBottom();
         }
-    }
-    
+    }    
     startChat(user) {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
@@ -515,15 +585,15 @@ class ChatUI {
             });
     }
     
-    displayMessage({ content, timestamp, sent }) {
-        const messageElement = document.createElement('div');
-        messageElement.className = sent ? 'sent-message' : 'received-message';
-        messageElement.innerHTML = `
-            <div class="message-content">${content}</div>
-            <div class="message-timestamp">${new Date(timestamp).toLocaleTimeString()}</div>
-        `;
-        this.messagesContainer.appendChild(messageElement);
-    }
+    // displayMessage({ content, timestamp, sent }) {
+    //     const messageElement = document.createElement('div');
+    //     messageElement.className = sent ? 'sent-message' : 'received-message';
+    //     messageElement.innerHTML = `
+    //         <div class="message-content">${content}</div>
+    //         <div class="message-timestamp">${new Date(timestamp).toLocaleTimeString()}</div>
+    //     `;
+    //     this.messagesContainer.appendChild(messageElement);
+    // }
     
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
@@ -572,6 +642,7 @@ class ChatUI {
     }
     
     displayMessage(message) {
+        console.log('Displaying message:sads', message);
           // Remove the placeholder message if it exists
     const placeholder = this.messagesContainer.querySelector('.placeholder-message');
     if (placeholder) {
@@ -581,10 +652,11 @@ class ChatUI {
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
         console.log(message.sent);
+        
         messageElement.innerHTML = `
             <div class="message-content">${message.content}</div>
             <div class="message-header">
-                <span class="message-time">${new Date(message.timestamp).toLocaleTimeString()}</span>
+<span class="message-time">${new Date(message.timestamp).toLocaleString()}</span>
             </div>
         `;
         this.messagesContainer.appendChild(messageElement);
@@ -666,7 +738,6 @@ class ChatUI {
             return;
         }
     
-        console.log('Rendering users:', users); // Log the valid users array
         users.forEach(user => {
             const userElement = document.createElement('div');
             userElement.className = 'user-item';
@@ -683,7 +754,7 @@ class ChatUI {
             this.onlineUsersList.appendChild(userElement);
         });
     }
-
+    
     
     
     showUserSelectModal() {
@@ -760,7 +831,7 @@ function fetchOnlineUsers() {
 }
 
 // Fetch online users every 5 seconds
-setInterval(fetchOnlineUsers, 5000);
+//setInterval(fetchOnlineUsers, 5000);
 
 // Chat Manager Class
 class ChatManager {
@@ -769,19 +840,44 @@ class ChatManager {
         this.chatUI = new ChatUI();
 
         this.ws.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            console.log("sdgds11111111111"+event.data);
-            // const placeholder = this.messagesContainer.querySelector('.placeholder-message');
-            // if (placeholder) {
-            //     placeholder.remove();
-            // }
+            try {
+                const data = JSON.parse(event.data);
+        
+                // Check the type of message received
+                switch (data.type) {
+                  
 
-            this.chatUI.displayMessage({
-                content: message.content,
-                timestamp: message.createdAt,
-                sent: false
-            });
+                    case 'chat': // For chat messages
+                    const message = data.payload;
+                    console.log('Received message via WebSocket:', message);
+                    this.chatUI.displayMessage({
+                        content: message.content,
+                        timestamp: message.createdAt,
+                        sent: message.senderId === this.chatUI.currentUserId,
+                    });
+                    this.chatUI.scrollToBottom();
+                        break;
+                    case 'presence': // For user online/offline status
+                    const presenceInfo = data.payload;
+                    this.chatUI.updatePresence(presenceInfo.userId, presenceInfo.online);
+                    break;
+        
+        
+                    // case 'online_users': // For the list of all online users
+                    // this.renderOnlineUsers(data.payload.users);
+    
+                    // console.log('Online users list received:', data.users);
+                        //this.chatUI.renderOnlineUsers(data.users); // Update the UI for online users
+                      //  break;
+        
+                    default:
+                        console.warn('Unknown WebSocket message type:', data.type);
+                }
+            } catch (error) {
+                console.error('Error handling WebSocket message:', error);
+            }
         };
+
     }
 }
 

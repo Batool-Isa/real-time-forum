@@ -81,7 +81,6 @@ func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(messages)
 }
-
 func SaveMessageHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
@@ -110,8 +109,11 @@ func SaveMessageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Broadcast message through WebSocket
-	broadcast <- msg
+	// Wrap the message in a WebSocketMessage and send it to the broadcast channel
+	broadcast <- WebSocketMessage{
+		Type:    "chat",
+		Payload: msg,
+	}
 
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Message saved successfully"})
