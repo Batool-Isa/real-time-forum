@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2024/11/28 14:25:37 Received request body: {"post_id":2}
 2024/11/28 14:25:43 Received request body: {"post_id":2}
 2024/11/28 14:25:47 Received request body: {"post_id":2}
@@ -7391,3 +7392,142 @@ created by net/http.(*Server).Serve in goroutine 1
 2024/12/07 14:26:59 Error reading message: websocket: close 1001 (going away)
 2024/12/07 14:26:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
 2024/12/07 14:26:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+=======
+2024/12/07 13:49:41 Error retrieving current user: http: named cookie not present
+2024/12/07 13:49:41 Error getting user ID: http: named cookie not present
+2024/12/07 13:49:41 Error getting user ID: http: named cookie not present
+2024/12/07 13:49:46 Error retrieving current user: http: named cookie not present
+2024/12/07 13:49:51 Error retrieving current user: http: named cookie not present
+2024/12/07 13:49:56 Error retrieving current user: http: named cookie not present
+2024/12/07 13:50:50 Error retrieving current user: http: named cookie not present
+2024/12/07 13:50:50 Error getting user ID: http: named cookie not present
+2024/12/07 13:50:50 Error getting user ID: http: named cookie not present
+2024/12/07 13:50:55 Error retrieving current user: http: named cookie not present
+2024/12/07 13:53:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:53:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:53:15 Raw request body: {"post_id":33}
+2024/12/07 13:53:15 Parsed PostID: 33
+2024/12/07 13:53:15 UserID: 4 is liking PostID: 33
+2024/12/07 13:53:15 Inserting like for PostID: 33, UserID: 4
+2024/12/07 13:53:15 Like does not exist, adding it
+2024/12/07 13:53:16 Raw request body: {"post_id":33}
+2024/12/07 13:53:16 Parsed PostID: 33
+2024/12/07 13:53:16 UserID: 4 is liking PostID: 33
+2024/12/07 13:53:16 Inserting like for PostID: 33, UserID: 4
+2024/12/07 13:53:16 Like already exists, removing it
+2024/12/07 13:53:16 Raw request body: {"post_id":33}
+2024/12/07 13:53:16 Parsed PostID: 33
+2024/12/07 13:53:16 UserID: 4 is liking PostID: 33
+2024/12/07 13:53:16 Inserting like for PostID: 33, UserID: 4
+2024/12/07 13:53:16 Like does not exist, adding it
+2024/12/07 13:53:17 Raw request body: {"post_d":33}
+2024/12/07 13:53:17 Parsed PostID: 0
+2024/12/07 13:55:43 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:55:43 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:55:45 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:55:45 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:55:45 Error retrieving current user: http: named cookie not present
+2024/12/07 13:55:45 Error getting user ID: http: named cookie not present
+2024/12/07 13:55:45 Error getting user ID: http: named cookie not present
+2024/12/07 13:55:50 Error retrieving current user: http: named cookie not present
+2024/12/07 13:56:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:56:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:56:49 Error retrieving current user: http: named cookie not present
+2024/12/07 13:56:49 Error getting user ID: http: named cookie not present
+2024/12/07 13:56:50 Error getting user ID: http: named cookie not present
+2024/12/07 13:56:52 Error retrieving current user: http: named cookie not present
+2024/12/07 13:56:52 Error getting user ID: http: named cookie not present
+2024/12/07 13:56:52 Error getting user ID: http: named cookie not present
+2024/12/07 13:56:57 Error retrieving current user: http: named cookie not present
+2024/12/07 13:58:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:58:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:58:11 Error retrieving current user: http: named cookie not present
+2024/12/07 13:58:11 Error getting user ID: http: named cookie not present
+2024/12/07 13:58:11 Error getting user ID: http: named cookie not present
+2024/12/07 13:58:16 Error retrieving current user: http: named cookie not present
+2024/12/07 13:58:21 Error retrieving current user: http: named cookie not present
+2024/12/07 13:59:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:59:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:59:25 Error retrieving current user: http: named cookie not present
+2024/12/07 13:59:25 Error getting user ID: http: named cookie not present
+2024/12/07 13:59:25 Error getting user ID: http: named cookie not present
+2024/12/07 13:59:30 Error retrieving current user: http: named cookie not present
+2024/12/07 14:00:00 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:00:00 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:00:00 Error retrieving current user: http: named cookie not present
+2024/12/07 14:00:00 Error getting user ID: http: named cookie not present
+2024/12/07 14:00:01 Error getting user ID: http: named cookie not present
+2024/12/07 14:00:05 Error retrieving current user: http: named cookie not present
+2024/12/07 14:00:10 Error retrieving current user: http: named cookie not present
+2024/12/07 14:03:16 Error retrieving current user: http: named cookie not present
+2024/12/07 14:03:16 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:16 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:21 Error retrieving current user: http: named cookie not present
+2024/12/07 14:03:21 User not found: sql: no rows in result set
+2024/12/07 14:03:42 Error retrieving current user: http: named cookie not present
+2024/12/07 14:03:42 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:42 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:47 User not found: sql: no rows in result set
+2024/12/07 14:03:50 Error retrieving current user: http: named cookie not present
+2024/12/07 14:03:50 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:50 Error getting user ID: http: named cookie not present
+2024/12/07 14:03:56 Error retrieving current user: http: named cookie not present
+2024/12/07 14:04:01 Error retrieving current user: http: named cookie not present
+2024/12/07 14:04:01 Error retrieving current user: http: named cookie not present
+2024/12/07 14:04:01 Error getting user ID: http: named cookie not present
+2024/12/07 14:04:01 Error getting user ID: http: named cookie not present
+2024/12/07 14:04:06 Error retrieving current user: http: named cookie not present
+2024/12/07 14:04:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:04:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:04:15 Error retrieving current user: http: named cookie not present
+2024/12/07 14:04:15 Error getting user ID: http: named cookie not present
+2024/12/07 14:04:15 Error getting user ID: http: named cookie not present
+2024/12/07 14:04:19 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:01 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:01 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:01 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:06 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:28 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:28 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:28 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:29 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:29 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:29 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:30 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:30 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:31 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:31 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:31 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:32 Error getting user ID: http: named cookie not present
+2024/12/07 14:05:36 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:41 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:47 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:53 Error retrieving current user: http: named cookie not present
+2024/12/07 14:05:58 Error retrieving current user: http: named cookie not present
+2024/12/07 14:06:03 Error retrieving current user: http: named cookie not present
+2024/12/07 14:06:08 Error retrieving current user: http: named cookie not present
+2024/12/07 14:06:13 Error retrieving current user: http: named cookie not present
+2024/12/07 14:06:18 Error getting user ID: http: named cookie not present
+2024/12/07 14:06:18 Error getting user ID: http: named cookie not present
+2024/12/07 14:07:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:07:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:07:50 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:07:50 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:07:51 Error getting user ID: http: named cookie not present
+2024/12/07 14:07:51 Error getting user ID: http: named cookie not present
+2024/12/07 14:08:08 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:08:08 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:08:08 Error getting user ID: http: named cookie not present
+2024/12/07 14:08:08 Error getting user ID: http: named cookie not present
+2024/12/07 14:08:12 User not found: sql: no rows in result set
+2024/12/07 14:09:19 User not found: sql: no rows in result set
+2024/12/07 14:09:23 Error getting user ID: http: named cookie not present
+2024/12/07 14:09:23 Error getting user ID: http: named cookie not present
+2024/12/07 14:13:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:13:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:13:15 Error retrieving current user: http: named cookie not present
+2024/12/07 14:13:15 Error getting user ID: http: named cookie not present
+2024/12/07 14:13:15 Error getting user ID: http: named cookie not present
+2024/12/07 14:13:20 Error retrieving current user: http: named cookie not present
+2024/12/07 14:13:25 Error retrieving current user: http: named cookie not present
+>>>>>>> 7453dadf0a079da0d58759f6abafc3dd530bc31d

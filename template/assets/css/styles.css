@@ -728,10 +728,8 @@ header {
 .post-comments {
   margin-top: 1rem;
   padding: 0.5rem;
-  /*border-top: 1px solid var(--text-color-light);*/
   background-color: var(--first-color-light);
   border-radius: .25rem;
-  /*max-width: 1500px;*/
 }
 
 .comments-list {
@@ -760,7 +758,6 @@ header {
   overflow: hidden; /* Ensures any overflowing content is hidden */
   word-wrap: break-word; /* Breaks long words */
   text-overflow: ellipsis; /* Adds ellipsis (...) to overflowed text */
-  white-space: normal; /* Ensures text can wrap normally */
   max-height: 100px; /* Adjust based on the desired height */
 }
 
@@ -787,6 +784,18 @@ header {
   margin-left: .2rem;
 }
 
+#comment-input {
+  width: 100%;
+  padding: .5rem;
+  font-size: var(--normal-font-size);
+  border: 1px solid var(--text-color-light);
+  border-radius: .25rem;
+  background-color: var(--container-color);
+  color: var(--text-color);
+  margin-top: .5rem;
+  resize: none;
+}
+
 .submit-comment-button {
   display: inline-block;
   padding: .5rem 1rem;
@@ -798,6 +807,7 @@ header {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: .5rem;
+  margin-bottom: 4rem;
 }
 
 .submit-comment-button:hover {
@@ -1187,7 +1197,7 @@ textarea:focus {
   overflow-y: auto;
 }
 
-
+/* Comments and Likes */
 .post-actions {
   display: flex;
   gap: 1rem;

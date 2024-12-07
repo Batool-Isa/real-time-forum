@@ -24,7 +24,7 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     // Retrieve the username for the logged-in user
-    username, err := database.GetUsername(uid)
+    // username, err := database.GetUsername(uid)
     if err != nil {
         w.WriteHeader(http.StatusInternalServerError)
         json.NewEncoder(w).Encode(map[string]string{"error": "Failed to retrieve username"})
@@ -59,10 +59,11 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    http.Redirect(w, r, "/", http.StatusSeeOther)
     // Respond with success and include the username
-    w.WriteHeader(http.StatusCreated)
+    /*w.WriteHeader(http.StatusCreated)
     json.NewEncoder(w).Encode(map[string]string{
         "message":  "Comment added successfully",
         "username": username,
-    })
+    })*/
 }

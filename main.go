@@ -55,7 +55,7 @@ func main() {
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"userId": userID,
 		})
-		w.WriteHeader(http.StatusOK)
+		// w.WriteHeader(http.StatusOK)
 	})
 
 	// Authentication Endpoints

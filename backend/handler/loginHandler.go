@@ -3,8 +3,6 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
-
-	//	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
 	"real-time-forum/backend/middleware"
@@ -15,7 +13,7 @@ import (
 )
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
     if r.Method != http.MethodPost {
-        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+        http.Redirect(w, r, "/", http.StatusSeeOther)
         return
     }
 
@@ -84,10 +82,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(map[string]interface{}{
-        "message": "Login successful",
-    })
+    http.Redirect(w, r, "/", http.StatusOK)
 }
 
 
