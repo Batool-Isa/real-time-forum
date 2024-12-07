@@ -36,15 +36,24 @@ func GetChatHistory(senderID, receiverID int) ([]structs.Message, error) {
 
 func GetAllChats(userID int) ([]structs.User, error) {
     query := `
-        SELECT DISTINCT u.user_Id, u.firstName, u.lastName, u.username 
+        SELECT u.user_Id, u.firstName, u.lastName, u.username 
         FROM User u
-        INNER JOIN Message m 
-        ON (u.user_Id = m.sender_Id OR u.user_Id = m.receiver_Id)
-        WHERE u.user_Id != ? AND (m.sender_Id = ? OR m.receiver_Id = ?)
-        ORDER BY m.created_at DESC
+        INNER JOIN (
+            SELECT 
+                CASE 
+                    WHEN sender_Id = ? THEN receiver_Id 
+                    ELSE sender_Id 
+                END AS user_Id,
+                MAX(created_at) AS last_message_time
+            FROM Message
+            WHERE sender_Id = ? OR receiver_Id = ?
+            GROUP BY user_Id
+        ) latest_messages
+        ON u.user_Id = latest_messages.user_Id
+        ORDER BY latest_messages.last_message_time DESC
     `
 
-    rows, err := db.Query(query, userID, userID, userID) // Replace `db` with your database connection
+    rows, err := db.Query(query, userID, userID, userID)
     if err != nil {
         return nil, err
     }

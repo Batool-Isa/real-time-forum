@@ -416,16 +416,15 @@ class ChatUI {
     }
     
     
-    addUserToList(user) {
-
-         // Check if the user already exists in the list
-    const existingUser = this.usersList.querySelector(`.user-item[data-userid="${user.UserID}"]`);
-    if (existingUser) {
-        console.warn(`User with ID ${user.UserID} is already in the list.`);
-        return; // Do not add the user again
-    }
-
-    // If the user doesn't exist, add them to the list
+    addUserToList(user, prepend = false) {
+        // Check if the user already exists in the list
+        const existingUser = this.usersList.querySelector(`.user-item[data-userid="${user.UserID}"]`);
+        if (existingUser) {
+            console.warn(`User with ID ${user.UserID} is already in the list.`);
+            return; // Do not add the user again
+        }
+    
+        // Create the user element
         const userElement = document.createElement('div');
         userElement.className = 'user-item';
         userElement.dataset.userid = user.UserID;
@@ -437,10 +436,13 @@ class ChatUI {
             </div>
         `;
         userElement.addEventListener('click', () => this.startChat(user));
-
-     //   this.usersList.appendChild(userElement);
-          // Prepend the new user element to the top of the list
-    this.usersList.prepend(userElement);
+    
+        // Add the user to the top or bottom of the list
+        if (prepend) {
+            this.usersList.prepend(userElement); // Place at the top
+        } else {
+            this.usersList.appendChild(userElement); // Place at the bottom
+        }
     }
     
     
@@ -450,7 +452,7 @@ class ChatUI {
             .then(response => response.json())
             .then(users => {
                 this.users = users;
-                users.forEach(user => this.addUserToList(user));
+                users.forEach(user => this.addUserToList(user, true)); // Prepend to the list
             });
 
     }
@@ -507,7 +509,7 @@ class ChatUI {
             .then(response => response.json())
             .then(users => {
                 this.usersList.innerHTML = ''; // Clear the existing user list
-                users.forEach(user => this.addUserToList(user));
+                users.forEach(user => this.addUserToList(user, false));
     
                 // Initial fetch of online statuses
                 fetchOnlineUsers();
@@ -613,7 +615,7 @@ class ChatUI {
                 const userId = item.dataset.userid;
                 const selectedUser = this.users.find(u => u.UserID === parseInt(userId));
                 this.startChat(selectedUser);
-                this.addUserToList(selectedUser);
+                this.addUserToList(selectedUser, true);
                 modal.remove();
                 overlay.remove();
             };
@@ -655,10 +657,10 @@ class ChatManager {
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             console.log("sdgds11111111111"+event.data);
-            const placeholder = this.messagesContainer.querySelector('.placeholder-message');
-            if (placeholder) {
-                placeholder.remove();
-            }
+            // const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+            // if (placeholder) {
+            //     placeholder.remove();
+            // }
 
             this.chatUI.displayMessage({
                 content: message.content,
