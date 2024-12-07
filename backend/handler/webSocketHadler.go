@@ -81,26 +81,6 @@ func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// func notifyPresenceChange(userID int, online bool) {
-//     presence := structs.Message{
-//         MessageID:  0,
-//         Content:    fmt.Sprintf("User %d is now %s", userID, onlineStatus(online)),
-//         SenderID:   userID,
-//         ReceiverID: 0, // Broadcast to all users
-//     }
-
-//     mutex.Lock()
-//     for _, client := range activeUsers {
-//         err := client.Conn.WriteJSON(presence)
-//         if err != nil {
-//             log.Printf("Error sending presence update: %v", err)
-//             client.Conn.Close()
-//             delete(activeUsers, client.UserID) // Remove disconnected client
-//         }
-//     }
-//     mutex.Unlock()
-// }
-
 
 func onlineStatus(online bool) string {
     if online {
@@ -145,5 +125,40 @@ func GetOnlineUsers(w http.ResponseWriter, r *http.Request) {
     }
 
     w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(onlineUsers)
+}
+
+
+
+func GetAllOnlineUsers(w http.ResponseWriter, r *http.Request) {
+    currentUserID, err := RetrieveLoggedUser(r)
+    if err != nil {
+        log.Printf("Error retrieving current user: %v", err)
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
+
+    mutex.Lock()
+    defer mutex.Unlock()
+
+    //var onlineUsers []int
+    var onlineUsers []structs.User
+    for userID := range activeUsers {
+        //onlineUsers = append(onlineUsers, userID)
+        if userID == currentUserID {
+            continue // Skip the current user
+        }
+        user, err := database.GetUserByID(userID)
+        if err != nil {
+            log.Printf("Error fetching user details for userID %d: %v", userID, err)
+            continue
+        }
+        onlineUsers = append(onlineUsers, user)
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+	if len(onlineUsers) == 0 {
+        onlineUsers = []structs.User{} // Return an empty array if no users are online
+    }
     json.NewEncoder(w).Encode(onlineUsers)
 }

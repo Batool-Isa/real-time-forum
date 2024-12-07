@@ -67,3 +67,14 @@ func FetchAllUsers() ([]structs.User, error) {
 
     return users, nil
 }
+
+
+func GetUserByID(userID int) (structs.User, error) {
+    var user structs.User
+    query := "SELECT user_Id, username, firstName, lastName FROM User WHERE user_Id = ?"
+    err := db.QueryRow(query, userID).Scan(&user.UserID, &user.Username, &user.FirstName, &user.LastName)
+    if err != nil {
+        return user, err
+    }
+    return user, nil
+}
