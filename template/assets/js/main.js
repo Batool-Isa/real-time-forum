@@ -382,8 +382,29 @@ class ChatUI {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
+        
+        // Reset messages and start with initial fetch
+        this.messagesContainer.innerHTML = ''; // Clear existing messages
+        this.lastMessageID = 0; // Initially load the latest messages
+        this.loading = false; // Flag to prevent multiple simultaneous fetches
     
-        fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
+        // Load the first batch of messages (last 10)
+        this.loadMessages();
+    
+        // Listen for scroll events to load older messages when scrolling up
+        this.messagesContainer.addEventListener('scroll', () => {
+            if (!this.loading && this.messagesContainer.scrollTop === 0) {
+                this.loadMessages();
+            }
+        });
+    }
+    
+    loadMessages() {
+        this.loading = true; // Set loading flag to true
+    
+        const url = `/api/chat/history?receiverId=${this.currentRecipient.UserID}&before=${this.lastMessageID}`;
+        
+        fetch(url, { credentials: 'include' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch chat history');
@@ -391,31 +412,46 @@ class ChatUI {
                 return response.json();
             })
             .then(messages => {
-                this.messagesContainer.innerHTML = ''; // Clear existing messages
-    
-                // Check if the response contains messages
+                // If there are no messages or empty messages, stop the loading flag
                 if (!messages || messages.length === 0) {
-                    const placeholderMessage = document.createElement('p');
-                    placeholderMessage.className = 'placeholder-message';
-                    placeholderMessage.textContent = 'This is the start of your conversation. Say hi!';
-                    placeholderMessage.style.textAlign = 'center';
-                    placeholderMessage.style.color = 'gray';
-                    this.messagesContainer.appendChild(placeholderMessage);
-                } else {
-                    // Display existing messages
-                    messages.forEach(msg => this.displayMessage({
-                        content: msg.content,
-                        timestamp: msg.createdAt,
-                        sent: msg.senderId === this.currentUserId,
-                    }));
+                    this.loading = false;
+                    return;
                 }
     
-                this.scrollToBottom();
+                // Prepend new messages to the messages container
+                messages.forEach(msg => this.displayMessage({
+                    content: msg.content,
+                    timestamp: msg.createdAt,
+                    sent: msg.senderId === this.currentUserId,
+                }));
+    
+                // Update the `lastMessageID` to the ID of the last loaded message
+                this.lastMessageID = messages[messages.length - 1].messageID;
+    
+                this.scrollToBottom(); // Ensure the latest messages are at the bottom
+    
+                // Stop the loading flag after messages are loaded
+                this.loading = false;
             })
             .catch(error => {
                 console.error('Error loading chat history:', error);
                 this.messagesContainer.innerHTML = '<p>Failed to load chat history. Please try again later.</p>';
+                this.loading = false; // Stop loading flag on error
             });
+    }
+    
+    displayMessage({ content, timestamp, sent }) {
+        const messageElement = document.createElement('div');
+        messageElement.className = sent ? 'sent-message' : 'received-message';
+        messageElement.innerHTML = `
+            <div class="message-content">${content}</div>
+            <div class="message-timestamp">${new Date(timestamp).toLocaleTimeString()}</div>
+        `;
+        this.messagesContainer.appendChild(messageElement);
+    }
+    
+    scrollToBottom() {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
     
     
@@ -719,9 +755,11 @@ async function fetchPostDetails(postId) {
         // Check if there are comments, and generate the comments section accordingly
         const commentsHTML = post.comments && post.comments.length > 0
             ? post.comments.map(comment => `
-                <li>
-                    <p>${comment.commentText}</p>
-                    <span>By: ${comment.username}</span>
+                <li class="comment">
+                    <div class="comment-content">
+                    <span class="comment-author">${comment.username}</span>
+                        <p class="comment-text">${comment.commentText}</p>
+                    </div>
                 </li>
             `).join('')
             : '<p>No comments yet. Be the first to comment!</p>';
@@ -753,10 +791,10 @@ async function fetchPostDetails(postId) {
             </div>
             <div class="post-comments">
                 <h3>Comments</h3>
-                <ul>${commentsHTML}</ul>
+                <ul class="comments-list">${commentsHTML}</ul>
                 <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
                     <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="submit-comment-button">Submit</button>
                 </form>
             </div>
         </article>
@@ -801,8 +839,8 @@ async function submitComment(postId) {
         const commentsContainer = document.querySelector('.post-comments ul');
         const newComment = document.createElement('li');
         newComment.innerHTML = `
+            <span>${result.username}</span>
             <p>${commentText}</p>
-            <span>By: ${result.username}</span>
         `;
         commentsContainer.appendChild(newComment);
 
