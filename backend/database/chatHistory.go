@@ -5,17 +5,17 @@ import (
 	"real-time-forum/backend/structs"
 )
 
-func GetChatHistory(senderID, receiverID int) ([]structs.Message, error) {
+func GetChatHistory(senderID, receiverID int, offset, limit int) ([]structs.Message, error) {
     query := `
         SELECT message_Id, content, created_at, sender_Id, receiver_Id
         FROM Message
         WHERE (sender_Id = ? AND receiver_Id = ?)
            OR (sender_Id = ? AND receiver_Id = ?)
-        ORDER BY created_at ASC
+        ORDER BY created_at DESC
+        LIMIT ? OFFSET ?
     `
-    rows, err := db.Query(query, senderID, receiverID, receiverID, senderID)
+    rows, err := db.Query(query, senderID, receiverID, receiverID, senderID, limit, offset)
     if err != nil {
-        log.Printf("Error querying chat history: %v", err)
         return nil, err
     }
     defer rows.Close()

@@ -124,6 +124,7 @@ func GetAllUsersHandler(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(users)
 
 }
+
 func ChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
     session := middleware.GetSessionFromContext(r.Context())
     if session == nil {
@@ -144,7 +145,23 @@ func ChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
     // Assuming the second argument is the current user's ID from the session
     currentUserID := session.UserID
 
-    messages, err := database.GetChatHistory(userID, currentUserID)
+    // Get the page number from query parameters (default to page 1)
+    pageStr := r.URL.Query().Get("page")
+    page := 1
+    if pageStr != "" {
+        page, err = strconv.Atoi(pageStr)
+        if err != nil || page < 1 {
+            http.Error(w, "Invalid page number", http.StatusBadRequest)
+            return
+        }
+    }
+
+    // Calculate offset (page - 1) * limit
+    limit := 10
+    offset := (page - 1) * limit
+
+    // Fetch messages with the calculated offset and limit
+    messages, err := database.GetChatHistory(currentUserID, userID, offset, limit)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return

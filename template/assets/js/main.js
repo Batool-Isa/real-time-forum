@@ -309,8 +309,80 @@ class ChatUI {
         setInterval(() => this.loadOnlineUsers(), 5000);
         setInterval(() => this.loadAllChats(), 5000);
 
-        
+        this.messageOffset = 0;
+        this.isLoading = false;
+        this.hasMoreMessages = true;
+    
+        // Throttle the scroll event
+        this.messagesContainer.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 1000)); // 1-second throttle
     }
+    
+    throttle(func, delay) {
+        let lastCall = 0;
+        return function (...args) {
+            const now = new Date().getTime();
+            if (now - lastCall >= delay) {
+                lastCall = now;
+                func(...args);
+            }
+        };
+    }
+    
+    handleScroll() {
+        // If loading is in progress or no more messages, do nothing
+        if (this.isLoading || !this.hasMoreMessages) return;
+    
+        // Check if we're near the top (trigger loading more messages)
+        if (this.messagesContainer.scrollTop <= 100) {
+            this.loadMoreMessages();
+        }
+    }
+    
+    async loadMoreMessages() {
+        if (!this.currentRecipient || this.isLoading) return;
+    
+        this.isLoading = true;
+    
+        try {
+            const response = await fetch(
+                `/api/chat/history?receiverId=${this.currentRecipient.UserID}&offset=${this.messageOffset}`,
+                { credentials: 'include' }
+            );
+            const messages = await response.json();
+    
+            // If there are fewer than 10 messages, stop loading more
+            if (messages.length < 10) {
+                this.hasMoreMessages = false;
+            }
+    
+            // Preserve scroll position
+            const scrollPos = this.messagesContainer.scrollHeight - this.messagesContainer.scrollTop;
+    
+            // Add messages to top
+            messages.reverse().forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.className = `message ${msg.senderId === this.currentUserId ? 'sent' : 'received'}`;
+                messageElement.innerHTML = `
+                    <div class="message-content">${msg.content}</div>
+                    <div class="message-header">
+                        <span class="message-time">${new Date(msg.createdAt).toLocaleTimeString()}</span>
+                    </div>
+                `;
+                this.messagesContainer.prepend(messageElement);
+            });
+    
+            // Maintain scroll position
+            this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight - scrollPos;
+    
+            // Update the message offset
+            this.messageOffset += messages.length;
+        } catch (error) {
+            console.error('Error loading more messages:', error);
+        } finally {
+            this.isLoading = false;
+        }
+    }
+    
 
     setupWebSocket() {
         this.ws = new WebSocket('ws://localhost:8000/ws');
@@ -384,17 +456,20 @@ class ChatUI {
         document.querySelector('.message-input').style.display = 'flex';
         
         // Reset messages and start with initial fetch
+        this.messageOffset = 0;
+        this.hasMoreMessages = true;
         this.messagesContainer.innerHTML = ''; // Clear existing messages
         this.lastMessageID = 0; // Initially load the latest messages
         this.loading = false; // Flag to prevent multiple simultaneous fetches
     
+        this.loadMoreMessages();
         // Load the first batch of messages (last 10)
-        this.loadMessages();
+        //this.loadMessages();
     
         // Listen for scroll events to load older messages when scrolling up
         this.messagesContainer.addEventListener('scroll', () => {
             if (!this.loading && this.messagesContainer.scrollTop === 0) {
-                this.loadMessages();
+                this.loadMoreMessages();
             }
         });
     }

@@ -56,6 +56,8 @@ func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 
 	senderID := session.UserID // Get current user's ID from session
 	receiverID := r.URL.Query().Get("receiverId")
+	offset, _ := strconv.Atoi(r.URL.Query().Get("offset"))
+    limit := 10 
 
 	if receiverID == "" {
 		http.Error(w, "ReceiverID is required", http.StatusBadRequest)
@@ -65,7 +67,7 @@ func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 	receiverIDInt, _ := strconv.Atoi(receiverID)
 
 	// Fetch chat history
-	messages, err := database.GetChatHistory(senderID, receiverIDInt)
+	messages, err := database.GetChatHistory(senderID, receiverIDInt, offset, limit)
 	if err != nil {
 		http.Error(w, "Failed to fetch chat history", http.StatusInternalServerError)
 		return

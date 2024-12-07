@@ -1229,3 +1229,18 @@ textarea:focus {
 .action-btn i {
   font-size: 1.2rem;
 }
+
+.loading-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.loading .loading-indicator {
+  display: block;
+}
