@@ -307,6 +307,9 @@ class ChatUI {
 
         // Refresh online users every 5 seconds
         setInterval(() => this.loadOnlineUsers(), 5000);
+        setInterval(() => this.loadAllChats(), 5000);
+
+        
     }
 
     setupWebSocket() {

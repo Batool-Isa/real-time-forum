@@ -7531,3 +7531,51 @@ created by net/http.(*Server).Serve in goroutine 1
 2024/12/07 14:13:20 Error retrieving current user: http: named cookie not present
 2024/12/07 14:13:25 Error retrieving current user: http: named cookie not present
 >>>>>>> 7453dadf0a079da0d58759f6abafc3dd530bc31d
+2024/12/07 14:32:09 Raw request body: {"post_id":33}
+2024/12/07 14:32:09 Parsed PostID: 33
+2024/12/07 14:32:09 UserID: 1 is liking PostID: 33
+2024/12/07 14:32:09 Inserting like for PostID: 33, UserID: 1
+2024/12/07 14:32:09 Like does not exist, adding it
+2024/12/07 14:32:21 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:21 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:21 Error retrieving current user: http: named cookie not present
+2024/12/07 14:32:21 Error getting user ID: http: named cookie not present
+2024/12/07 14:32:21 Error getting user ID: http: named cookie not present
+2024/12/07 14:32:21 Error retrieving current user: http: named cookie not present
+2024/12/07 14:32:23 Error retrieving current user: http: named cookie not present
+2024/12/07 14:32:26 Error retrieving current user: http: named cookie not present
+2024/12/07 14:32:26 Error retrieving current user: http: named cookie not present
+2024/12/07 14:32:47 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:47 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:54 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:54 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:54 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:32:54 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:14 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:33:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:35:08 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:35:08 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:35:12 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:35:12 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:36:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 14:36:29 Error reading message: websocket: close 1001 (going away)
