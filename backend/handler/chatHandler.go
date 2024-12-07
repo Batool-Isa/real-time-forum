@@ -31,6 +31,10 @@ func GetUserChat(w http.ResponseWriter, r *http.Request) {
         http.Error(w, "Failed to fetch chats", http.StatusInternalServerError)
         return
     }
+	// In case the user has not chatted with anyone yet, return an empty array
+	if users == nil {
+		users = []structs.User{}
+	}
 fmt.Println("Debug", users)
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(users)
@@ -66,6 +70,11 @@ func GetChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Failed to fetch chat history", http.StatusInternalServerError)
 		return
 	}
+
+	if messages == nil {
+        messages = []structs.Message{} // Ensure empty array, not null
+    }
+
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(messages)

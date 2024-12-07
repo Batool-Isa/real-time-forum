@@ -4731,3 +4731,2270 @@ created by net/http.(*Server).Serve in goroutine 1
 2024/12/07 11:18:41 Like already exists, removing it
 2024/12/07 11:18:43 Raw request body: {"post_d":33}
 2024/12/07 11:18:43 Parsed PostID: 0
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 Error getting user ID: sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 sql: no rows in result set
+2024/12/07 11:57:27 Error getting user ID: sql: no rows in result set
+2024/12/07 11:57:29 sql: no rows in result set
+2024/12/07 11:57:29 sql: no rows in result set
+2024/12/07 11:57:29 sql: no rows in result set
+2024/12/07 11:57:29 sql: no rows in result set
+2024/12/07 11:57:29 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:30 sql: no rows in result set
+2024/12/07 11:57:30 sql: no rows in result set
+2024/12/07 11:57:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:32 sql: no rows in result set
+2024/12/07 11:57:32 sql: no rows in result set
+2024/12/07 11:57:32 sql: no rows in result set
+2024/12/07 11:57:32 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:33 sql: no rows in result set
+2024/12/07 11:57:34 sql: no rows in result set
+2024/12/07 11:57:34 sql: no rows in result set
+2024/12/07 11:57:34 sql: no rows in result set
+2024/12/07 11:57:34 sql: no rows in result set
+2024/12/07 11:57:34 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:35 sql: no rows in result set
+2024/12/07 11:57:35 sql: no rows in result set
+2024/12/07 11:57:35 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:37 sql: no rows in result set
+2024/12/07 11:57:37 sql: no rows in result set
+2024/12/07 11:57:37 sql: no rows in result set
+2024/12/07 11:57:37 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:38 sql: no rows in result set
+2024/12/07 11:57:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:57:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:57:39 sql: no rows in result set
+2024/12/07 11:57:39 sql: no rows in result set
+2024/12/07 11:57:39 sql: no rows in result set
+2024/12/07 11:57:39 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:40 Raw request body: {"post_id":33}
+2024/12/07 11:57:40 Parsed PostID: 33
+2024/12/07 11:57:40 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:40 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:40 Like does not exist, adding it
+2024/12/07 11:57:40 Raw request body: {"post_d":33}
+2024/12/07 11:57:40 Parsed PostID: 0
+2024/12/07 11:57:42 Raw request body: {"post_id":33}
+2024/12/07 11:57:42 Parsed PostID: 33
+2024/12/07 11:57:42 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:42 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:42 Like already exists, removing it
+2024/12/07 11:57:42 Raw request body: {"post_d":33}
+2024/12/07 11:57:42 Parsed PostID: 0
+2024/12/07 11:57:44 sql: no rows in result set
+2024/12/07 11:57:44 Raw request body: {"post_id":33}
+2024/12/07 11:57:44 Parsed PostID: 33
+2024/12/07 11:57:44 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:44 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:44 Like does not exist, adding it
+2024/12/07 11:57:45 Raw request body: {"post_id":32}
+2024/12/07 11:57:45 Parsed PostID: 32
+2024/12/07 11:57:45 UserID: 8 is liking PostID: 32
+2024/12/07 11:57:45 Inserting like for PostID: 32, UserID: 8
+2024/12/07 11:57:45 Like does not exist, adding it
+2024/12/07 11:57:45 sql: no rows in result set
+2024/12/07 11:57:45 sql: no rows in result set
+2024/12/07 11:57:45 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:46 Raw request body: {"post_id":33}
+2024/12/07 11:57:46 Parsed PostID: 33
+2024/12/07 11:57:46 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:46 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:46 Like already exists, removing it
+2024/12/07 11:57:47 Raw request body: {"post_id":33}
+2024/12/07 11:57:47 Parsed PostID: 33
+2024/12/07 11:57:47 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:47 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:47 Like does not exist, adding it
+2024/12/07 11:57:47 Raw request body: {"post_d":33}
+2024/12/07 11:57:47 Parsed PostID: 0
+2024/12/07 11:57:49 sql: no rows in result set
+2024/12/07 11:57:50 sql: no rows in result set
+2024/12/07 11:57:50 sql: no rows in result set
+2024/12/07 11:57:50 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:50 Raw request body: {"post_id":33}
+2024/12/07 11:57:50 Parsed PostID: 33
+2024/12/07 11:57:50 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:50 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:50 Like already exists, removing it
+2024/12/07 11:57:52 Raw request body: {"post_id":33}
+2024/12/07 11:57:52 Parsed PostID: 33
+2024/12/07 11:57:52 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:52 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:52 Like does not exist, adding it
+2024/12/07 11:57:53 Raw request body: {"post_d":33}
+2024/12/07 11:57:53 Parsed PostID: 0
+2024/12/07 11:57:54 sql: no rows in result set
+2024/12/07 11:57:55 sql: no rows in result set
+2024/12/07 11:57:55 sql: no rows in result set
+2024/12/07 11:57:55 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:57:56 Raw request body: {"post_id":33}
+2024/12/07 11:57:56 Parsed PostID: 33
+2024/12/07 11:57:56 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:56 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:56 Like already exists, removing it
+2024/12/07 11:57:57 Raw request body: {"post_id":33}
+2024/12/07 11:57:57 Parsed PostID: 33
+2024/12/07 11:57:57 UserID: 8 is liking PostID: 33
+2024/12/07 11:57:57 Inserting like for PostID: 33, UserID: 8
+2024/12/07 11:57:57 Like does not exist, adding it
+2024/12/07 11:57:59 sql: no rows in result set
+2024/12/07 11:58:00 sql: no rows in result set
+2024/12/07 11:58:00 sql: no rows in result set
+2024/12/07 11:58:00 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:04 sql: no rows in result set
+2024/12/07 11:58:05 sql: no rows in result set
+2024/12/07 11:58:05 sql: no rows in result set
+2024/12/07 11:58:05 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:05 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:58:05 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:58:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:58:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:58:09 sql: no rows in result set
+2024/12/07 11:58:10 sql: no rows in result set
+2024/12/07 11:58:10 sql: no rows in result set
+2024/12/07 11:58:10 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:58:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:58:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:58:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 11:58:14 sql: no rows in result set
+2024/12/07 11:58:15 sql: no rows in result set
+2024/12/07 11:58:15 sql: no rows in result set
+2024/12/07 11:58:15 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:19 sql: no rows in result set
+2024/12/07 11:58:20 sql: no rows in result set
+2024/12/07 11:58:20 sql: no rows in result set
+2024/12/07 11:58:20 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:24 sql: no rows in result set
+2024/12/07 11:58:25 sql: no rows in result set
+2024/12/07 11:58:25 sql: no rows in result set
+2024/12/07 11:58:25 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:29 sql: no rows in result set
+2024/12/07 11:58:30 sql: no rows in result set
+2024/12/07 11:58:30 sql: no rows in result set
+2024/12/07 11:58:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:34 sql: no rows in result set
+2024/12/07 11:58:35 sql: no rows in result set
+2024/12/07 11:58:35 sql: no rows in result set
+2024/12/07 11:58:35 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:39 sql: no rows in result set
+2024/12/07 11:58:40 sql: no rows in result set
+2024/12/07 11:58:40 sql: no rows in result set
+2024/12/07 11:58:40 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:44 sql: no rows in result set
+2024/12/07 11:58:45 sql: no rows in result set
+2024/12/07 11:58:45 sql: no rows in result set
+2024/12/07 11:58:45 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:49 sql: no rows in result set
+2024/12/07 11:58:50 sql: no rows in result set
+2024/12/07 11:58:50 sql: no rows in result set
+2024/12/07 11:58:50 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:54 sql: no rows in result set
+2024/12/07 11:58:55 sql: no rows in result set
+2024/12/07 11:58:55 sql: no rows in result set
+2024/12/07 11:58:55 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:58:59 sql: no rows in result set
+2024/12/07 11:59:00 sql: no rows in result set
+2024/12/07 11:59:00 sql: no rows in result set
+2024/12/07 11:59:00 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:04 sql: no rows in result set
+2024/12/07 11:59:05 sql: no rows in result set
+2024/12/07 11:59:05 sql: no rows in result set
+2024/12/07 11:59:05 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:09 sql: no rows in result set
+2024/12/07 11:59:10 sql: no rows in result set
+2024/12/07 11:59:10 sql: no rows in result set
+2024/12/07 11:59:10 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:14 sql: no rows in result set
+2024/12/07 11:59:15 sql: no rows in result set
+2024/12/07 11:59:15 sql: no rows in result set
+2024/12/07 11:59:15 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:19 sql: no rows in result set
+2024/12/07 11:59:20 sql: no rows in result set
+2024/12/07 11:59:20 sql: no rows in result set
+2024/12/07 11:59:20 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:24 sql: no rows in result set
+2024/12/07 11:59:25 sql: no rows in result set
+2024/12/07 11:59:25 sql: no rows in result set
+2024/12/07 11:59:25 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:29 sql: no rows in result set
+2024/12/07 11:59:30 sql: no rows in result set
+2024/12/07 11:59:30 sql: no rows in result set
+2024/12/07 11:59:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:34 sql: no rows in result set
+2024/12/07 11:59:35 sql: no rows in result set
+2024/12/07 11:59:35 sql: no rows in result set
+2024/12/07 11:59:35 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:39 sql: no rows in result set
+2024/12/07 11:59:40 sql: no rows in result set
+2024/12/07 11:59:40 sql: no rows in result set
+2024/12/07 11:59:40 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:44 sql: no rows in result set
+2024/12/07 11:59:45 sql: no rows in result set
+2024/12/07 11:59:45 sql: no rows in result set
+2024/12/07 11:59:45 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:49 sql: no rows in result set
+2024/12/07 11:59:50 sql: no rows in result set
+2024/12/07 11:59:50 sql: no rows in result set
+2024/12/07 11:59:50 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:54 sql: no rows in result set
+2024/12/07 11:59:55 sql: no rows in result set
+2024/12/07 11:59:55 sql: no rows in result set
+2024/12/07 11:59:55 Error retrieving current user: sql: no rows in result set
+2024/12/07 11:59:59 sql: no rows in result set
+2024/12/07 12:00:00 sql: no rows in result set
+2024/12/07 12:00:00 sql: no rows in result set
+2024/12/07 12:00:00 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:04 sql: no rows in result set
+2024/12/07 12:00:05 sql: no rows in result set
+2024/12/07 12:00:05 sql: no rows in result set
+2024/12/07 12:00:05 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:09 sql: no rows in result set
+2024/12/07 12:00:10 sql: no rows in result set
+2024/12/07 12:00:10 sql: no rows in result set
+2024/12/07 12:00:10 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:14 sql: no rows in result set
+2024/12/07 12:00:15 sql: no rows in result set
+2024/12/07 12:00:15 sql: no rows in result set
+2024/12/07 12:00:15 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:19 sql: no rows in result set
+2024/12/07 12:00:20 sql: no rows in result set
+2024/12/07 12:00:20 sql: no rows in result set
+2024/12/07 12:00:20 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:24 sql: no rows in result set
+2024/12/07 12:00:25 sql: no rows in result set
+2024/12/07 12:00:25 sql: no rows in result set
+2024/12/07 12:00:25 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:29 sql: no rows in result set
+2024/12/07 12:00:30 sql: no rows in result set
+2024/12/07 12:00:30 sql: no rows in result set
+2024/12/07 12:00:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:34 sql: no rows in result set
+2024/12/07 12:00:35 sql: no rows in result set
+2024/12/07 12:00:35 sql: no rows in result set
+2024/12/07 12:00:35 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:39 sql: no rows in result set
+2024/12/07 12:00:40 sql: no rows in result set
+2024/12/07 12:00:40 sql: no rows in result set
+2024/12/07 12:00:40 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:44 sql: no rows in result set
+2024/12/07 12:00:45 sql: no rows in result set
+2024/12/07 12:00:45 sql: no rows in result set
+2024/12/07 12:00:45 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:49 sql: no rows in result set
+2024/12/07 12:00:50 sql: no rows in result set
+2024/12/07 12:00:50 sql: no rows in result set
+2024/12/07 12:00:50 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:54 sql: no rows in result set
+2024/12/07 12:00:55 sql: no rows in result set
+2024/12/07 12:00:55 sql: no rows in result set
+2024/12/07 12:00:55 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:00:59 sql: no rows in result set
+2024/12/07 12:01:00 sql: no rows in result set
+2024/12/07 12:01:00 sql: no rows in result set
+2024/12/07 12:01:00 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:04 sql: no rows in result set
+2024/12/07 12:01:05 sql: no rows in result set
+2024/12/07 12:01:05 sql: no rows in result set
+2024/12/07 12:01:05 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:09 sql: no rows in result set
+2024/12/07 12:01:10 sql: no rows in result set
+2024/12/07 12:01:10 sql: no rows in result set
+2024/12/07 12:01:10 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:14 sql: no rows in result set
+2024/12/07 12:01:15 sql: no rows in result set
+2024/12/07 12:01:15 sql: no rows in result set
+2024/12/07 12:01:15 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:19 sql: no rows in result set
+2024/12/07 12:01:20 sql: no rows in result set
+2024/12/07 12:01:20 sql: no rows in result set
+2024/12/07 12:01:20 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:24 sql: no rows in result set
+2024/12/07 12:01:25 sql: no rows in result set
+2024/12/07 12:01:25 sql: no rows in result set
+2024/12/07 12:01:25 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:29 sql: no rows in result set
+2024/12/07 12:01:30 sql: no rows in result set
+2024/12/07 12:01:30 sql: no rows in result set
+2024/12/07 12:01:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:01:34 sql: no rows in result set
+2024/12/07 12:01:35 sql: no rows in result set
+2024/12/07 12:01:35 sql: no rows in result set
+2024/12/07 12:01:35 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:03:19 sql: no rows in result set
+2024/12/07 12:03:20 sql: no rows in result set
+2024/12/07 12:03:20 sql: no rows in result set
+2024/12/07 12:03:20 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:03:24 sql: no rows in result set
+2024/12/07 12:03:25 sql: no rows in result set
+2024/12/07 12:03:25 sql: no rows in result set
+2024/12/07 12:03:25 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:03:29 sql: no rows in result set
+2024/12/07 12:03:30 sql: no rows in result set
+2024/12/07 12:03:30 sql: no rows in result set
+2024/12/07 12:03:30 Error retrieving current user: sql: no rows in result set
+2024/12/07 12:03:31 sql: no rows in result set
+2024/12/07 12:03:32 sql: no rows in result set
+2024/12/07 12:03:32 sql: no rows in result set
+2024/12/07 12:03:34 sql: no rows in result set
+2024/12/07 12:03:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:03:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:03:40 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:03:40 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:03:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:03:40 Error getting user ID: http: named cookie not present
+2024/12/07 12:03:40 Error getting user ID: http: named cookie not present
+2024/12/07 12:03:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:03:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:03:50 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:03:50 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:07:41 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:07:41 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:09:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:09:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:10:01 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:10:01 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:10:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:10:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:17:19 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:17:19 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:19:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:19:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:19:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:19:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:19:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:20:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:20:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:21:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:21:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:21:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:21:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:23:55 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:23:55 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:24:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:24:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:24:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:24:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:25:56 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:25:56 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:25:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:25:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:26:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:26:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:26:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:26:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:27:04 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:27:04 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:27:05 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:05 Error getting user ID: http: named cookie not present
+2024/12/07 12:27:05 Error getting user ID: http: named cookie not present
+2024/12/07 12:27:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:09 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:21 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:27:33 User successfully inserted with username: fajer1
+2024/12/07 12:27:33 sql: no rows in result set
+2024/12/07 12:27:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:27:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:31:00 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:31:00 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:31:17 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:31:17 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:31:17 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:31:17 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:32:27 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:32:27 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:32:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:32:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:32:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:32 Error getting user ID: http: named cookie not present
+2024/12/07 12:32:32 Error getting user ID: http: named cookie not present
+2024/12/07 12:32:33 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:38 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:43 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:48 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:53 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:57828: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00020d420}, 0xc0003248c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0002caed4?, {0x90f8f8?, 0xc00020d420?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00020d420}, 0xc0003248c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00020d420?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00020d420}, 0xc0003248c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018a030?}, {0x90f8f8?, 0xc00020d420?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000104090, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55950: runtime error: invalid memory address or nil pointer dereference
+goroutine 63 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000fed20}, 0xc0000c1a40)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000da34c?, {0x90f8f8?, 0xc0000fed20?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000fed20}, 0xc0000c1a40)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000fed20?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000fed20}, 0xc0000c1a40)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000138d20?}, {0x90f8f8?, 0xc0000fed20?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000205170, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55956: runtime error: invalid memory address or nil pointer dereference
+goroutine 87 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00020d500}, 0xc0000c1b80)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0002caf04?, {0x90f8f8?, 0xc00020d500?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00020d500}, 0xc0000c1b80)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00020d500?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00020d500}, 0xc0000c1b80)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000138e70?}, {0x90f8f8?, 0xc00020d500?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000104c60, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55970: runtime error: invalid memory address or nil pointer dereference
+goroutine 65 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000fee00}, 0xc0000c1cc0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000da37c?, {0x90f8f8?, 0xc0000fee00?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000fee00}, 0xc0000c1cc0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000fee00?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000fee00}, 0xc0000c1cc0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000138ed0?}, {0x90f8f8?, 0xc0000fee00?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000205320, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55982: runtime error: invalid memory address or nil pointer dereference
+goroutine 77 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001b36c0}, 0xc0001fa500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001ae5d4?, {0x90f8f8?, 0xc0001b36c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001b36c0}, 0xc0001fa500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001b36c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001b36c0}, 0xc0001fa500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018ba10?}, {0x90f8f8?, 0xc0001b36c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00019f0e0, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55988: runtime error: invalid memory address or nil pointer dereference
+goroutine 79 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000feee0}, 0xc0000c1e00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000da3ac?, {0x90f8f8?, 0xc0000feee0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000feee0}, 0xc0000c1e00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000feee0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000feee0}, 0xc0000c1e00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000138fc0?}, {0x90f8f8?, 0xc0000feee0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00019f290, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:55998: runtime error: invalid memory address or nil pointer dereference
+goroutine 90 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001b37a0}, 0xc0001fa640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001ae604?, {0x90f8f8?, 0xc0001b37a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001b37a0}, 0xc0001fa640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001b37a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001b37a0}, 0xc0001fa640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018bb60?}, {0x90f8f8?, 0xc0001b37a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000104f30, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:56004: runtime error: invalid memory address or nil pointer dereference
+goroutine 81 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00020d5e0}, 0xc000324a00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0002caf34?, {0x90f8f8?, 0xc00020d5e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00020d5e0}, 0xc000324a00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00020d5e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00020d5e0}, 0xc000324a00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00030bef0?}, {0x90f8f8?, 0xc00020d5e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00019f440, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:56008: runtime error: invalid memory address or nil pointer dereference
+goroutine 99 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001b3880}, 0xc0001fa780)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001ae634?, {0x90f8f8?, 0xc0001b3880?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001b3880}, 0xc0001fa780)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001b3880?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001b3880}, 0xc0001fa780)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018bcb0?}, {0x90f8f8?, 0xc0001b3880?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0002054d0, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:55 http: named cookie not present
+2024/12/07 12:32:55 http: panic serving 127.0.0.1:56018: runtime error: invalid memory address or nil pointer dereference
+goroutine 115 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001b3960}, 0xc0001fa8c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001ae664?, {0x90f8f8?, 0xc0001b3960?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001b3960}, 0xc0001fa8c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001b3960?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001b3960}, 0xc0001fa8c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018be00?}, {0x90f8f8?, 0xc0001b3960?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00019f5f0, {0x90ff48, 0xc0000bd920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:32:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:57 Error getting user ID: http: named cookie not present
+2024/12/07 12:32:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:32:57 Error getting user ID: http: named cookie not present
+2024/12/07 12:32:58 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:03 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:08 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:13 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:18 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:18 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:21 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:23 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:23 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:28 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:33 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:38 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:43 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:33:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:04 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:09 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:14 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:14 Error getting user ID: http: named cookie not present
+2024/12/07 12:34:14 Error getting user ID: http: named cookie not present
+2024/12/07 12:34:14 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:19 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:21 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:34:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:00 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:04 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:07 User successfully inserted with username: layal
+2024/12/07 12:35:07 sql: no rows in result set
+2024/12/07 12:35:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:35:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:35:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:35:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:35:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:29 Error getting user ID: http: named cookie not present
+2024/12/07 12:35:29 Error getting user ID: http: named cookie not present
+2024/12/07 12:35:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:35:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:04 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:10 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:38 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:43 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:48 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:53 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:36:58 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:03 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:08 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:13 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:59126: runtime error: invalid memory address or nil pointer dereference
+goroutine 111 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000338b60}, 0xc00032db80)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000126e5c?, {0x90f8f8?, 0xc000338b60?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000338b60}, 0xc00032db80)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000338b60?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000338b60}, 0xc00032db80)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00028f2f0?}, {0x90f8f8?, 0xc000338b60?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dd830, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36362: runtime error: invalid memory address or nil pointer dereference
+goroutine 283 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000338c40}, 0xc00032dcc0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000126e8c?, {0x90f8f8?, 0xc000338c40?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000338c40}, 0xc00032dcc0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000338c40?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000338c40}, 0xc00032dcc0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00032ed80?}, {0x90f8f8?, 0xc000338c40?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000323560, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36376: runtime error: invalid memory address or nil pointer dereference
+goroutine 290 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00048b500}, 0xc000498640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003a13b4?, {0x90f8f8?, 0xc00048b500?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00048b500}, 0xc000498640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00048b500?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00048b500}, 0xc000498640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00048eb40?}, {0x90f8f8?, 0xc00048b500?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00029db90, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36382: runtime error: invalid memory address or nil pointer dereference
+goroutine 292 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000338d20}, 0xc000498780)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000126ebc?, {0x90f8f8?, 0xc000338d20?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000338d20}, 0xc000498780)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000338d20?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000338d20}, 0xc000498780)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00048ec90?}, {0x90f8f8?, 0xc000338d20?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00029dd40, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36386: runtime error: invalid memory address or nil pointer dereference
+goroutine 254 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00044e700}, 0xc0004497c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00041a514?, {0x90f8f8?, 0xc00044e700?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00044e700}, 0xc0004497c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00044e700?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00044e700}, 0xc0004497c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0004039e0?}, {0x90f8f8?, 0xc00044e700?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000411950, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36390: runtime error: invalid memory address or nil pointer dereference
+goroutine 293 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00044e000}, 0xc000448000)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00002034c?, {0x90f8f8?, 0xc00044e000?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00044e000}, 0xc000448000)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00044e000?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00044e000}, 0xc000448000)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa030?}, {0x90f8f8?, 0xc00044e000?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc090, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36394: runtime error: invalid memory address or nil pointer dereference
+goroutine 294 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00044e0e0}, 0xc000448140)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00002037c?, {0x90f8f8?, 0xc00044e0e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00044e0e0}, 0xc000448140)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00044e0e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00044e0e0}, 0xc000448140)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa120?}, {0x90f8f8?, 0xc00044e0e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc120, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36404: runtime error: invalid memory address or nil pointer dereference
+goroutine 324 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d60e0}, 0xc00009e000)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003a00ac?, {0x90f8f8?, 0xc0000d60e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d60e0}, 0xc00009e000)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d60e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d60e0}, 0xc00009e000)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00032e090?}, {0x90f8f8?, 0xc0000d60e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00029c2d0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36416: runtime error: invalid memory address or nil pointer dereference
+goroutine 296 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000284000}, 0xc000232000)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000126004?, {0x90f8f8?, 0xc000284000?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000284000}, 0xc000232000)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000284000?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000284000}, 0xc000232000)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000402030?}, {0x90f8f8?, 0xc000284000?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc2d0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:14 http: named cookie not present
+2024/12/07 12:37:14 http: panic serving 127.0.0.1:36428: runtime error: invalid memory address or nil pointer dereference
+goroutine 113 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d61c0}, 0xc00009e140)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0003a034c?, {0x90f8f8?, 0xc0000d61c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d61c0}, 0xc00009e140)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d61c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d61c0}, 0xc00009e140)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00032e210?}, {0x90f8f8?, 0xc0000d61c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000410120, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:37:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:18 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:19 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:19 Error getting user ID: http: named cookie not present
+2024/12/07 12:37:19 Error getting user ID: http: named cookie not present
+2024/12/07 12:37:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:23 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:37:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:00 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:04 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:05 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:09 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:10 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:38:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:00 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:05 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:10 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:21 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:39:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:48 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:53 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:53 Error getting user ID: http: named cookie not present
+2024/12/07 12:43:53 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:53 Error getting user ID: http: named cookie not present
+2024/12/07 12:43:57 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:58 Error retrieving current user: http: named cookie not present
+2024/12/07 12:43:58 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:03 sql: no rows in result set
+2024/12/07 12:44:03 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:44:03 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:44:16 http: named cookie not present
+2024/12/07 12:44:16 http: panic serving 127.0.0.1:57558: runtime error: invalid memory address or nil pointer dereference
+goroutine 72 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00016f6c0}, 0xc00024a8c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00014a79d?, {0x90f8f8?, 0xc00016f6c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00016f6c0}, 0xc00024a8c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00016f6c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00016f6c0}, 0xc00024a8c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00018d3b0?}, {0x90f8f8?, 0xc00016f6c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000192f30, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:16 http: named cookie not present
+2024/12/07 12:44:16 http: panic serving 127.0.0.1:57562: runtime error: invalid memory address or nil pointer dereference
+goroutine 83 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00016f7a0}, 0xc00024aa00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00014a7e5?, {0x90f8f8?, 0xc00016f7a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00016f7a0}, 0xc00024aa00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00016f7a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00016f7a0}, 0xc00024aa00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000231bc0?}, {0x90f8f8?, 0xc00016f7a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001755f0, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:16 http: named cookie not present
+2024/12/07 12:44:16 http: panic serving 127.0.0.1:57568: runtime error: invalid memory address or nil pointer dereference
+goroutine 85 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00016f880}, 0xc00024ab40)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00014a82d?, {0x90f8f8?, 0xc00016f880?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00016f880}, 0xc00024ab40)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00016f880?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00016f880}, 0xc00024ab40)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000231d10?}, {0x90f8f8?, 0xc00016f880?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001757a0, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40706: runtime error: invalid memory address or nil pointer dereference
+goroutine 78 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000096d20}, 0xc00024ac80)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0002b8a6d?, {0x90f8f8?, 0xc000096d20?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000096d20}, 0xc00024ac80)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000096d20?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000096d20}, 0xc00024ac80)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000231e00?}, {0x90f8f8?, 0xc000096d20?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000193290, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40708: runtime error: invalid memory address or nil pointer dereference
+goroutine 99 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00016f960}, 0xc00024adc0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00014a875?, {0x90f8f8?, 0xc00016f960?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00016f960}, 0xc00024adc0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00016f960?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00016f960}, 0xc00024adc0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000231e60?}, {0x90f8f8?, 0xc00016f960?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000094a20, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40722: runtime error: invalid memory address or nil pointer dereference
+goroutine 88 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00016fa40}, 0xc00024af00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00014a8bd?, {0x90f8f8?, 0xc00016fa40?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00016fa40}, 0xc00024af00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00016fa40?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00016fa40}, 0xc00024af00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000394030?}, {0x90f8f8?, 0xc00016fa40?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000175a70, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40738: runtime error: invalid memory address or nil pointer dereference
+goroutine 90 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a3500}, 0xc0001f0c80)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00019c73d?, {0x90f8f8?, 0xc0001a3500?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a3500}, 0xc0001f0c80)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a3500?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a3500}, 0xc0001f0c80)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000394180?}, {0x90f8f8?, 0xc0001a3500?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000175c20, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40750: runtime error: invalid memory address or nil pointer dereference
+goroutine 81 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a35e0}, 0xc0001f0dc0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00019c785?, {0x90f8f8?, 0xc0001a35e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a35e0}, 0xc0001f0dc0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a35e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a35e0}, 0xc0001f0dc0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001f2240?}, {0x90f8f8?, 0xc0001a35e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001934d0, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:17 http: named cookie not present
+2024/12/07 12:44:17 http: panic serving 127.0.0.1:40762: runtime error: invalid memory address or nil pointer dereference
+goroutine 115 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000096e00}, 0xc0001f0f00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0002b8ab5?, {0x90f8f8?, 0xc000096e00?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000096e00}, 0xc0001f0f00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000096e00?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000096e00}, 0xc0001f0f00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001f2390?}, {0x90f8f8?, 0xc000096e00?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000193680, {0x90ff48, 0xc000129920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:44:19 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:19 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:44:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:40 Error getting user ID: http: named cookie not present
+2024/12/07 12:46:40 Error getting user ID: http: named cookie not present
+2024/12/07 12:46:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:48 sql: no rows in result set
+2024/12/07 12:46:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:46:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:46:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:46:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:46:59 Error retrieving current user: http: named cookie not present
+2024/12/07 12:46:59 Error getting user ID: http: named cookie not present
+2024/12/07 12:47:00 Error getting user ID: http: named cookie not present
+2024/12/07 12:47:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:02 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:04 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:07 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:09 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:12 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:14 Error retrieving current user: http: named cookie not present
+2024/12/07 12:47:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:22 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:27 Error getting user ID: http: named cookie not present
+2024/12/07 12:48:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:27 Error getting user ID: http: named cookie not present
+2024/12/07 12:48:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:33 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:35 sql: no rows in result set
+2024/12/07 12:48:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:48:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:48:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:48 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:53 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:48:58 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:00 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:00 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:01 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:03 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:05 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:05 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:06 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:08 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:10 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:10 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:11 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:13 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:15 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:16 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:20 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:21 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:35998: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d61c0}, 0xc00009e500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000020364?, {0x90f8f8?, 0xc0000d61c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d61c0}, 0xc00009e500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d61c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d61c0}, 0xc00009e500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118030?}, {0x90f8f8?, 0xc0000d61c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc090, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36012: runtime error: invalid memory address or nil pointer dereference
+goroutine 11 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e0e0}, 0xc000126140)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a01c?, {0x90f8f8?, 0xc00013e0e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e0e0}, 0xc000126140)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e0e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e0e0}, 0xc000126140)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001181b0?}, {0x90f8f8?, 0xc00013e0e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc240, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36014: runtime error: invalid memory address or nil pointer dereference
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e1c0}, 0xc000126280)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a04c?, {0x90f8f8?, 0xc00013e1c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e1c0}, 0xc000126280)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e1c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e1c0}, 0xc000126280)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118300?}, {0x90f8f8?, 0xc00013e1c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00012a240, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36024: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e2a0}, 0xc0001263c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a07c?, {0x90f8f8?, 0xc00013e2a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e2a0}, 0xc0001263c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e2a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e2a0}, 0xc0001263c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118450?}, {0x90f8f8?, 0xc00013e2a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00012a3f0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36032: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e380}, 0xc000126500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a0ac?, {0x90f8f8?, 0xc00013e380?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e380}, 0xc000126500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e380?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e380}, 0xc000126500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118540?}, {0x90f8f8?, 0xc00013e380?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc2d0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36042: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e460}, 0xc000126640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a0dc?, {0x90f8f8?, 0xc00013e460?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e460}, 0xc000126640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e460?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e460}, 0xc000126640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118630?}, {0x90f8f8?, 0xc00013e460?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001c8000, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36052: runtime error: invalid memory address or nil pointer dereference
+goroutine 26 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d62a0}, 0xc00009e640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000020394?, {0x90f8f8?, 0xc0000d62a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d62a0}, 0xc00009e640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d62a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d62a0}, 0xc00009e640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00009bbf0?}, {0x90f8f8?, 0xc0000d62a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00012a7e0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36058: runtime error: invalid memory address or nil pointer dereference
+goroutine 14 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc00013e540}, 0xc000126780)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc00013a10c?, {0x90f8f8?, 0xc00013e540?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc00013e540}, 0xc000126780)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc00013e540?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc00013e540}, 0xc000126780)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000118780?}, {0x90f8f8?, 0xc00013e540?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc480, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36066: runtime error: invalid memory address or nil pointer dereference
+goroutine 28 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d6380}, 0xc0001268c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000203c4?, {0x90f8f8?, 0xc0000d6380?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d6380}, 0xc0001268c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d6380?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d6380}, 0xc0001268c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001188d0?}, {0x90f8f8?, 0xc0000d6380?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00012a990, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:21 http: named cookie not present
+2024/12/07 12:49:21 http: panic serving 127.0.0.1:36068: runtime error: invalid memory address or nil pointer dereference
+goroutine 16 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f4000}, 0xc0001e4000)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e8004?, {0x90f8f8?, 0xc0001f4000?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f4000}, 0xc0001e4000)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f4000?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f4000}, 0xc0001e4000)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c4090?}, {0x90f8f8?, 0xc0001f4000?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc630, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36084: runtime error: invalid memory address or nil pointer dereference
+goroutine 50 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f40e0}, 0xc0001e4140)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e8034?, {0x90f8f8?, 0xc0001f40e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f40e0}, 0xc0001e4140)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f40e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f40e0}, 0xc0001e4140)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c4180?}, {0x90f8f8?, 0xc0001f40e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc6c0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36086: runtime error: invalid memory address or nil pointer dereference
+goroutine 51 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d6460}, 0xc00009e780)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000203f4?, {0x90f8f8?, 0xc0000d6460?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d6460}, 0xc00009e780)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d6460?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d6460}, 0xc00009e780)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa000?}, {0x90f8f8?, 0xc0000d6460?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc750, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36096: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f41c0}, 0xc0001e4280)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e8064?, {0x90f8f8?, 0xc0001f41c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f41c0}, 0xc0001e4280)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f41c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f41c0}, 0xc0001e4280)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c42d0?}, {0x90f8f8?, 0xc0001f41c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001c82d0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36106: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d6540}, 0xc00009e8c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000020424?, {0x90f8f8?, 0xc0000d6540?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d6540}, 0xc00009e8c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d6540?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d6540}, 0xc00009e8c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa0f0?}, {0x90f8f8?, 0xc0000d6540?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001c8480, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36112: runtime error: invalid memory address or nil pointer dereference
+goroutine 54 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f42a0}, 0xc0001e43c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e8094?, {0x90f8f8?, 0xc0001f42a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f42a0}, 0xc0001e43c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f42a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f42a0}, 0xc0001e43c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c4420?}, {0x90f8f8?, 0xc0001f42a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dca20, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36118: runtime error: invalid memory address or nil pointer dereference
+goroutine 29 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d6620}, 0xc00009ea00)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000020454?, {0x90f8f8?, 0xc0000d6620?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d6620}, 0xc00009ea00)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d6620?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d6620}, 0xc00009ea00)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa240?}, {0x90f8f8?, 0xc0000d6620?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00012aa20, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36128: runtime error: invalid memory address or nil pointer dereference
+goroutine 56 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f4380}, 0xc0001e4500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e80c4?, {0x90f8f8?, 0xc0001f4380?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f4380}, 0xc0001e4500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f4380?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f4380}, 0xc0001e4500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c4510?}, {0x90f8f8?, 0xc0001f4380?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dcbd0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36130: runtime error: invalid memory address or nil pointer dereference
+goroutine 42 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d6700}, 0xc00009eb40)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000020484?, {0x90f8f8?, 0xc0000d6700?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d6700}, 0xc00009eb40)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d6700?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d6700}, 0xc00009eb40)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa390?}, {0x90f8f8?, 0xc0000d6700?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001c8750, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36136: runtime error: invalid memory address or nil pointer dereference
+goroutine 58 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001f4460}, 0xc0001e4640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001e80f4?, {0x90f8f8?, 0xc0001f4460?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001f4460}, 0xc0001e4640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001f4460?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001f4460}, 0xc0001e4640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001c4660?}, {0x90f8f8?, 0xc0001f4460?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dcd80, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:23 http: named cookie not present
+2024/12/07 12:49:23 http: panic serving 127.0.0.1:36140: runtime error: invalid memory address or nil pointer dereference
+goroutine 44 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0000d67e0}, 0xc00009ec80)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0000204b4?, {0x90f8f8?, 0xc0000d67e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0000d67e0}, 0xc00009ec80)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0000d67e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0000d67e0}, 0xc00009ec80)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0000fa4e0?}, {0x90f8f8?, 0xc0000d67e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001c8900, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:49:24 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:25 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:26 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:27 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:27 Error getting user ID: http: named cookie not present
+2024/12/07 12:49:27 Error getting user ID: http: named cookie not present
+2024/12/07 12:49:29 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:49:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:49:55 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:49:55 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:49:55 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:55 Error getting user ID: http: named cookie not present
+2024/12/07 12:49:56 Error getting user ID: http: named cookie not present
+2024/12/07 12:49:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:49:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:30 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:31 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55428: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001301c0}, 0xc000116280)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000118064?, {0x90f8f8?, 0xc0001301c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001301c0}, 0xc000116280)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001301c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001301c0}, 0xc000116280)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc00009ba10?}, {0x90f8f8?, 0xc0001301c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0000dc090, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55436: runtime error: invalid memory address or nil pointer dereference
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a0000}, 0xc000190000)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000192004?, {0x90f8f8?, 0xc0001a0000?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a0000}, 0xc000190000)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a0000?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a0000}, 0xc000190000)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000186030?}, {0x90f8f8?, 0xc0001a0000?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00011a1b0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55446: runtime error: invalid memory address or nil pointer dereference
+goroutine 35 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001302a0}, 0xc0001163c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000118094?, {0x90f8f8?, 0xc0001302a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001302a0}, 0xc0001163c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001302a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001302a0}, 0xc0001163c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000114240?}, {0x90f8f8?, 0xc0001302a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000194120, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55448: runtime error: invalid memory address or nil pointer dereference
+goroutine 23 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a00e0}, 0xc000190140)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000192034?, {0x90f8f8?, 0xc0001a00e0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a00e0}, 0xc000190140)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a00e0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a00e0}, 0xc000190140)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc0001861b0?}, {0x90f8f8?, 0xc0001a00e0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00011a360, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55454: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a01c0}, 0xc000190280)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000192064?, {0x90f8f8?, 0xc0001a01c0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a01c0}, 0xc000190280)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a01c0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a01c0}, 0xc000190280)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000186300?}, {0x90f8f8?, 0xc0001a01c0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc0001942d0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55468: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000130380}, 0xc0001903c0)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001180c4?, {0x90f8f8?, 0xc000130380?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000130380}, 0xc0001903c0)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000130380?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000130380}, 0xc0001903c0)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000186450?}, {0x90f8f8?, 0xc000130380?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000194480, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55474: runtime error: invalid memory address or nil pointer dereference
+goroutine 25 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc000130460}, 0xc000116500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001180f4?, {0x90f8f8?, 0xc000130460?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc000130460}, 0xc000116500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc000130460?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc000130460}, 0xc000116500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000114510?}, {0x90f8f8?, 0xc000130460?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00011a510, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55476: runtime error: invalid memory address or nil pointer dereference
+goroutine 27 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a02a0}, 0xc000116640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc000192094?, {0x90f8f8?, 0xc0001a02a0?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a02a0}, 0xc000116640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a02a0?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a02a0}, 0xc000116640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000114660?}, {0x90f8f8?, 0xc0001a02a0?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00011a6c0, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55482: runtime error: invalid memory address or nil pointer dereference
+goroutine 28 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a0380}, 0xc000190500)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001920c4?, {0x90f8f8?, 0xc0001a0380?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a0380}, 0xc000190500)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a0380?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a0380}, 0xc000190500)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000186540?}, {0x90f8f8?, 0xc0001a0380?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc00011a750, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:31 http: named cookie not present
+2024/12/07 12:50:31 http: panic serving 127.0.0.1:55498: runtime error: invalid memory address or nil pointer dereference
+goroutine 42 [running]:
+net/http.(*conn).serve.func1()
+	/snap/go/10748/src/net/http/server.go:1947 +0xbe
+panic({0x820dc0?, 0xb18590?})
+	/snap/go/10748/src/runtime/panic.go:785 +0x132
+real-time-forum/backend/handler.Logout({0x90f8f8, 0xc0001a0460}, 0xc000190640)
+	/home/bisa/real-time-forum/backend/handler/logoutHandler.go:14 +0xfc
+net/http.HandlerFunc.ServeHTTP(0xc0001920f4?, {0x90f8f8?, 0xc0001a0460?}, 0x10?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+main.main.SessionValidator.func14({0x90f8f8, 0xc0001a0460}, 0xc000190640)
+	/home/bisa/real-time-forum/backend/middleware/session.go:26 +0x2b0
+net/http.HandlerFunc.ServeHTTP(0xb60378?, {0x90f8f8?, 0xc0001a0460?}, 0x684796?)
+	/snap/go/10748/src/net/http/server.go:2220 +0x29
+net/http.(*ServeMux).ServeHTTP(0x4692d9?, {0x90f8f8, 0xc0001a0460}, 0xc000190640)
+	/snap/go/10748/src/net/http/server.go:2747 +0x1ca
+net/http.serverHandler.ServeHTTP({0xc000186690?}, {0x90f8f8?, 0xc0001a0460?}, 0x6?)
+	/snap/go/10748/src/net/http/server.go:3210 +0x8e
+net/http.(*conn).serve(0xc000194750, {0x90ff48, 0xc00009b920})
+	/snap/go/10748/src/net/http/server.go:2092 +0x5d0
+created by net/http.(*Server).Serve in goroutine 1
+	/snap/go/10748/src/net/http/server.go:3360 +0x485
+2024/12/07 12:50:32 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:34 Error getting user ID: http: named cookie not present
+2024/12/07 12:50:34 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:34 Error getting user ID: http: named cookie not present
+2024/12/07 12:50:35 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:36 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:37 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:39 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:40 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:41 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:42 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:44 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:45 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:46 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:47 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:49 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:50 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:51 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:52 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:54 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:56 Error retrieving current user: http: named cookie not present
+2024/12/07 12:50:56 sql: no rows in result set
+2024/12/07 12:50:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:50:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:54:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:54:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:57:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:57:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:57:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:57:53 Error reading message: websocket: close 1001 (going away)
+2024/12/07 12:57:53 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 12:57:53 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:10:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:10:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:56 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:11:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:11:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:11:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:11:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:11:59 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:12:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:12:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:12:36 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:12:36 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:12:36 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:12:36 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:13:25 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:13:25 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:13:41 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:13:41 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:13:41 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:13:41 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:06 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:06 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:16 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:16 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:16 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:16 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:26 Error getting user ID: http: named cookie not present
+2024/12/07 13:14:26 Error retrieving current user: http: named cookie not present
+2024/12/07 13:14:26 Error getting user ID: http: named cookie not present
+2024/12/07 13:14:31 Error retrieving current user: http: named cookie not present
+2024/12/07 13:14:36 Error retrieving current user: http: named cookie not present
+2024/12/07 13:14:39 sql: no rows in result set
+2024/12/07 13:14:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:50 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:50 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:14:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:14:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:26 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:26 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:32 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:32 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:47 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:47 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:15:47 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:15:47 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:16:02 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:16:02 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:16:02 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:16:02 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:17:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:17:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:17:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:17:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:18:09 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:18:09 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:18:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:18:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:19:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:19:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:19:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:19:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:20:02 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:20:02 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:20:02 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:20:02 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:20:07 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:20:07 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:21:00 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:21:00 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:21:09 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:21:09 Error reading message: websocket: close 1001 (going away)
+2024/12/07 13:21:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)
+2024/12/07 13:21:09 http: superfluous response.WriteHeader call from main.main.func1 (main.go:58)

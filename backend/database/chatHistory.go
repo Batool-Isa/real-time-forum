@@ -41,6 +41,7 @@ func GetAllChats(userID int) ([]structs.User, error) {
         INNER JOIN Message m 
         ON (u.user_Id = m.sender_Id OR u.user_Id = m.receiver_Id)
         WHERE u.user_Id != ? AND (m.sender_Id = ? OR m.receiver_Id = ?)
+        ORDER BY m.created_at DESC
     `
 
     rows, err := db.Query(query, userID, userID, userID) // Replace `db` with your database connection

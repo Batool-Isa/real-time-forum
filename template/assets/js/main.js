@@ -300,7 +300,7 @@ class ChatUI {
         };
 
         // Load available users and initialize chat features
-        this.loadAvailableUsers();
+        this.loadAllUsers();
         this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
         this.loadOnlineUsers(); // Load online users on initialization
@@ -349,6 +349,12 @@ class ChatUI {
                 timestamp: new Date().toISOString()
             };
 
+         // Remove the placeholder message if it exists
+        const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+        if (placeholder) {
+            placeholder.remove();
+        }
+
             // Only send via WebSocket
             if (this.ws.readyState === WebSocket.OPEN) {
                 this.ws.send(JSON.stringify(message));
@@ -371,23 +377,55 @@ class ChatUI {
     
     startChat(user) {
         this.currentRecipient = user;
-        this.currentChatHeader.textContent = `Chat with ${user.firstName} ${user.lastName}`;
+        this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
+    
         fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch chat history');
+                }
+                return response.json();
+            })
             .then(messages => {
                 this.messagesContainer.innerHTML = ''; // Clear existing messages
-                messages.forEach(msg => this.displayMessage({
-                    content: msg.content,
-                    timestamp: msg.createdAt,
-                    sent: msg.senderId === this.currentUserId,
-                }));
+    
+                // Check if the response contains messages
+                if (!messages || messages.length === 0) {
+                    const placeholderMessage = document.createElement('p');
+                    placeholderMessage.className = 'placeholder-message';
+                    placeholderMessage.textContent = 'This is the start of your conversation. Say hi!';
+                    placeholderMessage.style.textAlign = 'center';
+                    placeholderMessage.style.color = 'gray';
+                    this.messagesContainer.appendChild(placeholderMessage);
+                } else {
+                    // Display existing messages
+                    messages.forEach(msg => this.displayMessage({
+                        content: msg.content,
+                        timestamp: msg.createdAt,
+                        sent: msg.senderId === this.currentUserId,
+                    }));
+                }
+    
                 this.scrollToBottom();
             })
-            .catch(error => console.error('Error loading chat history:', error));
+            .catch(error => {
+                console.error('Error loading chat history:', error);
+                this.messagesContainer.innerHTML = '<p>Failed to load chat history. Please try again later.</p>';
+            });
     }
     
+    
     addUserToList(user) {
+
+         // Check if the user already exists in the list
+    const existingUser = this.usersList.querySelector(`.user-item[data-userid="${user.UserID}"]`);
+    if (existingUser) {
+        console.warn(`User with ID ${user.UserID} is already in the list.`);
+        return; // Do not add the user again
+    }
+
+    // If the user doesn't exist, add them to the list
         const userElement = document.createElement('div');
         userElement.className = 'user-item';
         userElement.dataset.userid = user.UserID;
@@ -399,20 +437,31 @@ class ChatUI {
             </div>
         `;
         userElement.addEventListener('click', () => this.startChat(user));
-        this.usersList.appendChild(userElement);
+
+     //   this.usersList.appendChild(userElement);
+          // Prepend the new user element to the top of the list
+    this.usersList.prepend(userElement);
     }
     
     
 
-    loadAvailableUsers() {
+    loadAllUsers() {
         fetch('/api/users')
             .then(response => response.json())
             .then(users => {
                 this.users = users;
                 users.forEach(user => this.addUserToList(user));
             });
+
     }
+    
     displayMessage(message) {
+          // Remove the placeholder message if it exists
+    const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+    if (placeholder) {
+        placeholder.remove();
+    }
+
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
         console.log(message.sent);
@@ -562,7 +611,9 @@ class ChatUI {
         modal.querySelectorAll('.user-item').forEach(item => {
             item.onclick = () => {
                 const userId = item.dataset.userid;
-                this.startChat(this.users.find(u => u.UserID === parseInt(userId)));
+                const selectedUser = this.users.find(u => u.UserID === parseInt(userId));
+                this.startChat(selectedUser);
+                this.addUserToList(selectedUser);
                 modal.remove();
                 overlay.remove();
             };
@@ -604,6 +655,10 @@ class ChatManager {
         this.ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             console.log("sdgds11111111111"+event.data);
+            const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+            if (placeholder) {
+                placeholder.remove();
+            }
 
             this.chatUI.displayMessage({
                 content: message.content,
