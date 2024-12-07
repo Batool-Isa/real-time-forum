@@ -2,7 +2,7 @@
 package handler
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
@@ -55,12 +55,14 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		w.Header().Set("Content-Type", "application/json")
+		/*w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(map[string]string{"message": "Post created successfully"})
-		return
+		return*/
 	}
+	
+	http.Redirect(w, r, "/", 200)
 
-	http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	// http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 }
 
 

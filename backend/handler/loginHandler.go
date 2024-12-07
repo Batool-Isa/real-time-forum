@@ -84,10 +84,8 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(map[string]interface{}{
-        "message": "Login successful",
-    })
+    http.Redirect(w, r, "/", 200)
+
 }
 
 

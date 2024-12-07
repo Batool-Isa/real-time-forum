@@ -761,3 +761,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('auth-form');
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrorMessages('login');
+
+            const formData = new FormData(loginForm);
+            const data = new URLSearchParams(formData);
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data.toString(),
+                });
+
+                if (!response.ok) {
+                    const result = await response.json();
+                    if (result.errors) {
+                        showErrorMessages(result.errors, 'login');
+                    }
+                } else {
+                    window.location.href = '/';
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+            }
+        });
+    }
+
+    function clearErrorMessages(context) {
+        document.querySelectorAll(`#${context}-form .error-message`).forEach(element => {
+            element.style.display = 'none';
+            element.textContent = '';
+        });
+    }
+
+    function showErrorMessages(errors, context) {
+        for (const [field, message] of Object.entries(errors)) {
+            const errorElement = document.querySelector(`#error-${field}`);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+    }
+});
