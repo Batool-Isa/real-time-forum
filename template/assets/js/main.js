@@ -302,7 +302,7 @@ class ChatUI {
     
     startChat(user) {
         this.currentRecipient = user;
-        this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
+        this.currentChatHeader.textContent = `Chat with ${user.firstName} ${user.lastName}`;
         document.querySelector('.message-input').style.display = 'flex';
         fetch(`/api/chat/history?receiverId=${user.UserID}`, { credentials: 'include' })
             .then(response => response.json())
