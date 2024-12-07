@@ -2,7 +2,6 @@
 package handler
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"real-time-forum/backend/database"
@@ -55,15 +54,12 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]string{"message": "Post created successfully"})
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
-	http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
-
-
 
 // func PostHandler(w http.ResponseWriter, r *http.Request) {
 // 	session := middleware.GetSessionFromContext(r.Context())

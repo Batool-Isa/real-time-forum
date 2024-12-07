@@ -4154,3 +4154,580 @@ created by net/http.(*Server).Serve in goroutine 1
 2024/12/07 09:58:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
 2024/12/07 09:58:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
 2024/12/07 09:58:32 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:03:07 sql: no rows in result set
+2024/12/07 10:03:09 sql: no rows in result set
+2024/12/07 10:03:09 sql: no rows in result set
+2024/12/07 10:03:09 sql: no rows in result set
+2024/12/07 10:03:09 Error getting user ID: sql: no rows in result set
+2024/12/07 10:03:09 sql: no rows in result set
+2024/12/07 10:03:09 sql: no rows in result set
+2024/12/07 10:03:09 Error getting user ID: sql: no rows in result set
+2024/12/07 10:03:12 sql: no rows in result set
+2024/12/07 10:03:14 sql: no rows in result set
+2024/12/07 10:03:19 sql: no rows in result set
+2024/12/07 10:03:21 sql: no rows in result set
+2024/12/07 10:03:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:03:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:03:27 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:03:27 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:03:27 Error getting user ID: http: named cookie not present
+2024/12/07 10:03:27 Error getting user ID: http: named cookie not present
+2024/12/07 10:03:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:03:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:06:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:06:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:07:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:07:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:07:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:07:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:08:27 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:08:27 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:08:40 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:08:40 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:08:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:08:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:09:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:09:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:12:03 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:12:03 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:12:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:12:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:12:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:12:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:22:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:22:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:22:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:22:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:22:50 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:24 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:24 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:23:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:23:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:45 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:45 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:24:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:24:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:25:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:25:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:25:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:25:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:25:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:25:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:25:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:25:14 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:26:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:26:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:26:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:26:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:26:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:26:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:26:15 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:26:15 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:11 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:17 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:17 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:17 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:17 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:33 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:27:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:27:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:21 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:21 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:21 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:21 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:24 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:24 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:24 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:34 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:34 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:28:55 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:28:55 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:29:14 Error getting user ID: http: named cookie not present
+2024/12/07 10:29:14 Error getting user ID: http: named cookie not present
+2024/12/07 10:29:23 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:29:23 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:29:57 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:29:57 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:29:57 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:29:57 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:30:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:30:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:30:15 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:30:15 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:31:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:31:35 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:31:42 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:31:42 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:32 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:34:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:34:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:35:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:35:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:35:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:35:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:35:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:35:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:25 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:37:25 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:37:25 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:25 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:33 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:37:37 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:37:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:37:37 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:39:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:39:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:39:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:39:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:40:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:05 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:40:10 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:40:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:10 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:40:49 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:40:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:40:49 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:43:57 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:43:57 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:00 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:00 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:01 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:29 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:34 Error getting user ID: http: named cookie not present
+2024/12/07 10:44:34 Error getting user ID: http: named cookie not present
+2024/12/07 10:44:40 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:40 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:46 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:44:46 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:44:46 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:47:19 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:47:19 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:47:22 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:47:22 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:47:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:47:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:49:53 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:49:53 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:49:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:49:59 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:51:16 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:51:16 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:57:29 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:57:29 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 10:57:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:57:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 10:57:39 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.CreateHandler (createHandler.go:73)
+2024/12/07 11:02:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:02:11 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:02:16 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:02:16 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:02:16 http: superfluous response.WriteHeader call from real-time-forum/backend/handler.CreateHandler (createHandler.go:73)
+2024/12/07 11:02:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:02:26 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:02:30 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:02:30 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:02:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:02:30 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:04:01 Raw request body: {"post_id":33}
+2024/12/07 11:04:01 Parsed PostID: 33
+2024/12/07 11:04:01 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:01 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:01 Like does not exist, adding it
+2024/12/07 11:04:06 Raw request body: {"post_id":33}
+2024/12/07 11:04:06 Parsed PostID: 33
+2024/12/07 11:04:06 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:06 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:06 Like already exists, removing it
+2024/12/07 11:04:07 Raw request body: {"post_id":33}
+2024/12/07 11:04:07 Parsed PostID: 33
+2024/12/07 11:04:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:07 Like does not exist, adding it
+2024/12/07 11:04:07 Raw request body: {"post_id":33}
+2024/12/07 11:04:07 Parsed PostID: 33
+2024/12/07 11:04:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:07 Like already exists, removing it
+2024/12/07 11:04:08 Raw request body: {"post_d":33}
+2024/12/07 11:04:08 Parsed PostID: 0
+2024/12/07 11:04:11 Raw request body: {"post_d":33}
+2024/12/07 11:04:11 Parsed PostID: 0
+2024/12/07 11:04:13 Raw request body: {"post_d":32}
+2024/12/07 11:04:13 Parsed PostID: 0
+2024/12/07 11:04:25 Raw request body: {"post_id":33}
+2024/12/07 11:04:25 Parsed PostID: 33
+2024/12/07 11:04:25 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:25 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:25 Like does not exist, adding it
+2024/12/07 11:04:25 Raw request body: {"post_id":33}
+2024/12/07 11:04:25 Parsed PostID: 33
+2024/12/07 11:04:25 UserID: 4 is liking PostID: 33
+2024/12/07 11:04:25 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:04:25 Like already exists, removing it
+2024/12/07 11:04:26 Raw request body: {"post_id":32}
+2024/12/07 11:04:26 Parsed PostID: 32
+2024/12/07 11:04:26 UserID: 4 is liking PostID: 32
+2024/12/07 11:04:26 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:04:26 Like does not exist, adding it
+2024/12/07 11:04:26 Raw request body: {"post_id":32}
+2024/12/07 11:04:26 Parsed PostID: 32
+2024/12/07 11:04:26 UserID: 4 is liking PostID: 32
+2024/12/07 11:04:26 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:04:26 Like already exists, removing it
+2024/12/07 11:06:48 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:06:48 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:06:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:06:48 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:07:22 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:07:22 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:07:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:07:22 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:08:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:08:15 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:08:15 Error getting user ID: http: named cookie not present
+2024/12/07 11:08:15 Error getting user ID: http: named cookie not present
+2024/12/07 11:08:21 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:08:21 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:12:01 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:12:01 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:12:01 Error getting user ID: http: named cookie not present
+2024/12/07 11:12:01 Error getting user ID: http: named cookie not present
+2024/12/07 11:12:07 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:12:07 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:13:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:13:28 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:13:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:13:28 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:13:36 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:13:36 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:13:36 Error getting user ID: http: named cookie not present
+2024/12/07 11:13:36 Error getting user ID: http: named cookie not present
+2024/12/07 11:13:42 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:13:42 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:14:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:14:13 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:14:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:14:13 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:14:14 Raw request body: {"post_id":33}
+2024/12/07 11:14:14 Parsed PostID: 33
+2024/12/07 11:14:14 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:14 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:14 Like does not exist, adding it
+2024/12/07 11:14:45 Raw request body: {"post_id":33}
+2024/12/07 11:14:45 Parsed PostID: 33
+2024/12/07 11:14:45 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:45 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:45 Like already exists, removing it
+2024/12/07 11:14:46 Raw request body: {"post_id":33}
+2024/12/07 11:14:46 Parsed PostID: 33
+2024/12/07 11:14:46 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:46 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:46 Like does not exist, adding it
+2024/12/07 11:14:48 Raw request body: {"post_id":33}
+2024/12/07 11:14:48 Parsed PostID: 33
+2024/12/07 11:14:48 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:48 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:48 Like already exists, removing it
+2024/12/07 11:14:48 Raw request body: {"post_id":33}
+2024/12/07 11:14:48 Parsed PostID: 33
+2024/12/07 11:14:48 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:48 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:48 Like does not exist, adding it
+2024/12/07 11:14:49 Raw request body: {"post_id":33}
+2024/12/07 11:14:49 Parsed PostID: 33
+2024/12/07 11:14:49 UserID: 4 is liking PostID: 33
+2024/12/07 11:14:49 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:14:49 Like already exists, removing it
+2024/12/07 11:15:19 Raw request body: {"post_id":32}
+2024/12/07 11:15:19 Parsed PostID: 32
+2024/12/07 11:15:19 UserID: 4 is liking PostID: 32
+2024/12/07 11:15:19 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:15:19 Like does not exist, adding it
+2024/12/07 11:15:19 Raw request body: {"post_id":32}
+2024/12/07 11:15:19 Parsed PostID: 32
+2024/12/07 11:15:19 UserID: 4 is liking PostID: 32
+2024/12/07 11:15:19 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:15:19 Like already exists, removing it
+2024/12/07 11:15:19 Raw request body: {"post_id":32}
+2024/12/07 11:15:19 Parsed PostID: 32
+2024/12/07 11:15:19 UserID: 4 is liking PostID: 32
+2024/12/07 11:15:19 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:15:19 Like does not exist, adding it
+2024/12/07 11:15:20 Raw request body: {"post_id":32}
+2024/12/07 11:15:20 Parsed PostID: 32
+2024/12/07 11:15:20 UserID: 4 is liking PostID: 32
+2024/12/07 11:15:20 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:15:20 Like already exists, removing it
+2024/12/07 11:15:20 Raw request body: {"post_id":32}
+2024/12/07 11:15:20 Parsed PostID: 32
+2024/12/07 11:15:20 UserID: 4 is liking PostID: 32
+2024/12/07 11:15:20 Inserting like for PostID: 32, UserID: 4
+2024/12/07 11:15:20 Like does not exist, adding it
+2024/12/07 11:15:21 Raw request body: {"post_id":31}
+2024/12/07 11:15:21 Parsed PostID: 31
+2024/12/07 11:15:21 UserID: 4 is liking PostID: 31
+2024/12/07 11:15:21 Inserting like for PostID: 31, UserID: 4
+2024/12/07 11:15:21 Like does not exist, adding it
+2024/12/07 11:15:23 Raw request body: {"post_id":24}
+2024/12/07 11:15:23 Parsed PostID: 24
+2024/12/07 11:15:23 UserID: 4 is liking PostID: 24
+2024/12/07 11:15:23 Inserting like for PostID: 24, UserID: 4
+2024/12/07 11:15:23 Like does not exist, adding it
+2024/12/07 11:15:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:15:52 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:15:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:15:52 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:15:53 Raw request body: {"post_id":27}
+2024/12/07 11:15:53 Parsed PostID: 27
+2024/12/07 11:15:53 UserID: 4 is liking PostID: 27
+2024/12/07 11:15:53 Inserting like for PostID: 27, UserID: 4
+2024/12/07 11:15:53 Like does not exist, adding it
+2024/12/07 11:15:54 Raw request body: {"post_id":27}
+2024/12/07 11:15:54 Parsed PostID: 27
+2024/12/07 11:15:54 UserID: 4 is liking PostID: 27
+2024/12/07 11:15:54 Inserting like for PostID: 27, UserID: 4
+2024/12/07 11:15:54 Like already exists, removing it
+2024/12/07 11:15:59 Raw request body: {"post_id":33}
+2024/12/07 11:15:59 Parsed PostID: 33
+2024/12/07 11:15:59 UserID: 4 is liking PostID: 33
+2024/12/07 11:15:59 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:15:59 Like does not exist, adding it
+2024/12/07 11:16:12 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:16:12 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:16:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:16:12 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:16:13 Raw request body: {"post_id":33}
+2024/12/07 11:16:13 Parsed PostID: 33
+2024/12/07 11:16:13 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:13 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:13 Like already exists, removing it
+2024/12/07 11:16:14 Raw request body: {"post_id":33}
+2024/12/07 11:16:14 Parsed PostID: 33
+2024/12/07 11:16:14 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:14 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:14 Like does not exist, adding it
+2024/12/07 11:16:14 Raw request body: {"post_id":33}
+2024/12/07 11:16:14 Parsed PostID: 33
+2024/12/07 11:16:14 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:14 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:14 Like already exists, removing it
+2024/12/07 11:16:15 Raw request body: {"post_id":33}
+2024/12/07 11:16:15 Parsed PostID: 33
+2024/12/07 11:16:15 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:15 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:15 Like does not exist, adding it
+2024/12/07 11:16:15 Raw request body: {"post_id":33}
+2024/12/07 11:16:15 Parsed PostID: 33
+2024/12/07 11:16:15 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:15 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:15 Like already exists, removing it
+2024/12/07 11:16:16 Raw request body: {"post_id":33}
+2024/12/07 11:16:16 Parsed PostID: 33
+2024/12/07 11:16:16 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:16 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:16 Like does not exist, adding it
+2024/12/07 11:16:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:16:44 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:16:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:16:44 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:16:46 Raw request body: {"post_id":33}
+2024/12/07 11:16:46 Parsed PostID: 33
+2024/12/07 11:16:46 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:46 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:46 Like already exists, removing it
+2024/12/07 11:16:47 Raw request body: {"post_id":33}
+2024/12/07 11:16:47 Parsed PostID: 33
+2024/12/07 11:16:47 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:47 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:47 Like does not exist, adding it
+2024/12/07 11:16:48 Raw request body: {"post_id":33}
+2024/12/07 11:16:48 Parsed PostID: 33
+2024/12/07 11:16:48 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:48 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:48 Like already exists, removing it
+2024/12/07 11:16:49 Raw request body: {"post_id":33}
+2024/12/07 11:16:49 Parsed PostID: 33
+2024/12/07 11:16:49 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:49 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:49 Like does not exist, adding it
+2024/12/07 11:16:49 Raw request body: {"post_id":33}
+2024/12/07 11:16:49 Parsed PostID: 33
+2024/12/07 11:16:49 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:49 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:49 Like already exists, removing it
+2024/12/07 11:16:50 Raw request body: {"post_id":33}
+2024/12/07 11:16:50 Parsed PostID: 33
+2024/12/07 11:16:50 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:50 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:50 Like does not exist, adding it
+2024/12/07 11:16:50 Raw request body: {"post_id":33}
+2024/12/07 11:16:50 Parsed PostID: 33
+2024/12/07 11:16:50 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:50 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:50 Like already exists, removing it
+2024/12/07 11:16:51 Raw request body: {"post_id":33}
+2024/12/07 11:16:51 Parsed PostID: 33
+2024/12/07 11:16:51 UserID: 4 is liking PostID: 33
+2024/12/07 11:16:51 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:16:51 Like does not exist, adding it
+2024/12/07 11:17:05 Raw request body: {"post_id":33}
+2024/12/07 11:17:05 Parsed PostID: 33
+2024/12/07 11:17:05 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:05 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:05 Like already exists, removing it
+2024/12/07 11:17:09 Raw request body: {"post_id":33}
+2024/12/07 11:17:09 Parsed PostID: 33
+2024/12/07 11:17:09 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:09 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:09 Like does not exist, adding it
+2024/12/07 11:17:10 Raw request body: {"post_id":33}
+2024/12/07 11:17:10 Parsed PostID: 33
+2024/12/07 11:17:10 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:10 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:10 Like already exists, removing it
+2024/12/07 11:17:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:17:39 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:17:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:17:39 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:17:40 Raw request body: {"post_id":33}
+2024/12/07 11:17:40 Parsed PostID: 33
+2024/12/07 11:17:40 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:40 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:40 Like does not exist, adding it
+2024/12/07 11:17:40 Raw request body: {"post_id":33}
+2024/12/07 11:17:40 Parsed PostID: 33
+2024/12/07 11:17:40 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:40 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:40 Like already exists, removing it
+2024/12/07 11:17:42 Raw request body: {"post_id":33}
+2024/12/07 11:17:42 Parsed PostID: 33
+2024/12/07 11:17:42 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:42 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:42 Like does not exist, adding it
+2024/12/07 11:17:43 Raw request body: {"post_id":33}
+2024/12/07 11:17:43 Parsed PostID: 33
+2024/12/07 11:17:43 UserID: 4 is liking PostID: 33
+2024/12/07 11:17:43 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:17:43 Like already exists, removing it
+2024/12/07 11:18:04 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:04 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:04 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:04 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:04 Raw request body: {"post_id":33}
+2024/12/07 11:18:04 Parsed PostID: 33
+2024/12/07 11:18:04 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:04 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:04 Like does not exist, adding it
+2024/12/07 11:18:06 Raw request body: {"post_id":33}
+2024/12/07 11:18:06 Parsed PostID: 33
+2024/12/07 11:18:06 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:06 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:06 Like already exists, removing it
+2024/12/07 11:18:07 Raw request body: {"post_id":33}
+2024/12/07 11:18:07 Parsed PostID: 33
+2024/12/07 11:18:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:07 Like does not exist, adding it
+2024/12/07 11:18:07 Raw request body: {"post_id":33}
+2024/12/07 11:18:07 Parsed PostID: 33
+2024/12/07 11:18:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:07 Like already exists, removing it
+2024/12/07 11:18:07 Raw request body: {"post_id":33}
+2024/12/07 11:18:07 Parsed PostID: 33
+2024/12/07 11:18:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:07 Like does not exist, adding it
+2024/12/07 11:18:07 Raw request body: {"post_id":33}
+2024/12/07 11:18:07 Parsed PostID: 33
+2024/12/07 11:18:07 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:07 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:07 Like already exists, removing it
+2024/12/07 11:18:08 Raw request body: {"post_id":33}
+2024/12/07 11:18:08 Parsed PostID: 33
+2024/12/07 11:18:08 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:08 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:08 Like does not exist, adding it
+2024/12/07 11:18:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:31 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:31 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:32 Raw request body: {"post_id":33}
+2024/12/07 11:18:32 Parsed PostID: 33
+2024/12/07 11:18:32 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:32 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:32 Like already exists, removing it
+2024/12/07 11:18:33 Raw request body: {"post_id":33}
+2024/12/07 11:18:33 Parsed PostID: 33
+2024/12/07 11:18:33 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:33 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:33 Like does not exist, adding it
+2024/12/07 11:18:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:38 Error reading message: websocket: close 1001 (going away)
+2024/12/07 11:18:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:38 http: superfluous response.WriteHeader call from main.main.func1 (main.go:57)
+2024/12/07 11:18:41 Raw request body: {"post_id":33}
+2024/12/07 11:18:41 Parsed PostID: 33
+2024/12/07 11:18:41 UserID: 4 is liking PostID: 33
+2024/12/07 11:18:41 Inserting like for PostID: 33, UserID: 4
+2024/12/07 11:18:41 Like already exists, removing it
+2024/12/07 11:18:43 Raw request body: {"post_d":33}
+2024/12/07 11:18:43 Parsed PostID: 0

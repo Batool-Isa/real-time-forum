@@ -1184,3 +1184,32 @@ textarea:focus {
   max-height: 300px;
   overflow-y: auto;
 }
+
+
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-color-light);
+  border-radius: 0.25rem;
+  background-color: var(--first-color-light);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: var(--first-color-lighter);
+  color: var(--container-color);
+}
+
+.action-btn i {
+  font-size: 1.2rem;
+}

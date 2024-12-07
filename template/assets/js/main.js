@@ -23,6 +23,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatManager = new ChatManager();
     chatManager.chatUI.loadAllChats();
 
+    document.querySelectorAll('.toggle-auth').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetPath = `/${e.target.dataset.target}`;
+            router.navigate(targetPath);
+        });
+    });
+
+    const loginForm = document.getElementById('auth-form');
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrorMessages('login');
+
+            const formData = new FormData(loginForm);
+            const data = new URLSearchParams(formData);
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data.toString(),
+                });
+
+                if (!response.ok) {
+                    const result = await response.json();
+                    if (result.errors) {
+                        showErrorMessages(result.errors, 'login');
+                    }
+                } else {
+                    window.location.href = '/';
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+            }
+        });
+    }
+
+    function clearErrorMessages(context) {
+        document.querySelectorAll(`#${context}-form .error-message`).forEach(element => {
+            element.style.display = 'none';
+            element.textContent = '';
+        });
+    }
+
+    function showErrorMessages(errors, context) {
+        for (const [field, message] of Object.entries(errors)) {
+            const errorElement = document.querySelector(`#error-${field}`);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+    }
+
 });
 
 // ==================== Router ====================
@@ -145,9 +203,15 @@ function renderPosts() {
                 <span>Categories: ${post.categoryName.join(', ')}</span>
             </div>
             <div class="post-actions">
-                <button class="like-btn" data-id="${post.postId}">👍 Like</button>
-                <button class="dislike-btn" data-id="${post.postId}">👎 Dislike</button>
-            </div>
+            <button class="action-btn like-btn" data-id="${post.postId}">
+                <i class='bx bx-like'></i>
+                <span class="like-count">${post.like}</span>
+            </button>
+            <button class="action-btn dislike-btn" data-id="${post.postId}">
+                <i class='bx bx-dislike'></i>
+                <span class="dislike-count">${post.dislike}</span>
+            </button>
+        </div>
         `;
         postsContainer.appendChild(postElement);
     });
@@ -704,15 +768,3 @@ async function handleLikeDislike(postId, action) {
         alert('An error occurred while updating the post.');
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Add this to your existing DOMContentLoaded listener
-    document.querySelectorAll('.toggle-auth').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetPath = `/${e.target.dataset.target}`;
-            router.navigate(targetPath);
-        });
-    });
-});

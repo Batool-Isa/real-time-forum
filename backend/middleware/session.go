@@ -46,7 +46,6 @@ func SessionValidator(next http.Handler) http.Handler {
 
 		// Embed session in context
 		ctx := context.WithValue(r.Context(), SessionKey, session)
-		fmt.Println("Session is active and valid")
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
