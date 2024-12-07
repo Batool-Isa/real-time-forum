@@ -43,6 +43,7 @@ func main() {
 	http.Handle("/api/chat/history", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
 	http.Handle("/api/user-chat", middleware.SessionValidator(http.HandlerFunc(handler.GetUserChat)))
 	http.Handle("/api/online-users", middleware.SessionValidator(http.HandlerFunc(handler.GetOnlineUsers)))
+	http.Handle("/api/all-online-users", middleware.SessionValidator(http.HandlerFunc(handler.GetAllOnlineUsers)))
 
 	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
 		userID, err := handler.RetrieveLoggedUser(r)

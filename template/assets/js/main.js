@@ -238,6 +238,11 @@ class ChatUI {
         // Load available users and initialize chat features
         this.loadAvailableUsers();
         this.initializeNewChatButton();
+        this.onlineUsersList = document.querySelector('.online-use-list');
+        this.loadOnlineUsers(); // Load online users on initialization
+
+        // Refresh online users every 5 seconds
+        setInterval(() => this.loadOnlineUsers(), 5000);
     }
 
     setupWebSocket() {
@@ -397,6 +402,59 @@ class ChatUI {
             .catch(error => console.error('Error loading chats:', error));
     }
     
+    
+    loadOnlineUsers() {
+        fetch('/api/all-online-users', { credentials: 'include' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch online users');
+                }
+                return response.json();
+            })
+            .then(onlineUsers => {
+                console.log('Online users fetched:', onlineUsers); // Log the response
+                if (!onlineUsers || !Array.isArray(onlineUsers)) {
+                    console.error('Invalid response format:', onlineUsers);
+                    return;
+                }
+                this.renderOnlineUsers(onlineUsers);
+            })
+            .catch(error => {
+                console.error('Error fetching online users:', error);
+            });
+    }
+    
+    
+    renderOnlineUsers(users) {
+        this.onlineUsersList.innerHTML = ''; // Clear the current list
+    
+        if (!users || users.length === 0) {
+            console.warn('No users online to display.');
+            const emptyMessage = document.createElement('p');
+            emptyMessage.textContent = 'No users are currently online.';
+            emptyMessage.style.textAlign = 'center';
+            this.onlineUsersList.appendChild(emptyMessage);
+            return;
+        }
+    
+        console.log('Rendering users:', users); // Log the valid users array
+        users.forEach(user => {
+            const userElement = document.createElement('div');
+            userElement.className = 'user-item';
+            userElement.dataset.userid = user.UserID;
+    
+            userElement.innerHTML = `
+                <div class="user-info">
+                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                    <span class="user-username">@${user.Username}</span>
+                    <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: green; display: inline-block; margin-left: 10px;"></span>
+                </div>
+            `;
+            userElement.addEventListener('click', () => this.startChat(user));
+            this.onlineUsersList.appendChild(userElement);
+        });
+    }
+
     
     
     showUserSelectModal() {
