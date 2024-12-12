@@ -2,6 +2,7 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"real-time-forum/backend/structs"
 )
@@ -120,4 +121,27 @@ func GetCommentByID(commentID int) (map[string]interface{}, error) {
 	}
 
 	return comment, nil
+}
+
+
+
+func GetCommentLikeDislikeCounts(commentID int) (int, int, error) {
+    var likes, dislikes int
+
+    query := `
+        SELECT 
+            (SELECT COUNT(*) FROM Comment_Likes WHERE comment_Id = $1) AS likes,
+            (SELECT COUNT(*) FROM Comment_Dislike WHERE comment_Id = $1) AS dislikes
+    `
+
+    err := db.QueryRow(query, commentID).Scan(&likes, &dislikes)
+    if err != nil {
+        if err == sql.ErrNoRows {
+            // If no rows are found, return 0 counts
+            return 0, 0, nil
+        }
+        return 0, 0, fmt.Errorf("failed to fetch like/dislike counts: %w", err)
+    }
+
+    return likes, dislikes, nil
 }
