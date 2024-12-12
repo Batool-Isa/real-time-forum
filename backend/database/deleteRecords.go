@@ -35,7 +35,7 @@ func DeleteDislike(postId int, userId int) error {
 }
 
 func DeleteCommentLike(CommentID int, userId int) error {
-	stmt1, err := db.Prepare("DELETE FROM Comment_Like WHERE comment_id = ? AND user_id = ?")
+	stmt1, err := db.Prepare("DELETE FROM Comment_Like WHERE comment_Id = ? AND user_Id = ?")
 	if err != nil {
 		log.Println(err)
 		return err
@@ -49,7 +49,7 @@ func DeleteCommentLike(CommentID int, userId int) error {
 }
 
 func DeleteCommentDislike(CommentID int, userId int) error {
-	stmt1, err := db.Prepare("DELETE FROM Comment_Dislike WHERE comment_id = ? AND user_id = ?")
+	stmt1, err := db.Prepare("DELETE FROM Comment_Dislike WHERE comment_Id = ? AND user_Id = ?")
 	if err != nil {
 		log.Println(err)
 		return err

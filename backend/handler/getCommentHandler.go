@@ -2,9 +2,11 @@ package handler
 
 import (
 	"encoding/json"
-	
+	"log"
 	"net/http"
 	"real-time-forum/backend/database"
+	"strconv"
+	"strings"
 )
 
 
@@ -20,14 +22,6 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
     if err != nil {
         w.WriteHeader(http.StatusUnauthorized)
         json.NewEncoder(w).Encode(map[string]string{"error": "Unauthorized"})
-        return
-    }
-
-    // Retrieve the username for the logged-in user
-    // username, err := database.GetUsername(uid)
-    if err != nil {
-        w.WriteHeader(http.StatusInternalServerError)
-        json.NewEncoder(w).Encode(map[string]string{"error": "Failed to retrieve username"})
         return
     }
 
@@ -59,11 +53,118 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    http.Redirect(w, r, "/", http.StatusSeeOther)
-    // Respond with success and include the username
-    /*w.WriteHeader(http.StatusCreated)
+    // Return success response
+    w.WriteHeader(http.StatusCreated)
     json.NewEncoder(w).Encode(map[string]string{
-        "message":  "Comment added successfully",
-        "username": username,
-    })*/
+        "message": "Comment added successfully",
+    })
+}
+
+
+
+// Like a comment
+func LikeCommentHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Parse the JSON body
+	var requestBody struct {
+		CommentID int `json:"comment_id"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&requestBody)
+	if err != nil || requestBody.CommentID <= 0 {
+		http.Error(w, "Invalid comment ID", http.StatusBadRequest)
+		return
+	}
+
+	// Retrieve the logged-in user's ID
+	userID, err := RetrieveLoggedUser(r)
+	if userID == 0 || err != nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	// Process like logic
+	err = database.InsertLikeForComment(requestBody.CommentID, userID)
+	if err != nil {
+		http.Error(w, "Failed to like comment", http.StatusInternalServerError)
+		return
+	}
+database.DeleteCommentDislike(requestBody.CommentID, userID)
+	// Return success response
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(map[string]string{"message": "Comment liked successfully"})
+}
+
+
+func DislikeCommentHandler(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodPost {
+        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+        return
+    }
+
+    var requestBody struct {
+        CommentID int `json:"comment_id"`
+    }
+
+    // Decode the JSON body
+    err := json.NewDecoder(r.Body).Decode(&requestBody)
+    if err != nil || requestBody.CommentID <= 0 {
+        http.Error(w, "Invalid comment ID", http.StatusBadRequest)
+        return
+    }
+
+    // Log received comment ID
+    log.Printf("Received comment ID: %d", requestBody.CommentID)
+
+    userID, err := RetrieveLoggedUser(r)
+    if userID == 0 || err != nil {
+        http.Error(w, "Unauthorized", http.StatusUnauthorized)
+        return
+    }
+
+    // Process dislike logic
+    err = database.InsertDislikeForComment(requestBody.CommentID, userID)
+    if err != nil {
+        http.Error(w, "Failed to dislike comment", http.StatusInternalServerError)
+        return
+    }
+    database.DeleteCommentLike(requestBody.CommentID, userID)
+    w.WriteHeader(http.StatusOK)
+    json.NewEncoder(w).Encode(map[string]string{"message": "Comment disliked successfully"})
+}
+
+
+
+// Get comment details
+func GetCommentHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Extract the comment ID from the URL
+	segments := strings.Split(r.URL.Path, "/")
+	if len(segments) < 3 {
+		http.Error(w, "Invalid URL", http.StatusBadRequest)
+		return
+	}
+
+	commentID, err := strconv.Atoi(segments[3])
+	if err != nil {
+		http.Error(w, "Invalid comment ID", http.StatusBadRequest)
+		return
+	}
+
+	comment, err := database.GetCommentByID(commentID)
+	if err != nil {
+		http.Error(w, "Comment not found", http.StatusNotFound)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(comment)
 }

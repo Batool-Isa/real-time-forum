@@ -912,6 +912,8 @@ function getCurrentSelectedUser() {
     const selectedUser = document.querySelector('.user-item.selected');
     return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
 }
+
+
 async function fetchPostDetails(postId) {
     try {
         // Fetch the post details from the server
@@ -927,10 +929,18 @@ async function fetchPostDetails(postId) {
         // Check if there are comments, and generate the comments section accordingly
         const commentsHTML = post.comments && post.comments.length > 0
             ? post.comments.map(comment => `
-                <li class="comment">
+                <li class="comment" data-comment-id="${comment.commentId}">
                     <div class="comment-content">
-                    <span class="comment-author">${comment.username}</span>
+                        <span class="comment-author">${comment.username}</span>
                         <p class="comment-text">${comment.commentText}</p>
+                    </div>
+                    <div class="comment-actions">
+                        <button class="action-btn comment-like-btn" data-id="${comment.commentId}">
+                            👍 <span class="comment-like-count">${comment.likes}</span>
+                        </button>
+                        <button class="action-btn comment-dislike-btn" data-id="${comment.commentId}">
+                            👎 <span class="comment-dislike-count">${comment.dislikes}</span>
+                        </button>
                     </div>
                 </li>
             `).join('')
@@ -938,42 +948,48 @@ async function fetchPostDetails(postId) {
 
         // Set the innerHTML for the post details, including the comments section
         postContainer.innerHTML = `
-        <article class="post">
-            <pre><p class="post-description">${post.postDescription}</p></pre>
-            <div class="post-category">
-                <span>Categories: ${post.categoryName.join(', ')}</span>
-            </div>
-            <div class="post-info">
-                <form method="post" action="/like">
-                    <input type="hidden" name="action" value="like" />
-                    <input type="hidden" name="post_id" value="${post.postId}" />
-                    <button type="submit" class="post-button">
-                        👍 <span>${post.like}</span>
-                    </button>
-                </form>
-    
-                <form method="post" action="/dislike">
-                    <input type="hidden" name="action" value="dislike" />
-                    <input type="hidden" name="post_id" value="${post.postId}" />
-                    <button type="submit" class="post-button">
-                        👎 <span>${post.dislike}</span>
-                    </button>
-                </form>
-                <span class="post-author">by ${post.username}</span>
-            </div>
-            <div class="post-comments">
-                <h3>Comments</h3>
-                <ul class="comments-list">${commentsHTML}</ul>
-                <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
-                    <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
-                    <button type="submit" class="submit-comment-button">Submit</button>
-                </form>
-            </div>
-        </article>
-    `;
-    
+            <article class="post">
+                <pre><p class="post-description">${post.postDescription}</p></pre>
+                <div class="post-category">
+                    <span>Categories: ${post.categoryName.join(', ')}</span>
+                </div>
+                <div class="post-info">
+                    <span class="post-author">by ${post.username}</span>
+                </div>
+                <div class="post-comments">
+                    <h3>Comments</h3>
+                    <ul class="comments-list">${commentsHTML}</ul>
+                    <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
+                        <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
+                        <button type="submit" class="submit-comment-button">Submit</button>
+                    </form>
+                </div>
+            </article>
+        `;
+
+        // Add event listeners for comment like/dislike buttons
+        document.querySelectorAll('.comment-like-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const commentId = button.getAttribute('data-id');
+                console.log("like clicked for comment ID:", commentId);
+        
+                // Ensure the comment ID is passed to the function
+                handleCommentLike(commentId);
+            });
+        });
+
+        document.querySelectorAll('.comment-dislike-btn').forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default browser behavior
+                const commentId = button.getAttribute('data-id');
+                console.log(`Dislike clicked for comment ID: ${commentId}`);
+                handleCommentDislike(commentId);
+            });
+        });
+        
+        
+
     } catch (error) {
-        // Log the error and display a fallback error message
         console.error('Error fetching post details:', error);
         const postContainer = document.querySelector('.post-details');
         postContainer.innerHTML = '<p>Failed to load post details.</p>';
@@ -1007,22 +1023,108 @@ async function submitComment(postId) {
         const result = await response.json();
         alert(result.message);
 
-        // Dynamically add the comment to the comment section
+        // Add the new comment to the comment list dynamically
         const commentsContainer = document.querySelector('.post-comments ul');
         const newComment = document.createElement('li');
+        newComment.classList.add('comment');
         newComment.innerHTML = `
-            <span>${result.username}</span>
-            <p>${commentText}</p>
+            <div class="comment-content">
+                <span class="comment-author">You</span>
+                <p class="comment-text">${commentText}</p>
+            </div>
+            <div class="comment-actions">
+                <button class="action-btn comment-like-btn" data-id="${result.commentId}">
+                    👍 <span class="comment-like-count">0</span>
+                </button>
+                
+                <button class="action-btn comment-dislike-btn" data-id="${result.commentId}">
+                    👎 <span class="comment-dislike-count">0</span>
+                </button>
+
+                 
+            </div>
         `;
         commentsContainer.appendChild(newComment);
 
-        // Clear the input field
+        // Reapply event listeners
+        newComment.querySelector('.comment-like-btn').addEventListener('click', () => {
+            handleCommentLike(result.commentId);
+        });
+        newComment.querySelector('.comment-dislike-btn').addEventListener('click', () => {
+            handleCommentDislike(result.commentId);
+        });
+
+        // Clear input field
         commentInput.value = '';
     } catch (error) {
         console.error('Error submitting comment:', error);
         alert('An error occurred while submitting your comment.');
     }
 }
+
+
+async function handleCommentLike(commentId) {
+    try {
+        const response = await fetch(`/api/comments/like`, { // Updated endpoint
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ comment_id: parseInt(commentId) }), // Send comment_id in the request body
+            credentials: 'include', // Include cookies for session handling
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response for comment like:', errorText);
+            alert(`Error: ${errorText}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Updated comment after like:', data);
+
+        // Update the UI for the comment
+        updateCommentUI(data);
+    } catch (error) {
+        console.error('Error handling comment like:', error);
+        alert('An error occurred while liking the comment.');
+    }
+}
+
+async function handleCommentDislike(commentId) {
+    console.log(`Sending dislike request for comment ID: ${commentId}`);
+    try {
+        const response = await fetch('/api/comments/dislike', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ comment_id: parseInt(commentId) }), // Ensure comment_id is a number
+            credentials: 'include',
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response for comment dislike:', errorText);
+            alert(`Error: ${errorText}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Comment disliked successfully:', data);
+        updateCommentUI(data);
+    } catch (error) {
+        console.error('Error during dislike operation:', error);
+    }
+}
+
+
+
+function updateCommentUI(commentData) {
+    const commentElement = document.querySelector(`.comment[data-comment-id="${commentData.commentId}"]`);
+    if (commentElement) {
+        commentElement.querySelector('.comment-like-count').textContent = commentData.likes;
+        commentElement.querySelector('.comment-dislike-count').textContent = commentData.dislikes;
+    }
+}
+
 
 async function handleLike(postId) {
     console.log(`Sending like request for post ID: ${postId}`);
