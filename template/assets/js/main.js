@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
+    chatManager.chatUI.loadAllUsers(); // Explicitly call to ensure users are loaded
     chatManager.chatUI.loadAllChats();
 
     document.querySelectorAll('.toggle-auth').forEach(link => {
@@ -304,10 +305,10 @@ class ChatUI {
         this.loadAllUsers();
         this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
-        //this.loadOnlineUsers(); // Load online users on initialization
+        this.loadAllUserswithStatus(); 
 
         // Refresh online users every 5 seconds
-        // setInterval(() => this.loadOnlineUsers(), 5000);
+        // setInterval(() => this.loadAllUserswithStatus(), 5000);
         // setInterval(() => this.loadAllChats(), 5000);
 
         this.messageOffset = 0;
@@ -447,42 +448,13 @@ class ChatUI {
 
     updatePresence(userId, online) {
         const userElement = this.onlineUsersList.querySelector(`.user-item[data-userid="${userId}"]`);
-    
-        if (online) {
-            // If user is online and not already in the list, add them
-            if (!userElement) {
-                fetch(`/api/online-users`, { credentials: 'include' })
-                    .then(response => response.json())
-                    .then(user => {
-                        if (user) {
-                            const newUserElement = document.createElement('div');
-                            newUserElement.className = 'user-item';
-                            newUserElement.dataset.userid = user.UserID;
-                            newUserElement.innerHTML = `
-                                <div class="user-info">
-                                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                                    <span class="user-username">@${user.Username}</span>
-                                    <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: green; display: inline-block; margin-left: 10px;"></span>
-                                </div>
-                            `;
-                            this.onlineUsersList.appendChild(newUserElement);
-                        }
-                    })
-                    .catch(error => console.error('Error fetching user details:', error));
-            } else {
-                // Update status if user is already in the list
-                const statusDot = userElement.querySelector('.user-status');
-                if (statusDot) {
-                    statusDot.style.backgroundColor = 'green';
-                }
-            }
-        } else {
-            // If user goes offline, remove them from the list
-            if (userElement) {
-                this.onlineUsersList.removeChild(userElement);
-            }
+        if (userElement) {
+            const statusDot = userElement.querySelector('.user-status');
+            statusDot.style.backgroundColor = online ? 'green' : 'gray';
         }
+        
     }
+    
     
     
     sendMessage() {
@@ -699,64 +671,45 @@ class ChatUI {
                 users.forEach(user => this.addUserToList(user, false));
     
                 // Initial fetch of online statuses
-                fetchOnlineUsers();
+               // fetchOnlineUsers();
             })
             .catch(error => console.error('Error loading chats:', error));
     }
     
     
-    loadOnlineUsers() {
+    loadAllUserswithStatus() {
         fetch('/api/all-online-users', { credentials: 'include' })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch online users');
-                }
-                return response.json();
-            })
-            .then(onlineUsers => {
-                console.log('Online users fetched:', onlineUsers); // Log the response
-                if (!onlineUsers || !Array.isArray(onlineUsers)) {
-                    console.error('Invalid response format:', onlineUsers);
-                    return;
-                }
-                this.renderOnlineUsers(onlineUsers);
-            })
-            .catch(error => {
-                console.error('Error fetching online users:', error);
-            });
-    }
-    
-    
-    renderOnlineUsers(users) {
-        this.onlineUsersList.innerHTML = ''; // Clear the current list
-    
-        if (!users || users.length === 0) {
-            console.warn('No users online to display.');
-            const emptyMessage = document.createElement('p');
-            emptyMessage.textContent = 'No users are currently online.';
-            emptyMessage.style.textAlign = 'center';
-            this.onlineUsersList.appendChild(emptyMessage);
-            return;
-        }
-    
+    .then(response => response.json())
+    .then(users => {
+        console.log('Raw API Response:', users); // Log the exact response
+        this.onlineUsersList.innerHTML = ''; // Clear the online users list
+
         users.forEach(user => {
+            console.log('User Object:', user); // Log each user object to inspect properties
+            const statusColor = user.online ? 'green' : 'gray';
             const userElement = document.createElement('div');
             userElement.className = 'user-item';
             userElement.dataset.userid = user.UserID;
-    
+
+            // Handle missing properties
+            const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+            const username = user.username ;
+
             userElement.innerHTML = `
                 <div class="user-info">
-                    <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                    <span class="user-username">@${user.Username}</span>
-                    <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: green; display: inline-block; margin-left: 10px;"></span>
+                    <span class="user-name">${fullName}</span>
+                    <span class="user-username">@${username}</span>
+                    <span class="user-status" 
+                        style="width: 10px; height: 10px; border-radius: 50%; background-color: ${statusColor}; display: inline-block; margin-left: 10px;">
+                    </span>
                 </div>
             `;
-            userElement.addEventListener('click', () => this.startChat(user));
             this.onlineUsersList.appendChild(userElement);
         });
+    })
+    .catch(error => console.error('Error fetching online users:', error));
+
     }
-    
-    
     
     showUserSelectModal() {
         fetch('/api/users')
@@ -831,8 +784,6 @@ function fetchOnlineUsers() {
         .catch(error => console.error('Error fetching online users:', error));
 }
 
-// Fetch online users every 5 seconds
-//setInterval(fetchOnlineUsers, 5000);
 
 // Chat Manager Class
 class ChatManager {
@@ -846,8 +797,6 @@ class ChatManager {
         
                 // Check the type of message received
                 switch (data.type) {
-                  
-
                     case 'chat': // For chat messages
                     const message = data.payload;
                     console.log('Received message via WebSocket:', message);
@@ -859,8 +808,10 @@ class ChatManager {
                     this.chatUI.scrollToBottom();
                         break;
                     case 'presence': // For user online/offline status
-                    const presenceInfo = data.payload;
-                    this.chatUI.updatePresence(presenceInfo.userId, presenceInfo.online);
+                    const { userId, online } = data.payload;
+                this.chatUI.updatePresence(userId, online);
+              //  updateUserPresence(userId, online);
+                
                     break;
         
         
@@ -884,6 +835,15 @@ class ChatManager {
 
 
 
+function updateUserPresence(userId, isOnline) {
+    const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);
+    if (userElement) {
+        const statusDot = userElement.querySelector('.user-status');
+        if (statusDot) {
+            statusDot.style.backgroundColor = isOnline ? 'red' : 'gray';
+        }
+    }
+}
 // ==================== Navigation Bar Management ====================
 const showMenu = (headerToggle, navbarId) => {
     const toggleBtn = document.getElementById(headerToggle);

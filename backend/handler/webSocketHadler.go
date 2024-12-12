@@ -91,30 +91,29 @@ func WebSocketHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 }
-// Function to broadcast user presence changes
+
 func notifyPresenceChange(userID int, online bool) {
-	message := WebSocketMessage{
-		Type: "presence",
-		Payload: struct {
-			UserID int  `json:"userId"`
-			Online bool `json:"online"`
-		}{
-			UserID: userID,
-			Online: online,
-		},
-	}
+    message := WebSocketMessage{
+        Type: "presence",
+        Payload: struct {
+            UserID int  `json:"userId"`
+            Online bool `json:"online"`
+        }{
+            UserID: userID,
+            Online: online,
+        },
+    }
 
-	mutex.Lock()
-	defer mutex.Unlock()
-
-	for client := range clients {
-		err := client.Conn.WriteJSON(message)
-		if err != nil {
-			log.Printf("Error notifying presence change: %v", err)
-			client.Conn.Close()
-			delete(clients, client)
-		}
-	}
+    mutex.Lock()
+    for client := range clients {
+        err := client.Conn.WriteJSON(message)
+        if err != nil {
+            log.Printf("Error notifying presence change: %v", err)
+            client.Conn.Close()
+            delete(clients, client)
+        }
+    }
+    mutex.Unlock()
 }
 
 
@@ -175,8 +174,7 @@ func GetOnlineUsers(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(onlineUsers)
 }
 
-
-func GetAllOnlineUsers(w http.ResponseWriter, r *http.Request) {
+func GetAllUsersWithStatus(w http.ResponseWriter, r *http.Request) {
     currentUserID, err := RetrieveLoggedUser(r)
     if err != nil {
         log.Printf("Error retrieving current user: %v", err)
@@ -184,27 +182,54 @@ func GetAllOnlineUsers(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    // Fetch all users from the database
+    users, err := database.FetchAllUsers()
+    if err != nil {
+        log.Printf("Error fetching all users: %v", err)
+        http.Error(w, "Failed to fetch users", http.StatusInternalServerError)
+        return
+    }
+
     mutex.Lock()
     defer mutex.Unlock()
 
-    var onlineUsers []structs.User
-    for userID := range activeUsers {
-        if userID == currentUserID {
-            continue // Skip the current user
-        }
+    // Create a slice for users with their online status
+    var usersWithStatus []struct {
+        UserID   int    `json:"user_id"`
+		FirstName string `json:"first_name"`
+		LastName string `json:"last_name"`
+        Username string `json:"username"`
+        Online   bool   `json:"online"`
+    }
 
-        // Fetch user details from the database
-        user, err := database.GetUserByID(userID)
-        if err != nil {
-            log.Printf("Error fetching user details for userID %d: %v", userID, err)
+    for _, user := range users {
+        // Skip the current user
+        if user.UserID == currentUserID {
             continue
         }
-        onlineUsers = append(onlineUsers, user)
+
+        // Check if the user is online
+        _, isOnline := activeUsers[user.UserID]
+
+        usersWithStatus = append(usersWithStatus, struct {
+            UserID   int    `json:"user_id"`
+			FirstName string `json:"first_name"`
+			LastName string `json:"last_name"`
+            Username string `json:"username"`
+            Online   bool   `json:"online"`
+        }{
+            UserID:   user.UserID,
+			FirstName: user.FirstName,
+			LastName: user.LastName,
+            Username: user.Username,
+            Online:   isOnline,
+        })
     }
 
     w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(onlineUsers)
+    json.NewEncoder(w).Encode(usersWithStatus)
 }
+
 
 
 // func GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {

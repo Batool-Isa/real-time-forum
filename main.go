@@ -42,14 +42,14 @@ func main() {
 	http.Handle("/api/chat/history", middleware.SessionValidator(http.HandlerFunc(handler.GetChatHistoryHandler)))
 	http.Handle("/api/user-chat", middleware.SessionValidator(http.HandlerFunc(handler.GetUserChat)))
 	http.Handle("/api/online-users", middleware.SessionValidator(http.HandlerFunc(handler.GetOnlineUsers)))
-	http.Handle("/api/all-online-users", middleware.SessionValidator(http.HandlerFunc(handler.GetAllOnlineUsers)))
-//	http.HandleFunc("/api/user/", handler.GetUserByIDHandler) // Handles requests for user by ID
+	http.Handle("/api/all-online-users", middleware.SessionValidator(http.HandlerFunc(handler.GetAllUsersWithStatus)))
+	//http.HandleFunc("/api/user/", handler.GetUserByIDHandler) // Handles requests for user by ID
 
-http.Handle("/api/comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
-http.Handle("/api/comments/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikeCommentHandler)))
-http.Handle("/api/comments/like", middleware.SessionValidator(http.HandlerFunc(handler.LikeCommentHandler)))
+	http.Handle("/api/comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
+	http.Handle("/api/comments/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikeCommentHandler)))
+	http.Handle("/api/comments/like", middleware.SessionValidator(http.HandlerFunc(handler.LikeCommentHandler)))
 
-		http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/api/session-status", func(w http.ResponseWriter, r *http.Request) {
 		userID, err := handler.RetrieveLoggedUser(r)
 		if err != nil {
 			http.Error(w, "No active session", http.StatusUnauthorized)
