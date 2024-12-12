@@ -233,7 +233,8 @@ function renderPosts() {
     document.querySelectorAll('.dislike-btn').forEach((button) => {
         button.addEventListener('click', () => {
             console.log(`Dislike clicked for post ID: ${button.dataset.id}`);
-            handleLikeDislike(button.dataset.id, 'dislike');
+            handleDislike(button.dataset.id);
+
         });
     });
     
@@ -1033,8 +1034,6 @@ async function handleLike(postId) {
             credentials: 'include',
         });
 
-        console.log('Raw response for like:', response);
-
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Error response for like:', errorText);
@@ -1047,11 +1046,58 @@ async function handleLike(postId) {
 
         // Update the UI with the new like count
         updatePostUI(data);
+
+        // If the post was previously disliked, update the dislike count
+        const dislikeBtn = document.querySelector(`.dislike-btn[data-id="${postId}"]`);
+        if (dislikeBtn) {
+            const dislikeCountElem = dislikeBtn.querySelector('.dislike-count');
+            if (parseInt(dislikeCountElem.textContent) > 0) {
+                dislikeCountElem.textContent = parseInt(dislikeCountElem.textContent) - 1;
+            }
+        }
     } catch (error) {
         console.error('Error handling like:', error);
         alert('An error occurred while liking the post.');
     }
 }
+
+async function handleDislike(postId) {
+    console.log(`Sending dislike request for post ID: ${postId}`);
+    try {
+        const response = await fetch('/api/dislike-post', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ post_id: parseInt(postId) }),
+            credentials: 'include',
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response for dislike:', errorText);
+            alert(`Error: ${errorText}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Updated post after dislike:', data);
+
+        // Update the UI with the new dislike count
+        updatePostUI(data);
+
+        // If the post was previously liked, update the like count
+        const likeBtn = document.querySelector(`.like-btn[data-id="${postId}"]`);
+        if (likeBtn) {
+            const likeCountElem = likeBtn.querySelector('.like-count');
+            if (parseInt(likeCountElem.textContent) > 0) {
+                likeCountElem.textContent = parseInt(likeCountElem.textContent) - 1;
+            }
+        }
+    } catch (error) {
+        console.error('Error handling dislike:', error);
+        alert('An error occurred while disliking the post.');
+    }
+}
+
 
 function updatePostUI(postData) {
     const postElement = document.querySelector(`.post[data-id="${postData.postId}"]`);
@@ -1061,37 +1107,3 @@ function updatePostUI(postData) {
     }
 }
 
-
-async function handleLikeDislike(postId, action) {
-    console.log("Sending request for:", action, "with post ID:", postId); // Debug log
-    try {
-        const response = await fetch(`/api/${action}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ post_d: parseInt(postId) }),
-            credentials: 'include',
-        });
-
-        console.log('Raw response:', response);
-
-        if (!response.ok) {
-            const errorText = await response.text(); // Read text response in case of errors
-            console.error('Error response:', errorText);
-            alert(`Error: ${errorText}`);
-            return;
-        }
-
-        // Handle empty or non-JSON responses
-        const contentType = response.headers.get('Content-Type');
-        if (contentType && contentType.includes('application/json')) {
-            const data = await response.json();
-            console.log('Updated post:', data);
-            updatePostUI(data); // Update the UI with the new post data
-        } else {
-            console.log('No JSON response body');
-        }
-    } catch (error) {
-        console.error('Error handling like/dislike:', error);
-        alert('An error occurred while updating the post.');
-    }
-}

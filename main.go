@@ -36,7 +36,7 @@ func main() {
 	http.HandleFunc("/api/categories", handler.GetCategoriesHandler)
 	http.Handle("/api/posts/create", middleware.SessionValidator(http.HandlerFunc(handler.CreatePostHandler)))
 	http.Handle("/api/like", middleware.SessionValidator(http.HandlerFunc(handler.LikePost)))
-	http.Handle("/api/dislike", middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)))
+	http.Handle("/api/dislike-post", middleware.SessionValidator(http.HandlerFunc(handler.DislikePost)))
 	http.Handle("/api/comment", middleware.SessionValidator(http.HandlerFunc(handler.CommentHandler)))
 	http.HandleFunc("/api/users", handler.GetUsersHandler)
 	http.Handle("/api/saveMessage", middleware.SessionValidator(http.HandlerFunc(handler.SaveMessageHandler)))
