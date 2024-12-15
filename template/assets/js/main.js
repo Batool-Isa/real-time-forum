@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
-    chatManager.chatUI.loadAllUsers(); // Explicitly call to ensure users are loaded
     chatManager.chatUI.loadAllChats();
+    //chatManager.chatUI.loadAllUsers(); // Explicitly call to ensure users are loaded
+
 
     document.querySelectorAll('.toggle-auth').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const loginForm = document.getElementById('auth-form');
-    
+
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -89,15 +90,15 @@ const router = {
     init() {
         // this.handleRoute(); // Handle the current route on page load
         // window.addEventListener('popstate', () => this.handleRoute()); // Listen for back/forward navigation
-         // Check session status first
-         fetch('/api/session-status')
-         .then(response => {
-             if (!response.ok) {
-                 document.body.classList.add('no-session');
-                 this.navigate('/login');
-             }
-         });
-     this.handleRoute();
+        // Check session status first
+        fetch('/api/session-status')
+            .then(response => {
+                if (!response.ok) {
+                    document.body.classList.add('no-session');
+                    this.navigate('/login');
+                }
+            });
+        this.handleRoute();
     },
 
     routes: {
@@ -224,8 +225,8 @@ function renderPosts() {
             router.navigate(`/post?id=${postId}`);
         });
     });
-      // Add event listeners for like and dislike buttons
-      document.querySelectorAll('.like-btn').forEach((button) => {
+    // Add event listeners for like and dislike buttons
+    document.querySelectorAll('.like-btn').forEach((button) => {
         button.addEventListener('click', () => {
             console.log(`Like clicked for post ID: ${button.dataset.id}`);
             handleLike(button.dataset.id);
@@ -238,7 +239,7 @@ function renderPosts() {
 
         });
     });
-    
+
 }
 
 function updatePaginationControls() {
@@ -273,21 +274,21 @@ document.querySelector('.pagination__next').addEventListener('click', () => {
 class ChatUI {
     constructor() {
         this.ws = new WebSocket('ws://localhost:8000/ws'); // WebSocket setup
-       // this.setupWebSocket();
-       if (!this.ws || this.ws.readyState === WebSocket.CLOSED) {
-        
-        this.setupWebSocket();
-    } else {
-        console.warn('WebSocket is already open or connecting. Skipping setup.');
-    }
-          this.currentUserId= this.getCurrentUser();
+        // this.setupWebSocket();
+        if (!this.ws || this.ws.readyState === WebSocket.CLOSED) {
+
+            this.setupWebSocket();
+        } else {
+            console.warn('WebSocket is already open or connecting. Skipping setup.');
+        }
+        this.currentUserId = this.getCurrentUser();
         this.chatContainer = document.querySelector('.chat-container');
         this.usersList = document.querySelector('.users-list');
         this.messagesContainer = document.querySelector('.messages-container');
         this.currentChatHeader = document.querySelector('.current-chat-user');
         this.messageInput = document.getElementById('message-text');
         this.sendButton = document.querySelector('.send-message');
-      
+
         this.activeChats = new Map();
         this.currentRecipient = null;
         this.users = [];
@@ -305,7 +306,7 @@ class ChatUI {
         this.loadAllUsers();
         this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
-        this.loadAllUserswithStatus(); 
+        this.loadAllUserswithStatus();
 
         // Refresh online users every 5 seconds
         // setInterval(() => this.loadAllUserswithStatus(), 5000);
@@ -314,11 +315,11 @@ class ChatUI {
         this.messageOffset = 0;
         this.isLoading = false;
         this.hasMoreMessages = true;
-    
+
         // Throttle the scroll event
         this.messagesContainer.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 1000)); // 1-second throttle
     }
-    
+
     throttle(func, delay) {
         let lastCall = 0;
         return function (...args) {
@@ -329,37 +330,37 @@ class ChatUI {
             }
         };
     }
-    
+
     handleScroll() {
         // If loading is in progress or no more messages, do nothing
         if (this.isLoading || !this.hasMoreMessages) return;
-    
+
         // Check if we're near the top (trigger loading more messages)
         if (this.messagesContainer.scrollTop <= 100) {
             this.loadMoreMessages();
         }
     }
-    
+
     async loadMoreMessages() {
         if (!this.currentRecipient || this.isLoading) return;
-    
+
         this.isLoading = true;
-    
+
         try {
             const response = await fetch(
                 `/api/chat/history?receiverId=${this.currentRecipient.UserID}&offset=${this.messageOffset}`,
                 { credentials: 'include' }
             );
             const messages = await response.json();
-    
+
             // If there are fewer than 10 messages, stop loading more
             if (messages.length < 10) {
                 this.hasMoreMessages = false;
             }
-    
+
             // Preserve scroll position
             const scrollPos = this.messagesContainer.scrollHeight - this.messagesContainer.scrollTop;
-    
+
             // Add messages to top
             messages.reverse().forEach(msg => {
                 const messageElement = document.createElement('div');
@@ -372,10 +373,10 @@ class ChatUI {
                 `;
                 this.messagesContainer.prepend(messageElement);
             });
-    
+
             // Maintain scroll position
             this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight - scrollPos;
-    
+
             // Update the message offset
             this.messageOffset += messages.length;
         } catch (error) {
@@ -384,20 +385,20 @@ class ChatUI {
             this.isLoading = false;
         }
     }
-    
+
 
     setupWebSocket() {
         this.ws = new WebSocket('ws://localhost:8000/ws');
-    
+
         this.ws.onopen = () => {
             console.log('WebSocket connection established');
         };
-    
+
 
         // this.ws.onmessage = (event) => {
         //     try {
         //         const data = JSON.parse(event.data);
-        
+
         //         // // Check the type of message received
         //         // switch (data.type) {
         //         //     case 'chat': // For chat messages
@@ -410,20 +411,20 @@ class ChatUI {
         //         //     });
         //         //     this.scrollToBottom();
         //         //         break;
-        
+
         //         //     // case 'presence': // For user online/offline status
         //         //     // console.log('Received presence info via WebSocket:', data.payload);
         //         //     // const presenceInfo = data.payload;
         //         //     // this.updatePresence(presenceInfo.userId, presenceInfo.online);
         //         //     // break;
-        
-        
+
+
         //         //     // case 'online_users': // For the list of all online users
         //         //     //     console.log('Online users list received:', data.users);
         //         //     //     this.renderOnlineUsers(data.payload.users);
         //         //     //    // this.renderOnlineUsers(data.users); // Update the UI for online users
         //         //     //     break;
-        
+
         //         //     default:
         //         //         console.warn('Unknown WebSocket message type:', data.type);
         //         }
@@ -432,13 +433,13 @@ class ChatUI {
         //     }
         // };
 
-        
-  
-    
+
+
+
         this.ws.onerror = (error) => {
             console.error('WebSocket error:', error);
         };
-    
+
         this.ws.onclose = () => {
             console.warn('WebSocket connection closed. Attempting to reconnect...');
             setTimeout(() => this.setupWebSocket(), 3000); // Retry connection after 3 seconds
@@ -452,11 +453,11 @@ class ChatUI {
             const statusDot = userElement.querySelector('.user-status');
             statusDot.style.backgroundColor = online ? 'green' : 'gray';
         }
-        
+
     }
-    
-    
-    
+
+
+
     sendMessage() {
         const content = this.messageInput.value.trim();
         if (content && this.currentRecipient) {
@@ -466,11 +467,11 @@ class ChatUI {
                 timestamp: new Date().toISOString()
             };
 
-         // Remove the placeholder message if it exists
-        const placeholder = this.messagesContainer.querySelector('.placeholder-message');
-        if (placeholder) {
-            placeholder.remove();
-        }
+            // Remove the placeholder message if it exists
+            const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+            if (placeholder) {
+                placeholder.remove();
+            }
 
             // Only send via WebSocket
             if (this.ws.readyState === WebSocket.OPEN) {
@@ -492,23 +493,23 @@ class ChatUI {
             this.messageInput.value = '';
             this.scrollToBottom();
         }
-    }    
+    }
     startChat(user) {
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
-        
+
         // Reset messages and start with initial fetch
         this.messageOffset = 0;
         this.hasMoreMessages = true;
         this.messagesContainer.innerHTML = ''; // Clear existing messages
         this.lastMessageID = 0; // Initially load the latest messages
         this.loading = false; // Flag to prevent multiple simultaneous fetches
-    
+
         this.loadMoreMessages();
         // Load the first batch of messages (last 10)
         //this.loadMessages();
-    
+
         // Listen for scroll events to load older messages when scrolling up
         this.messagesContainer.addEventListener('scroll', () => {
             if (!this.loading && this.messagesContainer.scrollTop === 0) {
@@ -516,12 +517,12 @@ class ChatUI {
             }
         });
     }
-    
+
     loadMessages() {
         this.loading = true; // Set loading flag to true
-    
+
         const url = `/api/chat/history?receiverId=${this.currentRecipient.UserID}&before=${this.lastMessageID}`;
-        
+
         fetch(url, { credentials: 'include' })
             .then(response => {
                 if (!response.ok) {
@@ -535,19 +536,19 @@ class ChatUI {
                     this.loading = false;
                     return;
                 }
-    
+
                 // Prepend new messages to the messages container
                 messages.forEach(msg => this.displayMessage({
                     content: msg.content,
                     timestamp: msg.createdAt,
                     sent: msg.senderId === this.currentUserId,
                 }));
-    
+
                 // Update the `lastMessageID` to the ID of the last loaded message
                 this.lastMessageID = messages[messages.length - 1].messageID;
-    
+
                 this.scrollToBottom(); // Ensure the latest messages are at the bottom
-    
+
                 // Stop the loading flag after messages are loaded
                 this.loading = false;
             })
@@ -557,7 +558,7 @@ class ChatUI {
                 this.loading = false; // Stop loading flag on error
             });
     }
-    
+
     // displayMessage({ content, timestamp, sent }) {
     //     const messageElement = document.createElement('div');
     //     messageElement.className = sent ? 'sent-message' : 'received-message';
@@ -567,20 +568,26 @@ class ChatUI {
     //     `;
     //     this.messagesContainer.appendChild(messageElement);
     // }
-    
+
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
-    
-    
+
+
     addUserToList(user, prepend = false) {
         // Check if the user already exists in the list
         const existingUser = this.usersList.querySelector(`.user-item[data-userid="${user.UserID}"]`);
         if (existingUser) {
+
+
+            if (prepend) {
+                this.usersList.removeChild(existingUser);
+                this.usersList.prepend(existingUser);
+            }
             console.warn(`User with ID ${user.UserID} is already in the list.`);
-            return; // Do not add the user again
+            return;
         }
-    
+
         // Create the user element
         const userElement = document.createElement('div');
         userElement.className = 'user-item';
@@ -593,7 +600,7 @@ class ChatUI {
             </div>
         `;
         userElement.addEventListener('click', () => this.startChat(user));
-    
+
         // Add the user to the top or bottom of the list
         if (prepend) {
             this.usersList.prepend(userElement); // Place at the top
@@ -601,8 +608,8 @@ class ChatUI {
             this.usersList.appendChild(userElement); // Place at the bottom
         }
     }
-    
-    
+
+
 
     loadAllUsers() {
         fetch('/api/users')
@@ -613,47 +620,55 @@ class ChatUI {
             });
 
     }
-    
+
     displayMessage(message) {
         console.log('Displaying message:sads', message);
-          // Remove the placeholder message if it exists
-    const placeholder = this.messagesContainer.querySelector('.placeholder-message');
-    if (placeholder) {
-        placeholder.remove();
-    }
+        // Remove the placeholder message if it exists
+        const placeholder = this.messagesContainer.querySelector('.placeholder-message');
+        if (placeholder) {
+            placeholder.remove();
+        }
 
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
         console.log(message.sent);
-        
+
         messageElement.innerHTML = `
             <div class="message-content">${message.content}</div>
             <div class="message-header">
 <span class="message-time">${new Date(message.timestamp).toLocaleString()}</span>
             </div>
         `;
+
         this.messagesContainer.appendChild(messageElement);
+
+        // Move the user to the top of the user list
+        if (this.currentRecipient) {
+            this.addUserToList(this.currentRecipient, true); // Move user to top
+        }
+
+
     }
-    
+
 
     getCurrentUser() {
         fetch('/api/session-status', {
             credentials: 'include'
         })
-        .then(response => response.json())
-        .then(data => {
-            this.currentUserId = data.userId;
-        })
-        .catch(error => console.error('Error getting current user:', error));
+            .then(response => response.json())
+            .then(data => {
+                this.currentUserId = data.userId;
+            })
+            .catch(error => console.error('Error getting current user:', error));
     }
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
 
     formatTime(timestamp) {
-        return new Date(timestamp).toLocaleTimeString([], { 
-            hour: '2-digit', 
-            minute: '2-digit' 
+        return new Date(timestamp).toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
         });
     }
 
@@ -669,48 +684,48 @@ class ChatUI {
             .then(users => {
                 this.usersList.innerHTML = ''; // Clear the existing user list
                 users.forEach(user => this.addUserToList(user, false));
-    
+
                 // Initial fetch of online statuses
-               // fetchOnlineUsers();
+                // fetchOnlineUsers();
             })
             .catch(error => console.error('Error loading chats:', error));
     }
-    
-    
+
+
     loadAllUserswithStatus() {
         fetch('/api/all-online-users', { credentials: 'include' })
-    .then(response => response.json())
-    .then(users => {
-        console.log('Raw API Response:', users); // Log the exact response
-        this.onlineUsersList.innerHTML = ''; // Clear the online users list
+            .then(response => response.json())
+            .then(users => {
+                console.log('Raw API Response:', users); // Log the exact response
+                this.onlineUsersList.innerHTML = ''; // Clear the online users list
 
-        users.forEach(user => {
-            console.log('User Object:', user); // Log each user object to inspect properties
-            const statusColor = user.online ? 'green' : 'gray';
-            const userElement = document.createElement('div');
-            userElement.className = 'user-item';
-            userElement.dataset.userid = user.UserID;
+                users.forEach(user => {
+                    console.log('User Object:', user); // Log each user object to inspect properties
+                    const statusColor = user.online ? 'green' : 'gray';
+                    const userElement = document.createElement('div');
+                    userElement.className = 'user-item';
+                    userElement.dataset.userid = user.UserID;
 
-            // Handle missing properties
-            const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
-            const username = user.username ;
+                    // Handle missing properties
+                    const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+                    const username = user.username;
 
-            userElement.innerHTML = `
-                <div class="user-info">
+                    userElement.innerHTML = `
+                   <div class="user-info">
                     <span class="user-name">${fullName}</span>
                     <span class="user-username">@${username}</span>
                     <span class="user-status" 
                         style="width: 10px; height: 10px; border-radius: 50%; background-color: ${statusColor}; display: inline-block; margin-left: 10px;">
                     </span>
-                </div>
-            `;
-            this.onlineUsersList.appendChild(userElement);
-        });
-    })
-    .catch(error => console.error('Error fetching online users:', error));
+                   </div>
+                      `;
+                    this.onlineUsersList.appendChild(userElement);
+                });
+            })
+            .catch(error => console.error('Error fetching online users:', error));
 
     }
-    
+
     showUserSelectModal() {
         fetch('/api/users')
             .then(response => response.json())
@@ -722,13 +737,13 @@ class ChatUI {
     }
 
     createModal(users) {
-        
-    // Sort users alphabetically by their first and last name
-    users.sort((a, b) => {
-        const fullNameA = `${a.FirstName} ${a.LastName}`.toLowerCase();
-        const fullNameB = `${b.FirstName} ${b.LastName}`.toLowerCase();
-        return fullNameA.localeCompare(fullNameB);
-    });
+
+        // Sort users alphabetically by their first and last name
+        users.sort((a, b) => {
+            const fullNameA = `${a.FirstName} ${a.LastName}`.toLowerCase();
+            const fullNameB = `${b.FirstName} ${b.LastName}`.toLowerCase();
+            return fullNameA.localeCompare(fullNameB);
+        });
 
         const modal = document.createElement('div');
         modal.className = 'user-select-modal active';
@@ -754,7 +769,9 @@ class ChatUI {
                 const userId = item.dataset.userid;
                 const selectedUser = this.users.find(u => u.UserID === parseInt(userId));
                 this.startChat(selectedUser);
+                console.log('Selected User:', selectedUser);
                 this.addUserToList(selectedUser, true);
+                console.log('Selected User:', selectedUser);
                 modal.remove();
                 overlay.remove();
             };
@@ -794,34 +811,46 @@ class ChatManager {
         this.ws.onmessage = (event) => {
             try {
                 const data = JSON.parse(event.data);
-        
+
                 // Check the type of message received
                 switch (data.type) {
                     case 'chat': // For chat messages
-                    const message = data.payload;
-                    console.log('Received message via WebSocket:', message);
-                    this.chatUI.displayMessage({
-                        content: message.content,
-                        timestamp: message.createdAt,
-                        sent: message.senderId === this.chatUI.currentUserId,
-                    });
-                    this.chatUI.scrollToBottom();
+                        const message = data.payload;
+                        console.log('Received message via WebSocket:', message);
+
+                        // Only display the message if it's for the current chat
+                        if (
+                            this.chatUI.currentRecipient &&
+                            (message.senderId === this.chatUI.currentRecipient.UserID ||
+                                message.receiverId === this.chatUI.currentRecipient.UserID)
+                        ) {
+                            this.chatUI.displayMessage({
+                                content: message.content,
+                                timestamp: message.timestamp,
+                                sent: message.senderId === this.chatUI.currentUserId,
+                            });
+                            this.chatUI.scrollToBottom();
+                          
+                        } else {
+                            // Optionally show a notification for other incoming chats
+                            notifyNewMessage(message.senderId, message.content);
+                        }
                         break;
                     case 'presence': // For user online/offline status
-                    const { userId, online } = data.payload;
-                this.chatUI.updatePresence(userId, online);
-              //  updateUserPresence(userId, online);
-                
-                    break;
-        
-        
+                        const { userId, online } = data.payload;
+                        this.chatUI.updatePresence(userId, online);
+                        //  updateUserPresence(userId, online);
+
+                        break;
+
+
                     // case 'online_users': // For the list of all online users
                     // this.renderOnlineUsers(data.payload.users);
-    
+
                     // console.log('Online users list received:', data.users);
-                        //this.chatUI.renderOnlineUsers(data.users); // Update the UI for online users
-                      //  break;
-        
+                    //this.chatUI.renderOnlineUsers(data.users); // Update the UI for online users
+                    //  break;
+
                     default:
                         console.warn('Unknown WebSocket message type:', data.type);
                 }
@@ -833,6 +862,19 @@ class ChatManager {
     }
 }
 
+function notifyNewMessage(senderId, content) {
+    const sender = this.chatUI.users.find((user) => user.UserID === senderId);
+    const senderName = sender ? `${sender.FirstName} ${sender.LastName}` : "Unknown";
+
+    // Show a notification banner
+    const notification = document.createElement("div");
+    notification.className = "notification";
+    notification.textContent = `New message from ${senderName}: ${content}`;
+    document.body.appendChild(notification);
+
+    // Automatically remove the notification after 5 seconds
+    setTimeout(() => notification.remove(), 5000);
+}
 
 
 function updateUserPresence(userId, isOnline) {
@@ -932,7 +974,7 @@ async function fetchPostDetails(postId) {
             button.addEventListener('click', () => {
                 const commentId = button.getAttribute('data-id');
                 console.log("like clicked for comment ID:", commentId);
-        
+
                 // Ensure the comment ID is passed to the function
                 handleCommentLike(commentId);
             });
@@ -946,8 +988,8 @@ async function fetchPostDetails(postId) {
                 handleCommentDislike(commentId);
             });
         });
-        
-        
+
+
 
     } catch (error) {
         console.error('Error fetching post details:', error);

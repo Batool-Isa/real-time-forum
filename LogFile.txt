@@ -141,3 +141,483 @@
 2024/12/12 16:46:19 Error reading message: websocket: close 1001 (going away)
 2024/12/12 16:46:19 Error reading message: websocket: close 1001 (going away)
 2024/12/12 16:46:19 Error notifying presence change: websocket: close sent
+2024/12/15 12:25:58 Error retrieving current user: http: named cookie not present
+2024/12/15 12:25:58 Error getting user ID: http: named cookie not present
+2024/12/15 12:25:58 Error getting user ID: http: named cookie not present
+2024/12/15 12:26:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:34 Error notifying presence change: websocket: close sent
+2024/12/15 12:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:35 Error notifying presence change: websocket: close sent
+2024/12/15 12:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:26:53 Error retrieving current user: http: named cookie not present
+2024/12/15 12:26:53 Error getting user ID: http: named cookie not present
+2024/12/15 12:26:53 Error getting user ID: http: named cookie not present
+2024/12/15 12:36:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:36:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:36:36 Error notifying presence change: websocket: close sent
+2024/12/15 12:36:39 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:36:39 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:36:39 Error retrieving current user: http: named cookie not present
+2024/12/15 12:36:39 Error getting user ID: http: named cookie not present
+2024/12/15 12:36:39 Error getting user ID: http: named cookie not present
+2024/12/15 12:37:20 sql: no rows in result set
+2024/12/15 12:37:47 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:37:47 Error notifying presence change: websocket: close sent
+2024/12/15 12:37:47 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:02 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:02 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:03 Error notifying presence change: websocket: close sent
+2024/12/15 12:38:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:03 Error notifying presence change: websocket: close sent
+2024/12/15 12:38:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:27 Error notifying presence change: websocket: close sent
+2024/12/15 12:38:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:42 Error retrieving current user: http: named cookie not present
+2024/12/15 12:38:42 Error getting user ID: http: named cookie not present
+2024/12/15 12:38:42 Error getting user ID: http: named cookie not present
+2024/12/15 12:38:49 sql: no rows in result set
+2024/12/15 12:38:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:38:55 Error notifying presence change: websocket: close sent
+2024/12/15 12:38:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:02 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:02 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:02 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:16 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:16 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:16 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:18 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:20 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:21 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:22 Error notifying presence change: websocket: close sent
+2024/12/15 12:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:39:26 Error notifying presence change: websocket: close sent
+2024/12/15 12:41:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error notifying presence change: websocket: close sent
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error notifying presence change: websocket: close sent
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:27 Error notifying presence change: websocket: close sent
+2024/12/15 12:41:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:41:29 Error retrieving current user: http: named cookie not present
+2024/12/15 12:41:29 Error getting user ID: http: named cookie not present
+2024/12/15 12:41:29 Error getting user ID: http: named cookie not present
+2024/12/15 12:41:38 sql: no rows in result set
+2024/12/15 12:42:08 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:42:08 Error notifying presence change: websocket: close sent
+2024/12/15 12:42:08 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:42:08 Error retrieving current user: http: named cookie not present
+2024/12/15 12:42:08 Error getting user ID: http: named cookie not present
+2024/12/15 12:42:08 Error getting user ID: http: named cookie not present
+2024/12/15 12:42:31 sql: no rows in result set
+2024/12/15 12:43:01 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:43:01 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:43:01 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:20 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:21 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:24 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:24 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:24 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:24 Error retrieving current user: http: named cookie not present
+2024/12/15 12:48:24 Error getting user ID: http: named cookie not present
+2024/12/15 12:48:24 Error getting user ID: http: named cookie not present
+2024/12/15 12:48:28 sql: no rows in result set
+2024/12/15 12:48:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:36 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:36 Error notifying presence change: websocket: close sent
+2024/12/15 12:48:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:48:42 Error retrieving current user: http: named cookie not present
+2024/12/15 12:48:42 Error getting user ID: http: named cookie not present
+2024/12/15 12:48:42 Error getting user ID: http: named cookie not present
+2024/12/15 12:49:02 sql: no rows in result set
+2024/12/15 12:49:12 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:49:12 Error notifying presence change: websocket: close sent
+2024/12/15 12:49:12 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:49:12 Error retrieving current user: http: named cookie not present
+2024/12/15 12:49:12 Error getting user ID: http: named cookie not present
+2024/12/15 12:49:13 Error getting user ID: http: named cookie not present
+2024/12/15 12:49:19 Error retrieving current user: http: named cookie not present
+2024/12/15 12:49:19 Error getting user ID: http: named cookie not present
+2024/12/15 12:49:19 Error getting user ID: http: named cookie not present
+2024/12/15 12:49:24 sql: no rows in result set
+2024/12/15 12:50:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:50:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:50:04 Error notifying presence change: websocket: close sent
+2024/12/15 12:50:04 Error retrieving current user: http: named cookie not present
+2024/12/15 12:50:05 Error getting user ID: http: named cookie not present
+2024/12/15 12:50:05 Error getting user ID: http: named cookie not present
+2024/12/15 12:52:20 Error retrieving current user: http: named cookie not present
+2024/12/15 12:52:20 Error getting user ID: http: named cookie not present
+2024/12/15 12:52:20 Error getting user ID: http: named cookie not present
+2024/12/15 12:52:25 sql: no rows in result set
+2024/12/15 12:52:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:52:35 Error notifying presence change: websocket: close sent
+2024/12/15 12:52:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:52:35 Error retrieving current user: http: named cookie not present
+2024/12/15 12:52:35 Error getting user ID: http: named cookie not present
+2024/12/15 12:52:35 Error getting user ID: http: named cookie not present
+2024/12/15 12:54:14 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:54:14 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:54:14 Error notifying presence change: websocket: close sent
+2024/12/15 12:54:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:54:31 Error notifying presence change: websocket: close sent
+2024/12/15 12:54:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:32 Error notifying presence change: websocket: close sent
+2024/12/15 12:55:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error notifying presence change: websocket: close sent
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:33 Error notifying presence change: websocket: close sent
+2024/12/15 12:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:35 Error notifying presence change: websocket: close sent
+2024/12/15 12:55:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:55:35 Error retrieving current user: http: named cookie not present
+2024/12/15 12:55:35 Error getting user ID: http: named cookie not present
+2024/12/15 12:55:35 Error getting user ID: http: named cookie not present
+2024/12/15 12:55:40 sql: no rows in result set
+2024/12/15 12:56:23 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:23 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:23 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:24 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:24 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:24 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:27 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:27 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:28 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:31 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:31 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:35 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:43 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:56:43 Error notifying presence change: websocket: close sent
+2024/12/15 12:56:43 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:57:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:57:03 Error notifying presence change: websocket: close sent
+2024/12/15 12:57:03 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:57:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 12:57:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:00 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:00 Error notifying presence change: websocket: close sent
+2024/12/15 13:15:00 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:00 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:00 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:00 Error notifying presence change: websocket: close sent
+2024/12/15 13:15:09 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:09 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:09 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:09 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:09 Error notifying presence change: websocket: close sent
+2024/12/15 13:15:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:15:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:10 Error notifying presence change: websocket: close sent
+2024/12/15 13:17:10 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:26 Error notifying presence change: websocket: close sent
+2024/12/15 13:17:26 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:32 Error notifying presence change: websocket: close sent
+2024/12/15 13:17:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:17:33 Error notifying presence change: websocket: close sent
+2024/12/15 13:18:05 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:18:05 Error notifying presence change: websocket: close sent
+2024/12/15 13:18:05 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:18:06 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:18:06 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:18:06 Error notifying presence change: websocket: close sent
+2024/12/15 13:19:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:19:18 Error notifying presence change: websocket: close sent
+2024/12/15 13:19:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:19:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:19:19 Error notifying presence change: websocket: close sent
+2024/12/15 13:19:19 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:19:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:19:20 Error notifying presence change: websocket: close sent
+2024/12/15 13:19:20 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:20:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:20:04 Error notifying presence change: websocket: close sent
+2024/12/15 13:20:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:28 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:29 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:29 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:29 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:30 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:30 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:30 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:31 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:31 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:32 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:33 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:34 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:35 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:35 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:36 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:36 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:36 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:37 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:37 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:39 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:39 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:39 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:40 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:40 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:40 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:40 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:40 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:41 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:26:42 Error notifying presence change: websocket: close sent
+2024/12/15 13:26:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:21 Error notifying presence change: websocket: close sent
+2024/12/15 13:39:21 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:22 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:22 Error notifying presence change: websocket: close sent
+2024/12/15 13:39:48 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:48 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:50 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:39:50 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:40:06 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:40:06 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:40:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:40:56 Error notifying presence change: websocket: close sent
+2024/12/15 13:40:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:41:11 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:41:11 Error notifying presence change: websocket: close sent
+2024/12/15 13:41:11 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:42 Error notifying presence change: websocket: close sent
+2024/12/15 13:42:42 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:46 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:46 Error notifying presence change: websocket: close sent
+2024/12/15 13:42:46 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:42:58 Error notifying presence change: websocket: close sent
+2024/12/15 13:42:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:43:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:43:32 Error notifying presence change: websocket: close sent
+2024/12/15 13:43:32 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:43:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:43:34 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:43:34 Error notifying presence change: websocket: close sent
+2024/12/15 13:44:43 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:44:43 Error notifying presence change: websocket: close sent
+2024/12/15 13:44:43 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:44:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:44:55 Error notifying presence change: websocket: close sent
+2024/12/15 13:44:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:44:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:44:57 Error notifying presence change: websocket: close sent
+2024/12/15 13:44:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:45:16 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:45:16 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:45:17 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:45:17 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:04 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:04 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:04 Error retrieving current user: http: named cookie not present
+2024/12/15 13:46:04 Error getting user ID: http: named cookie not present
+2024/12/15 13:46:04 Error getting user ID: http: named cookie not present
+2024/12/15 13:46:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:55 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:56 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:56 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:57 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:46:58 Error notifying presence change: websocket: close sent
+2024/12/15 13:46:58 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:47:07 Raw request body: {"post_id":33}
+2024/12/15 13:47:07 Parsed PostID: 33
+2024/12/15 13:47:07 UserID: 5 is disliking PostID: 33
+2024/12/15 13:47:08 Raw request body: {"post_id":33}
+2024/12/15 13:47:08 Parsed PostID: 33
+2024/12/15 13:47:08 UserID: 5 is liking PostID: 33
+2024/12/15 13:47:08 Inserting like for PostID: 33, UserID: 5
+2024/12/15 13:47:08 Like does not exist, adding it
+2024/12/15 13:47:09 Raw request body: {"post_id":33}
+2024/12/15 13:47:09 Parsed PostID: 33
+2024/12/15 13:47:09 UserID: 5 is disliking PostID: 33
+2024/12/15 13:47:09 Raw request body: {"post_id":33}
+2024/12/15 13:47:09 Parsed PostID: 33
+2024/12/15 13:47:09 UserID: 5 is liking PostID: 33
+2024/12/15 13:47:09 Inserting like for PostID: 33, UserID: 5
+2024/12/15 13:47:09 Like does not exist, adding it
+2024/12/15 13:55:37 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:55:37 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:55:38 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:55:38 Error notifying presence change: websocket: close sent
+2024/12/15 13:55:38 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:59:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:59:18 Error reading message: websocket: close 1001 (going away)
+2024/12/15 13:59:18 Error notifying presence change: websocket: close sent
+2024/12/15 14:00:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 14:00:25 Error reading message: websocket: close 1001 (going away)
+2024/12/15 14:00:25 Error notifying presence change: websocket: close sent
