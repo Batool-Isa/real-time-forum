@@ -491,6 +491,7 @@ class ChatUI {
             // Only send via WebSocket
             if (this.ws.readyState === WebSocket.OPEN) {
                 this.ws.send(JSON.stringify(message));
+                console.log('Message sent via WebSocket:', message);
             } else {
                 console.error('WebSocket is not open. Current state:', this.ws.readyState);
                 alert('WebSocket connection is not open. Please refresh the page.');
@@ -661,12 +662,12 @@ class ChatUI {
 
         const messageElement = document.createElement('div');
         messageElement.className = `message ${message.sent ? 'sent' : 'received'}`;
-        console.log(message.sent);
+        console.log(message.createdAt);
 
         messageElement.innerHTML = `
             <div class="message-content">${message.content}</div>
             <div class="message-header">
-            <span class="message-time">${new new Date(message.createdAt).toLocaleString('en-US', {
+            <span class="message-time">${new Date(message.timestamp).toLocaleString('en-US', {
                 hour: '2-digit',
                 minute: '2-digit',
                 hour12: false, 
@@ -867,7 +868,7 @@ class ChatManager {
                         ) {
                             this.chatUI.displayMessage({
                                 content: message.content,
-                                timestamp: message.timestamp,
+                                timestamp: new Date(),
                                 sent: message.senderId === this.chatUI.currentUserId,
                             });
                             this.chatUI.scrollToBottom();
