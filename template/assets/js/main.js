@@ -362,13 +362,20 @@ class ChatUI {
             const scrollPos = this.messagesContainer.scrollHeight - this.messagesContainer.scrollTop;
 
             // Add messages to top
-            messages.reverse().forEach(msg => {
+            messages.forEach(msg => {
                 const messageElement = document.createElement('div');
                 messageElement.className = `message ${msg.senderId === this.currentUserId ? 'sent' : 'received'}`;
                 messageElement.innerHTML = `
                     <div class="message-content">${msg.content}</div>
                     <div class="message-header">
-                        <span class="message-time">${new Date(msg.createdAt).toLocaleTimeString()}</span>
+                        <span class="message-time">${new Date(msg.createdAt).toLocaleString('en-US', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false, 
+                            year: 'numeric',
+                            month: 'numeric',
+                            day: 'numeric',
+                          })}</span>
                     </div>
                 `;
                 this.messagesContainer.prepend(messageElement);
@@ -464,7 +471,14 @@ class ChatUI {
             const message = {
                 content: content,
                 receiverId: this.currentRecipient.UserID,
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toLocaleString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false, 
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                  })
             };
 
             // Remove the placeholder message if it exists
@@ -495,6 +509,17 @@ class ChatUI {
         }
     }
     startChat(user) {
+        // Remove selected class from all users
+        document.querySelectorAll('.user-item').forEach(item => {
+            item.classList.remove('selected');
+        });
+    
+        // Add selected class to current user
+        const selectedUserElement = document.querySelector(`.user-item[data-userid="${user.UserID}"]`);
+        if (selectedUserElement) {
+            selectedUserElement.classList.add('selected');
+        }
+
         this.currentRecipient = user;
         this.currentChatHeader.textContent = `Chat with ${user.FirstName} ${user.LastName}`;
         document.querySelector('.message-input').style.display = 'flex';
@@ -595,8 +620,10 @@ class ChatUI {
         userElement.innerHTML = `
             <div class="user-info">
                 <span class="user-name">${user.FirstName} ${user.LastName}</span>
+                <div class="user-details">
                 <span class="user-username">@${user.Username}</span>
                 <span class="user-status" style="width: 10px; height: 10px; border-radius: 50%; background-color: gray; display: inline-block; margin-left: 10px;"></span>
+            </div>
             </div>
         `;
         userElement.addEventListener('click', () => this.startChat(user));
@@ -636,7 +663,14 @@ class ChatUI {
         messageElement.innerHTML = `
             <div class="message-content">${message.content}</div>
             <div class="message-header">
-<span class="message-time">${new Date(message.timestamp).toLocaleString()}</span>
+            <span class="message-time">${new new Date(message.createdAt).toLocaleString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false, 
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+            })}</span>
             </div>
         `;
 
@@ -666,10 +700,14 @@ class ChatUI {
     }
 
     formatTime(timestamp) {
-        return new Date(timestamp).toLocaleTimeString([], {
+        return new Date(timestamp).toLocaleString('en-US', {
             hour: '2-digit',
-            minute: '2-digit'
-        });
+            minute: '2-digit',
+            hour12: false, 
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+          });
     }
 
     initializeNewChatButton() {
@@ -927,7 +965,7 @@ async function fetchPostDetails(postId) {
 
         // Get the container for post details
         const postContainer = document.querySelector('.post-details');
-
+        console.log('Post details:', post);
         // Check if there are comments, and generate the comments section accordingly
         const commentsHTML = post.comments && post.comments.length > 0
             ? post.comments.map(comment => `
@@ -938,10 +976,10 @@ async function fetchPostDetails(postId) {
                     </div>
                     <div class="comment-actions">
                         <button class="action-btn comment-like-btn" data-id="${comment.commentId}">
-                            👍 <span class="comment-like-count">${comment.likes}</span>
+                            👍 <span class="comment-like-count">${comment.commentLike}</span>
                         </button>
                         <button class="action-btn comment-dislike-btn" data-id="${comment.commentId}">
-                            👎 <span class="comment-dislike-count">${comment.dislikes}</span>
+                            👎 <span class="comment-dislike-count">${comment.commentDislike}</span>
                         </button>
                     </div>
                 </li>

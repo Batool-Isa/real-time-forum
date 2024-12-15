@@ -18,9 +18,9 @@
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
-  --normal-font-size: .938rem;
-  --small-font-size: .75rem;
-  --smaller-font-size: .65rem;
+  --normal-font-size: .9rem;
+  --small-font-size: .8rem;
+  --smaller-font-size: .75rem;
 
   /*========== Font weight ==========*/
   --font-medium: 500;
@@ -32,9 +32,9 @@
 
 @media screen and (min-width: 1024px) {
   :root {
-    --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --normal-font-size: 0.9rem;
+    --small-font-size: .7rem;
+    --smaller-font-size: .6rem;
   }
 }
 
@@ -157,7 +157,7 @@ header {
 }
 
 .nav__name {
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   white-space: nowrap;
 }
@@ -186,7 +186,7 @@ header {
 }
 
 .nav__dropdown-item {
-  font-size: var(--smaller-font-size);
+  font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   color: var(--text-color);
 }
@@ -356,7 +356,7 @@ header {
 }
 
 .post-description {
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   color: var(--text-color-light);
   margin-bottom: 1rem;
   overflow: hidden; /* Ensures any overflowing content is hidden */
@@ -372,7 +372,7 @@ header {
   border-radius: .25rem;
   margin-bottom: .5rem;
   display: inline-block;
-  font-size: var(--smaller-font-size); 
+  font-size: var(--small-font-size); 
   color: #5b5250;
 }
 
@@ -380,7 +380,7 @@ header {
   display: flex;
   align-items: center;
   gap: .5rem;
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   color: var(--text-color);
 }
 
@@ -583,7 +583,7 @@ header {
 
 .signup-link {
   margin-top: 1rem;
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   color: var(--text-color);
 }
 
@@ -694,7 +694,7 @@ header {
 
 .toggle-link {
   margin-top: 1rem;
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   color: var(--text-color);
 }
 
@@ -942,7 +942,7 @@ textarea:focus {
 }
 
 .chat-users {
-  width: 280px;
+  width: 250px;
   background: var(--first-color-light);
   padding: 1rem;
   border-right: 1px solid var(--text-color-light);
@@ -953,11 +953,11 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
-.users-list ,.online-use-list{
+.users-list ,.online-use-list {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .user-info {
@@ -967,8 +967,13 @@ textarea:focus {
 }
 
 .user-username {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-color-light);
+}
+
+.user-details {
+    display: flex;
+    justify-content: space-between; 
 }
 
  .user-item {
@@ -979,7 +984,6 @@ textarea:focus {
   cursor: pointer;
   transition: background-color .3s;
   background: var(--container-color);
-
   
 }
 
@@ -993,6 +997,15 @@ textarea:focus {
   color: var(--container-color);
 }
 
+.user-item.selected .user-name {
+  color: var(--container-color);
+  font-weight: bolder;
+}
+
+.user-item.selected .user-username {
+  color: var(--container-color);
+}
+
 .user-avatar {
   width: 40px;
   height: 40px;
@@ -1000,17 +1013,6 @@ textarea:focus {
   margin-right: .75rem;
   object-fit: cover;
 }
-
-/* .user-status {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-left: auto;
-}
-
-.user-status.online {
-  background: #22c55e;
-} */
 
 .user-item .user-status {
     display: inline-block;
@@ -1026,7 +1028,7 @@ textarea:focus {
 }
 
 .chat-messages {
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1035,7 +1037,7 @@ textarea:focus {
 .chat-header {
   padding: 1rem;
   border-bottom: 1px solid var(--text-color-light);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: var(--font-medium);
   background-color: var(--first-color-light);
 }
@@ -1071,11 +1073,11 @@ textarea:focus {
 }
 
 .message-content {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .message-time {
-  font-size: var(--smaller-font-size);
+  font-size: 0.7rem;
   margin-top: .25rem;
   opacity: .8;
 }
@@ -1096,7 +1098,7 @@ textarea:focus {
   resize: vertical; 
   min-height: 45px;
   max-height: 25vh; 
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-family: var(--body-font);
   transition: border-color 0.3s ease;
 }
