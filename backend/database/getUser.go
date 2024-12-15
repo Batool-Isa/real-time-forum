@@ -44,20 +44,47 @@ func GetUsername(uid int) (string, error) {
     }
     return username, nil
 }
+func FetchAllUsers(currentUserID int) ([]structs.UserWithStatus, error) {
+    query := `
+        SELECT 
+            u.user_Id, 
+            u.firstName, 
+            u.lastName, 
+            u.username,
+            lm.last_message_time
+        FROM User u
+        LEFT JOIN (
+            SELECT 
+                CASE 
+                    WHEN sender_Id = ? THEN receiver_Id 
+                    ELSE sender_Id 
+                END AS user_Id,
+                MAX(created_at) AS last_message_time
+            FROM Message
+            WHERE sender_Id = ? OR receiver_Id = ?
+            GROUP BY user_Id
+        ) lm ON u.user_Id = lm.user_Id
+        ORDER BY 
+            CASE 
+                WHEN lm.last_message_time IS NOT NULL THEN 1
+                ELSE 2
+            END,
+            lm.last_message_time DESC,
+            u.firstName ASC,
+            u.lastName ASC
+    `
 
-func FetchAllUsers() ([]structs.User, error) {
-    query := "SELECT user_Id, username, email, age, gender, firstName, lastName FROM User"
-    rows, err := db.Query(query)
+    rows, err := db.Query(query, currentUserID, currentUserID, currentUserID)
     if err != nil {
         log.Println("Error querying users:", err)
         return nil, err
     }
     defer rows.Close()
 
-    var users []structs.User
+    var users []structs.UserWithStatus
     for rows.Next() {
-        var user structs.User
-        err := rows.Scan(&user.UserID, &user.Username, &user.Email, &user.Age, &user.Gender, &user.FirstName, &user.LastName)
+        var user structs.UserWithStatus
+        err := rows.Scan(&user.UserID, &user.FirstName, &user.LastName, &user.Username, &user.LastMessageTime)
         if err != nil {
             log.Println("Error scanning user:", err)
             continue

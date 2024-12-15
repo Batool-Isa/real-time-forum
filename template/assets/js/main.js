@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
-    chatManager.chatUI.loadAllChats();
+   // chatManager.chatUI.loadAllChats();
     //chatManager.chatUI.loadAllUsers(); // Explicitly call to ensure users are loaded
 
 
@@ -306,7 +306,7 @@ class ChatUI {
         this.loadAllUsers();
         this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
-        this.loadAllUserswithStatus();
+        //this.loadAllUserswithStatus();
 
         // Refresh online users every 5 seconds
         // setInterval(() => this.loadAllUserswithStatus(), 5000);
@@ -466,6 +466,7 @@ class ChatUI {
 
 
     sendMessage() {
+        console.log('Sending message:', this.messageInput.value);
         const content = this.messageInput.value.trim();
         if (content && this.currentRecipient) {
             const message = {
@@ -609,7 +610,7 @@ class ChatUI {
                 this.usersList.removeChild(existingUser);
                 this.usersList.prepend(existingUser);
             }
-            console.warn(`User with ID ${user.UserID} is already in the list.`);
+            console.warn(`User with ID ${user.user_id} is already in the list.`);
             return;
         }
 
@@ -643,8 +644,10 @@ class ChatUI {
             .then(response => response.json())
             .then(users => {
                 this.users = users;
-                users.forEach(user => this.addUserToList(user, true)); // Prepend to the list
+                users.forEach(user => this.addUserToList(user, false)); // Prepend to the list
             });
+       //     console.log('Received users:', users)
+
 
     }
 
@@ -716,53 +719,53 @@ class ChatUI {
             newChatBtn.addEventListener('click', () => this.showUserSelectModal());
         }
     }
-    loadAllChats() {
-        fetch('/api/user-chat', { credentials: 'include' })
-            .then(response => response.json())
-            .then(users => {
-                this.usersList.innerHTML = ''; // Clear the existing user list
-                users.forEach(user => this.addUserToList(user, false));
+    // loadAllChats() {
+    //     fetch('/api/user-chat', { credentials: 'include' })
+    //         .then(response => response.json())
+    //         .then(users => {
+    //             this.usersList.innerHTML = ''; // Clear the existing user list
+    //             users.forEach(user => this.addUserToList(user, false));
 
-                // Initial fetch of online statuses
-                // fetchOnlineUsers();
-            })
-            .catch(error => console.error('Error loading chats:', error));
-    }
+    //             // Initial fetch of online statuses
+    //             // fetchOnlineUsers();
+    //         })
+    //         .catch(error => console.error('Error loading chats:', error));
+    // }
 
 
-    loadAllUserswithStatus() {
-        fetch('/api/all-online-users', { credentials: 'include' })
-            .then(response => response.json())
-            .then(users => {
-                console.log('Raw API Response:', users); // Log the exact response
-                this.onlineUsersList.innerHTML = ''; // Clear the online users list
+    // loadAllUserswithStatus() {
+    //     fetch('/api/all-online-users', { credentials: 'include' })
+    //         .then(response => response.json())
+    //         .then(users => {
+    //             console.log('Raw API Response:', users); // Log the exact response
+    //             this.onlineUsersList.innerHTML = ''; // Clear the online users list
 
-                users.forEach(user => {
-                    console.log('User Object:', user); // Log each user object to inspect properties
-                    const statusColor = user.online ? 'green' : 'gray';
-                    const userElement = document.createElement('div');
-                    userElement.className = 'user-item';
-                    userElement.dataset.userid = user.UserID;
+    //             users.forEach(user => {
+    //                 console.log('User Object:', user); // Log each user object to inspect properties
+    //                 const statusColor = user.online ? 'green' : 'gray';
+    //                 const userElement = document.createElement('div');
+    //                 userElement.className = 'user-item';
+    //                 userElement.dataset.userid = user.UserID;
 
-                    // Handle missing properties
-                    const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
-                    const username = user.username;
+    //                 // Handle missing properties
+    //                 const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+    //                 const username = user.username;
 
-                    userElement.innerHTML = `
-                   <div class="user-info">
-                    <span class="user-name">${fullName}</span>
-                    <span class="user-username">@${username}</span>
-                    <span class="user-status" 
-                        style="width: 10px; height: 10px; border-radius: 50%; background-color: ${statusColor}; display: inline-block; margin-left: 10px;">
-                    </span>
-                   </div>
-                      `;
-                    this.onlineUsersList.appendChild(userElement);
-                });
-            })
-            .catch(error => console.error('Error fetching online users:', error));
+    //                 userElement.innerHTML = `
+    //                <div class="user-info">
+    //                 <span class="user-name">${fullName}</span>
+    //                 <span class="user-username">@${username}</span>
+    //                 <span class="user-status" 
+    //                     style="width: 10px; height: 10px; border-radius: 50%; background-color: ${statusColor}; display: inline-block; margin-left: 10px;">
+    //                 </span>
+    //                </div>
+    //                   `;
+    //                 this.onlineUsersList.appendChild(userElement);
+    //             });
+    //         })
+    //         .catch(error => console.error('Error fetching online users:', error));
 
-    }
+    // }
 
     showUserSelectModal() {
         fetch('/api/users')

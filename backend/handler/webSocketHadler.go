@@ -183,7 +183,7 @@ func GetAllUsersWithStatus(w http.ResponseWriter, r *http.Request) {
     }
 
     // Fetch all users from the database
-    users, err := database.FetchAllUsers()
+    users, err := database.FetchAllUsers(currentUserID)
     if err != nil {
         log.Printf("Error fetching all users: %v", err)
         http.Error(w, "Failed to fetch users", http.StatusInternalServerError)

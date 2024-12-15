@@ -65,3 +65,11 @@ type Client struct {
     Username string
 	LastActivity time.Time
 }
+
+type UserWithStatus struct {
+    UserID         int     
+    FirstName      string  
+    LastName       string  
+    Username       string  
+    LastMessageTime *string 
+}

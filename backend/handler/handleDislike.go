@@ -111,7 +111,7 @@ func DislikePost(w http.ResponseWriter, r *http.Request) {
     // Read and log the request body
     body, err := io.ReadAll(r.Body)
     if err != nil {
-        log.Println("Error reading body:", err)
+        log.Println("Error 11sfdgvd body:", err)
         w.WriteHeader(http.StatusBadRequest)
         json.NewEncoder(w).Encode(map[string]string{"error": "Invalid request body"})
         return
