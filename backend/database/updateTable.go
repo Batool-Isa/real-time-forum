@@ -53,3 +53,31 @@ func UpdateSession() error {
 	_, err = stmt.Exec(newTimestamp, now)
 	return err
 }
+
+func GetCommentCount(commentID int) (int, int, error) {
+    // Query to fetch likes and dislikes for a specific comment
+    query := `
+        SELECT 
+            (SELECT COUNT(*) FROM Comment_Like WHERE comment_Id = ?) AS likes,
+            (SELECT COUNT(*) FROM Comment_Dislike WHERE comment_Id = ?) AS dislikes
+    `
+
+    // Prepare the query
+    stmt, err := db.Prepare(query)
+    if err != nil {
+        log.Printf("Error preparing query: %v", err)
+        return 0, 0, err
+    }
+    defer stmt.Close()
+
+    // Execute the query
+    var likes, dislikes int
+    err = stmt.QueryRow(commentID, commentID).Scan(&likes, &dislikes)
+    if err != nil {
+        log.Printf("Error executing query: %v", err)
+        return 0, 0, err
+    }
+
+    // Return likes and dislikes
+    return likes, dislikes, nil
+}

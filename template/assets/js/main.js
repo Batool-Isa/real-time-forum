@@ -896,18 +896,21 @@ async function fetchPostDetails(postId) {
             handleDislike(post.postId);
         });
 
-        // Add event listeners for comment like/dislike buttons
-        postContainer.querySelectorAll('.comment-like-icon').forEach(icon => {
-            icon.addEventListener('click', () => {
-                handleCommentLike(icon.getAttribute('data-id'));
-            });
+        document.querySelector('.comments-list').addEventListener('click', (event) => {
+            if (event.target.classList.contains('comment-like-icon')) {
+                const commentId = event.target.getAttribute('data-id');
+                console.log(`Like clicked for comment ID: ${commentId}`);
+                handleCommentLike(commentId);
+            }
+        
+            if (event.target.classList.contains('comment-dislike-icon')) {
+                const commentId = event.target.getAttribute('data-id');
+                console.log(`Dislike clicked for comment ID: ${commentId}`);
+                handleCommentDislike(commentId);
+            }
         });
-
-        postContainer.querySelectorAll('.comment-dislike-icon').forEach(icon => {
-            icon.addEventListener('click', () => {
-                handleCommentDislike(icon.getAttribute('data-id'));
-            });
-        });
+        
+        
 
     } catch (error) {
         console.error('Error fetching post details:', error);
@@ -982,68 +985,88 @@ async function submitComment(postId) {
     }
 }
 
-
 async function handleCommentLike(commentId) {
     try {
-        const response = await fetch(`/api/comments/like`, { // Updated endpoint
+        const response = await fetch('/api/comments/like', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ comment_id: parseInt(commentId) }), // Send comment_id in the request body
-            credentials: 'include', // Include cookies for session handling
+            body: JSON.stringify({ comment_id: parseInt(commentId) }),
+            credentials: 'include',
         });
 
+        const data = await response.json();
+        console.log('Comment like response:', data);
+
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Error response for comment like:', errorText);
-            alert(`Error: ${errorText}`);
-            return;
+            throw new Error(data.error || 'Failed to like comment');
         }
 
-        const data = await response.json();
-        console.log('Updated comment after like:', data);
-
-        // Update the UI for the comment
         updateCommentUI(data);
     } catch (error) {
-        console.error('Error handling comment like:', error);
+        console.error('Error liking comment:', error);
         alert('An error occurred while liking the comment.');
     }
 }
 
 async function handleCommentDislike(commentId) {
-    console.log(`Sending dislike request for comment ID: ${commentId}`);
+    console.log(`Handling dislike for comment ID: ${commentId}`);
+
     try {
+        // Send the dislike request to the server
         const response = await fetch('/api/comments/dislike', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ comment_id: parseInt(commentId) }), // Ensure comment_id is a number
+            body: JSON.stringify({ comment_id: parseInt(commentId, 10) }), // Ensure the ID is parsed correctly
             credentials: 'include',
         });
 
+        // Parse the server response
+        const data = await response.json();
+
+        // Check if the response is successful
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Error response for comment dislike:', errorText);
-            alert(`Error: ${errorText}`);
-            return;
+            console.error(`Failed to dislike comment ID: ${commentId}`, data);
+            throw new Error(data.error || 'An error occurred while disliking the comment.');
         }
 
-        const data = await response.json();
-        console.log('Comment disliked successfully:', data);
+        // Log success and update the UI
+        console.log(`Dislike successful for comment ID: ${commentId}`, data);
         updateCommentUI(data);
     } catch (error) {
-        console.error('Error during dislike operation:', error);
+        console.error(`Error disliking comment ID: ${commentId}`, error);
+        alert('An error occurred while disliking the comment. Please try again.');
     }
 }
-
 
 
 function updateCommentUI(commentData) {
+    console.log('updateCommentUI called with:', commentData);
+
     const commentElement = document.querySelector(`.comment[data-comment-id="${commentData.commentId}"]`);
-    if (commentElement) {
-        commentElement.querySelector('.comment-like-count').textContent = commentData.likes;
-        commentElement.querySelector('.comment-dislike-count').textContent = commentData.dislikes;
+    if (!commentElement) {
+        console.warn(`Comment element not found for ID: ${commentData.commentId}`);
+        return;
+    }
+
+    const likeCount = commentElement.querySelector('.comment-like-count');
+    const dislikeCount = commentElement.querySelector('.comment-dislike-count');
+
+    if (likeCount) {
+        likeCount.textContent = commentData.likes;
+        console.log(`Updated like count for comment ${commentData.commentId} to ${commentData.likes}`);
+    } else {
+        console.warn('Like count element not found.');
+    }
+
+    if (dislikeCount) {
+        dislikeCount.textContent = commentData.dislikes;
+        console.log(`Updated dislike count for comment ${commentData.commentId} to ${commentData.dislikes}`);
+    } else {
+        console.warn('Dislike count element not found.');
     }
 }
+
+
 
 
 async function handleLike(postId) {

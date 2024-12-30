@@ -94,9 +94,24 @@ func LikeCommentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 database.DeleteCommentDislike(requestBody.CommentID, userID)
-	// Return success response
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Comment liked successfully"})
+	
+    // Get updated like and dislike counts
+    likeCount, dislikeCount, err := database.GetCommentCount(requestBody.CommentID)
+    if err != nil {
+        http.Error(w, "Failed to retrieve comment count", http.StatusInternalServerError)
+        return
+    }
+    
+    response := map[string]interface{}{
+        "commentId": requestBody.CommentID,
+        "likes":     likeCount,
+        "dislikes":  dislikeCount,
+    }
+  
+    
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    json.NewEncoder(w).Encode(response)
 }
 
 
@@ -120,6 +135,7 @@ func DislikeCommentHandler(w http.ResponseWriter, r *http.Request) {
     // Log received comment ID
     log.Printf("Received comment ID: %d", requestBody.CommentID)
 
+    // Retrieve logged-in user
     userID, err := RetrieveLoggedUser(r)
     if userID == 0 || err != nil {
         http.Error(w, "Unauthorized", http.StatusUnauthorized)
@@ -132,9 +148,30 @@ func DislikeCommentHandler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, "Failed to dislike comment", http.StatusInternalServerError)
         return
     }
-    database.DeleteCommentLike(requestBody.CommentID, userID)
+
+    // Optionally remove the like if it exists
+    err = database.DeleteCommentLike(requestBody.CommentID, userID)
+    if err != nil {
+        log.Printf("Failed to remove like for comment ID %d: %v", requestBody.CommentID, err)
+    }
+
+    // Get updated like and dislike counts
+    likeCount, dislikeCount, err := database.GetCommentCount(requestBody.CommentID)
+    if err != nil {
+        http.Error(w, "Failed to retrieve comment count", http.StatusInternalServerError)
+        return
+    }
+    
+    response := map[string]interface{}{
+        "commentId": requestBody.CommentID,
+        "likes":     likeCount,
+        "dislikes":  dislikeCount,
+    }
+  
+    
+    w.Header().Set("Content-Type", "application/json")
     w.WriteHeader(http.StatusOK)
-    json.NewEncoder(w).Encode(map[string]string{"message": "Comment disliked successfully"})
+    json.NewEncoder(w).Encode(response)
 }
 
 
