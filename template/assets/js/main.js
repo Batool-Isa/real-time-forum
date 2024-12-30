@@ -184,62 +184,53 @@ async function fetchPosts(category = 'all') {
 }
 
 
-
 function renderPosts() {
     postsContainer.innerHTML = ''; // Clear existing posts
     const start = (currentPage - 1) * postsPerPage;
     const end = start + postsPerPage;
     const postsToShow = allPosts.slice(start, end);
+
     postsToShow.forEach((post) => {
         const postElement = document.createElement('article');
         postElement.classList.add('post');
         postElement.setAttribute('data-id', post.postId); // Add a unique identifier
+
         postElement.innerHTML = `
             <a href="#" class="post-link" data-id="${post.postId}">
                 <p>${post.postDescription}</p>
             </a>
             <div class="post-meta">
                 <span>By: ${post.username}</span>
-                <span>👍 <span class="like-count">${post.like}</span> | 👎 <span class="dislike-count">${post.dislike}</span></span>
+                <span>
+                    <i class='bx bx-like like-icon' data-id="${post.postId}"></i>
+                    <span class="like-count">${post.like}</span>
+                </span>
+                <span>
+                    <i class='bx bx-dislike dislike-icon' data-id="${post.postId}"></i>
+                    <span class="dislike-count">${post.dislike}</span>
+                </span>
                 <span>Categories: ${post.categoryName.join(', ')}</span>
             </div>
-            <div class="post-actions">
-            <button class="action-btn like-btn" data-id="${post.postId}">
-                <i class='bx bx-like'></i>
-                <span class="like-count">${post.like}</span>
-            </button>
-            <button class="action-btn dislike-btn" data-id="${post.postId}">
-                <i class='bx bx-dislike'></i>
-                <span class="dislike-count">${post.dislike}</span>
-            </button>
-        </div>
         `;
         postsContainer.appendChild(postElement);
     });
-    // Add event listeners for post links
-    document.querySelectorAll('.post-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const postId = link.getAttribute('data-id');
-            router.navigate(`/post?id=${postId}`);
-        });
-    });
-    // Add event listeners for like and dislike buttons
-    document.querySelectorAll('.like-btn').forEach((button) => {
-        button.addEventListener('click', () => {
-            console.log(`Like clicked for post ID: ${button.dataset.id}`);
-            handleLike(button.dataset.id);
-        });
-    });
-    document.querySelectorAll('.dislike-btn').forEach((button) => {
-        button.addEventListener('click', () => {
-            console.log(`Dislike clicked for post ID: ${button.dataset.id}`);
-            handleDislike(button.dataset.id);
 
+    // Add event listeners for like and dislike icons
+    document.querySelectorAll('.like-icon').forEach((icon) => {
+        icon.addEventListener('click', () => {
+            console.log(`Like clicked for post ID: ${icon.dataset.id}`);
+            handleLike(icon.dataset.id);
         });
     });
-
+    document.querySelectorAll('.dislike-icon').forEach((icon) => {
+        icon.addEventListener('click', () => {
+            console.log(`Dislike clicked for post ID: ${icon.dataset.id}`);
+            handleDislike(icon.dataset.id);
+        });
+    });
 }
+
+
 
 function updatePaginationControls() {
     const totalPages = Math.ceil(allPosts.length / postsPerPage);
@@ -789,7 +780,7 @@ class ChatManager {
                     case 'presence':
                         const { userId, online } = data.payload;
                         console.log(`Updating presence for user ${userId}: ${online ? 'online' : 'offline'}`);
-                        this.chatUI.updatePresence(userId, online);
+                        updateUserPresence(userId, online);
                         break;
         
                     default:

@@ -976,3 +976,331 @@
 2024/12/30 15:10:25 Error reading message: websocket: close 1001 (going away)
 2024/12/30 15:10:25 Error notifying presence change: websocket: close sent
 2024/12/30 15:10:26 [{11 Layal Ahmed layal 0xc0002be620} {4 Abrar R abrar 0xc0002be710} {8 Batool Isa bisa12 0xc0002be840} {3 Fatima Ali fatii 0xc0002be980} {12 Taher Isa taher1 0xc0002bea60} {1 Fatima Ali fatima11 0xc0002beba0} {9 noor Sli nor 0xc0002bece0} {6 Ali Test ali 0xc0002bee00} {5 Sara Ahmed sara 0xc0002beef0} {2 Batool Isa bisa 0xc0002bf010} {7 Ahmed Mohd Ahmed 0xc0002bf130} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:21:59 Error getting user ID: http: named cookie not present
+2024/12/30 15:21:59 Error getting user ID: http: named cookie not present
+2024/12/30 15:22:00 sql: no rows in result set
+2024/12/30 15:22:00 sql: no rows in result set
+2024/12/30 15:22:00 sql: no rows in result set
+2024/12/30 15:22:00 Error getting user ID: sql: no rows in result set
+2024/12/30 15:22:00 sql: no rows in result set
+2024/12/30 15:22:00 sql: no rows in result set
+2024/12/30 15:22:00 Error getting user ID: sql: no rows in result set
+2024/12/30 15:22:18 [{1 Fatima Ali fatima11 0xc000396170} {10 Fajer Aki fajer1 0xc0003961c0} {3 Fatima Ali fatii 0xc000396210} {4 Abrar R abrar 0xc000396260} {6 Ali Test ali 0xc0003962b0} {7 Ahmed Mohd Ahmed 0xc000396300} {2 Batool Isa bisa 0xc000396350} {5 Sara Ahmed sara 0xc0003963a0} {9 noor Sli nor 0xc0003963f0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:22:35 sql: no rows in result set
+2024/12/30 15:22:35 [{11 Layal Ahmed layal 0xc000396af0} {4 Abrar R abrar 0xc000396b40} {8 Batool Isa bisa12 0xc000396b90} {3 Fatima Ali fatii 0xc000396be0} {12 Taher Isa taher1 0xc000396c30} {1 Fatima Ali fatima11 0xc000396c80} {9 noor Sli nor 0xc000396cd0} {6 Ali Test ali 0xc000396d20} {5 Sara Ahmed sara 0xc000396d70} {2 Batool Isa bisa 0xc000396dc0} {7 Ahmed Mohd Ahmed 0xc000396e10} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:23:42 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:23:42 Error notifying presence change: websocket: close sent
+2024/12/30 15:23:42 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:23:42 [{11 Layal Ahmed layal 0xc0003face0} {4 Abrar R abrar 0xc0003fad30} {8 Batool Isa bisa12 0xc0003fad80} {3 Fatima Ali fatii 0xc0003fadd0} {12 Taher Isa taher1 0xc0003fae20} {1 Fatima Ali fatima11 0xc0003fae70} {9 noor Sli nor 0xc0003faec0} {6 Ali Test ali 0xc0003faf10} {5 Sara Ahmed sara 0xc0003faf60} {2 Batool Isa bisa 0xc0003fafb0} {7 Ahmed Mohd Ahmed 0xc0003fb000} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:23:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:23:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:23:58 Error notifying presence change: websocket: close sent
+2024/12/30 15:23:58 [{1 Fatima Ali fatima11 0xc000217010} {10 Fajer Aki fajer1 0xc000217060} {3 Fatima Ali fatii 0xc0002170b0} {4 Abrar R abrar 0xc000217100} {6 Ali Test ali 0xc000217150} {7 Ahmed Mohd Ahmed 0xc0002171a0} {2 Batool Isa bisa 0xc0002171f0} {5 Sara Ahmed sara 0xc000217240} {9 noor Sli nor 0xc000217290} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:24:05 [{1 Fatima Ali fatima11 0xc00011c830} {10 Fajer Aki fajer1 0xc00011c880} {3 Fatima Ali fatii 0xc00011c8d0} {4 Abrar R abrar 0xc00011c920} {6 Ali Test ali 0xc00011c970} {7 Ahmed Mohd Ahmed 0xc00011c9c0} {2 Batool Isa bisa 0xc00011ca10} {5 Sara Ahmed sara 0xc00011ca60} {9 noor Sli nor 0xc00011cab0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:24:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:24:16 Error notifying presence change: websocket: close sent
+2024/12/30 15:24:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:24:17 [{11 Layal Ahmed layal 0xc00011cfa0} {4 Abrar R abrar 0xc00011cff0} {8 Batool Isa bisa12 0xc00011d040} {3 Fatima Ali fatii 0xc00011d090} {12 Taher Isa taher1 0xc00011d0e0} {1 Fatima Ali fatima11 0xc00011d130} {9 noor Sli nor 0xc00011d180} {6 Ali Test ali 0xc00011d1d0} {5 Sara Ahmed sara 0xc00011d220} {2 Batool Isa bisa 0xc00011d270} {7 Ahmed Mohd Ahmed 0xc00011d2c0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:24:26 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:24:26 Error notifying presence change: websocket: close sent
+2024/12/30 15:24:26 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:24:26 [{11 Layal Ahmed layal 0xc000412590} {4 Abrar R abrar 0xc0004125e0} {8 Batool Isa bisa12 0xc000412630} {3 Fatima Ali fatii 0xc000412680} {12 Taher Isa taher1 0xc0004126d0} {1 Fatima Ali fatima11 0xc000412720} {9 noor Sli nor 0xc000412770} {6 Ali Test ali 0xc0004127c0} {5 Sara Ahmed sara 0xc000412810} {2 Batool Isa bisa 0xc000412860} {7 Ahmed Mohd Ahmed 0xc0004128b0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:28:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:28:38 Error notifying presence change: websocket: close sent
+2024/12/30 15:28:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:28:38 [{1 Fatima Ali fatima11 0xc000234d00} {11 Layal Ahmed layal 0xc000234d50} {10 Fajer Aki fajer1 0xc000234da0} {3 Fatima Ali fatii 0xc000234df0} {4 Abrar R abrar 0xc000234e40} {6 Ali Test ali 0xc000234e90} {7 Ahmed Mohd Ahmed 0xc000234ee0} {2 Batool Isa bisa 0xc000234f30} {5 Sara Ahmed sara 0xc000234f80} {9 noor Sli nor 0xc000234fd0} {8 Batool Isa bisa12 <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:28:40 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:28:40 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:28:40 Error notifying presence change: websocket: close sent
+2024/12/30 15:28:40 [{11 Layal Ahmed layal 0xc000235560} {4 Abrar R abrar 0xc0002355b0} {8 Batool Isa bisa12 0xc000235600} {3 Fatima Ali fatii 0xc000235650} {12 Taher Isa taher1 0xc0002356a0} {1 Fatima Ali fatima11 0xc0002356f0} {9 noor Sli nor 0xc000235740} {6 Ali Test ali 0xc000235790} {5 Sara Ahmed sara 0xc0002357e0} {2 Batool Isa bisa 0xc000235830} {7 Ahmed Mohd Ahmed 0xc000235880} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:29:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:29:24 Error notifying presence change: websocket: close sent
+2024/12/30 15:29:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:29:24 [{11 Layal Ahmed layal 0xc00052e190} {4 Abrar R abrar 0xc00052e1e0} {8 Batool Isa bisa12 0xc00052e230} {3 Fatima Ali fatii 0xc00052e280} {12 Taher Isa taher1 0xc00052e2d0} {1 Fatima Ali fatima11 0xc00052e320} {9 noor Sli nor 0xc00052e370} {6 Ali Test ali 0xc00052e3c0} {5 Sara Ahmed sara 0xc00052e410} {2 Batool Isa bisa 0xc00052e460} {7 Ahmed Mohd Ahmed 0xc00052e4b0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:30:23 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:23 Error notifying presence change: websocket: close sent
+2024/12/30 15:30:23 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:23 [{11 Layal Ahmed layal 0xc000253310} {4 Abrar R abrar 0xc000253360} {8 Batool Isa bisa12 0xc0002533b0} {3 Fatima Ali fatii 0xc000253400} {12 Taher Isa taher1 0xc000253450} {1 Fatima Ali fatima11 0xc0002534a0} {9 noor Sli nor 0xc0002534f0} {6 Ali Test ali 0xc000253540} {5 Sara Ahmed sara 0xc000253590} {2 Batool Isa bisa 0xc0002535e0} {7 Ahmed Mohd Ahmed 0xc000253630} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:30:33 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:33 Error notifying presence change: websocket: close sent
+2024/12/30 15:30:33 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:33 [{1 Fatima Ali fatima11 0xc000412480} {11 Layal Ahmed layal 0xc0004124d0} {10 Fajer Aki fajer1 0xc000412520} {3 Fatima Ali fatii 0xc000412570} {4 Abrar R abrar 0xc0004125c0} {6 Ali Test ali 0xc000412610} {7 Ahmed Mohd Ahmed 0xc000412660} {2 Batool Isa bisa 0xc0004126b0} {5 Sara Ahmed sara 0xc000412700} {9 noor Sli nor 0xc000412750} {8 Batool Isa bisa12 <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:30:55 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:55 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:30:55 Error notifying presence change: websocket: close sent
+2024/12/30 15:30:55 [{11 Layal Ahmed layal 0xc000194510} {4 Abrar R abrar 0xc000194580} {8 Batool Isa bisa12 0xc0001945d0} {3 Fatima Ali fatii 0xc000194710} {12 Taher Isa taher1 0xc000194850} {1 Fatima Ali fatima11 0xc000194990} {9 noor Sli nor 0xc000194aa0} {6 Ali Test ali 0xc000194be0} {5 Sara Ahmed sara 0xc000194d20} {2 Batool Isa bisa 0xc000194e20} {7 Ahmed Mohd Ahmed 0xc000194e80} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:31:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:31:16 Error notifying presence change: websocket: close sent
+2024/12/30 15:31:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:31:16 [{11 Layal Ahmed layal 0xc000294980} {4 Abrar R abrar 0xc000294aa0} {8 Batool Isa bisa12 0xc000294b80} {3 Fatima Ali fatii 0xc000294ca0} {12 Taher Isa taher1 0xc000294d60} {1 Fatima Ali fatima11 0xc000294ea0} {9 noor Sli nor 0xc000294fe0} {6 Ali Test ali 0xc000295100} {5 Sara Ahmed sara 0xc000295230} {2 Batool Isa bisa 0xc000295350} {7 Ahmed Mohd Ahmed 0xc000295490} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:31:29 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:31:29 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:31:29 Error notifying presence change: websocket: close sent
+2024/12/30 15:31:29 Error getting user ID: http: named cookie not present
+2024/12/30 15:31:29 Error getting user ID: http: named cookie not present
+2024/12/30 15:31:35 Error getting user ID: http: named cookie not present
+2024/12/30 15:31:35 Error getting user ID: http: named cookie not present
+2024/12/30 15:33:48 [{11 Layal Ahmed layal 0xc000016740} {4 Abrar R abrar 0xc000016790} {8 Batool Isa bisa12 0xc0000167e0} {3 Fatima Ali fatii 0xc000016830} {12 Taher Isa taher1 0xc000016880} {1 Fatima Ali fatima11 0xc0000168d0} {9 noor Sli nor 0xc000016920} {6 Ali Test ali 0xc000016970} {5 Sara Ahmed sara 0xc0000169d0} {2 Batool Isa bisa 0xc000016a20} {7 Ahmed Mohd Ahmed 0xc000016a70} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:33:53 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:33:53 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:33:53 Error notifying presence change: websocket: close sent
+2024/12/30 15:33:54 [{11 Layal Ahmed layal 0xc000194c20} {4 Abrar R abrar 0xc000194d60} {8 Batool Isa bisa12 0xc000194e30} {3 Fatima Ali fatii 0xc000194e90} {12 Taher Isa taher1 0xc000194f10} {1 Fatima Ali fatima11 0xc000194fd0} {9 noor Sli nor 0xc0001950d0} {6 Ali Test ali 0xc000195160} {5 Sara Ahmed sara 0xc000195230} {2 Batool Isa bisa 0xc000195350} {7 Ahmed Mohd Ahmed 0xc000195430} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:34:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:34:19 Error notifying presence change: websocket: close sent
+2024/12/30 15:34:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:34:20 [{11 Layal Ahmed layal 0xc0004126e0} {4 Abrar R abrar 0xc000412730} {8 Batool Isa bisa12 0xc000412780} {3 Fatima Ali fatii 0xc0004127d0} {12 Taher Isa taher1 0xc000412820} {1 Fatima Ali fatima11 0xc000412870} {9 noor Sli nor 0xc0004128c0} {6 Ali Test ali 0xc000412910} {5 Sara Ahmed sara 0xc000412960} {2 Batool Isa bisa 0xc0004129b0} {7 Ahmed Mohd Ahmed 0xc000412a00} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:36:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:00 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:00 [{11 Layal Ahmed layal 0xc00052e630} {4 Abrar R abrar 0xc00052e680} {8 Batool Isa bisa12 0xc00052e6d0} {3 Fatima Ali fatii 0xc00052e720} {12 Taher Isa taher1 0xc00052e770} {1 Fatima Ali fatima11 0xc00052e7c0} {9 noor Sli nor 0xc00052e810} {6 Ali Test ali 0xc00052e860} {5 Sara Ahmed sara 0xc00052e8b0} {2 Batool Isa bisa 0xc00052e900} {7 Ahmed Mohd Ahmed 0xc00052e950} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:36:02 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:02 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:02 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:02 [{11 Layal Ahmed layal 0xc0001fe6c0} {4 Abrar R abrar 0xc0001fe750} {8 Batool Isa bisa12 0xc0001fe810} {3 Fatima Ali fatii 0xc0001fe8d0} {12 Taher Isa taher1 0xc0001fe9e0} {1 Fatima Ali fatima11 0xc0001feaf0} {9 noor Sli nor 0xc0001fec30} {6 Ali Test ali 0xc0001fecf0} {5 Sara Ahmed sara 0xc0001fee30} {2 Batool Isa bisa 0xc0001fef50} {7 Ahmed Mohd Ahmed 0xc0001ff010} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:36:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:38 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:38 Error getting user ID: http: named cookie not present
+2024/12/30 15:36:38 Error getting user ID: http: named cookie not present
+2024/12/30 15:36:41 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:41 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:41 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:41 [{11 Layal Ahmed layal 0xc000413540} {4 Abrar R abrar 0xc000413590} {8 Batool Isa bisa12 0xc0004135e0} {3 Fatima Ali fatii 0xc000413630} {12 Taher Isa taher1 0xc000413680} {1 Fatima Ali fatima11 0xc0004136d0} {9 noor Sli nor 0xc000413720} {6 Ali Test ali 0xc000413770} {5 Sara Ahmed sara 0xc0004137c0} {2 Batool Isa bisa 0xc000413810} {7 Ahmed Mohd Ahmed 0xc000413860} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:36:47 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:47 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:47 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:47 [{11 Layal Ahmed layal 0xc00029f370} {4 Abrar R abrar 0xc00029f4b0} {8 Batool Isa bisa12 0xc00029f5c0} {3 Fatima Ali fatii 0xc00029f680} {12 Taher Isa taher1 0xc00029f740} {1 Fatima Ali fatima11 0xc00029f850} {9 noor Sli nor 0xc00029f940} {6 Ali Test ali 0xc00029fa00} {5 Sara Ahmed sara 0xc00029fb00} {2 Batool Isa bisa 0xc00029fc20} {7 Ahmed Mohd Ahmed 0xc00029fcf0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:36:53 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:53 Error notifying presence change: websocket: close sent
+2024/12/30 15:36:53 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:36:54 [{11 Layal Ahmed layal 0xc0000164c0} {4 Abrar R abrar 0xc000016510} {8 Batool Isa bisa12 0xc000016560} {3 Fatima Ali fatii 0xc0000165b0} {12 Taher Isa taher1 0xc000016600} {1 Fatima Ali fatima11 0xc000016650} {9 noor Sli nor 0xc0000166a0} {6 Ali Test ali 0xc0000166f0} {5 Sara Ahmed sara 0xc000016740} {2 Batool Isa bisa 0xc000016790} {7 Ahmed Mohd Ahmed 0xc0000167e0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:37:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:03 Error notifying presence change: websocket: close sent
+2024/12/30 15:37:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:03 [{11 Layal Ahmed layal 0xc0002c1b00} {4 Abrar R abrar 0xc0002c1c40} {8 Batool Isa bisa12 0xc0002c1d20} {3 Fatima Ali fatii 0xc0002c1e00} {12 Taher Isa taher1 0xc0002c1f00} {1 Fatima Ali fatima11 0xc0002d4020} {9 noor Sli nor 0xc0002d40f0} {6 Ali Test ali 0xc0002d4210} {5 Sara Ahmed sara 0xc0002d4350} {2 Batool Isa bisa 0xc0002d4470} {7 Ahmed Mohd Ahmed 0xc0002d4590} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:37:39 [{1 Fatima Ali fatima11 0xc0000174a0} {8 Batool Isa bisa12 0xc0000174f0} {12 Taher Isa taher1 0xc000017540} {9 noor Sli nor 0xc000017590} {10 Fajer Aki fajer1 0xc0000175e0} {11 Layal Ahmed layal 0xc000017630} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:37:44 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:44 Error notifying presence change: websocket: close sent
+2024/12/30 15:37:44 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:44 [{1 Fatima Ali fatima11 0xc0000172a0} {8 Batool Isa bisa12 0xc0000172f0} {12 Taher Isa taher1 0xc000017340} {9 noor Sli nor 0xc000017390} {10 Fajer Aki fajer1 0xc0000173e0} {11 Layal Ahmed layal 0xc000017430} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:37:50 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:50 Error notifying presence change: websocket: close sent
+2024/12/30 15:37:50 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:50 [{1 Fatima Ali fatima11 0xc0001fe7b0} {8 Batool Isa bisa12 0xc0001fe870} {12 Taher Isa taher1 0xc0001fe950} {9 noor Sli nor 0xc0001fea40} {10 Fajer Aki fajer1 0xc0001feb70} {11 Layal Ahmed layal 0xc0001fec70} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:37:56 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:56 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:37:56 Error notifying presence change: websocket: close sent
+2024/12/30 15:37:56 [{11 Layal Ahmed layal 0xc00052e720} {4 Abrar R abrar 0xc00052e770} {8 Batool Isa bisa12 0xc00052e7c0} {3 Fatima Ali fatii 0xc00052e810} {12 Taher Isa taher1 0xc00052e860} {1 Fatima Ali fatima11 0xc00052e8b0} {9 noor Sli nor 0xc00052e900} {6 Ali Test ali 0xc00052e950} {5 Sara Ahmed sara 0xc00052e9a0} {2 Batool Isa bisa 0xc00052e9f0} {7 Ahmed Mohd Ahmed 0xc00052ea40} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:39:09 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:09 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:09 Error notifying presence change: websocket: close sent
+2024/12/30 15:39:09 [{11 Layal Ahmed layal 0xc000194e60} {4 Abrar R abrar 0xc000194ed0} {8 Batool Isa bisa12 0xc000194f60} {3 Fatima Ali fatii 0xc000195090} {12 Taher Isa taher1 0xc000195130} {1 Fatima Ali fatima11 0xc0001951f0} {9 noor Sli nor 0xc0001952f0} {6 Ali Test ali 0xc0001953b0} {5 Sara Ahmed sara 0xc0001954f0} {2 Batool Isa bisa 0xc0001955c0} {7 Ahmed Mohd Ahmed 0xc000195680} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:39:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:58 Error notifying presence change: websocket: close sent
+2024/12/30 15:39:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:58 [{11 Layal Ahmed layal 0xc0002ba580} {4 Abrar R abrar 0xc0002ba670} {8 Batool Isa bisa12 0xc0002ba730} {3 Fatima Ali fatii 0xc0002ba830} {12 Taher Isa taher1 0xc0002ba950} {1 Fatima Ali fatima11 0xc0002baa90} {9 noor Sli nor 0xc0002bab50} {6 Ali Test ali 0xc0002bac90} {5 Sara Ahmed sara 0xc0002bad70} {2 Batool Isa bisa 0xc0002bae60} {7 Ahmed Mohd Ahmed 0xc0002baf90} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:39:59 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:59 Error notifying presence change: websocket: close sent
+2024/12/30 15:39:59 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:39:59 [{1 Fatima Ali fatima11 0xc0002bbbb0} {8 Batool Isa bisa12 0xc0002bbcf0} {12 Taher Isa taher1 0xc0002bbdc0} {9 noor Sli nor 0xc0002bbec0} {10 Fajer Aki fajer1 0xc00028c090} {11 Layal Ahmed layal 0xc00028c140} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:40:34 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:40:34 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:40:34 Error notifying presence change: websocket: close sent
+2024/12/30 15:40:34 [{1 Fatima Ali fatima11 0xc000016d40} {8 Batool Isa bisa12 0xc000016d90} {12 Taher Isa taher1 0xc000016de0} {9 noor Sli nor 0xc000016e30} {10 Fajer Aki fajer1 0xc000016e80} {11 Layal Ahmed layal 0xc000016ed0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:40:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:40:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:40:58 Error notifying presence change: websocket: close sent
+2024/12/30 15:40:58 [{1 Fatima Ali fatima11 0xc00052f8b0} {8 Batool Isa bisa12 0xc00052f900} {12 Taher Isa taher1 0xc00052f950} {9 noor Sli nor 0xc00052f9a0} {10 Fajer Aki fajer1 0xc00052f9f0} {11 Layal Ahmed layal 0xc00052fa40} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:41:01 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:41:01 Error notifying presence change: websocket: close sent
+2024/12/30 15:41:01 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:41:01 [{11 Layal Ahmed layal 0xc000194990} {4 Abrar R abrar 0xc000194aa0} {8 Batool Isa bisa12 0xc000194be0} {3 Fatima Ali fatii 0xc000194d20} {12 Taher Isa taher1 0xc000194e20} {1 Fatima Ali fatima11 0xc000194e80} {9 noor Sli nor 0xc000194ee0} {6 Ali Test ali 0xc000194f90} {5 Sara Ahmed sara 0xc0001950b0} {2 Batool Isa bisa 0xc000195150} {7 Ahmed Mohd Ahmed 0xc000195200} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:43:24 [{1 Fatima Ali fatima11 0xc0002943e0} {8 Batool Isa bisa12 0xc000294520} {12 Taher Isa taher1 0xc0002945e0} {9 noor Sli nor 0xc0002946a0} {10 Fajer Aki fajer1 0xc0002947c0} {11 Layal Ahmed layal 0xc0002948a0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:43:31 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:43:31 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:43:31 Error notifying presence change: websocket: close sent
+2024/12/30 15:43:31 [{11 Layal Ahmed layal 0xc0002d4250} {4 Abrar R abrar 0xc0002d4390} {8 Batool Isa bisa12 0xc0002d44b0} {3 Fatima Ali fatii 0xc0002d45d0} {12 Taher Isa taher1 0xc0002d46b0} {1 Fatima Ali fatima11 0xc0002d47c0} {9 noor Sli nor 0xc0002d48d0} {6 Ali Test ali 0xc0002d4a10} {5 Sara Ahmed sara 0xc0002d4b20} {2 Batool Isa bisa 0xc0002d4c60} {7 Ahmed Mohd Ahmed 0xc0002d4d40} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:43:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:43:38 Error notifying presence change: websocket: close sent
+2024/12/30 15:43:38 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:43:38 [{1 Fatima Ali fatima11 0xc00029ea10} {8 Batool Isa bisa12 0xc00029eb50} {12 Taher Isa taher1 0xc00029ec30} {9 noor Sli nor 0xc00029ed70} {10 Fajer Aki fajer1 0xc00029eeb0} {11 Layal Ahmed layal 0xc00029ef80} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:47:04 [{1 Fatima Ali fatima11 0xc0001941e0} {8 Batool Isa bisa12 0xc000194230} {12 Taher Isa taher1 0xc000194280} {9 noor Sli nor 0xc0001942d0} {10 Fajer Aki fajer1 0xc000194320} {11 Layal Ahmed layal 0xc000194370} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:49:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:00 Error notifying presence change: websocket: close sent
+2024/12/30 15:49:00 [{9 noor Sli nor 0xc0002946e0} {1 Fatima Ali fatima11 0xc0002947e0} {8 Batool Isa bisa12 0xc0002948e0} {12 Taher Isa taher1 0xc0002949c0} {10 Fajer Aki fajer1 0xc000294ac0} {11 Layal Ahmed layal 0xc000294ba0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:49:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:05 Error notifying presence change: websocket: close sent
+2024/12/30 15:49:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:05 [{9 noor Sli nor 0xc000016330} {1 Fatima Ali fatima11 0xc0000163a0} {8 Batool Isa bisa12 0xc000016410} {12 Taher Isa taher1 0xc000016460} {10 Fajer Aki fajer1 0xc0000164b0} {11 Layal Ahmed layal 0xc000016500} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:49:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:20 Error notifying presence change: websocket: close sent
+2024/12/30 15:49:21 [{9 noor Sli nor 0xc0001ff810} {1 Fatima Ali fatima11 0xc0001ff950} {8 Batool Isa bisa12 0xc0001ffa30} {12 Taher Isa taher1 0xc0001ffb40} {10 Fajer Aki fajer1 0xc0001ffc40} {11 Layal Ahmed layal 0xc0001ffd00} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:49:22 Raw request body: {"post_id":34}
+2024/12/30 15:49:22 Parsed PostID: 34
+2024/12/30 15:49:22 UserID: 4 is liking PostID: 34
+2024/12/30 15:49:22 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:49:22 Like does not exist, adding it
+2024/12/30 15:49:24 Raw request body: {"post_id":34}
+2024/12/30 15:49:24 Parsed PostID: 34
+2024/12/30 15:49:24 UserID: 4 is disliking PostID: 34
+2024/12/30 15:49:25 Raw request body: {"post_id":34}
+2024/12/30 15:49:25 Parsed PostID: 34
+2024/12/30 15:49:25 UserID: 4 is liking PostID: 34
+2024/12/30 15:49:25 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:49:25 Like does not exist, adding it
+2024/12/30 15:49:26 Raw request body: {"post_id":34}
+2024/12/30 15:49:26 Parsed PostID: 34
+2024/12/30 15:49:26 UserID: 4 is disliking PostID: 34
+2024/12/30 15:49:27 Raw request body: {"post_id":34}
+2024/12/30 15:49:27 Parsed PostID: 34
+2024/12/30 15:49:27 UserID: 4 is liking PostID: 34
+2024/12/30 15:49:27 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:49:27 Like does not exist, adding it
+2024/12/30 15:49:28 Raw request body: {"post_id":34}
+2024/12/30 15:49:28 Parsed PostID: 34
+2024/12/30 15:49:28 UserID: 4 is disliking PostID: 34
+2024/12/30 15:49:29 Raw request body: {"post_id":34}
+2024/12/30 15:49:29 Parsed PostID: 34
+2024/12/30 15:49:29 UserID: 4 is liking PostID: 34
+2024/12/30 15:49:29 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:49:29 Like does not exist, adding it
+2024/12/30 15:49:30 Raw request body: {"post_id":34}
+2024/12/30 15:49:30 Parsed PostID: 34
+2024/12/30 15:49:30 UserID: 4 is disliking PostID: 34
+2024/12/30 15:49:45 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:45 Error notifying presence change: websocket: close sent
+2024/12/30 15:49:45 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:49:45 [{9 noor Sli nor 0xc0001957b0} {1 Fatima Ali fatima11 0xc0001958c0} {8 Batool Isa bisa12 0xc000195990} {12 Taher Isa taher1 0xc000195a40} {10 Fajer Aki fajer1 0xc000195af0} {11 Layal Ahmed layal 0xc000195bc0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:53:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:53:03 Error notifying presence change: websocket: close sent
+2024/12/30 15:53:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:53:03 [{9 noor Sli nor 0xc0002c0220} {1 Fatima Ali fatima11 0xc0002c02d0} {8 Batool Isa bisa12 0xc0002c03d0} {12 Taher Isa taher1 0xc0002c04b0} {10 Fajer Aki fajer1 0xc0002c0540} {11 Layal Ahmed layal 0xc0002c0650} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:53:07 Received comment ID: 23
+2024/12/30 15:54:52 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:54:52 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:54:52 Error notifying presence change: websocket: close sent
+2024/12/30 15:54:56 [{9 noor Sli nor 0xc0002b68d0} {1 Fatima Ali fatima11 0xc0002b6990} {8 Batool Isa bisa12 0xc0002b6ab0} {12 Taher Isa taher1 0xc0002b6b90} {10 Fajer Aki fajer1 0xc0002b6c60} {11 Layal Ahmed layal 0xc0002b6d90} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:54:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:54:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:54:57 Error notifying presence change: websocket: close sent
+2024/12/30 15:54:57 [{9 noor Sli nor 0xc0002b7af0} {1 Fatima Ali fatima11 0xc0002b7bb0} {8 Batool Isa bisa12 0xc0002b7cb0} {12 Taher Isa taher1 0xc0002b7df0} {10 Fajer Aki fajer1 0xc0002b7f10} {11 Layal Ahmed layal 0xc00029e030} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:55:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:00 Error notifying presence change: websocket: close sent
+2024/12/30 15:55:00 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:05 Error notifying presence change: websocket: close sent
+2024/12/30 15:55:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:05 [{9 noor Sli nor 0xc0002baa50} {1 Fatima Ali fatima11 0xc0002bab10} {8 Batool Isa bisa12 0xc0002bac50} {12 Taher Isa taher1 0xc0002bad30} {10 Fajer Aki fajer1 0xc0002bae50} {11 Layal Ahmed layal 0xc0002baf50} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:33 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:55:33 Error notifying presence change: websocket: close sent
+2024/12/30 15:55:39 [{9 noor Sli nor 0xc000016660} {1 Fatima Ali fatima11 0xc0000166b0} {8 Batool Isa bisa12 0xc000016700} {12 Taher Isa taher1 0xc000016750} {10 Fajer Aki fajer1 0xc0000167a0} {11 Layal Ahmed layal 0xc0000167f0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:55:54 Raw request body: {"post_id":34}
+2024/12/30 15:55:54 Parsed PostID: 34
+2024/12/30 15:55:54 UserID: 4 is liking PostID: 34
+2024/12/30 15:55:54 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:55:54 Like does not exist, adding it
+2024/12/30 15:55:59 Raw request body: {"post_id":34}
+2024/12/30 15:55:59 Parsed PostID: 34
+2024/12/30 15:55:59 UserID: 4 is liking PostID: 34
+2024/12/30 15:55:59 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:55:59 Like already exists, removing it
+2024/12/30 15:56:00 Raw request body: {"post_id":34}
+2024/12/30 15:56:00 Parsed PostID: 34
+2024/12/30 15:56:00 UserID: 4 is liking PostID: 34
+2024/12/30 15:56:00 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:56:00 Like does not exist, adding it
+2024/12/30 15:56:00 Raw request body: {"post_id":34}
+2024/12/30 15:56:00 Parsed PostID: 34
+2024/12/30 15:56:00 UserID: 4 is liking PostID: 34
+2024/12/30 15:56:00 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:56:00 Like already exists, removing it
+2024/12/30 15:56:01 Raw request body: {"post_id":34}
+2024/12/30 15:56:01 Parsed PostID: 34
+2024/12/30 15:56:01 UserID: 4 is liking PostID: 34
+2024/12/30 15:56:01 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:56:01 Like does not exist, adding it
+2024/12/30 15:56:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:56:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:56:24 Error notifying presence change: websocket: close sent
+2024/12/30 15:56:27 Error getting user ID: http: named cookie not present
+2024/12/30 15:56:27 Error getting user ID: http: named cookie not present
+2024/12/30 15:56:37 [{9 noor Sli nor 0xc000294370} {1 Fatima Ali fatima11 0xc0002944a0} {8 Batool Isa bisa12 0xc0002945a0} {12 Taher Isa taher1 0xc000294660} {10 Fajer Aki fajer1 0xc000294760} {11 Layal Ahmed layal 0xc000294820} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:56:43 Received comment ID: 23
+2024/12/30 15:56:44 Received comment ID: 24
+2024/12/30 15:56:44 Received comment ID: 25
+2024/12/30 15:58:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:05 Error notifying presence change: websocket: close sent
+2024/12/30 15:58:05 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:09 [{9 noor Sli nor 0xc000016990} {1 Fatima Ali fatima11 0xc0000169f0} {8 Batool Isa bisa12 0xc000016a40} {12 Taher Isa taher1 0xc000016aa0} {10 Fajer Aki fajer1 0xc000016af0} {11 Layal Ahmed layal 0xc000016b90} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:58:12 Received comment ID: 23
+2024/12/30 15:58:37 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:37 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:37 Error notifying presence change: websocket: close sent
+2024/12/30 15:58:41 [{9 noor Sli nor 0xc0002ba510} {1 Fatima Ali fatima11 0xc0002ba610} {8 Batool Isa bisa12 0xc0002ba6f0} {12 Taher Isa taher1 0xc0002ba7b0} {10 Fajer Aki fajer1 0xc0002ba8d0} {11 Layal Ahmed layal 0xc0002baa10} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:58:43 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:43 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:58:43 Error notifying presence change: websocket: close sent
+2024/12/30 15:58:43 [{9 noor Sli nor 0xc0002bb7e0} {1 Fatima Ali fatima11 0xc0002bb8f0} {8 Batool Isa bisa12 0xc0002bb9d0} {12 Taher Isa taher1 0xc0002bbb10} {10 Fajer Aki fajer1 0xc0002bbbf0} {11 Layal Ahmed layal 0xc0002bbd10} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 15:58:45 Raw request body: {"post_id":34}
+2024/12/30 15:58:45 Parsed PostID: 34
+2024/12/30 15:58:45 UserID: 4 is liking PostID: 34
+2024/12/30 15:58:45 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:58:45 Like already exists, removing it
+2024/12/30 15:58:45 Raw request body: {"post_id":34}
+2024/12/30 15:58:45 Parsed PostID: 34
+2024/12/30 15:58:45 UserID: 4 is disliking PostID: 34
+2024/12/30 15:58:46 Raw request body: {"post_id":34}
+2024/12/30 15:58:46 Parsed PostID: 34
+2024/12/30 15:58:46 UserID: 4 is liking PostID: 34
+2024/12/30 15:58:46 Inserting like for PostID: 34, UserID: 4
+2024/12/30 15:58:46 Like does not exist, adding it
+2024/12/30 15:58:48 Raw request body: {"post_id":33}
+2024/12/30 15:58:48 Parsed PostID: 33
+2024/12/30 15:58:48 UserID: 4 is liking PostID: 33
+2024/12/30 15:58:48 Inserting like for PostID: 33, UserID: 4
+2024/12/30 15:58:48 Like does not exist, adding it
+2024/12/30 15:58:49 Raw request body: {"post_id":33}
+2024/12/30 15:58:49 Parsed PostID: 33
+2024/12/30 15:58:49 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:50 Raw request body: {"post_id":33}
+2024/12/30 15:58:50 Parsed PostID: 33
+2024/12/30 15:58:50 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:51 Raw request body: {"post_id":33}
+2024/12/30 15:58:51 Parsed PostID: 33
+2024/12/30 15:58:51 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:52 Raw request body: {"post_id":33}
+2024/12/30 15:58:52 Parsed PostID: 33
+2024/12/30 15:58:52 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:52 Raw request body: {"post_id":33}
+2024/12/30 15:58:52 Parsed PostID: 33
+2024/12/30 15:58:52 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:52 Raw request body: {"post_id":33}
+2024/12/30 15:58:52 Parsed PostID: 33
+2024/12/30 15:58:52 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:53 Raw request body: {"post_id":33}
+2024/12/30 15:58:53 Parsed PostID: 33
+2024/12/30 15:58:53 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:53 Raw request body: {"post_id":33}
+2024/12/30 15:58:53 Parsed PostID: 33
+2024/12/30 15:58:53 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:54 Raw request body: {"post_id":33}
+2024/12/30 15:58:54 Parsed PostID: 33
+2024/12/30 15:58:54 UserID: 4 is disliking PostID: 33
+2024/12/30 15:58:55 Raw request body: {"post_id":32}
+2024/12/30 15:58:55 Parsed PostID: 32
+2024/12/30 15:58:55 UserID: 4 is disliking PostID: 32
+2024/12/30 15:58:55 Error inserting dislike: post_Id cannot be empty or whitespace
+2024/12/30 15:58:59 Raw request body: {"post_id":31}
+2024/12/30 15:58:59 Parsed PostID: 31
+2024/12/30 15:58:59 UserID: 4 is disliking PostID: 31
+2024/12/30 15:59:01 Raw request body: {"post_id":31}
+2024/12/30 15:59:01 Parsed PostID: 31
+2024/12/30 15:59:01 UserID: 4 is liking PostID: 31
+2024/12/30 15:59:01 Inserting like for PostID: 31, UserID: 4
+2024/12/30 15:59:01 Like does not exist, adding it
+2024/12/30 15:59:02 Raw request body: {"post_id":31}
+2024/12/30 15:59:02 Parsed PostID: 31
+2024/12/30 15:59:02 UserID: 4 is disliking PostID: 31
