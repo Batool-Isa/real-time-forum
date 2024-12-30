@@ -110,7 +110,8 @@ const router = {
         '/chat': () => {
             hideAllSections();
             document.querySelector('.chat-container').style.display = 'flex'; // Show chat container
-            //initializeNewChatButton();
+            fetchOnlineUsers();
+
         },
         '/post': () => {
             hideAllSections();
@@ -181,7 +182,6 @@ async function fetchPosts(category = 'all') {
     }
 }
 
-
 function renderPosts() {
     postsContainer.innerHTML = ''; // Clear existing posts
     const start = (currentPage - 1) * postsPerPage;
@@ -213,6 +213,15 @@ function renderPosts() {
         postsContainer.appendChild(postElement);
     });
 
+    // Add event listeners for post links
+    document.querySelectorAll('.post-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const postId = link.getAttribute('data-id');
+            router.navigate(`/post?id=${postId}`); // Navigate to post details page
+        });
+    });
+
     // Add event listeners for like and dislike icons
     document.querySelectorAll('.like-icon').forEach((icon) => {
         icon.addEventListener('click', () => {
@@ -227,6 +236,7 @@ function renderPosts() {
         });
     });
 }
+
 
 
 
@@ -739,7 +749,6 @@ class ChatManager {
     constructor() {
         this.ws = new WebSocket('ws://localhost:8000/ws');
         this.chatUI = new ChatUI();
-        fetchOnlineUsers();
 
 
         this.ws.onmessage = (event) => {
