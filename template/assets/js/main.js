@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
-   // chatManager.chatUI.loadAllChats();
-    //chatManager.chatUI.loadAllUsers(); // Explicitly call to ensure users are loaded
+  
 
 
     document.querySelectorAll('.toggle-auth').forEach(link => {
@@ -308,10 +307,7 @@ class ChatUI {
         this.onlineUsersList = document.querySelector('.online-use-list');
         //this.loadAllUserswithStatus();
 
-        // Refresh online users every 5 seconds
-        // setInterval(() => this.loadAllUserswithStatus(), 5000);
-        // setInterval(() => this.loadAllChats(), 5000);
-
+        
         this.messageOffset = 0;
         this.isLoading = false;
         this.hasMoreMessages = true;
@@ -402,46 +398,6 @@ class ChatUI {
         };
 
 
-        // this.ws.onmessage = (event) => {
-        //     try {
-        //         const data = JSON.parse(event.data);
-
-        //         // // Check the type of message received
-        //         // switch (data.type) {
-        //         //     case 'chat': // For chat messages
-        //         //     const message = data.payload;
-        //         //     console.log('Received message via WebSocket:', message);
-        //         //     this.displayMessage({
-        //         //         content: message.content,
-        //         //         timestamp: message.timestamp,
-        //         //         sent: message.senderId === this.currentUserId,
-        //         //     });
-        //         //     this.scrollToBottom();
-        //         //         break;
-
-        //         //     // case 'presence': // For user online/offline status
-        //         //     // console.log('Received presence info via WebSocket:', data.payload);
-        //         //     // const presenceInfo = data.payload;
-        //         //     // this.updatePresence(presenceInfo.userId, presenceInfo.online);
-        //         //     // break;
-
-
-        //         //     // case 'online_users': // For the list of all online users
-        //         //     //     console.log('Online users list received:', data.users);
-        //         //     //     this.renderOnlineUsers(data.payload.users);
-        //         //     //    // this.renderOnlineUsers(data.users); // Update the UI for online users
-        //         //     //     break;
-
-        //         //     default:
-        //         //         console.warn('Unknown WebSocket message type:', data.type);
-        //         }
-        //     } catch (error) {
-        //         console.error('Error handling WebSocket message:', error);
-        //     }
-        // };
-
-
-
 
         this.ws.onerror = (error) => {
             console.error('WebSocket error:', error);
@@ -455,13 +411,22 @@ class ChatUI {
 
 
     updatePresence(userId, online) {
-        const userElement = this.onlineUsersList.querySelector(`.user-item[data-userid="${userId}"]`);
+        // Select the user element by the user ID
+        const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);
         if (userElement) {
+            // Find the status dot inside the user element
             const statusDot = userElement.querySelector('.user-status');
-            statusDot.style.backgroundColor = online ? 'green' : 'gray';
+            if (statusDot) {
+                // Update the status dot color based on the `online` status
+                statusDot.style.backgroundColor = online ? 'green' : 'gray';
+            } else {
+                console.warn(`No status dot found for user ID: ${userId}`);
+            }
+        } else {
+            console.warn(`No user item found for user ID: ${userId}`);
         }
-
     }
+    
 
 
 
@@ -499,13 +464,7 @@ class ChatUI {
 
             console.log('Sending message:', message);
 
-            // Display sent message immediately
-            // this.displayMessage({
-            //     content: content,
-            //     timestamp: message.timestamp,
-            //     sent: true
-            // });
-            //Clear input
+          
             this.messageInput.value = '';
             this.scrollToBottom();
         }
@@ -534,9 +493,7 @@ class ChatUI {
         this.loading = false; // Flag to prevent multiple simultaneous fetches
 
         this.loadMoreMessages();
-        // Load the first batch of messages (last 10)
-        //this.loadMessages();
-
+    
         // Listen for scroll events to load older messages when scrolling up
         this.messagesContainer.addEventListener('scroll', () => {
             if (!this.loading && this.messagesContainer.scrollTop === 0) {
@@ -586,16 +543,7 @@ class ChatUI {
             });
     }
 
-    // displayMessage({ content, timestamp, sent }) {
-    //     const messageElement = document.createElement('div');
-    //     messageElement.className = sent ? 'sent-message' : 'received-message';
-    //     messageElement.innerHTML = `
-    //         <div class="message-content">${content}</div>
-    //         <div class="message-timestamp">${new Date(timestamp).toLocaleTimeString()}</div>
-    //     `;
-    //     this.messagesContainer.appendChild(messageElement);
-    // }
-
+  
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
@@ -611,7 +559,7 @@ class ChatUI {
                 this.usersList.removeChild(existingUser);
                 this.usersList.prepend(existingUser);
             }
-            console.warn(`User with ID ${user.user_id} is already in the list.`);
+            console.warn(`User with ID ${user.UserID} is already in the list.`);
             return;
         }
 
@@ -628,8 +576,15 @@ class ChatUI {
             </div>
             </div>
         `;
-        userElement.addEventListener('click', () => this.startChat(user));
 
+           // Event listener for starting a chat
+    userElement.addEventListener('click', () => {
+        this.startChat(user);
+
+        // Remove highlight class when clicked
+        userElement.classList.remove('new-message');
+    });
+    
         // Add the user to the top or bottom of the list
         if (prepend) {
             this.usersList.prepend(userElement); // Place at the top
@@ -720,53 +675,7 @@ class ChatUI {
             newChatBtn.addEventListener('click', () => this.showUserSelectModal());
         }
     }
-    // loadAllChats() {
-    //     fetch('/api/user-chat', { credentials: 'include' })
-    //         .then(response => response.json())
-    //         .then(users => {
-    //             this.usersList.innerHTML = ''; // Clear the existing user list
-    //             users.forEach(user => this.addUserToList(user, false));
-
-    //             // Initial fetch of online statuses
-    //             // fetchOnlineUsers();
-    //         })
-    //         .catch(error => console.error('Error loading chats:', error));
-    // }
-
-
-    // loadAllUserswithStatus() {
-    //     fetch('/api/all-online-users', { credentials: 'include' })
-    //         .then(response => response.json())
-    //         .then(users => {
-    //             console.log('Raw API Response:', users); // Log the exact response
-    //             this.onlineUsersList.innerHTML = ''; // Clear the online users list
-
-    //             users.forEach(user => {
-    //                 console.log('User Object:', user); // Log each user object to inspect properties
-    //                 const statusColor = user.online ? 'green' : 'gray';
-    //                 const userElement = document.createElement('div');
-    //                 userElement.className = 'user-item';
-    //                 userElement.dataset.userid = user.UserID;
-
-    //                 // Handle missing properties
-    //                 const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
-    //                 const username = user.username;
-
-    //                 userElement.innerHTML = `
-    //                <div class="user-info">
-    //                 <span class="user-name">${fullName}</span>
-    //                 <span class="user-username">@${username}</span>
-    //                 <span class="user-status" 
-    //                     style="width: 10px; height: 10px; border-radius: 50%; background-color: ${statusColor}; display: inline-block; margin-left: 10px;">
-    //                 </span>
-    //                </div>
-    //                   `;
-    //                 this.onlineUsersList.appendChild(userElement);
-    //             });
-    //         })
-    //         .catch(error => console.error('Error fetching online users:', error));
-
-    // }
+  
 
     showUserSelectModal() {
         fetch('/api/users')
@@ -850,17 +759,15 @@ class ChatManager {
         this.ws = new WebSocket('ws://localhost:8000/ws');
         this.chatUI = new ChatUI();
 
+     
         this.ws.onmessage = (event) => {
             try {
                 const data = JSON.parse(event.data);
-
-                // Check the type of message received
+        
                 switch (data.type) {
-                    case 'chat': // For chat messages
+                    case 'chat':
                         const message = data.payload;
-                        console.log('Received message via WebSocket:', message);
-
-                        // Only display the message if it's for the current chat
+        
                         if (
                             this.chatUI.currentRecipient &&
                             (message.senderId === this.chatUI.currentRecipient.UserID ||
@@ -872,27 +779,19 @@ class ChatManager {
                                 sent: message.senderId === this.chatUI.currentUserId,
                             });
                             this.chatUI.scrollToBottom();
-                          
                         } else {
-                            // Optionally show a notification for other incoming chats
-                            notifyNewMessage(message.senderId, message.content);
+                            // Notify user of a new message
+                            highlightUser(message.senderId);
+                            notifyNewMessage(this.chatUI, message.senderId, message.content);
                         }
                         break;
-                    case 'presence': // For user online/offline status
+        
+                    case 'presence':
                         const { userId, online } = data.payload;
+                        console.log(`Updating presence for user ${userId}: ${online ? 'online' : 'offline'}`);
                         this.chatUI.updatePresence(userId, online);
-                        //  updateUserPresence(userId, online);
-
                         break;
-
-
-                    // case 'online_users': // For the list of all online users
-                    // this.renderOnlineUsers(data.payload.users);
-
-                    // console.log('Online users list received:', data.users);
-                    //this.chatUI.renderOnlineUsers(data.users); // Update the UI for online users
-                    //  break;
-
+        
                     default:
                         console.warn('Unknown WebSocket message type:', data.type);
                 }
@@ -900,17 +799,19 @@ class ChatManager {
                 console.error('Error handling WebSocket message:', error);
             }
         };
-
+        
+        
     }
 }
 
-function notifyNewMessage(senderId, content) {
-    const sender = this.chatUI.users.find((user) => user.UserID === senderId);
+
+function notifyNewMessage(chatUI, senderId, content) {
+    const sender = chatUI.users.find((user) => user.UserID === senderId);
     const senderName = sender ? `${sender.FirstName} ${sender.LastName}` : "Unknown";
 
     // Show a notification banner
     const notification = document.createElement("div");
-    notification.className = "notification";
+    notification.className = "notification-banner";
     notification.textContent = `New message from ${senderName}: ${content}`;
     document.body.appendChild(notification);
 
@@ -918,6 +819,41 @@ function notifyNewMessage(senderId, content) {
     setTimeout(() => notification.remove(), 5000);
 }
 
+
+
+function highlightUser(userId) {
+    const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);
+    if (userElement) {
+        userElement.classList.add('new-message');
+    }
+
+    
+    
+}
+
+
+function updateUnreadMessageCount(userId, count) {
+    const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);
+    if (userElement) {
+        let badge = userElement.querySelector('.unread-badge');
+        if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'unread-badge';
+            userElement.appendChild(badge);
+        }
+        badge.textContent = count > 0 ? count : '';
+    }
+}
+
+function notifyUserStatus(userId) {
+    const statusDot = document.querySelector(`.user-item[data-userid="${userId}"] .user-status`);
+    if (statusDot) {
+        statusDot.style.backgroundColor = '#ffa500'; // Orange for new message
+        setTimeout(() => {
+            statusDot.style.backgroundColor = 'green'; // Reset to online status
+        }, 5000);
+    }
+}
 
 function updateUserPresence(userId, isOnline) {
     const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);

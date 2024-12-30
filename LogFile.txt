@@ -812,3 +812,167 @@
 2024/12/15 17:05:54 Error reading message: websocket: close 1001 (going away)
 2024/12/15 17:05:54 Error reading message: websocket: close 1001 (going away)
 2024/12/15 17:05:54 [{4 Abrar R abrar 0xc00031c750} {12 Taher Isa taher1 0xc00031c7a0} {2 Batool Isa bisa 0xc00031c7f0} {9 noor Sli nor 0xc00031c840} {5 Sara Ahmed sara 0xc00031c890} {1 Fatima Ali fatima11 0xc00031c8e0} {7 Ahmed Mohd Ahmed 0xc00031c930} {6 Ali Test ali 0xc00031c980} {8 Batool Isa bisa12 <nil>} {10 Fajer Aki fajer1 <nil>} {3 Fatima Ali fatii <nil>} {11 Layal Ahmed layal <nil>}]
+2024/12/30 14:32:31 sql: no rows in result set
+2024/12/30 14:32:32 sql: no rows in result set
+2024/12/30 14:32:40 sql: no rows in result set
+2024/12/30 14:32:40 sql: no rows in result set
+2024/12/30 14:32:40 sql: no rows in result set
+2024/12/30 14:32:40 sql: no rows in result set
+2024/12/30 14:32:40 Error getting user ID: sql: no rows in result set
+2024/12/30 14:32:40 sql: no rows in result set
+2024/12/30 14:32:40 Error getting user ID: sql: no rows in result set
+2024/12/30 14:32:49 sql: no rows in result set
+2024/12/30 14:32:49 [{8 Batool Isa bisa12 0xc000328050} {3 Fatima Ali fatii 0xc0003280a0} {12 Taher Isa taher1 0xc0003280f0} {11 Layal Ahmed layal 0xc000328140} {4 Abrar R abrar 0xc000328190} {1 Fatima Ali fatima11 0xc0003281e0} {9 noor Sli nor 0xc000328230} {6 Ali Test ali 0xc000328280} {5 Sara Ahmed sara 0xc0003282d0} {2 Batool Isa bisa 0xc000328320} {7 Ahmed Mohd Ahmed 0xc000328370} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:33:09 Error getting user ID: http: named cookie not present
+2024/12/30 14:33:09 Error getting user ID: http: named cookie not present
+2024/12/30 14:33:55 [{3 Fatima Ali fatii 0xc000329cd0} {4 Abrar R abrar 0xc000329d20} {6 Ali Test ali 0xc000329d70} {1 Fatima Ali fatima11 0xc000329dc0} {7 Ahmed Mohd Ahmed 0xc000329e10} {2 Batool Isa bisa 0xc000329e60} {5 Sara Ahmed sara 0xc000329eb0} {9 noor Sli nor 0xc000329f00} {10 Fajer Aki fajer1 0xc000329f50} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 14:34:22 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:22 Error notifying presence change: websocket: close sent
+2024/12/30 14:34:22 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:22 [{11 Layal Ahmed layal 0xc000394170} {8 Batool Isa bisa12 0xc0003941c0} {3 Fatima Ali fatii 0xc000394210} {12 Taher Isa taher1 0xc000394260} {4 Abrar R abrar 0xc0003942b0} {1 Fatima Ali fatima11 0xc000394300} {9 noor Sli nor 0xc000394350} {6 Ali Test ali 0xc0003943a0} {5 Sara Ahmed sara 0xc0003943f0} {2 Batool Isa bisa 0xc000394440} {7 Ahmed Mohd Ahmed 0xc000394490} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:34:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:51 Error notifying presence change: websocket: close sent
+2024/12/30 14:34:51 [{11 Layal Ahmed layal 0xc00023b260} {8 Batool Isa bisa12 0xc00023b2b0} {3 Fatima Ali fatii 0xc00023b300} {12 Taher Isa taher1 0xc00023b350} {4 Abrar R abrar 0xc00023b3a0} {1 Fatima Ali fatima11 0xc00023b3f0} {9 noor Sli nor 0xc00023b440} {6 Ali Test ali 0xc00023b490} {5 Sara Ahmed sara 0xc00023b4e0} {2 Batool Isa bisa 0xc00023b530} {7 Ahmed Mohd Ahmed 0xc00023b580} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:34:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:51 Error notifying presence change: websocket: close sent
+2024/12/30 14:34:51 [{11 Layal Ahmed layal 0xc00023ba70} {8 Batool Isa bisa12 0xc00023bac0} {3 Fatima Ali fatii 0xc00023bb10} {12 Taher Isa taher1 0xc00023bb60} {4 Abrar R abrar 0xc00023bbb0} {1 Fatima Ali fatima11 0xc00023bc00} {9 noor Sli nor 0xc00023bc50} {6 Ali Test ali 0xc00023bca0} {5 Sara Ahmed sara 0xc00023bcf0} {2 Batool Isa bisa 0xc00023bd40} {7 Ahmed Mohd Ahmed 0xc00023bd90} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:34:52 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:52 Error notifying presence change: websocket: close sent
+2024/12/30 14:34:52 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:34:52 [{11 Layal Ahmed layal 0xc0003f6af0} {8 Batool Isa bisa12 0xc0003f6b40} {3 Fatima Ali fatii 0xc0003f6b90} {12 Taher Isa taher1 0xc0003f6be0} {4 Abrar R abrar 0xc0003f6c30} {1 Fatima Ali fatima11 0xc0003f6c80} {9 noor Sli nor 0xc0003f6cd0} {6 Ali Test ali 0xc0003f6d20} {5 Sara Ahmed sara 0xc0003f6d70} {2 Batool Isa bisa 0xc0003f6dc0} {7 Ahmed Mohd Ahmed 0xc0003f6e10} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:39:43 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:39:43 Error notifying presence change: websocket: close sent
+2024/12/30 14:39:43 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:39:44 [{1 Fatima Ali fatima11 0xc0001a5250} {3 Fatima Ali fatii 0xc0001a52a0} {4 Abrar R abrar 0xc0001a52f0} {6 Ali Test ali 0xc0001a5340} {7 Ahmed Mohd Ahmed 0xc0001a5390} {2 Batool Isa bisa 0xc0001a53e0} {5 Sara Ahmed sara 0xc0001a5430} {9 noor Sli nor 0xc0001a5480} {10 Fajer Aki fajer1 0xc0001a54d0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 14:39:48 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:39:48 Error notifying presence change: websocket: close sent
+2024/12/30 14:39:48 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:39:48 [{11 Layal Ahmed layal 0xc0005000c0} {8 Batool Isa bisa12 0xc000500110} {3 Fatima Ali fatii 0xc000500160} {12 Taher Isa taher1 0xc0005001b0} {4 Abrar R abrar 0xc000500200} {1 Fatima Ali fatima11 0xc000500250} {9 noor Sli nor 0xc0005002a0} {6 Ali Test ali 0xc0005002f0} {5 Sara Ahmed sara 0xc000500340} {2 Batool Isa bisa 0xc000500390} {7 Ahmed Mohd Ahmed 0xc0005003e0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:43:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:51 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:51 Error notifying presence change: websocket: close sent
+2024/12/30 14:43:51 [{1 Fatima Ali fatima11 0xc000501710} {3 Fatima Ali fatii 0xc000501760} {4 Abrar R abrar 0xc0005017b0} {6 Ali Test ali 0xc000501800} {7 Ahmed Mohd Ahmed 0xc000501850} {2 Batool Isa bisa 0xc0005018a0} {5 Sara Ahmed sara 0xc0005018f0} {9 noor Sli nor 0xc000501940} {10 Fajer Aki fajer1 0xc000501990} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 14:43:55 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:55 Error notifying presence change: websocket: close sent
+2024/12/30 14:43:55 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:55 [{11 Layal Ahmed layal 0xc0004968d0} {8 Batool Isa bisa12 0xc000496920} {3 Fatima Ali fatii 0xc000496970} {12 Taher Isa taher1 0xc0004969c0} {4 Abrar R abrar 0xc000496a10} {1 Fatima Ali fatima11 0xc000496a60} {9 noor Sli nor 0xc000496ab0} {6 Ali Test ali 0xc000496b00} {5 Sara Ahmed sara 0xc000496b50} {2 Batool Isa bisa 0xc000496c20} {7 Ahmed Mohd Ahmed 0xc000496c70} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:43:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:57 Error notifying presence change: websocket: close sent
+2024/12/30 14:43:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:57 [{11 Layal Ahmed layal 0xc000377260} {8 Batool Isa bisa12 0xc0003772b0} {3 Fatima Ali fatii 0xc000377300} {12 Taher Isa taher1 0xc000377350} {4 Abrar R abrar 0xc0003773a0} {1 Fatima Ali fatima11 0xc0003773f0} {9 noor Sli nor 0xc000377440} {6 Ali Test ali 0xc000377490} {5 Sara Ahmed sara 0xc0003774e0} {2 Batool Isa bisa 0xc000377530} {7 Ahmed Mohd Ahmed 0xc000377580} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:43:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:57 Error notifying presence change: websocket: close sent
+2024/12/30 14:43:57 [{11 Layal Ahmed layal 0xc000377900} {8 Batool Isa bisa12 0xc000377950} {3 Fatima Ali fatii 0xc0003779a0} {12 Taher Isa taher1 0xc0003779f0} {4 Abrar R abrar 0xc000377a40} {1 Fatima Ali fatima11 0xc000377a90} {9 noor Sli nor 0xc000377ae0} {6 Ali Test ali 0xc000377b30} {5 Sara Ahmed sara 0xc000377b80} {2 Batool Isa bisa 0xc000377bd0} {7 Ahmed Mohd Ahmed 0xc000377c20} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:43:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:43:58 Error notifying presence change: websocket: close sent
+2024/12/30 14:43:58 [{11 Layal Ahmed layal 0xc000501030} {8 Batool Isa bisa12 0xc000501080} {3 Fatima Ali fatii 0xc0005010d0} {12 Taher Isa taher1 0xc000501120} {4 Abrar R abrar 0xc000501170} {1 Fatima Ali fatima11 0xc0005011c0} {9 noor Sli nor 0xc000501210} {6 Ali Test ali 0xc000501260} {5 Sara Ahmed sara 0xc0005012b0} {2 Batool Isa bisa 0xc000501300} {7 Ahmed Mohd Ahmed 0xc000501350} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:44:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:16 Error notifying presence change: websocket: close sent
+2024/12/30 14:44:16 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:16 [{11 Layal Ahmed layal 0xc0001a5490} {8 Batool Isa bisa12 0xc0001a54e0} {3 Fatima Ali fatii 0xc0001a5530} {12 Taher Isa taher1 0xc0001a5580} {4 Abrar R abrar 0xc0001a55d0} {1 Fatima Ali fatima11 0xc0001a5620} {9 noor Sli nor 0xc0001a5670} {6 Ali Test ali 0xc0001a56c0} {5 Sara Ahmed sara 0xc0001a5710} {2 Batool Isa bisa 0xc0001a5760} {7 Ahmed Mohd Ahmed 0xc0001a57b0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:44:17 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:17 Error notifying presence change: websocket: close sent
+2024/12/30 14:44:17 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:17 [{1 Fatima Ali fatima11 0xc0001a5c00} {3 Fatima Ali fatii 0xc0001a5c50} {4 Abrar R abrar 0xc0001a5ca0} {6 Ali Test ali 0xc0001a5cf0} {7 Ahmed Mohd Ahmed 0xc0001a5d40} {2 Batool Isa bisa 0xc0001a5d90} {5 Sara Ahmed sara 0xc0001a5de0} {9 noor Sli nor 0xc0001a5e30} {10 Fajer Aki fajer1 0xc0001a5e80} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 14:44:37 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:37 Error notifying presence change: websocket: close sent
+2024/12/30 14:44:37 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:37 [{11 Layal Ahmed layal 0xc0001509d0} {8 Batool Isa bisa12 0xc000150ac0} {3 Fatima Ali fatii 0xc000150ba0} {12 Taher Isa taher1 0xc000150c70} {4 Abrar R abrar 0xc000150d30} {1 Fatima Ali fatima11 0xc000150df0} {9 noor Sli nor 0xc000150eb0} {6 Ali Test ali 0xc000150f70} {5 Sara Ahmed sara 0xc0001510a0} {2 Batool Isa bisa 0xc000151150} {7 Ahmed Mohd Ahmed 0xc000151240} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:44:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:57 Error notifying presence change: websocket: close sent
+2024/12/30 14:44:57 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:57 [{11 Layal Ahmed layal 0xc000170f70} {8 Batool Isa bisa12 0xc000171080} {3 Fatima Ali fatii 0xc000171140} {12 Taher Isa taher1 0xc000171200} {4 Abrar R abrar 0xc000171310} {1 Fatima Ali fatima11 0xc0001713e0} {9 noor Sli nor 0xc000171490} {6 Ali Test ali 0xc0001715c0} {5 Sara Ahmed sara 0xc0001716e0} {2 Batool Isa bisa 0xc0001717a0} {7 Ahmed Mohd Ahmed 0xc0001718b0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 14:44:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:58 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:44:58 Error notifying presence change: websocket: close sent
+2024/12/30 14:44:58 [{1 Fatima Ali fatima11 0xc00015aae0} {3 Fatima Ali fatii 0xc00015abf0} {4 Abrar R abrar 0xc00015ad30} {6 Ali Test ali 0xc00015ae50} {7 Ahmed Mohd Ahmed 0xc00015af90} {2 Batool Isa bisa 0xc00015b020} {5 Sara Ahmed sara 0xc00015b140} {9 noor Sli nor 0xc00015b220} {10 Fajer Aki fajer1 0xc00015b2f0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 14:45:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:45:03 Error notifying presence change: websocket: close sent
+2024/12/30 14:45:03 Error reading message: websocket: close 1001 (going away)
+2024/12/30 14:45:03 [{11 Layal Ahmed layal 0xc000282b60} {8 Batool Isa bisa12 0xc000282c10} {3 Fatima Ali fatii 0xc000282cc0} {12 Taher Isa taher1 0xc000282dc0} {4 Abrar R abrar 0xc000282e80} {1 Fatima Ali fatima11 0xc000282fc0} {9 noor Sli nor 0xc000283090} {6 Ali Test ali 0xc000283150} {5 Sara Ahmed sara 0xc000283250} {2 Batool Isa bisa 0xc000283310} {7 Ahmed Mohd Ahmed 0xc000283430} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:00:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:00:19 Error notifying presence change: websocket: close sent
+2024/12/30 15:00:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:00:19 [{1 Fatima Ali fatima11 0xc000283860} {3 Fatima Ali fatii 0xc000283950} {4 Abrar R abrar 0xc000283a10} {6 Ali Test ali 0xc000283ac0} {7 Ahmed Mohd Ahmed 0xc000283bd0} {2 Batool Isa bisa 0xc000283d10} {5 Sara Ahmed sara 0xc000283e30} {9 noor Sli nor 0xc000283f70} {10 Fajer Aki fajer1 0xc0001a4040} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:00:32 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:00:32 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:00:32 Error notifying presence change: websocket: close sent
+2024/12/30 15:00:32 [{11 Layal Ahmed layal 0xc0001a46e0} {8 Batool Isa bisa12 0xc0001a4730} {3 Fatima Ali fatii 0xc0001a4780} {12 Taher Isa taher1 0xc0001a47d0} {4 Abrar R abrar 0xc0001a4820} {1 Fatima Ali fatima11 0xc0001a4870} {9 noor Sli nor 0xc0001a48c0} {6 Ali Test ali 0xc0001a4910} {5 Sara Ahmed sara 0xc0001a4970} {2 Batool Isa bisa 0xc0001a49c0} {7 Ahmed Mohd Ahmed 0xc0001a4a10} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:01:18 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:18 Error notifying presence change: websocket: close sent
+2024/12/30 15:01:18 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:18 [{1 Fatima Ali fatima11 0xc0001a4110} {3 Fatima Ali fatii 0xc0001a4160} {4 Abrar R abrar 0xc0001a41b0} {6 Ali Test ali 0xc0001a4200} {7 Ahmed Mohd Ahmed 0xc0001a4250} {2 Batool Isa bisa 0xc0001a42a0} {5 Sara Ahmed sara 0xc0001a42f0} {9 noor Sli nor 0xc0001a4340} {10 Fajer Aki fajer1 0xc0001a43d0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:01:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:20 Error notifying presence change: websocket: close sent
+2024/12/30 15:01:21 [{1 Fatima Ali fatima11 0xc0001a4a60} {3 Fatima Ali fatii 0xc0001a4ab0} {4 Abrar R abrar 0xc0001a4b00} {6 Ali Test ali 0xc0001a4b50} {7 Ahmed Mohd Ahmed 0xc0001a4ba0} {2 Batool Isa bisa 0xc0001a4bf0} {5 Sara Ahmed sara 0xc0001a4c40} {9 noor Sli nor 0xc0001a4c90} {10 Fajer Aki fajer1 0xc0001a4d30} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:01:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:24 Error notifying presence change: websocket: close sent
+2024/12/30 15:01:24 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:01:24 [{11 Layal Ahmed layal 0xc0003774e0} {8 Batool Isa bisa12 0xc000377530} {3 Fatima Ali fatii 0xc000377580} {12 Taher Isa taher1 0xc0003775d0} {4 Abrar R abrar 0xc000377620} {1 Fatima Ali fatima11 0xc000377670} {9 noor Sli nor 0xc0003776c0} {6 Ali Test ali 0xc000377710} {5 Sara Ahmed sara 0xc000377760} {2 Batool Isa bisa 0xc0003777b0} {7 Ahmed Mohd Ahmed 0xc000377800} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:04:14 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:14 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:14 Error notifying presence change: websocket: close sent
+2024/12/30 15:04:14 [{1 Fatima Ali fatima11 0xc000176650} {3 Fatima Ali fatii 0xc000176710} {4 Abrar R abrar 0xc000176850} {6 Ali Test ali 0xc000176910} {7 Ahmed Mohd Ahmed 0xc0001769d0} {2 Batool Isa bisa 0xc000176a80} {5 Sara Ahmed sara 0xc000176bb0} {9 noor Sli nor 0xc000176cb0} {10 Fajer Aki fajer1 0xc000176db0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:04:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:19 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:19 Error notifying presence change: websocket: close sent
+2024/12/30 15:04:19 [{11 Layal Ahmed layal 0xc0001a5000} {8 Batool Isa bisa12 0xc0001a5050} {3 Fatima Ali fatii 0xc0001a50a0} {12 Taher Isa taher1 0xc0001a50f0} {4 Abrar R abrar 0xc0001a5140} {1 Fatima Ali fatima11 0xc0001a5190} {9 noor Sli nor 0xc0001a51e0} {6 Ali Test ali 0xc0001a5230} {5 Sara Ahmed sara 0xc0001a5280} {2 Batool Isa bisa 0xc0001a52d0} {7 Ahmed Mohd Ahmed 0xc0001a5320} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:04:31 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:31 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:31 Error notifying presence change: websocket: close sent
+2024/12/30 15:04:31 [{11 Layal Ahmed layal 0xc000376fc0} {8 Batool Isa bisa12 0xc000377010} {3 Fatima Ali fatii 0xc000377060} {12 Taher Isa taher1 0xc0003770b0} {4 Abrar R abrar 0xc000377100} {1 Fatima Ali fatima11 0xc000377170} {9 noor Sli nor 0xc0003771e0} {6 Ali Test ali 0xc000377270} {5 Sara Ahmed sara 0xc0003772c0} {2 Batool Isa bisa 0xc000377310} {7 Ahmed Mohd Ahmed 0xc000377360} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:04:36 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:36 Error notifying presence change: websocket: close sent
+2024/12/30 15:04:36 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:04:36 Error getting user ID: http: named cookie not present
+2024/12/30 15:04:36 Error getting user ID: http: named cookie not present
+2024/12/30 15:04:47 [{11 Layal Ahmed layal 0xc0001712d0} {8 Batool Isa bisa12 0xc0001713c0} {3 Fatima Ali fatii 0xc000171480} {12 Taher Isa taher1 0xc000171580} {4 Abrar R abrar 0xc0001716a0} {1 Fatima Ali fatima11 0xc000171770} {9 noor Sli nor 0xc000171870} {6 Ali Test ali 0xc000171930} {5 Sara Ahmed sara 0xc0001719f0} {2 Batool Isa bisa 0xc000171b30} {7 Ahmed Mohd Ahmed 0xc000171c00} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:07:49 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:07:49 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:07:49 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:10 [{11 Layal Ahmed layal 0xc00029ec70} {4 Abrar R abrar 0xc00029ed50} {8 Batool Isa bisa12 0xc00029ee90} {3 Fatima Ali fatii 0xc00029efd0} {12 Taher Isa taher1 0xc00029f0e0} {1 Fatima Ali fatima11 0xc00029f1d0} {9 noor Sli nor 0xc00029f300} {6 Ali Test ali 0xc00029f3f0} {5 Sara Ahmed sara 0xc00029f530} {2 Batool Isa bisa 0xc00029f650} {7 Ahmed Mohd Ahmed 0xc00029f770} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:08:10 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:10 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:10 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:10 [{11 Layal Ahmed layal 0xc000176710} {4 Abrar R abrar 0xc000176850} {8 Batool Isa bisa12 0xc000176910} {3 Fatima Ali fatii 0xc0001769d0} {12 Taher Isa taher1 0xc000176a80} {1 Fatima Ali fatima11 0xc000176bb0} {9 noor Sli nor 0xc000176cb0} {6 Ali Test ali 0xc000176db0} {5 Sara Ahmed sara 0xc000176ec0} {2 Batool Isa bisa 0xc000176f50} {7 Ahmed Mohd Ahmed 0xc000177060} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:08:26 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:26 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:26 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:26 [{11 Layal Ahmed layal 0xc0001a4da0} {4 Abrar R abrar 0xc0001a4df0} {8 Batool Isa bisa12 0xc0001a4e40} {3 Fatima Ali fatii 0xc0001a4e90} {12 Taher Isa taher1 0xc0001a4ee0} {1 Fatima Ali fatima11 0xc0001a4f30} {9 noor Sli nor 0xc0001a4f80} {6 Ali Test ali 0xc0001a4fd0} {5 Sara Ahmed sara 0xc0001a5020} {2 Batool Isa bisa 0xc0001a5070} {7 Ahmed Mohd Ahmed 0xc0001a50c0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:08:34 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:34 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:34 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:34 [{1 Fatima Ali fatima11 0xc000160110} {10 Fajer Aki fajer1 0xc000160230} {3 Fatima Ali fatii 0xc000160300} {4 Abrar R abrar 0xc000160400} {6 Ali Test ali 0xc000160540} {7 Ahmed Mohd Ahmed 0xc000160650} {2 Batool Isa bisa 0xc000160790} {5 Sara Ahmed sara 0xc0001608d0} {9 noor Sli nor 0xc0001609e0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:35 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:35 [{1 Fatima Ali fatima11 0xc0002834e0} {10 Fajer Aki fajer1 0xc0002835c0} {3 Fatima Ali fatii 0xc0002836e0} {4 Abrar R abrar 0xc0002837b0} {6 Ali Test ali 0xc0002838b0} {7 Ahmed Mohd Ahmed 0xc0002839c0} {2 Batool Isa bisa 0xc000283a50} {5 Sara Ahmed sara 0xc000283b50} {9 noor Sli nor 0xc000283c90} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:35 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:35 [{1 Fatima Ali fatima11 0xc000376430} {10 Fajer Aki fajer1 0xc000376480} {3 Fatima Ali fatii 0xc0003764d0} {4 Abrar R abrar 0xc000376520} {6 Ali Test ali 0xc000376570} {7 Ahmed Mohd Ahmed 0xc0003765c0} {2 Batool Isa bisa 0xc000376610} {5 Sara Ahmed sara 0xc000376660} {9 noor Sli nor 0xc0003766b0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:35 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:35 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:36 [{1 Fatima Ali fatima11 0xc000161b40} {10 Fajer Aki fajer1 0xc000161c00} {3 Fatima Ali fatii 0xc000161d20} {4 Abrar R abrar 0xc000161dd0} {6 Ali Test ali 0xc000161e90} {7 Ahmed Mohd Ahmed 0xc000161f70} {2 Batool Isa bisa 0xc0002b60f0} {5 Sara Ahmed sara 0xc0002b61b0} {9 noor Sli nor 0xc0002b62d0} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:08:39 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:39 Error notifying presence change: websocket: close sent
+2024/12/30 15:08:39 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:08:39 [{11 Layal Ahmed layal 0xc000377d40} {4 Abrar R abrar 0xc000377d90} {8 Batool Isa bisa12 0xc000377de0} {3 Fatima Ali fatii 0xc000377e30} {12 Taher Isa taher1 0xc000377e80} {1 Fatima Ali fatima11 0xc000377ed0} {9 noor Sli nor 0xc000377f20} {6 Ali Test ali 0xc000377f70} {5 Sara Ahmed sara 0xc0002be0a0} {2 Batool Isa bisa 0xc0002be180} {7 Ahmed Mohd Ahmed 0xc0002be280} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:10:15 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:15 Error notifying presence change: websocket: close sent
+2024/12/30 15:10:15 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:15 [{11 Layal Ahmed layal 0xc0002b7b90} {4 Abrar R abrar 0xc0002b7cb0} {8 Batool Isa bisa12 0xc0002b7df0} {3 Fatima Ali fatii 0xc0002b7f10} {12 Taher Isa taher1 0xc00017e0d0} {1 Fatima Ali fatima11 0xc00017e190} {9 noor Sli nor 0xc00017e270} {6 Ali Test ali 0xc00017e390} {5 Sara Ahmed sara 0xc00017e4d0} {2 Batool Isa bisa 0xc00017e590} {7 Ahmed Mohd Ahmed 0xc00017e6d0} {10 Fajer Aki fajer1 <nil>}]
+2024/12/30 15:10:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:20 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:20 Error notifying presence change: websocket: close sent
+2024/12/30 15:10:20 [{1 Fatima Ali fatima11 0xc000299de0} {10 Fajer Aki fajer1 0xc000299ed0} {3 Fatima Ali fatii 0xc000174070} {4 Abrar R abrar 0xc000174180} {6 Ali Test ali 0xc000174260} {7 Ahmed Mohd Ahmed 0xc000174330} {2 Batool Isa bisa 0xc000174480} {5 Sara Ahmed sara 0xc000174560} {9 noor Sli nor 0xc000174640} {8 Batool Isa bisa12 <nil>} {11 Layal Ahmed layal <nil>} {12 Taher Isa taher1 <nil>}]
+2024/12/30 15:10:25 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:25 Error reading message: websocket: close 1001 (going away)
+2024/12/30 15:10:25 Error notifying presence change: websocket: close sent
+2024/12/30 15:10:26 [{11 Layal Ahmed layal 0xc0002be620} {4 Abrar R abrar 0xc0002be710} {8 Batool Isa bisa12 0xc0002be840} {3 Fatima Ali fatii 0xc0002be980} {12 Taher Isa taher1 0xc0002bea60} {1 Fatima Ali fatima11 0xc0002beba0} {9 noor Sli nor 0xc0002bece0} {6 Ali Test ali 0xc0002bee00} {5 Sara Ahmed sara 0xc0002beef0} {2 Batool Isa bisa 0xc0002bf010} {7 Ahmed Mohd Ahmed 0xc0002bf130} {10 Fajer Aki fajer1 <nil>}]
