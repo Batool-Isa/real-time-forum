@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
-  
+
 
     document.querySelectorAll('.toggle-auth').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== Router ====================
 const router = {
     init() {
-      
+
         fetch('/api/session-status')
             .then(response => {
                 if (!response.ok) {
@@ -296,7 +296,7 @@ class ChatUI {
         this.onlineUsersList = document.querySelector('.online-use-list');
         //this.loadAllUserswithStatus();
 
-        
+
         this.messageOffset = 0;
         this.isLoading = false;
         this.hasMoreMessages = true;
@@ -354,13 +354,13 @@ class ChatUI {
                     <div class="message-content">${msg.content}</div>
                     <div class="message-header">
                         <span class="message-time">${new Date(msg.createdAt).toLocaleString('en-US', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: false, 
-                            year: 'numeric',
-                            month: 'numeric',
-                            day: 'numeric',
-                          })}</span>
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                })}</span>
                     </div>
                 `;
                 this.messagesContainer.prepend(messageElement);
@@ -398,26 +398,17 @@ class ChatUI {
         };
     }
 
-
     updatePresence(userId, online) {
-        // Select the user element by the user ID
-        const userElement = document.querySelector(`.user-item[data-userid="${userId}"]`);
+        const userElement = this.usersList.querySelector(`.user-item[data-userid="${userId}"]`);
         if (userElement) {
-            // Find the status dot inside the user element
             const statusDot = userElement.querySelector('.user-status');
-            if (statusDot) {
-                // Update the status dot color based on the `online` status
-                statusDot.style.backgroundColor = online ? 'green' : 'gray';
-            } else {
-                console.warn(`No status dot found for user ID: ${userId}`);
-            }
+            statusDot.style.backgroundColor = online ? 'green' : 'gray';
         } else {
-            console.warn(`No user item found for user ID: ${userId}`);
+            console.warn(`User with ID ${userId} not found. Fetching user list...`);
+            this.loadAllUsers(); // Reload users if presence update arrives for an unknown user
         }
     }
     
-
-
 
     sendMessage() {
         console.log('Sending message:', this.messageInput.value);
@@ -429,11 +420,11 @@ class ChatUI {
                 timestamp: new Date().toLocaleString('en-US', {
                     hour: '2-digit',
                     minute: '2-digit',
-                    hour12: false, 
+                    hour12: false,
                     year: 'numeric',
                     month: 'numeric',
                     day: 'numeric',
-                  })
+                })
             };
 
             // Remove the placeholder message if it exists
@@ -453,7 +444,7 @@ class ChatUI {
 
             console.log('Sending message:', message);
 
-          
+
             this.messageInput.value = '';
             this.scrollToBottom();
         }
@@ -463,7 +454,7 @@ class ChatUI {
         document.querySelectorAll('.user-item').forEach(item => {
             item.classList.remove('selected');
         });
-    
+
         // Add selected class to current user
         const selectedUserElement = document.querySelector(`.user-item[data-userid="${user.UserID}"]`);
         if (selectedUserElement) {
@@ -482,7 +473,7 @@ class ChatUI {
         this.loading = false; // Flag to prevent multiple simultaneous fetches
 
         this.loadMoreMessages();
-    
+
         // Listen for scroll events to load older messages when scrolling up
         this.messagesContainer.addEventListener('scroll', () => {
             if (!this.loading && this.messagesContainer.scrollTop === 0) {
@@ -532,7 +523,7 @@ class ChatUI {
             });
     }
 
-  
+
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
@@ -566,14 +557,14 @@ class ChatUI {
             </div>
         `;
 
-           // Event listener for starting a chat
-    userElement.addEventListener('click', () => {
-        this.startChat(user);
+        // Event listener for starting a chat
+        userElement.addEventListener('click', () => {
+            this.startChat(user);
 
-        // Remove highlight class when clicked
-        userElement.classList.remove('new-message');
-    });
-    
+            // Remove highlight class when clicked
+            userElement.classList.remove('new-message');
+        });
+
         // Add the user to the top or bottom of the list
         if (prepend) {
             this.usersList.prepend(userElement); // Place at the top
@@ -591,7 +582,7 @@ class ChatUI {
                 this.users = users;
                 users.forEach(user => this.addUserToList(user, false)); // Prepend to the list
             });
-       //     console.log('Received users:', users)
+        //     console.log('Received users:', users)
 
 
     }
@@ -612,13 +603,13 @@ class ChatUI {
             <div class="message-content">${message.content}</div>
             <div class="message-header">
             <span class="message-time">${new Date(message.timestamp).toLocaleString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false, 
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric',
-            })}</span>
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        })}</span>
             </div>
         `;
 
@@ -651,11 +642,11 @@ class ChatUI {
         return new Date(timestamp).toLocaleString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
-            hour12: false, 
+            hour12: false,
             year: 'numeric',
             month: 'numeric',
             day: 'numeric',
-          });
+        });
     }
 
     initializeNewChatButton() {
@@ -664,7 +655,7 @@ class ChatUI {
             newChatBtn.addEventListener('click', () => this.showUserSelectModal());
         }
     }
-  
+
 
     showUserSelectModal() {
         fetch('/api/users')
@@ -742,21 +733,23 @@ function fetchOnlineUsers() {
 }
 
 
+
 // Chat Manager Class
 class ChatManager {
     constructor() {
         this.ws = new WebSocket('ws://localhost:8000/ws');
         this.chatUI = new ChatUI();
+        fetchOnlineUsers();
 
-     
+
         this.ws.onmessage = (event) => {
             try {
                 const data = JSON.parse(event.data);
-        
+
                 switch (data.type) {
                     case 'chat':
                         const message = data.payload;
-        
+
                         if (
                             this.chatUI.currentRecipient &&
                             (message.senderId === this.chatUI.currentRecipient.UserID ||
@@ -774,13 +767,13 @@ class ChatManager {
                             notifyNewMessage(this.chatUI, message.senderId, message.content);
                         }
                         break;
-        
+
                     case 'presence':
                         const { userId, online } = data.payload;
                         console.log(`Updating presence for user ${userId}: ${online ? 'online' : 'offline'}`);
-                        updateUserPresence(userId, online);
+                        this.chatUI.updatePresence(userId, online);
                         break;
-        
+
                     default:
                         console.warn('Unknown WebSocket message type:', data.type);
                 }
@@ -788,8 +781,8 @@ class ChatManager {
                 console.error('Error handling WebSocket message:', error);
             }
         };
-        
-        
+
+
     }
 }
 
@@ -816,8 +809,8 @@ function highlightUser(userId) {
         userElement.classList.add('new-message');
     }
 
-    
-    
+
+
 }
 
 

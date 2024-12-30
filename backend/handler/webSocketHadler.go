@@ -231,24 +231,3 @@ func GetAllUsersWithStatus(w http.ResponseWriter, r *http.Request) {
 }
 
 
-
-// func GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {
-//     // Extract userId from the URL
-//     pathParts := strings.Split(r.URL.Path, "/")
-//     if len(pathParts) < 4 { // Assuming URL is like /api/user/{userId}
-//         http.Error(w, "Invalid URL", http.StatusBadRequest)
-//         return
-//     }
-
-//     userID := pathParts[3] // Get the ID from the URL
-// 	userIDInt, err := strconv.Atoi(userID)
-//     // Fetch the user from the database
-//     user, err := database.GetUserByID(userIDInt)
-//     if err != nil {
-//         http.Error(w, "User not found", http.StatusNotFound)
-//         return
-//     }
-
-//     w.Header().Set("Content-Type", "application/json")
-//     json.NewEncoder(w).Encode(user)
-// }
