@@ -146,8 +146,18 @@ const router = {
         const path = window.location.pathname; // Get the current path
         const handler = this.routes[path] || this.routes['/']; // Default to the home route if path not found
         handler();
+        if (path === '/') {
+            fetchPosts();
+        }
     }
 };
+
+window.addEventListener('popstate', () => {
+    router.handleRoute();
+    if (window.location.pathname === '/') {
+        fetchPosts();
+    }
+});
 
 // ==================== Section Management ====================
 function hideAllSections() {
@@ -302,7 +312,6 @@ class ChatUI {
 
         // Load available users and initialize chat features
         this.loadAllUsers();
-        this.initializeNewChatButton();
         this.onlineUsersList = document.querySelector('.online-use-list');
         //this.loadAllUserswithStatus();
 
@@ -659,70 +668,6 @@ class ChatUI {
         });
     }
 
-    initializeNewChatButton() {
-        const newChatBtn = document.querySelector('.new-chat-btn');
-        if (newChatBtn) {
-            newChatBtn.addEventListener('click', () => this.showUserSelectModal());
-        }
-    }
-
-
-    showUserSelectModal() {
-        fetch('/api/users')
-            .then(response => response.json())
-            .then(users => {
-                const modal = this.createModal(users);
-                document.body.appendChild(modal.overlay);
-                document.body.appendChild(modal.modal);
-            });
-    }
-
-    createModal(users) {
-
-        // Sort users alphabetically by their first and last name
-        users.sort((a, b) => {
-            const fullNameA = `${a.FirstName} ${a.LastName}`.toLowerCase();
-            const fullNameB = `${b.FirstName} ${b.LastName}`.toLowerCase();
-            return fullNameA.localeCompare(fullNameB);
-        });
-
-        const modal = document.createElement('div');
-        modal.className = 'user-select-modal active';
-
-        const overlay = document.createElement('div');
-        overlay.className = 'modal-overlay active';
-
-        modal.innerHTML = `
-            <h3>Select User</h3>
-            <div class="user-select-list">
-                ${users.map(user => `
-                    <div class="user-item" data-userid="${user.UserID}">
-                        <div class="user-info">
-                            <span class="user-name">${user.FirstName} ${user.LastName}</span>
-                            <span class="user-username">@${user.Username}</span>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-        modal.querySelectorAll('.user-item').forEach(item => {
-            item.onclick = () => {
-                const userId = item.dataset.userid;
-                const selectedUser = this.users.find(u => u.UserID === parseInt(userId));
-                this.startChat(selectedUser);
-                console.log('Selected User:', selectedUser);
-                this.addUserToList(selectedUser, true);
-                console.log('Selected User:', selectedUser);
-                modal.remove();
-                overlay.remove();
-            };
-        });
-        overlay.onclick = () => {
-            modal.remove();
-            overlay.remove();
-        };
-        return { modal, overlay };
-    }
 }
 function fetchOnlineUsers() {
     fetch('/api/online-users') // Backend endpoint that returns a list of online user IDs

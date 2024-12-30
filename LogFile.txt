@@ -1311,3 +1311,24 @@
 2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
 2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
 2024/12/30 16:01:37 [{9 noor Sli nor 0xc00029a8b0} {1 Fatima Ali fatima11 0xc00029a900} {8 Batool Isa bisa12 0xc00029a950} {12 Taher Isa taher1 0xc00029a9a0} {10 Fajer Aki fajer1 0xc00029a9f0} {11 Layal Ahmed layal 0xc00029aa40} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 16:53:42 [{1 Fatima Ali fatima11 0xc0000a28b0} {9 noor Sli nor 0xc0000a2900} {8 Batool Isa bisa12 0xc0000a2950} {12 Taher Isa taher1 0xc0000a29a0} {10 Fajer Aki fajer1 0xc0000a29f0} {11 Layal Ahmed layal 0xc0000a2a40} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 16:53:48 Received comment ID: 23
+2024/12/30 16:53:48 Received comment ID: 23
+2024/12/30 16:53:48 Received comment ID: 23
+2024/12/30 16:53:49 Received comment ID: 24
+2024/12/30 16:53:49 Received comment ID: 24
+2024/12/30 16:53:51 Received comment ID: 24
+2024/12/30 16:53:54 Raw request body: {"post_id":34}
+2024/12/30 16:53:54 Parsed PostID: 34
+2024/12/30 16:53:54 UserID: 4 is disliking PostID: 34
+2024/12/30 16:56:14 [{1 Fatima Ali fatima11 0xc0000ffc50} {9 noor Sli nor 0xc0000ffca0} {8 Batool Isa bisa12 0xc0000ffcf0} {12 Taher Isa taher1 0xc0000ffd40} {10 Fajer Aki fajer1 0xc0000ffd90} {11 Layal Ahmed layal 0xc0000ffde0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 Error getting user ID: sql: no rows in result set
+2024/12/30 16:59:42 sql: no rows in result set
+2024/12/30 16:59:42 Error getting user ID: sql: no rows in result set
+2024/12/30 16:59:49 sql: no rows in result set
+2024/12/30 16:59:49 [{1 Fatima Ali fatima11 0xc0001f9530} {9 noor Sli nor 0xc0001f9580} {8 Batool Isa bisa12 0xc0001f95d0} {12 Taher Isa taher1 0xc0001f9620} {10 Fajer Aki fajer1 0xc0001f9670} {11 Layal Ahmed layal 0xc0001f96c0} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
