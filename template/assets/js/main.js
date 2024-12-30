@@ -883,53 +883,57 @@ function getCurrentSelectedUser() {
     const selectedUser = document.querySelector('.user-item.selected');
     return selectedUser ? selectedUser.querySelector('.user-name').textContent : null;
 }
-
-
 async function fetchPostDetails(postId) {
     try {
-        // Fetch the post details from the server
-        const response = await fetch(`/post?id=${postId}`);
+        const response = await fetch(`/post?id=${postId}`); // Adjust endpoint as needed
         if (!response.ok) throw new Error('Failed to fetch post details');
 
-        // Parse the response JSON
         const post = await response.json();
-
-        // Get the container for post details
         const postContainer = document.querySelector('.post-details');
-        console.log('Post details:', post);
-        // Check if there are comments, and generate the comments section accordingly
-        const commentsHTML = post.comments && post.comments.length > 0
-            ? post.comments.map(comment => `
-                <li class="comment" data-comment-id="${comment.commentId}">
-                    <div class="comment-content">
-                        <span class="comment-author">${comment.username}</span>
-                        <p class="comment-text">${comment.commentText}</p>
-                    </div>
-                    <div class="comment-actions">
-                        <button class="action-btn comment-like-btn" data-id="${comment.commentId}">
-                            👍 <span class="comment-like-count">${comment.commentLike}</span>
-                        </button>
-                        <button class="action-btn comment-dislike-btn" data-id="${comment.commentId}">
-                            👎 <span class="comment-dislike-count">${comment.commentDislike}</span>
-                        </button>
-                    </div>
-                </li>
-            `).join('')
-            : '<p>No comments yet. Be the first to comment!</p>';
 
-        // Set the innerHTML for the post details, including the comments section
+        // Build the post details HTML
         postContainer.innerHTML = `
             <article class="post">
-                <pre><p class="post-description">${post.postDescription}</p></pre>
-                <div class="post-category">
+                <h2>${post.title}</h2>
+                <p>${post.postDescription}</p>
+                <div class="post-meta">
+                    <span>By: ${post.username}</span>
                     <span>Categories: ${post.categoryName.join(', ')}</span>
                 </div>
-                <div class="post-info">
-                    <span class="post-author">by ${post.username}</span>
+                <div class="post-interactions">
+                    <span>
+                        <i class="bx bx-like like-icon" data-id="${post.postId}"></i>
+                        <span class="like-count">${post.like}</span>
+                    </span>
+                    <span>
+                        <i class="bx bx-dislike dislike-icon" data-id="${post.postId}"></i>
+                        <span class="dislike-count">${post.dislike}</span>
+                    </span>
                 </div>
                 <div class="post-comments">
                     <h3>Comments</h3>
-                    <ul class="comments-list">${commentsHTML}</ul>
+                    <ul class="comments-list">
+                        ${post.comments && post.comments.length > 0
+            ? post.comments.map(comment => `
+                                <li class="comment" data-comment-id="${comment.commentId}">
+                                    <div class="comment-content">
+                                        <span class="comment-author">${comment.username}</span>
+                                        <p class="comment-text">${comment.commentText}</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <span>
+                                            <i class="bx bx-like comment-like-icon" data-id="${comment.commentId}"></i>
+                                            <span class="comment-like-count">${comment.commentLike}</span>
+                                        </span>
+                                        <span>
+                                            <i class="bx bx-dislike comment-dislike-icon" data-id="${comment.commentId}"></i>
+                                            <span class="comment-dislike-count">${comment.commentDislike}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            `).join('')
+            : '<p>No comments yet. Be the first to comment!</p>'}
+                    </ul>
                     <form onsubmit="event.preventDefault(); submitComment(${post.postId});">
                         <textarea id="comment-input" placeholder="Write your comment..." required></textarea>
                         <button type="submit" class="submit-comment-button">Submit</button>
@@ -938,27 +942,27 @@ async function fetchPostDetails(postId) {
             </article>
         `;
 
+        // Add event listeners for like and dislike buttons
+        postContainer.querySelector('.like-icon').addEventListener('click', () => {
+            handleLike(post.postId);
+        });
+
+        postContainer.querySelector('.dislike-icon').addEventListener('click', () => {
+            handleDislike(post.postId);
+        });
+
         // Add event listeners for comment like/dislike buttons
-        document.querySelectorAll('.comment-like-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const commentId = button.getAttribute('data-id');
-                console.log("like clicked for comment ID:", commentId);
-
-                // Ensure the comment ID is passed to the function
-                handleCommentLike(commentId);
+        postContainer.querySelectorAll('.comment-like-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                handleCommentLike(icon.getAttribute('data-id'));
             });
         });
 
-        document.querySelectorAll('.comment-dislike-btn').forEach((button) => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default browser behavior
-                const commentId = button.getAttribute('data-id');
-                console.log(`Dislike clicked for comment ID: ${commentId}`);
-                handleCommentDislike(commentId);
+        postContainer.querySelectorAll('.comment-dislike-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                handleCommentDislike(icon.getAttribute('data-id'));
             });
         });
-
-
 
     } catch (error) {
         console.error('Error fetching post details:', error);
@@ -1171,14 +1175,24 @@ async function handleDislike(postId) {
     }
 }
 
-
 function updatePostUI(postData) {
+    // Update in the posts list
     const postElement = document.querySelector(`.post[data-id="${postData.postId}"]`);
     if (postElement) {
         postElement.querySelector('.like-count').textContent = postData.like;
         postElement.querySelector('.dislike-count').textContent = postData.dislike;
     }
+
+    // Update in the post details section
+    const detailsElement = document.querySelector('.post-details');
+    if (detailsElement) {
+        const likeCountElem = detailsElement.querySelector('.like-count');
+        const dislikeCountElem = detailsElement.querySelector('.dislike-count');
+        if (likeCountElem) likeCountElem.textContent = postData.like;
+        if (dislikeCountElem) dislikeCountElem.textContent = postData.dislike;
+    }
 }
+
 
 function displayLoggedInUser() {
     fetch('/api/session-status', {
