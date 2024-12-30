@@ -1,351 +1,149 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-    />
-    <title>Forum</title>
-  </head>
-  <body> 
-    <header class="header">
-      <div class="header__container">
-        <img
-          src="#"
-          alt=""
-          class="header__img"
-          id="profile-pic"
-          style="display: none"
-        />
-        <a class="header__logo">Real Time Forum</a>
-        <div class="header__toggle">
-          <i class="bx bx-menu" id="header-toggle"></i>
-        </div>
-      </div>
-    </header>
 
-    <div class="nav" id="navbar">
-      <nav class="nav__container">
-        <div>
-          <a class="nav__link nav__logo">
-            <i class="bx bx-chat nav__icon"></i>
-            <span class="nav__logo-name">Real Time Forum</span>
-          </a>
-          <div class="nav__list">
-          <div class="nav__items">
-              <a href="#" class="nav__link active" data-path="/">
-                  <i class="bx bx-home nav__icon"></i>
-                  <span class="nav__name">Home</span>
-              </a>
-              <a href="#" class="nav__link" data-path="/create">
-                  <i class="bx bx-edit nav__icon"></i>
-                  <span class="nav__name">Create Post</span>
-              </a>
-              <a href="#" class="nav__link" data-path="/chat">
-                  <i class="bx bx-message-square-dots nav__icon"></i>
-                  <span class="nav__name">Chat</span>
-              </a>
-              <a href="#" class="nav__link" data-path="/logout">
-                  <i class="bx bx-log-out nav__icon"></i>
-                  <span class="nav__name">Log Out</span>
-              </a>
-          </div>        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+  <title>Forum</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__container">
+      <img src="#" alt="" class="header__img" id="profile-pic" style="display: none" />
+      <a class="header__logo">Real Time Forum</a>
+      <div class="header__toggle">
+        <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      </nav>
     </div>
-    <main>
-    <!-- Home Page Content-->
-      <div class="home">
-         <!-- <section class="filters">
-            <label for="filter-category">Choose a Category:</label>
-            <select
-              id="filter-category"
-              class="filter-category"
-              onchange="filterPostsCategory(); updateURLCategory();"
-            >
-            <option value="all" >-- select --</option>
-              <option value="all">All categories</option>
-              {{range .DataPassed.Category}}
+  </header>
 
-              <option value="{{.Category}}">{{.Category}}</option>
-
-              {{end}}
-            </select>
-
-            {{if .DataPassed.Session}}
-            <button
-              class="filter-mypost"
-              id="filter-mypost"
-              onclick="filterByCreated(); updateURLMyPost()"
-            >
-              My Posts
-            </button>
-            <button
-              class="filter-likedpost"
-              id="filter-likedpost"
-              onclick="filterByLiked(); updateURLLikedPost()"
-            >
-              Liked Posts
-            </button>
-            {{end}}
-          </section>-->
-          <section class="posts" id="posts-container">
-         
-        </section>
-  
-        <!--pagination Section-->
-        <div class="pagination">
-          <button class="pagination__prev" disabled>Previous</button>
-          <span class="pagination__info">Page 1 of 10</span>
-          <button class="pagination__next">Next</button>
+  <div class="nav" id="navbar">
+    <nav class="nav__container">
+      <div>
+        <a class="nav__link nav__logo">
+          <i class="bx bx-chat nav__icon"></i>
+          <span class="nav__logo-name">Real Time Forum</span>
+        </a>
+        <div class="nav__list">
+          <div class="nav__items">
+            <a href="#" class="nav__link active" data-path="/">
+              <i class="bx bx-home nav__icon"></i>
+              <span class="nav__name">Home</span>
+            </a>
+            <a href="#" class="nav__link" data-path="/create">
+              <i class="bx bx-edit nav__icon"></i>
+              <span class="nav__name">Create Post</span>
+            </a>
+            <a href="#" class="nav__link" data-path="/chat">
+              <i class="bx bx-message-square-dots nav__icon"></i>
+              <span class="nav__name">Chat</span>
+            </a>
+            <a href="#" class="nav__link" data-path="/logout">
+              <i class="bx bx-log-out nav__icon"></i>
+              <span class="nav__name">Log Out</span>
+            </a>
+          </div>
         </div>
       </div>
+    </nav>
+  </div>
+  <main>
+    <!-- Home Page Content-->
+    <div class="home">
+
+      <section class="posts" id="posts-container">
+
+      </section>
+
+      <!--pagination Section-->
+      <div class="pagination">
+        <button class="pagination__prev" disabled>Previous</button>
+        <span class="pagination__info">Page 1 of 10</span>
+        <button class="pagination__next">Next</button>
+      </div>
+    </div>
 
     <!-- Cireate Post Page Content-->
-      <section class="create-post">
-        <h2 class="section-title">Create a New Post</h2>
-        <form action="/create" method="post" class="create-post-form" id="create-post-form">
-            <div class="form-group">
-                <label for="post-content">Content:</label>
-                <textarea id="post-content" name="content" rows="10" minlength="1" maxlength="2500"  style="white-space: pre-line" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="post-category">Category:</label>
-                <div id="post-category" class="checkbox-group">
-                    <input type="checkbox" id="category-sports" name="category" value="Sports">
-                    <label for="category-sports">Sports</label>
-                    <input type="checkbox" id="category-technology" name="category" value="Technology">
-                    <label for="category-technology">Technology</label>
-                    <input type="checkbox" id="category-education" name="category" value="Education">
-                    <label for="category-education">Education</label>
-                    <input type="checkbox" id="category-health" name="category" value="Health">
-                    <label for="category-health">Health</label>
-                    <input type="checkbox" id="category-entertainment" name="category" value="Entertainment">
-                    <label for="category-entertainment">Entertainment</label>
-                    <input type="checkbox" id="category-travel" name="category" value="Travel">
-                    <label for="category-travel">Travel</label>
-                    <input type="checkbox" id="category-finance" name="category" value="Finance">
-                    <label for="category-finance">Finance</label>
-                    <input type="checkbox" id="category-culture" name="category" value="Culture">
-                    <label for="category-culture">Culture</label>
-                </div>
-                <div id="error-message" style="color:red; display:none;">Please select at least one category.</div>
-            </div>
-            <button type="submit" class="submit-button">Create Post</button>
-           
-        </form>
-       </section>
-       <script>
-        
-        document.getElementById('create-post-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+    <section class="create-post">
+      <h2 class="section-title">Create a New Post</h2>
+      <form action="/create" method="post" class="create-post-form" id="create-post-form">
+        <div class="form-group">
+          <label for="post-content">Content:</label>
+          <textarea id="post-content" name="content" rows="10" minlength="1" maxlength="2500"
+            style="white-space: pre-line" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="post-category">Category:</label>
+          <div id="post-category" class="checkbox-group">
+            <input type="checkbox" id="category-sports" name="category" value="Sports">
+            <label for="category-sports">Sports</label>
+            <input type="checkbox" id="category-technology" name="category" value="Technology">
+            <label for="category-technology">Technology</label>
+            <input type="checkbox" id="category-education" name="category" value="Education">
+            <label for="category-education">Education</label>
+            <input type="checkbox" id="category-health" name="category" value="Health">
+            <label for="category-health">Health</label>
+            <input type="checkbox" id="category-entertainment" name="category" value="Entertainment">
+            <label for="category-entertainment">Entertainment</label>
+            <input type="checkbox" id="category-travel" name="category" value="Travel">
+            <label for="category-travel">Travel</label>
+            <input type="checkbox" id="category-finance" name="category" value="Finance">
+            <label for="category-finance">Finance</label>
+            <input type="checkbox" id="category-culture" name="category" value="Culture">
+            <label for="category-culture">Culture</label>
+          </div>
+          <div id="error-message" style="color:red; display:none;">Please select at least one category.</div>
+        </div>
+        <button type="submit" class="submit-button">Create Post</button>
 
-            const checkboxes = document.querySelectorAll('input[name="category"]');
-            let isChecked = false;
+      </form>
+    </section>
 
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    isChecked = true;
-                }
-            });
+  </main>
+  <!-- Footer Section -->
 
-            if (!isChecked) {
-                document.getElementById('error-message').style.display = 'block';
-            } else {
-                document.getElementById('error-message').style.display = 'none';
-                event.target.submit(); // Submit the form programmatically
-            }
-        });
-    </script>
-   </main>
-    <!-- Footer Section -->
+  <footer class="footer">
+    <p class="footer-text">All rights reserved &copy; 2024 Reboot</p>
+  </footer>
 
-    <footer class="footer">
-      <p class="footer-text">All rights reserved &copy; 2024 Reboot</p>
-    </footer>
-
-    <script src="/assets/js/main.js"></script>
-
-    <script>
-      // const isLoggedIn = false; // Change this to true if user is logged in
-
-      // document.addEventListener("DOMContentLoaded", () => {
-      //   const signInLink = document.getElementById("signin-link");
-      //   const logoutLink = document.getElementById("logout-link");
-      //   const profilePic = document.getElementById("profile-pic");
-
-      //   if (isLoggedIn) {
-      //     signInLink.style.display = "none";
-      //     logoutLink.style.display = "flex";
-      //     profilePic.style.display = "block";
-      //   } else {
-      //     signInLink.style.display = "flex";
-      //     logoutLink.style.display = "none";
-      //     profilePic.style.display = "none";
-      //   }
-      // });
-
-      // Function to handle like button click
-      function likePost(button) {
-        let countSpan = button.querySelector("span");
-        let count = parseInt(countSpan.textContent);
-        countSpan.textContent = count + 1;
-        let post = button.closest(".post");
-        post.setAttribute("data-liked", "true");
-      }
-
-      // Function to handle dislike button click
-      function dislikePost(button) {
-        let countSpan = button.querySelector("span");
-        let count = parseInt(countSpan.textContent);
-        countSpan.textContent = count + 1;
-      }
-
-      // Function to show comments
-      function toggleComments(button) {
-        let post = button.closest(".post");
-        let commentsSection = post.querySelector(".post-comments");
-
-        if (commentsSection.style.display === "none") {
-          commentsSection.style.display = "block";
-        } else {
-          commentsSection.style.display = "none";
-        }
-      }
-
-      function filterPostsCategory() {
-        const category = document.getElementById("filter-category").value;
-        const posts = document.querySelectorAll(".post");
-
-        posts.forEach((post) => {
-          if (
-            category === "all" ||
-            post.getAttribute("data-category") === category
-          ) {
-            post.style.display = "block";
-          } else {
-            post.style.display = "none";
-          }
-        });
-      }
-
-      function filterByCreated() {
-        const mypost = document.getElementById("filter-mypost").value;
-        const posts = document.querySelectorAll(".post");
-
-        posts.forEach((post) => {
-          if (mypost === "true") {
-            post.style.display = "block";
-          } else {
-            post.style.display = "none";
-          }
-        });
-      }
-
-      function filterByLiked() {
-        const likedpost = document.getElementById("filter-likedpost").value;
-        const posts = document.querySelectorAll(".post");
-
-        posts.forEach((post) => {
-          if (likedpost === "true") {
-            post.style.display = "block";
-          } else {
-            post.style.display = "none";
-          }
-        });
-      }
-
-      let filterMyPostState = false;
-      let filterLikedPostState = false;
-
-      function updateButtonState(buttonId, state) {
-        const button = document.getElementById(buttonId);
-        if (state) {
-          button.classList.add("active");
-        } else {
-          button.classList.remove("active");
-        }
-      }
-
-      function filterByCreated() {
-        filterMyPostState = !filterMyPostState;
-        updateButtonState("filter-mypost", filterMyPostState);
-        // Add your logic to filter the posts based on the filterMyPostState
-      }
-
-      function filterByLiked() {
-        filterLikedPostState = !filterLikedPostState;
-        updateButtonState("filter-likedpost", filterLikedPostState);
-        // Add your logic to filter the posts based on the filterLikedPostState
-      }
-
-      function updateURLCategory() {
-        const categorySelect = document.getElementById("filter-category");
-        if (categorySelect.value === "all") {
-          window.location.href = "/";
-          return;
-        }
-        const selectedCategory = categorySelect.value;
-        window.location.href = `?filter-category=${selectedCategory}`;
-      }
-      function updateURLMyPost() {
-        // const myPost = document.getElementById("filter-mypost"); //toggle button true or false
-        // const selectedCategory = myPost.value;
-        window.location.href = `?filter-mypost=${filterMyPostState}`;
-      }
-      function updateURLLikedPost() {
-        // const likedPost = document.getElementById("filter-likedpost"); //toggle button true or false
-        // const selectedCategory = likedPost.value;
-        window.location.href = `?filter-likedpost=${filterLikedPostState}`;
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const categorySelect = document.getElementById("filter-category");
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedCategory = urlParams.get("filter-category");
-
-        if (selectedCategory) {
-          categorySelect.value = selectedCategory;
-        }
-      });
-    </script>
-  </body>
+  <script src="/assets/js/main.js"></script>
+</body>
 <div class="chat-container" style="display: none;">
-    <div class="chat-users">
-        <div class="chat-users-header">
-            <h3>Chats</h3>
-            <button class="new-chat-btn">
-                <i class="bx bx-message-square-add"></i>
-                New Chat
-            </button>
-        </div>
-        <div class="users-list">
-            <!-- Users will be populated dynamically -->
-        </div>
+  <div class="chat-users">
+    <div class="chat-users-header">
+      <h3>Chats</h3>
+      <button class="new-chat-btn">
+        <i class="bx bx-message-square-add"></i>
+        New Chat
+      </button>
     </div>
-    
-    <div class="chat-messages">
-        <div class="chat-header">
-            <span class="current-chat-user">Select a user to start chatting</span>
-        </div>
-        <div class="messages-container">
-            <!-- Messages will be populated dynamically -->
-        </div>
-        <div class="message-input" style="display: none;">
-            <textarea placeholder="Type a message..." id="message-text"></textarea>
-            <button class="send-message" id="send-button">
-              <i class="bx bx-send"></i> Send
-          </button>
-          
-        </div>
+    <div class="users-list">
+      <!-- Users will be populated dynamically -->
     </div>
-    <div class="online-use-list">
-      <!-- Online users will be dynamically populated here -->
   </div>
-  
+
+  <div class="chat-messages">
+    <div class="chat-header">
+      <span class="current-chat-user">Select a user to start chatting</span>
+    </div>
+    <div class="messages-container">
+      <!-- Messages will be populated dynamically -->
+    </div>
+    <div class="message-input" style="display: none;">
+      <textarea placeholder="Type a message..." id="message-text"></textarea>
+      <button class="send-message" id="send-button">
+        <i class="bx bx-send"></i> Send
+      </button>
+
+    </div>
+  </div>
+  <div class="online-use-list">
+    <!-- Online users will be dynamically populated here -->
+  </div>
+
 </div>
 
 
@@ -354,20 +152,21 @@
   <h2 class="section-title" id="form-title">Login</h2>
   <form id="auth-form" class="auth-form" method="POST">
     <div>
-        <label for="usernameOrEmail">Username or Email:</label>
-        <input type="text" id="usernameOrEmail" name="usernameOrEmail" required>
-        <p class="error-message" id="error-usernameOrEmail" style="display: none;"></p>
+      <label for="usernameOrEmail">Username or Email:</label>
+      <input type="text" id="usernameOrEmail" name="usernameOrEmail" required>
+      <p class="error-message" id="error-usernameOrEmail" style="display: none;"></p>
     </div>
     <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <p class="error-message" id="error-password" style="display: none;"></p>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <p class="error-message" id="error-password" style="display: none;"></p>
     </div>
     <p class="error-message" id="error-user" style="display: none;"></p>
     <button type="submit" class="submit-button" id="submit-button">Login</button>
-</form>
+  </form>
 
-  <p class="toggle-link">Don't have an account? <a href="" id="toggle-auth" class="toggle-auth" data-target="register">Sign Up</a></p>
+  <p class="toggle-link">Don't have an account? <a href="" id="toggle-auth" class="toggle-auth"
+      data-target="register">Sign Up</a></p>
 </section>
 
 
@@ -375,130 +174,60 @@
 <section class="register-section">
   <h2 class="section-title">Register</h2>
   <form id="register-form" class="auth-form">
-      <div>
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
-          <p class="error-message" id="error-username" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          <p class="error-message" id="error-email" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="firstName">First Name:</label>
-          <input type="text" id="firstName" name="firstName" required>
-          <p class="error-message" id="error-firstName" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="lastName">Last Name:</label>
-          <input type="text" id="lastName" name="lastName" required>
-          <p class="error-message" id="error-lastName" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="age">Age:</label>
-          <input type="text" id="age" name="age" required>
-          <p class="error-message" id="error-age" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" id="passwordReg" name="password" required>
-          <p class="error-message" id="error-password" style="display: none;"></p>
-      </div>
-      <div>
-          <label for="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required>
-          <p class="error-message" id="error-confirmPassword" style="display: none;"></p>
-      </div>
-      <button type="submit" class="submit-button">Register</button>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <p class="error-message" id="error-username" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <p class="error-message" id="error-email" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+      <p class="error-message" id="error-firstName" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+      <p class="error-message" id="error-lastName" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required>
+      <p class="error-message" id="error-age" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="passwordReg" name="password" required>
+      <p class="error-message" id="error-password" style="display: none;"></p>
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+      <p class="error-message" id="error-confirmPassword" style="display: none;"></p>
+    </div>
+    <button type="submit" class="submit-button">Register</button>
   </form>
-  <p class="toggle-link">Already have an account? <a href="" id="toggle-auth" class="toggle-auth" data-target="login">Sign In</a></p>
+  <p class="toggle-link">Already have an account? <a href="" id="toggle-auth" class="toggle-auth"
+      data-target="login">Sign In</a></p>
 </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const registerForm = document.getElementById('register-form');
 
-    if (registerForm) {
-        registerForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Prevent default form submission
-
-            // Clear previous error messages
-            clearErrorMessages('register');
-
-            const formData = new FormData(registerForm);
-            const data = new URLSearchParams();
-            formData.forEach((value, key) => {
-                data.append(key, value);
-            });
-
-            // Custom validation for confirmPassword
-            const password = formData.get('password');
-            const confirmPassword = formData.get('confirmPassword');
-            if (password !== confirmPassword) {
-                showErrorMessages({ confirmPassword: "Passwords do not match" }, 'register');
-                return;
-            }
-
-            try {
-                const response = await fetch('/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: data.toString(),
-                });
-
-                if (!response.ok) {
-                    const result = await response.json();
-                    console.log('Response errors:', result.errors); // Debugging
-                    if (result.errors) {
-                        showErrorMessages(result.errors, 'register');
-                    }
-                } else {
-                    const result = await response.json();
-                    alert(result.message); // Show success message
-                    window.location.href = '/'; // Redirect to homepage
-                }
-            } catch (error) {
-                console.error('Error during registration:', error);
-            }
-        });
-    }
-
-    function clearErrorMessages(context) {
-        document.querySelectorAll(`#${context}-form .error-message`).forEach((element) => {
-            element.style.display = 'none';
-            element.textContent = '';
-        });
-    }
-
-    function showErrorMessages(errors, context) {
-        console.log('Errors received:', errors); // Debugging
-        for (const [field, message] of Object.entries(errors)) {
-            const errorElement = document.querySelector(`#${context}-form #error-${field}`);
-            console.log('Error Element:', errorElement); // Debugging
-            if (errorElement) {
-                errorElement.textContent = message;
-                errorElement.style.display = 'block';
-            }
-        }
-    }
-});
-
-
-</script>
 <!-- Error Section -->
 <section class="error-section" style="display: none;">
-    <div class="error-container">
-        <div class="opps">Oops!</div>
-        <div class="error-code"></div>
-        <div class="error-description"></div>
-    </div>
+  <div class="error-container">
+    <div class="opps">Oops!</div>
+    <div class="error-code"></div>
+    <div class="error-description"></div>
+  </div>
 </section>
 
 <!-- Comment Section -->
 <section class="post-details" style="display: none;">
-    <!-- Copy content from comment.html here -->
+  <!-- Copy content from comment.html here -->
 </section>
+
 </html>

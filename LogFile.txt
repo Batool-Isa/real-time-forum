@@ -1304,3 +1304,10 @@
 2024/12/30 15:59:02 Raw request body: {"post_id":31}
 2024/12/30 15:59:02 Parsed PostID: 31
 2024/12/30 15:59:02 UserID: 4 is disliking PostID: 31
+2024/12/30 16:01:28 [{9 noor Sli nor 0xc00012e290} {1 Fatima Ali fatima11 0xc00012e2e0} {8 Batool Isa bisa12 0xc00012e330} {12 Taher Isa taher1 0xc00012e380} {10 Fajer Aki fajer1 0xc00012e3d0} {11 Layal Ahmed layal 0xc00012e420} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2024/12/30 16:01:29 Error reading message: websocket: close 1001 (going away)
+2024/12/30 16:01:29 Error reading message: websocket: close 1001 (going away)
+2024/12/30 16:01:29 Error notifying presence change: websocket: close sent
+2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
+2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
+2024/12/30 16:01:37 [{9 noor Sli nor 0xc00029a8b0} {1 Fatima Ali fatima11 0xc00029a900} {8 Batool Isa bisa12 0xc00029a950} {12 Taher Isa taher1 0xc00029a9a0} {10 Fajer Aki fajer1 0xc00029a9f0} {11 Layal Ahmed layal 0xc00029aa40} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]

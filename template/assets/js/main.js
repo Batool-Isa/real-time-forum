@@ -87,9 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== Router ====================
 const router = {
     init() {
-        // this.handleRoute(); // Handle the current route on page load
-        // window.addEventListener('popstate', () => this.handleRoute()); // Listen for back/forward navigation
-        // Check session status first
+      
         fetch('/api/session-status')
             .then(response => {
                 if (!response.ok) {
