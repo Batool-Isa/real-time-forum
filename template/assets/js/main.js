@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the router to handle the current route
     router.init();
     fetchPosts();
+    displayLoggedInUser();
 
     // Initialize navigation links for SPA navigation
     document.querySelectorAll('.nav__link[data-path]').forEach(link => {
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
   
-
 
     document.querySelectorAll('.toggle-auth').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -1178,3 +1178,16 @@ function updatePostUI(postData) {
     }
 }
 
+function displayLoggedInUser() {
+    fetch('/api/session-status', {
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const userNameElement = document.getElementById('logged-user-name');
+        if (userNameElement && data.username) {
+            userNameElement.textContent = `Welcome, ${data.username}`;
+        }
+    })
+    .catch(error => console.error('Error fetching user data:', error));
+}

@@ -55,11 +55,22 @@ func main() {
 			http.Error(w, "No active session", http.StatusUnauthorized)
 			return
 		}
+		
+		// Fetch user details from database
+		user, err := database.GetUserByID(userID)
+		if err != nil {
+			http.Error(w, "Error fetching user details", http.StatusInternalServerError)
+			return
+		}
+		
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"userId": userID,
+			"username": user.Username,
+			"firstName": user.FirstName,
+			"lastName": user.LastName,
 		})
-		// w.WriteHeader(http.StatusOK)
+
 	})
 
 	// Authentication Endpoints

@@ -88,6 +88,15 @@ header {
   cursor: pointer;
 }
 
+.header__username {
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+
 /*========== NAV ==========*/
 .nav {
   position: fixed;
@@ -946,6 +955,7 @@ textarea:focus {
   background: var(--first-color-light);
   padding: 1rem;
   border-right: 1px solid var(--text-color-light);
+  overflow-y: auto;
 }
 
 .chat-users h3 {
@@ -957,17 +967,19 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  overflow-y: auto;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
   flex: 1;
+  font-size: 0.7rem;
 }
 
 .user-username {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: var(--text-color-light);
 }
 
@@ -979,7 +991,7 @@ textarea:focus {
  .user-item {
   display: flex;
   align-items: center;
-  padding: .75rem;
+  padding: .5rem;
   border-radius: .25rem;
   cursor: pointer;
   transition: background-color .3s;
@@ -1044,16 +1056,15 @@ textarea:focus {
 
 .messages-container {
   flex: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: .25rem; 
   background: var(--body-color);
 }
 
 .message {
-  padding: 0.5rem 0.75rem; 
+  padding: 0.3rem 0.75rem; 
   margin: 0.25rem 0; 
   max-width: 80%;
   border-radius: 1rem;
@@ -1063,6 +1074,7 @@ textarea:focus {
   background-color: var(--container-color);
   border-bottom-left-radius: 0.25rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  align-self: flex-start;
 }
 
 .message.sent {
@@ -1073,13 +1085,14 @@ textarea:focus {
 }
 
 .message-content {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 .message-time {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   margin-top: .25rem;
   opacity: .8;
+  color: darkgray;
 }
 
 .message-input {
@@ -1092,13 +1105,13 @@ textarea:focus {
 
 .message-input textarea {
   flex: 1;
-  padding: .75rem;
+  padding: .7rem;
   border: 1px solid var(--text-color-light);
   border-radius: 1.5rem;
   resize: vertical; 
   min-height: 45px;
   max-height: 25vh; 
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-family: var(--body-font);
   transition: border-color 0.3s ease;
 }
