@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize chat manager for WebSocket functionality
     const chatManager = new ChatManager();
 
-
     document.querySelectorAll('.toggle-auth').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -82,7 +81,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    
+    // Register form handling
+    const registerForm = document.getElementById('register-form');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            // Clear previous error messages
+            clearRegErrorMessages('register');
+
+            // Gather form data
+            const formData = new FormData(registerForm);
+            const data = new URLSearchParams(formData);
+
+            try {
+                // Send data to the backend
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data.toString(),
+                });
+
+                if (!response.ok) {
+                    // Handle errors from the backend
+                    const result = await response.json();
+                    if (result.errors) {
+                        showRegErrorMessages(result.errors, 'register');
+                    }
+                } else {
+                    // Redirect on successful registration
+                    window.location.href = '/';
+                }
+            } catch (error) {
+                console.error('Error during registration:', error);
+            }
+        });
+    }
+
+    function clearRegErrorMessages(context) {
+        document.querySelectorAll(`#${context}-form .error-message`).forEach(element => {
+            element.style.display = 'none';
+            element.textContent = '';
+        });
+    }
+
+    function showRegErrorMessages(errors, context) {
+        for (const [field, message] of Object.entries(errors)) {
+            const errorElement = document.querySelector(`#error-${field}`);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+    }
+
 });
+
+
+
 
 // ==================== Router ====================
 const router = {
@@ -151,6 +211,8 @@ const router = {
         }
     }
 };
+
+
 
 window.addEventListener('popstate', () => {
     router.handleRoute();
@@ -256,6 +318,7 @@ function updatePaginationControls() {
     document.querySelector('.pagination__prev').disabled = currentPage === 1;
     document.querySelector('.pagination__next').disabled = currentPage === totalPages;
 }
+
 
 // Pagination controls
 document.querySelector('.pagination__prev').addEventListener('click', () => {

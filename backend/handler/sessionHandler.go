@@ -1,5 +1,7 @@
 package handler
-import(
+
+import (
+	"log"
 	"real-time-forum/backend/database"
 	//"real-time-forum/backend/struct"
 	"context"
@@ -11,6 +13,7 @@ import(
 	"sync"
 	"time"
 )
+
 // Global session store and synchronization mechanism
 var (
 	activeSessions = make(map[string]bool) // Map to store active session IDs
@@ -71,7 +74,7 @@ func RetrieveLoggedUser(r *http.Request) (int, error) {
 	// Retrieve session cookie from the request
 	sessionCookie, err := r.Cookie("session_Id")
 	if err != nil {
-		fmt.Println("No active session cookie found")
+		log.Println("No active session cookie found")
 		return 0, err
 	}
 	// Fetch session details using the session ID

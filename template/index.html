@@ -170,16 +170,12 @@
 <!--Register Sestion-->
 <section class="register-section">
   <h2 class="section-title">Register</h2>
-  <form id="register-form" class="auth-form">
+
+  <form id="register-form" class="auth-form" method="POST" action="/register">
     <div>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
       <p class="error-message" id="error-username" style="display: none;"></p>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <p class="error-message" id="error-email" style="display: none;"></p>
     </div>
     <div>
       <label for="firstName">First Name:</label>
@@ -192,15 +188,20 @@
       <p class="error-message" id="error-lastName" style="display: none;"></p>
     </div>
     <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <p class="error-message" id="error-email" style="display: none;"></p>
+    </div>
+    <div>
       <label for="age">Age:</label>
-      <input type="text" id="age" name="age" required>
+      <input type="number" id="age" name="age" required>
       <p class="error-message" id="error-age" style="display: none;"></p>
     </div>
     <div>
       <label for="password">Password:</label>
-      <input type="password" id="passwordReg" name="password" required>
-      <p class="error-message" id="error-password" style="display: none;"></p>
-    </div>
+      <input type="password" id="password" name="password" required>
+      <p class="error-message" id="error-password-p" style="display: none;"></p>
+    </div>                               
     <div>
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" id="confirmPassword" name="confirmPassword" required>
@@ -208,9 +209,12 @@
     </div>
     <button type="submit" class="submit-button">Register</button>
   </form>
-  <p class="toggle-link">Already have an account? <a href="" id="toggle-auth" class="toggle-auth"
-      data-target="login">Sign In</a></p>
+
+  <p class="toggle-link">Already have an account? 
+    <a href="#" id="toggle-auth" class="toggle-auth" data-target="login">Sign In</a>
+  </p>
 </section>
+
 
 
 <!-- Error Section -->
