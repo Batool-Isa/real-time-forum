@@ -982,7 +982,6 @@ async function fetchPostDetails(postId) {
     }
 }
 
-
 async function submitComment(postId) {
     const commentInput = document.querySelector('#comment-input');
     const commentText = commentInput.value.trim();
@@ -993,6 +992,7 @@ async function submitComment(postId) {
     }
 
     try {
+        // Submit the comment to the backend
         const response = await fetch('/api/comment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1006,47 +1006,56 @@ async function submitComment(postId) {
             return;
         }
 
-        const result = await response.json();
-        alert(result.message);
+        const result = await response.json(); // Expecting "commentId" in the response
 
-        // Add the new comment to the comment list dynamically
-        const commentsContainer = document.querySelector('.post-comments ul');
+        // Fetch the logged-in user's details for the username
+        const userResponse = await fetch('/api/session-status', { credentials: 'include' });
+        if (!userResponse.ok) throw new Error('Failed to fetch user details');
+
+        const user = await userResponse.json(); // Assuming it contains "username"
+
+        // Dynamically add the new comment to the comments list
+        const commentsContainer = document.querySelector('.comments-list');
         const newComment = document.createElement('li');
         newComment.classList.add('comment');
+        newComment.setAttribute('data-comment-id', result.comment_id); // Use correct property name from response
+
         newComment.innerHTML = `
             <div class="comment-content">
-                <span class="comment-author">You</span>
+                <span class="comment-author">${user.username}</span>
                 <p class="comment-text">${commentText}</p>
             </div>
             <div class="comment-actions">
-                <button class="action-btn comment-like-btn" data-id="${result.commentId}">
-                    👍 <span class="comment-like-count">0</span>
-                </button>
-                
-                <button class="action-btn comment-dislike-btn" data-id="${result.commentId}">
-                    👎 <span class="comment-dislike-count">0</span>
-                </button>
-
-                 
+                <span>
+                    <i class="bx bx-like comment-like-icon" data-id="${result.comment_id}"></i>
+                    <span class="comment-like-count">0</span>
+                </span>
+                <span>
+                    <i class="bx bx-dislike comment-dislike-icon" data-id="${result.comment_id}"></i>
+                    <span class="comment-dislike-count">0</span>
+                </span>
             </div>
         `;
+
         commentsContainer.appendChild(newComment);
 
-        // Reapply event listeners
-        newComment.querySelector('.comment-like-btn').addEventListener('click', () => {
-            handleCommentLike(result.commentId);
+        // Add event listeners for like and dislike
+        newComment.querySelector('.comment-like-icon').addEventListener('click', () => {
+            handleCommentLike(result.comment_id);
         });
-        newComment.querySelector('.comment-dislike-btn').addEventListener('click', () => {
-            handleCommentDislike(result.commentId);
+        newComment.querySelector('.comment-dislike-icon').addEventListener('click', () => {
+            handleCommentDislike(result.comment_id);
         });
 
-        // Clear input field
+        // Clear the input field
         commentInput.value = '';
     } catch (error) {
         console.error('Error submitting comment:', error);
-        alert('An error occurred while submitting your comment.');
+        alert('An error occurred while submitting your comment. Please try again.');
     }
 }
+
+
 
 async function handleCommentLike(commentId) {
     try {

@@ -1311,3 +1311,39 @@
 2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
 2024/12/30 16:01:29 Error getting user ID: http: named cookie not present
 2024/12/30 16:01:37 [{9 noor Sli nor 0xc00029a8b0} {1 Fatima Ali fatima11 0xc00029a900} {8 Batool Isa bisa12 0xc00029a950} {12 Taher Isa taher1 0xc00029a9a0} {10 Fajer Aki fajer1 0xc00029a9f0} {11 Layal Ahmed layal 0xc00029aa40} {4 Abrar R abrar <nil>} {7 Ahmed Mohd Ahmed <nil>} {6 Ali Test ali <nil>} {2 Batool Isa bisa <nil>} {3 Fatima Ali fatii <nil>} {5 Sara Ahmed sara <nil>}]
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 Error getting user ID: http: named cookie not present
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 No active session cookie found
+2025/01/08 17:40:59 Error getting user ID: http: named cookie not present
+2025/01/08 17:41:03 User not found: sql: no rows in result set
+2025/01/08 17:41:10 [{4 Abrar R abrar 0xc000289090} {11 Layal Ahmed layal 0xc0002890e0} {8 Batool Isa bisa12 0xc000289130} {3 Fatima Ali fatii 0xc000289180} {12 Taher Isa taher1 0xc0002891d0} {1 Fatima Ali fatima11 0xc000289220} {9 noor Sli nor 0xc000289270} {6 Ali Test ali 0xc0002892c0} {5 Sara Ahmed sara 0xc000289310} {2 Batool Isa bisa 0xc000289360} {7 Ahmed Mohd Ahmed 0xc0002893b0} {14 Ahmed Isa ahmed12 <nil>} {15 Ahmed Isa Ah-Taher12 <nil>} {17 Batool Ali 11batool_ <nil>} {13 Batool Isa bisa129 <nil>} {10 Fajer Aki fajer1 <nil>} {18 Maha Jamal Mha23 <nil>} {16 Salam Hasan Salem23 <nil>}]
+2025/01/08 17:41:30 Received comment ID: 25
+2025/01/08 17:48:19 [{4 Abrar R abrar 0xc0001110e0} {11 Layal Ahmed layal 0xc000111130} {8 Batool Isa bisa12 0xc000111180} {3 Fatima Ali fatii 0xc0001111d0} {12 Taher Isa taher1 0xc000111220} {1 Fatima Ali fatima11 0xc000111270} {9 noor Sli nor 0xc0001112c0} {6 Ali Test ali 0xc000111310} {5 Sara Ahmed sara 0xc000111360} {2 Batool Isa bisa 0xc0001113b0} {7 Ahmed Mohd Ahmed 0xc000111400} {14 Ahmed Isa ahmed12 <nil>} {15 Ahmed Isa Ah-Taher12 <nil>} {17 Batool Ali 11batool_ <nil>} {13 Batool Isa bisa129 <nil>} {10 Fajer Aki fajer1 <nil>} {18 Maha Jamal Mha23 <nil>} {16 Salam Hasan Salem23 <nil>}]
+2025/01/08 17:48:30 Received comment ID: 29
+2025/01/08 17:48:30 Received comment ID: 29
+2025/01/08 17:48:32 Received comment ID: 28
+2025/01/08 17:48:37 Received comment ID: 30
+2025/01/08 17:48:37 Received comment ID: 30
+2025/01/08 17:48:39 Received comment ID: 30
+2025/01/08 17:48:39 Received comment ID: 30
+2025/01/08 17:48:40 Received comment ID: 30
+2025/01/08 17:48:40 Received comment ID: 30
+2025/01/08 17:48:40 Received comment ID: 30
+2025/01/08 17:48:40 Received comment ID: 30
+2025/01/08 17:48:41 Received comment ID: 30
+2025/01/08 17:48:41 Received comment ID: 30
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 Error reading message: websocket: close 1001 (going away)
+2025/01/08 17:48:43 Error reading message: websocket: close 1001 (going away)
+2025/01/08 17:48:43 Error notifying presence change: websocket: close sent
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 Error getting user ID: http: named cookie not present
+2025/01/08 17:48:43 No active session cookie found
+2025/01/08 17:48:43 Error getting user ID: http: named cookie not present

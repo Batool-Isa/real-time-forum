@@ -99,7 +99,7 @@ func CommentHandlerPost(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    err := database.InsertComment(commentData.Comment, commentData.UserID, commentData.PostID)
+    _, err := database.InsertComment(commentData.Comment, commentData.UserID, commentData.PostID)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
@@ -107,23 +107,7 @@ func CommentHandlerPost(w http.ResponseWriter, r *http.Request) {
 
     w.WriteHeader(http.StatusCreated)
 }
-// func GetAllUsersHandler(w http.ResponseWriter, r *http.Request) {
-//     session := middleware.GetSessionFromContext(r.Context())
-//     if session == nil {
-//         http.Error(w, "Unauthorized", http.StatusUnauthorized)
-//         return
-//     }
 
-//     users, err := database.FetchAllUsers()
-//     if err != nil {
-//         http.Error(w, err.Error(), http.StatusInternalServerError)
-//         return
-//     }
-
-//     w.Header().Set("Content-Type", "application/json")
-//     json.NewEncoder(w).Encode(users)
-
-// }
 
 func ChatHistoryHandler(w http.ResponseWriter, r *http.Request) {
     session := middleware.GetSessionFromContext(r.Context())

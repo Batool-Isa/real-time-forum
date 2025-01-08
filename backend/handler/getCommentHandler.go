@@ -45,20 +45,22 @@ func CommentHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    // Insert the comment into the database
-    err = database.InsertComment(reqData.CommentText, uid, reqData.PostID)
+    // Insert the comment into the database and get the comment ID
+    commentID, err := database.InsertComment(reqData.CommentText, uid, reqData.PostID)
     if err != nil {
         w.WriteHeader(http.StatusInternalServerError)
         json.NewEncoder(w).Encode(map[string]string{"error": "Failed to add comment"})
         return
     }
 
-    // Return success response
+    // Return success response with the comment ID
     w.WriteHeader(http.StatusCreated)
-    json.NewEncoder(w).Encode(map[string]string{
-        "message": "Comment added successfully",
+    json.NewEncoder(w).Encode(map[string]interface{}{
+        "message":    "Comment added successfully",
+        "comment_id": commentID,
     })
 }
+
 
 
 

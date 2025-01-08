@@ -89,23 +89,38 @@ func InsertPost(user_Id int, post_data string, categoryName []string) error {
 	return nil
 }
 
-func InsertComment(comment string, user_id int, postId int) error {
-	CommentErr := utils.ValidateInput(map[string]string{"comment": comment})
-	if CommentErr != nil {
-		return CommentErr
-	}
-	stmt, err := db.Prepare("INSERT INTO Comment(comment_content, user_Id, post_Id) values (?, ?, ?)")
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	_, err = stmt.Exec(comment, user_id, postId)
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-	return nil
+func InsertComment(comment string, user_id int, postId int) (int64, error) {
+    // Validate the input
+    CommentErr := utils.ValidateInput(map[string]string{"comment": comment})
+    if CommentErr != nil {
+        return 0, CommentErr
+    }
+
+    // Prepare the SQL statement
+    stmt, err := db.Prepare("INSERT INTO Comment(comment_content, user_Id, post_Id) VALUES (?, ?, ?)")
+    if err != nil {
+        log.Println("Error preparing SQL statement:", err)
+        return 0, err
+    }
+    defer stmt.Close()
+
+    // Execute the statement and get the result
+    res, err := stmt.Exec(comment, user_id, postId)
+    if err != nil {
+        log.Println("Error executing SQL statement:", err)
+        return 0, err
+    }
+
+    // Retrieve the last inserted ID
+    lastID, err := res.LastInsertId()
+    if err != nil {
+        log.Println("Error retrieving last insert ID:", err)
+        return 0, err
+    }
+
+    return lastID, nil
 }
+
 
 func InsertPostCategories(post_id int, category_id int) error {
 	fmt.Println("DEBUG: Inserting post-category mapping")
