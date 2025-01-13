@@ -60,10 +60,10 @@ Run the Docker container and map port 8080 to the host.
 
 ## Images
 - **Home Page:** 
-![Home Page](C:\Users\DELL\real-time-forum\template\assets\images\image-1.png)
+![Home Page](template\assets\images\image-1.png)
 - **Message Posting:** 
-![Post Creation Page](C:\Users\DELL\real-time-forum\template\assets\images\image-2.png)
+![Post Creation Page](template\assets\images\image-2.png)
 - **Real-Time Chat:**
-![Chat](C:\Users\DELL\real-time-forum\template\assets\images\image-3.png) 
+![Chat](template\assets\images\image-3.png) 
 - **Comments and Likes:** 
-![Commens and likes](C:\Users\DELL\real-time-forum\template\assets\images\image-4.png)
+![Commens and likes](template\assets\images\image-4.png)
