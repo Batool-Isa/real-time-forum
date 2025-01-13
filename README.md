@@ -60,10 +60,10 @@ Run the Docker container and map port 8080 to the host.
 
 ## Images
 - **Home Page:** 
-![Home Page](template\assets\images\image-1.png)
+![Home Page](https://github.com/Batool-Isa/real-time-forum/blob/main/template/assets/images/image-1.png?raw=true)
 - **Message Posting:** 
-![Post Creation Page](template\assets\images\image-2.png)
+![Post Creation Page](https://github.com/Batool-Isa/real-time-forum/blob/main/template/assets/images/image-2.png?raw=true)
 - **Real-Time Chat:**
-![Chat](template\assets\images\image-3.png) 
+![Chat](https://github.com/Batool-Isa/real-time-forum/blob/main/template/assets/images/image-3.png?raw=true)
 - **Comments and Likes:** 
-![Commens and likes](template\assets\images\image-4.png)
+![Commens and likes](https://github.com/Batool-Isa/real-time-forum/blob/main/template/assets/images/image-4.png?raw=true)
