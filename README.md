@@ -1,27 +1,48 @@
 # Real-Time Forum
-This project is a single-page application that allows users to post messages and view messages posted by other users. Additionally, it enables real-time communication among users.
+This project is a single-page application (SPA) that enables users to post messages, view posts, comment, and engage in private real-time messaging. It builds upon the previous forum project, introducing premium features like private messages, a dynamic online/offline user list, and a modernized user experience.
+
 
 ## Features
-- Message posting
-- Viewing messages
-- Comments and likes on posts
-- Real-time chat
+
+### Core Features:
+- **Registration and Login:** Secure user registration and login system with validations.
+- **Message Posting:** Users can create categorized posts and view them in a feed.
+- **Comments on Posts:** Users can comment on posts, visible only when the post is opened.
+- **Private Messages:** Real-time private messaging system with:
+  - Online/offline status indicators.
+  - Message history and dynamic scrolling.
+  - Notifications for new messages.
+
+### Real-Time Functionality:
+- WebSocket-powered updates for real-time interactions.
+- Instant notifications for private messages.
+- Live updates for posts, comments, and user status.
+
+### User Interface:
+- **Single Page Application:** All page changes are handled via JavaScript to ensure seamless navigation.
+- Dynamic rendering of online users and chat history.
+- Organized chat interface (similar to Discord).
 
 ## Technologies Used
+
 ### Frontend:
-- HTML
-- CSS
-- JavaScript
+- **HTML:** Structuring the elements of the page.
+- **CSS:** Styling the interface for a responsive and user-friendly design.
+- **JavaScript:** Managing events, WebSocket communication, and dynamic content updates.
 
 ### Backend:
-- Golang
-- SQLite for the database
+- **Golang:** Handling data operations, WebSocket communication, and session management.
+- **SQLite:** Storing user data, posts, comments, and message history.
 
 ### Containerization:
-- Docker
+- **Docker:** Simplified setup and deployment.
 
+## Installation and Setup
 
-## How to Run
+### Prerequisites
+- **Golang** and **SQLite** installed on your system.
+- **Docker** (optional, for containerized deployment).
+
 ### Option 1: Run Directly
 1. Clone the repository:
    ```bash
