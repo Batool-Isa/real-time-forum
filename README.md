@@ -69,7 +69,7 @@ Ensure Docker is installed on your system.
     ```
 2. Run the shell script to build and run the Docker container:
     ```bash
-    ./run.sh
+    ./run_docker.sh
     ```
 This script will:
 Build the Docker image with the name my-forum-app.
