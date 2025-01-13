@@ -1016,6 +1016,13 @@ async function submitComment(postId) {
 
         // Dynamically add the new comment to the comments list
         const commentsContainer = document.querySelector('.comments-list');
+
+        // Remove the "No comments yet" message if it exists
+        const noCommentsMessage = commentsContainer.querySelector('p');
+        if (noCommentsMessage) {
+            noCommentsMessage.remove();
+        }
+
         const newComment = document.createElement('li');
         newComment.classList.add('comment');
         newComment.setAttribute('data-comment-id', result.comment_id); // Use correct property name from response

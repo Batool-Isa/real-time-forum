@@ -1347,3 +1347,108 @@
 2025/01/08 17:48:43 Error getting user ID: http: named cookie not present
 2025/01/08 17:48:43 No active session cookie found
 2025/01/08 17:48:43 Error getting user ID: http: named cookie not present
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 Error getting user ID: http: named cookie not present
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 No active session cookie found
+2025/01/13 10:06:33 Error getting user ID: http: named cookie not present
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 Error getting user ID: http: named cookie not present
+2025/01/13 10:08:13 No active session cookie found
+2025/01/13 10:08:13 Error getting user ID: http: named cookie not present
+2025/01/13 10:09:03 Username: fati11
+2025/01/13 10:09:03 Email: fatima.taher123@gmail.com
+2025/01/13 10:09:03 Age: 25
+2025/01/13 10:09:03 First Name: Fatima
+2025/01/13 10:09:03 Last Name: Isa
+2025/01/13 10:09:03 Validation errors: map[]
+2025/01/13 10:09:03 User successfully inserted with username: fati11
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 Error getting user ID: http: named cookie not present
+2025/01/13 10:09:03 No active session cookie found
+2025/01/13 10:09:03 Error getting user ID: http: named cookie not present
+2025/01/13 10:09:08 sql: no rows in result set
+2025/01/13 10:09:08 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:10:41 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:10:41 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:10:41 Error notifying presence change: websocket: close sent
+2025/01/13 10:10:41 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:10:44 Raw request body: {"post_id":1}
+2025/01/13 10:10:44 Parsed PostID: 1
+2025/01/13 10:10:44 UserID: 1 is liking PostID: 1
+2025/01/13 10:10:44 Inserting like for PostID: 1, UserID: 1
+2025/01/13 10:10:44 Like does not exist, adding it
+2025/01/13 10:11:16 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:11:16 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:11:16 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:11:35 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:11:35 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:11:35 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:11:47 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:11:47 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:11:47 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:00 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:12:00 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:00 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:12 [{1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:12:12 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:12 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:19 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 Error getting user ID: http: named cookie not present
+2025/01/13 10:12:19 No active session cookie found
+2025/01/13 10:12:19 Error getting user ID: http: named cookie not present
+2025/01/13 10:13:18 Username: ham58
+2025/01/13 10:13:18 Email: ahmed.h12@gmail.com
+2025/01/13 10:13:18 Age: 36
+2025/01/13 10:13:18 First Name: Ahmed
+2025/01/13 10:13:18 Last Name: Hasan
+2025/01/13 10:13:18 Validation errors: map[]
+2025/01/13 10:13:18 User successfully inserted with username: ham58
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 Error getting user ID: http: named cookie not present
+2025/01/13 10:13:18 No active session cookie found
+2025/01/13 10:13:18 Error getting user ID: http: named cookie not present
+2025/01/13 10:13:21 sql: no rows in result set
+2025/01/13 10:13:21 [{2 Ahmed Hasan ham58 <nil>} {1 Fatima Isa fati11 <nil>}]
+2025/01/13 10:13:23 Raw request body: {"post_id":5}
+2025/01/13 10:13:23 Parsed PostID: 5
+2025/01/13 10:13:23 UserID: 2 is disliking PostID: 5
+2025/01/13 10:13:24 Raw request body: {"post_id":4}
+2025/01/13 10:13:24 Parsed PostID: 4
+2025/01/13 10:13:24 UserID: 2 is disliking PostID: 4
+2025/01/13 10:13:28 Raw request body: {"post_id":2}
+2025/01/13 10:13:28 Parsed PostID: 2
+2025/01/13 10:13:28 UserID: 2 is liking PostID: 2
+2025/01/13 10:13:28 Inserting like for PostID: 2, UserID: 2
+2025/01/13 10:13:28 Like does not exist, adding it
+2025/01/13 10:32:26 [{1 Fatima Isa fati11 0xc000026e30} {2 Ahmed Hasan ham58 <nil>}]
+2025/01/13 10:32:28 Raw request body: {"post_id":7}
+2025/01/13 10:32:28 Parsed PostID: 7
+2025/01/13 10:32:28 UserID: 2 is disliking PostID: 7
+2025/01/13 10:42:14 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:42:14 Error reading message: websocket: close 1001 (going away)
+2025/01/13 10:42:14 [{1 Fatima Isa fati11 0xc00021e8f0} {2 Ahmed Hasan ham58 <nil>}]
+2025/01/13 10:42:14 [{1 Fatima Isa fati11 0xc00021ec30} {2 Ahmed Hasan ham58 <nil>}]
+2025/01/13 10:42:33 Received comment ID: 2
+2025/01/13 10:42:33 Received comment ID: 2
